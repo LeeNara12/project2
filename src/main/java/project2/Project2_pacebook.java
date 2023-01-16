@@ -28,7 +28,6 @@ public class Project2_pacebook extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("다들 수정 한번씩 해보세요 ");
 		System.out.println("다들 수정 한번씩 해보세요123 ");
-		System.out.println("수정");
 		
 	}
 
