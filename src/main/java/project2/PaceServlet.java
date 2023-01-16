@@ -20,7 +20,17 @@ public class PaceServlet extends HttpServlet {
 	}
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//여기에 작성
+		String command = request.getParameter("command");
+		
+		if("login".equals(command)) {
+			//메인에서 로그인 버튼을 누를시
+		} else if("join".equals(command)) {
+			//메인에서 회원가입 버튼을 누를시
+		} else if("joinUp".equals(command)) {
+			//회원가입 페이지에서 회원가입 버튼 누를시
+		} else if("board".equals(command)) {
+			//게시글 작성 버튼을 누를시
+		}
 	}
 
 }

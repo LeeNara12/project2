@@ -24,41 +24,90 @@ public class PaceDAO {
 		}
 	}
 	
-	public boolean login() {// 로그인 메소드
+	public boolean login(PaceVO vo) {// 로그인 메소드
 		boolean result = false;
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "sql문 작성";
+			String query = "";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
+			
 			ResultSet rs = pstmt.executeQuery(); 
+			
+			rs.next();
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return result;
 	}
 	
-	public boolean join() {//회원가입 메소드
+	
+	public boolean join(PaceVO vo) {//회원가입 메소드
 		boolean result = false;
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "sql문 작성";
+			String query = "";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
+			
 			ResultSet rs = pstmt.executeQuery(); 
+			
+			rs.next();
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return result;
 	}
 	
-
+	
+	public boolean createBoard(PaceVO vo, PaceBoardVO pbvo) {//게시글 작성 메소드
+		boolean result = false;
+		try {
+			con = dataFactory.getConnection();
+			
+			String query = "";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+			
+			pstmt = con.prepareStatement(query);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	public boolean createComment(PaceVO vo, PaceBoardVO pbvo, PaceCommentVO pcvo) {//댓글 작성 메소드
+		boolean result = false;
+		try {
+			con = dataFactory.getConnection();
+			
+			String query = "";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+			
+			pstmt = con.prepareStatement(query);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

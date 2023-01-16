@@ -1,10 +1,19 @@
 package project2;
 
+import java.sql.Date;
+
 public class PaceVO {
 	private String id;
 	private String pw;
 	private String nick;
+	private Date user_time;
 	
+	public Date getUser_time() {
+		return user_time;
+	}
+	public void setUser_time(Date user_time) {
+		this.user_time = user_time;
+	}
 	public String getId() {
 		return id;
 	}
