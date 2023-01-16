@@ -37,6 +37,7 @@ public class Project2_pacebook extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		System.out.println(".");
 	}
 
 }
