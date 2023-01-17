@@ -30,10 +30,7 @@ public class PaceServlet extends HttpServlet {
 		
 		if("login".equals(command)) {
 			//메인에서 로그인 버튼을 누를시
-		} else if("join".equals(command)) {
-			//메인에서 회원가입 버튼을 누를시
-			
-			
+		
 		} else if("joinUp".equals(command)) {
 			//회원가입 페이지에서 회원가입 버튼 누를시
 //			PrintWriter out = response.getWriter();
