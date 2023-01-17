@@ -5,7 +5,14 @@ import java.sql.Date;
 public class PaceCommentVO {
 	private Date comment_time;
 	private String comment_content;
+	private int comment_no;
 	
+	public int getComment_no() {
+		return comment_no;
+	}
+	public void setComment_no(int comment_no) {
+		this.comment_no = comment_no;
+	}
 	public Date getComment_time() {
 		return comment_time;
 	}

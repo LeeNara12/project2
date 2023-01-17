@@ -66,33 +66,70 @@ public class PaceDAO {
 	}
 	
 	
-	public boolean createBoard(PaceVO vo, PaceBoardVO pbvo) {//게시글 작성 메소드
-		boolean result = false;
+	public void createBoard(int user_no, PaceBoardVO pbvo) {//게시글 작성 메소드
+		
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+			String query1 = " insert into board"
+					+ "	values(seq_board.nextval, sysdate,\"\r\n"
+					+ "	0, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			
-			pstmt = con.prepareStatement(query);
+			pstmt = con.prepareStatement(query1);
+			pstmt.setString(1, pbvo.getBoard_content());
+			pstmt.setInt(2, user_no);
+			pstmt.executeUpdate();
 			
+			String query2 = " select * from board"
+					+ " where board_no = seq_board.currval";  //PaceBoardVO객체에 나머지 정보들 추가
+			
+			pstmt = con.prepareStatement(query2);
 			ResultSet rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
-				
+				pbvo.setBoard_no(rs.getInt("board_no"));
+				pbvo.setBoard_time(rs.getDate("board_time"));
+				pbvo.setBoard_modify(rs.getInt("board_modify"));
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;
 	}
 	
 	
+<<<<<<< HEAD
 	public boolean createComment(PaceVO vo, PaceBoardVO pbvo, PaceCommentVO pcvo) {//댓글 작성 메소드
 		boolean result = false;
 		return result;
 		
+=======
+	public void createComment(int user_no, int board_no, PaceCommentVO pcvo) {//댓글 작성 메소드
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " insert into board_comment"
+					+ " values(seq_comment.nextval, sysdate, ?, ?, ?)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setString(1, pcvo.getComment_content());
+			pstmt.setInt(2, board_no);
+			pstmt.setInt(3, user_no);
+			pstmt.executeUpdate();
+			
+			String query2 = " select * from board_comment"
+					+ " where comment_no = seq_comment.currval"; //PaceCommentVO객체에 나머지 정보들 추가
+			
+			pstmt = con.prepareStatement(query2);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()) {
+				pcvo.setComment_no(rs.getInt("comment_no"));
+				pcvo.setComment_time(rs.getDate("comment_time"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+>>>>>>> fde52ed51954a4591eb61bff58aea08d1c091cb8
 	}
 }
 	
