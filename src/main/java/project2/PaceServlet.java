@@ -40,16 +40,20 @@ public class PaceServlet extends HttpServlet {
 			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String nick = request.getParameter("nick");
 			PaceVO vo = new PaceVO();
 			vo.setId(id);
 			vo.setPw(pw);
+			vo.setPw(name);
+			vo.setPw(nick);
 			boolean result = dao.join(vo);
 			if ( result) {
 				response.sendRedirect("/main.jsp");
 			}else {
 				response.sendRedirect("/main.jsp");
 			
-<<<<<<< HEAD
+
 			// 브라우저에서만 접근 가능 
 //			HttpSession session = request.getSession(false);
 //			if ( session != null) {
@@ -62,13 +66,7 @@ public class PaceServlet extends HttpServlet {
 //						out.println("비밀번호 : " + pw + "<br>");
 						
 					}
-		}else if("board".equals(command)) {
-			//게시글 작성 버튼을 누를시
-=======
-		} else if("join".equals(command)) {
-			//메인에서 회원가입 버튼을 누를시
-		} else if("joinUp".equals(command)) {
-			//회원가입 페이지에서 회원가입 버튼 누를시
+
 		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
 			HttpSession se = request.getSession();
@@ -86,7 +84,7 @@ public class PaceServlet extends HttpServlet {
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
 			int user_no = (int)se.getAttribute("id");
 			dao.createComment(user_no, board_no, pcvo);
->>>>>>> de74c4f58ba97075b3c7188122a6a0a22219ff96
+
 		}
 	}
 			
