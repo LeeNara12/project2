@@ -30,6 +30,21 @@ public class PaceServlet extends HttpServlet {
 		
 		if("login".equals(command)) {
 			//메인에서 로그인 버튼을 누를시
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			PaceVO vo = new PaceVO();
+			vo.setId(id);
+			vo.setPw(pw);
+			boolean logon = dao.join(vo);
+			if(logon) {
+				HttpSession se = request.getSession();
+				se.setAttribute("user_id", id);
+				se.setAttribute("user_nick", vo.getNick());
+				se.setAttribute("user_no", vo.getUser_no());
+				response.sendRedirect("main.jsp");
+			} else {
+				response.sendRedirect("login.jsp");
+			}
 		
 		} else if("joinUp".equals(command)) {
 			//회원가입 페이지에서 회원가입 버튼 누를시
