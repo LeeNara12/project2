@@ -26,8 +26,7 @@ public class PaceServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		PaceDAO dao = new PaceDAO();// DAO객체 생성
 		
-		if("login".equals(command)) {
-			//메인에서 로그인 버튼을 누를시
+		if("login".equals(command)) {//메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			PaceVO vo = new PaceVO();
@@ -40,7 +39,7 @@ public class PaceServlet extends HttpServlet {
 				String user_nick = user_vo.getNick();
 				Date user_time = user_vo.getUser_time();
 				int user_no = user_vo.getUser_no();
-				HttpSession se = request.getSession(); //세션생성 
+				HttpSession se = request.getSession(); //세션생성 또는 세션 가져오기 
 				se.setAttribute("id", user_id);        //세션에 회원정보추가
 				se.setAttribute("pw", user_pw);
 				se.setAttribute("nick", user_nick);
@@ -55,8 +54,23 @@ public class PaceServlet extends HttpServlet {
 			//메인에서 회원가입 버튼을 누를시
 		} else if("joinUp".equals(command)) {
 			//회원가입 페이지에서 회원가입 버튼 누를시
-		} else if("board".equals(command)) {
-			//게시글 작성 버튼을 누를시
+		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
+			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("no");
+			PaceBoardVO pbVO = new PaceBoardVO();
+			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
+			dao.createBoard(user_no, pbVO);
+			response.sendRedirect("main.jsp");
+			//취소 버튼은 자바스크립트로 
+		} else if("comment".equals(command)) {//댓글 작성
+			String comment_content = request.getParameter("comment_content");
+			PaceCommentVO pcvo = new PaceCommentVO();
+			pcvo.setComment_content(comment_content);
+			HttpSession se = request.getSession();
+			int board_no = Integer.parseInt(request.getParameter("board_no"));
+			int user_no = (int)se.getAttribute("id");
+			dao.createComment(user_no, board_no, pcvo);
 		}
 	}
 
