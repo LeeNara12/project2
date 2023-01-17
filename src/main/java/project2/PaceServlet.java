@@ -62,7 +62,7 @@ public class PaceServlet extends HttpServlet {
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
 			response.sendRedirect("main.jsp");
-			//취소 버튼은 자바스크립트로 
+			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
 			String comment_content = request.getParameter("comment_content");
 			PaceCommentVO pcvo = new PaceCommentVO();

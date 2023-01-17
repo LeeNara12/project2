@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter({ "/PaceFilter", "/*" })
+@WebFilter("/*")
 public class PaceFilter extends HttpFilter implements Filter {
        
     public PaceFilter() {
@@ -35,7 +35,8 @@ public class PaceFilter extends HttpFilter implements Filter {
 			StringBuffer sb  = req.getRequestURL();
 			String url = sb.toString();
 			System.out.println(url);
-			if(url.indexOf("/login") != -1){
+			if(url.indexOf("/login") != -1
+					|| url.indexOf("/join") != -1){
 				chain.doFilter(request, response);
 			} else { //위에 선언한 url주소가 아닌 곳에 갈때 세션 확인
 				session = req.getSession(); 
