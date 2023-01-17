@@ -3,11 +3,18 @@ package project2;
 import java.sql.Date;
 
 public class PaceVO {
+	private int user_no;
 	private String id;
 	private String pw;
 	private String nick;
 	private Date user_time;
 	
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
 	public Date getUser_time() {
 		return user_time;
 	}
