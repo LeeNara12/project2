@@ -36,7 +36,7 @@ public class PaceServlet extends HttpServlet {
 			
 		} else if("joinUp".equals(command)) {
 			//회원가입 페이지에서 회원가입 버튼 누를시
-			PrintWriter out = response.getWriter();
+//			PrintWriter out = response.getWriter();
 			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -52,20 +52,7 @@ public class PaceServlet extends HttpServlet {
 				response.sendRedirect("/main.jsp");
 			}else {
 				response.sendRedirect("/main.jsp");
-			
-
-			// 브라우저에서만 접근 가능 
-//			HttpSession session = request.getSession(false);
-//			if ( session != null) {
-//				result = (Boolean)session.getAttribute("isLogon");
-//					if(result == true) {
-//						id = (String)session.getAttribute("login.id");
-//						id = (String)session.getAttribute("login.pw");
-//						out.println("<html><body>");
-//						out.println("아이디 : " + id + "<br>");
-//						out.println("비밀번호 : " + pw + "<br>");
-						
-					}
+		    }
 
 		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("board_content");//게시글 내용 가져오기

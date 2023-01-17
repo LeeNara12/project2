@@ -50,13 +50,28 @@ public class PaceDAO {
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
+			String query = " select * from user_info"
+					+ " where id=? ";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
 			
+			pstmt.setString(1,vo.getId());
+			
 			ResultSet rs = pstmt.executeQuery(); 
 			
-			rs.next();
+			if(rs.next()) {
+				result= false;
+			}else {
+				String query2 = "insert into user_info "
+						+ " values ( seq_user.nextval, ? , ?, sysdate, ?)";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setString(1,vo.getId());
+				pstmt.setString(2,vo.getPw());
+				pstmt.setString(3,vo.getNick());
+				pstmt.executeUpdate();
+				
+				result = true;
+			}
 			
 			
 		} catch (SQLException e) {
