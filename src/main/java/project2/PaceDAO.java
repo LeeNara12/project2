@@ -97,12 +97,13 @@ public class PaceDAO {
 	}
 	
 	
-<<<<<<< HEAD
+
 	public boolean createComment(PaceVO vo, PaceBoardVO pbvo, PaceCommentVO pcvo) {//댓글 작성 메소드
 		boolean result = false;
 		return result;
 		
-=======
+	}
+
 	public void createComment(int user_no, int board_no, PaceCommentVO pcvo) {//댓글 작성 메소드
 		try {
 			con = dataFactory.getConnection();
@@ -129,7 +130,8 @@ public class PaceDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
->>>>>>> fde52ed51954a4591eb61bff58aea08d1c091cb8
 	}
 }
+	
+
 	
