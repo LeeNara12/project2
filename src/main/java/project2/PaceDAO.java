@@ -1,6 +1,7 @@
 package project2;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,30 +19,45 @@ public class PaceDAO {
 	public void PaceDAO() {
 		try {
 			Context ctx = new InitialContext();
-			dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public boolean login(PaceVO vo) {// 로그인 메소드
-		boolean result = false;
+	public PaceVO login(PaceVO vo) {// 로그인 메소드 // boolean에서 리턴으로 수정
+		PaceVO userVO;
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "";//SQL문 작성
+			String query = " select * form user_info"
+					+ "	where id = ? and pw = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
-			
+			pstmt.setString(1, vo.getUser_id());
+			pstmt.setString(2, vo.getUser_pw());
 			ResultSet rs = pstmt.executeQuery(); 
-			
-			rs.next();
+			if(rs.next()) {
+				int user_no = rs.getInt("user_no");
+				String user_id = rs.getString("id");
+				String user_pw = rs.getString("pw");
+				String user_nick = rs.getString("nick");
+				Date user_time = rs.getDate("user_time");
+				userVO = new PaceVO();
+				userVO.setUser_no(user_no);
+				userVO.setUser_id(user_id);
+				userVO.setUser_pw(user_pw);
+				userVO.setUser_nick(user_nick);
+				userVO.setUser_time(user_time);
+			} else {
+				
+			}
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;
+		return userVO;
 	}
 	
 	
