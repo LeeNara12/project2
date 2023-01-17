@@ -29,13 +29,20 @@ public class PaceDAO {
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = "";//SQL문 작성
+			String query = " select * from user_info"
+					+ " where id = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
-			
+			pstmt.setString(1, vo.getId());
 			ResultSet rs = pstmt.executeQuery(); 
-			
-			rs.next();
+			if(rs.next()) {
+				vo.setUser_no(rs.getInt("user_no"));
+				vo.setNick(rs.getString("nick"));
+				vo.setUser_time(rs.getDate("user_time"));
+				result=true;
+			} else {
+				result=false;
+			}
 			
 			
 		} catch (SQLException e) {
