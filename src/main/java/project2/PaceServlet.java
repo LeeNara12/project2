@@ -1,6 +1,7 @@
 package project2;
 
 import java.io.IOException;
+import java.sql.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,16 +33,23 @@ public class PaceServlet extends HttpServlet {
 			PaceVO vo = new PaceVO();
 			vo.setId(id);
 			vo.setPw(pw);
-			boolean logon = dao.login(vo);
-			if(logon) {
-				HttpSession se = request.getSession();
-				se.setAttribute("id", id);
-				se.setAttribute("pw", pw);
+			PaceVO user_vo = dao.login(vo);
+			if(user_vo != null) { // 로그인 성공시
+				String user_id = user_vo.getId();
+				String user_pw = user_vo.getPw();
+				String user_nick = user_vo.getNick();
+				Date user_time = user_vo.getUser_time();
+				int user_no = user_vo.getUser_no();
+				HttpSession se = request.getSession(); //세션생성 
+				se.setAttribute("id", user_id);        //세션에 회원정보추가
+				se.setAttribute("pw", user_pw);
+				se.setAttribute("nick", user_nick);
+				se.setAttribute("time", user_time);
+				se.setAttribute("no", user_no);
 				response.sendRedirect("/메인페이지");//임시
-			} else {
+			} else if(user_vo == null){ //로그인 실패시
 				response.sendRedirect("/로그인페이지");//임시
 			}
-			
 			
 		} else if("join".equals(command)) {
 			//메인에서 회원가입 버튼을 누를시

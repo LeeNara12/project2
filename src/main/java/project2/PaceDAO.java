@@ -26,7 +26,7 @@ public class PaceDAO {
 	}
 	
 	public PaceVO login(PaceVO vo) {// 로그인 메소드 // boolean에서 리턴으로 수정
-		PaceVO userVO;
+		PaceVO userVO = null;
 		try {
 			con = dataFactory.getConnection();
 			
@@ -34,8 +34,8 @@ public class PaceDAO {
 					+ "	where id = ? and pw = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, vo.getUser_id());
-			pstmt.setString(2, vo.getUser_pw());
+			pstmt.setString(1, vo.getId());
+			pstmt.setString(2, vo.getPw());
 			ResultSet rs = pstmt.executeQuery(); 
 			if(rs.next()) {
 				int user_no = rs.getInt("user_no");
@@ -45,19 +45,17 @@ public class PaceDAO {
 				Date user_time = rs.getDate("user_time");
 				userVO = new PaceVO();
 				userVO.setUser_no(user_no);
-				userVO.setUser_id(user_id);
-				userVO.setUser_pw(user_pw);
-				userVO.setUser_nick(user_nick);
+				userVO.setId(user_id);
+				userVO.setPw(user_pw);
+				userVO.setNick(user_nick);
 				userVO.setUser_time(user_time);
-			} else {
-				
 			}
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return userVO;
+		return userVO; //아이디가 존재하지 않으면 null을 리턴
 	}
 	
 	
