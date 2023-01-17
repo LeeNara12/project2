@@ -12,7 +12,7 @@
             document.querySelector("#join_btn").addEventListener("click", function(){
                 let login = document.login;
                 login.method = "get";
-                login.action = "join";
+                login.action = "join.jsp";
                 login.submit();
             });
             document.querySelector("#login_btn").addEventListener("click", function(){
