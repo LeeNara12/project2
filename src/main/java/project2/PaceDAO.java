@@ -18,7 +18,7 @@ public class PaceDAO {
 	public void PaceDAO() {
 		try {
 			Context ctx = new InitialContext();
-			dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
