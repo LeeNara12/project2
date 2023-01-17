@@ -35,7 +35,7 @@ public class PaceServlet extends HttpServlet {
 			PaceVO vo = new PaceVO();
 			vo.setId(id);
 			vo.setPw(pw);
-			boolean logon = dao.join(vo);
+			boolean logon = dao.login(vo);
 			if(logon) {
 				HttpSession se = request.getSession();
 				se.setAttribute("user_id", id);
@@ -52,18 +52,16 @@ public class PaceServlet extends HttpServlet {
 			
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			String name = request.getParameter("name");
 			String nick = request.getParameter("nick");
 			PaceVO vo = new PaceVO();
 			vo.setId(id);
 			vo.setPw(pw);
-			vo.setPw(name);
-			vo.setPw(nick);
+			vo.setNick(nick);
 			boolean result = dao.join(vo);
-			if ( result) {
-				response.sendRedirect("/main.jsp");
+			if (result) {
+				response.sendRedirect("login.jsp");
 			}else {
-				response.sendRedirect("/main.jsp");
+				response.sendRedirect("join.jsp");
 		    }
 
 		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
@@ -83,7 +81,6 @@ public class PaceServlet extends HttpServlet {
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
 			int user_no = (int)se.getAttribute("id");
 			dao.createComment(user_no, board_no, pcvo);
-
 		}
 	}
 			

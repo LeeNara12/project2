@@ -15,10 +15,11 @@ public class PaceDAO {
 	private PreparedStatement pstmt;
 	private DataSource dataFactory;
 	
-	public void PaceDAO() {
+	public PaceDAO() {
 		try {
 			Context ctx = new InitialContext();
-			dataFactory = (DataSource) ctx.lookup("java:/comp/env/jdbc/oracle");
+			Context envContext = (Context)ctx.lookup("java:/comp/env"); //JNDI 사용을 위한 설정
+			dataFactory = (DataSource)envContext.lookup("jdbc/oracle2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -30,7 +31,7 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query = " select * from user_info"
-					+ " where id = ?";//SQL문 작성
+					+ " where user_id = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, vo.getId());
@@ -58,13 +59,13 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query = " select * from user_info"
-					+ " where id=? ";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
+					+ " where user_id = ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1,vo.getId());
+			pstmt.setString(1, vo.getId());
 			
-			ResultSet rs = pstmt.executeQuery(); 
+			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				result= false;

@@ -36,7 +36,9 @@ public class PaceFilter extends HttpFilter implements Filter {
 			String url = sb.toString();
 			System.out.println(url);
 			if(url.indexOf("/login") != -1
-					|| url.indexOf("/join") != -1){
+					|| url.indexOf("/join") != -1
+					|| url.indexOf("/pacebook") != -1
+					|| url.indexOf("/main") != -1){
 				chain.doFilter(request, response);
 			} else { //위에 선언한 url주소가 아닌 곳에 갈때 세션 확인
 				session = req.getSession(); 
@@ -44,7 +46,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 				if("true".equals(logon)) {
 					chain.doFilter(request, response);
 				} else {
-					((HttpServletResponse)response).sendRedirect("/project2/login.jsp2");
+					((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 				}
 			}
 		}

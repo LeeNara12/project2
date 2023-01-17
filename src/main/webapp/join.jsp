@@ -33,7 +33,7 @@
             font-size: 5px;
             color: #8E8E8E;
         }
-        #join_submit{
+        #join{
             
             background-color: #3498DB;
             color: white;
@@ -50,6 +50,16 @@
 
         
     </style>
+    <script>
+    	window.onload = function(){
+	    	document.querySelector("#join").addEventListener("click", function(){
+	    		let join = document.join;
+	    		join.method = "post";
+	    		join.action = "pacebook";
+	    		join.submit();
+	    	})
+    	}
+    </script>
 </head>
 
 <body>
@@ -64,21 +74,20 @@
         --------------------또는-----------------------
         </div>
         <br>
-       	<form method="post" action="pacebook">
+        <form name="join">
 	        <div class="join_input">
-	            <input type="text" placeholder="휴대폰 번호 또는 이메일주소" size="30px" ><br>
-	            <input type="text" placeholder="성명" size="30px"><br>
-	            <input type="text" placeholder="사용자이름" size="30px"><br>
-	            <input type="text" placeholder="비밀번호" size="30px"><br>
+	            <input type="text" name="id" placeholder="아이디" size="30px" ><br>
+	            <input type="text" name="pw" placeholder="비밀번호" size="30px"><br>
+	            <input type="text" name="nick" placeholder="사용자이름" size="30px"><br>
 	        </div>
 	        <div>
 	            <p id='description'>저희 서비스를 이용하는 사람이 회원님의 연락처 정보를</p>
 	            <p id='description'>PACEBOOK에 업로드했을 수도 있습니다. <a href="">더알아보기</a></p>
 	        </div>
 	        <div id="div_submit">
-	            <input id='join_submit' type="submit" value="가입">
-        	</div>
-       	</form>
+	            <button id="join" name="command" value="joinUp">회원가입</button>
+	       	</div>
+        </form>
         <div>
             <p id="description_login">계정이 있으신가요? <a href="login.jsp">로그인</a></p>
         </div>

@@ -18,7 +18,7 @@
             document.querySelector("#login_btn").addEventListener("click", function(){
                 let login = document.login;
                 login.method = "post";
-                login.action = "main";
+                login.action = "pacebook";
                 login.submit();
             });
         }
@@ -27,10 +27,10 @@
 <body>
     <h1>로그인 페이지 입니다.</h1>
     <form name="login">
-        <input type="text" id="id" placeholder="아이디"><br>
-        <input type="password" id="pw" placeholder="비밀번호"><br>
+        <input type="text" name="id" placeholder="아이디"><br>
+        <input type="password" name="pw" placeholder="비밀번호"><br>
         <button id="join_btn">회원가입</button>
-        <button id="login_btn">로그인</button>
+        <button id="login_btn" name="command" value="login">로그인</button>
     </form>
 </body>
 </html>
