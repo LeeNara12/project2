@@ -91,23 +91,7 @@ public class PaceDAO {
 	
 	public boolean createComment(PaceVO vo, PaceBoardVO pbvo, PaceCommentVO pcvo) {//댓글 작성 메소드
 		boolean result = false;
-		try {
-			con = dataFactory.getConnection();
-			
-			String query = "";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
-			
-			pstmt = con.prepareStatement(query);
-			
-			ResultSet rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				
-			}
-			
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
+		
 	}
 }
+	
