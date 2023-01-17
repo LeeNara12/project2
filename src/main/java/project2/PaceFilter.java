@@ -43,7 +43,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 				if("true".equals(logon)) {
 					chain.doFilter(request, response);
 				} else {
-					((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
+					((HttpServletResponse)response).sendRedirect("/project2/login.jsp2");
 				}
 			}
 		}
