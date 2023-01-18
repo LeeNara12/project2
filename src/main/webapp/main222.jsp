@@ -132,7 +132,7 @@
             <div id="nav_bar3">
                 <div  class="btn">
                     <p>더보기</p>
-                </div>
+                </div>      
             </div>
         </div>
 
