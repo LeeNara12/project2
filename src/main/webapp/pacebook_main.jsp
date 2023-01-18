@@ -168,6 +168,16 @@
         /* ======================================= */
        
     </style>
+    <script>
+    	window.onload = function(){
+    		document.querySelector("#board_btn").addEventListener("click", function(){
+    			let board = document.board;
+    			board.method = "get";
+    			board.action = "pacebook";
+    			board.submit();
+    		});	
+    	}
+    </script>
 </head>
 <body>
     <!--위-->
@@ -203,9 +213,11 @@
                 <div class="btn">
                     <p>알림</p>
                 </div>
-                <div class="btn">
-                    <p>만들기</p>
-                </div>
+                <form name="board">
+	                <button id="board_btn" class="btn" name="command" value="goToBoard">
+	                	만들기
+	                </button>
+                </form>
                 <div class="btn">
                     <p>프로필</p>
                 </div>
