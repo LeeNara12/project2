@@ -133,13 +133,6 @@
             font-size: 2vh;
             padding-left: 10px;
         }
-        #title{
-            display: inline-block;
-            height: 30px;
-            border: 0px;
-            padding-left: 10px;
-            flex-grow: 4;
-        }
         /* //////////////////////////////////////////////////////////// */
         /* 내용 */
         #content_text{
@@ -169,7 +162,7 @@
             document.querySelector("#cancell_btn").addEventListener("click", function(){
                 let board = document.board;
                 board.method = "get";
-                board.action = "pacebook"
+                board.action = "pacebook_main.jsp"
                 board.submit();
             })
         }
@@ -194,7 +187,6 @@
                 <div id="br_bottom">
                     <div id="br_bottom_top">
                         <div id="title_id">@아이디</div>
-                        <input type="text" placeholder="title" id="title" name="title">
                     </div>
                     <br>
                     <textarea id="content_text" type="text" placeholder="내용:" name="content"></textarea>
