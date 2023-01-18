@@ -79,8 +79,19 @@
         .oher_user{
 
         }
+        
 
     </style>
+    <script>
+	    window.onload = function(){
+	    	document.querySelector("#board_btn").addEventListener("click", function(){
+	    		let board = document.board;
+	    		board.method = "get";
+	    		board.action = "pacebook";
+	    		board.submit();
+	    	});
+	    }
+    </script>
 </head>
 <body>
     <div id="top">
@@ -91,6 +102,9 @@
             </div>
             <div id="user_page"> </div>
         </div>
+        <form id="board">
+	        <button id="board_btn" name="command" value="board">게시글 작성</button>
+        </form>
     </div>
     <hr size="1px" color="#CCCCCC">
     <div id="pacebook_content">    
