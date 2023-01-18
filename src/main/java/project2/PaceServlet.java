@@ -26,7 +26,7 @@ public class PaceServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		PaceDAO dao = new PaceDAO();
-		
+		//수정
 		
 		if("login".equals(command)) {
 			//메인에서 로그인 버튼을 누를시
