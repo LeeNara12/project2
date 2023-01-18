@@ -1,8 +1,8 @@
 package project2;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,56 +26,62 @@ public class PaceServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		
 		PaceDAO dao = new PaceDAO();
-		//수정
 		
-		if("login".equals(command)) {
-			//메인에서 로그인 버튼을 누를시
+		// command=login으로 받아왔을때
+		if("login".equals(command)) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			PaceVO vo = new PaceVO();
 			vo.setId(id);
 			vo.setPw(pw);
-			boolean logon = dao.login(vo);
-			if(logon) {
-				HttpSession se = request.getSession();
-				se.setAttribute("user_id", id);
+			boolean logon = dao.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
+			if(logon) {// 로그인 성공했을 경우
+				HttpSession se = request.getSession();//세션 생성
+				se.setAttribute("user_id", id);// 세션에 값을 넣어줌
 				se.setAttribute("user_nick", vo.getNick());
 				se.setAttribute("user_no", vo.getUser_no());
-				se.setAttribute("logon", "true");// 로그인이 되었다는 어트리뷰트
-				response.sendRedirect("main.jsp");
-			} else {
-				response.sendRedirect("login.jsp");
+				se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
+				response.sendRedirect("main.jsp");//메인페이지로 이동
+				return;// 리턴을 넣어준 이유 : 맨밑에 기본값으로 메인페이지로 리다이렉트 하는데 리다이렉트를 두번하면 오류가 나기때문
+			} else {// 로그인 실패했을 경우
+				request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
+				RequestDispatcher dispatch = request.getRequestDispatcher("login.jsp");
+				dispatch.forward(request, response);// 현재 request, response를 login페이지로 넘김 
 				System.out.println("로그인 실패");
+				return;
 			}
 		
-		} else if("joinUp".equals(command)) {
-			//회원가입 페이지에서 회원가입 버튼 누를시
-//			PrintWriter out = response.getWriter();
-			
-			String id = request.getParameter("id");
+		} else if("joinUp".equals(command)) {//회원가입 페이지에서 회원가입 버튼 누를시
+			String id = request.getParameter("id");//넘겨받은 아이디,비밀번호 등을 변수로 저장
 			String pw = request.getParameter("pw");
 			String nick = request.getParameter("nick");
-			PaceVO vo = new PaceVO();
-			vo.setId(id);
+			PaceVO vo = new PaceVO();// PaceVO객체 생성
+			vo.setId(id);//생성한 객체에 변수로 저장했던 아이디,비밀번호 등 값을 넣어줌
 			vo.setPw(pw);
 			vo.setNick(nick);
-			boolean result = dao.join(vo);
-			if (result) {
-				response.sendRedirect("login.jsp");
-			}else {
-				response.sendRedirect("join.jsp");
+			boolean result = dao.join(vo); // dao의 join메소드로 vo객체를 넘김
+			if (result) {// 회원가입이 성공했을 때
+				response.sendRedirect("login.jsp");// ==임시==
+				return;
+			}else {// 회원가입에 실패했을 때
+				request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
+				RequestDispatcher dispatch = request.getRequestDispatcher("join.jsp");
+				dispatch.forward(request, response);// 현재 request, response를 회원가입 페이지로 넘김
 				System.out.println("회원가입 실패");
+				return;
 		    }
 		} else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
-			response.sendRedirect("board.jsp");
+			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
+			return;
 		} else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
-			HttpSession se = request.getSession();
-			int user_no = (int) se.getAttribute("user_no");
-			PaceBoardVO pbVO = new PaceBoardVO();
+			HttpSession se = request.getSession();//세션 생성 및 가져오기
+			int user_no = (int) se.getAttribute("user_no");//세션에 유저넘버 값을 넣어줌 
+			PaceBoardVO pbVO = new PaceBoardVO();// PaceBoardVO객체 생성
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
-			dao.createBoard(user_no, pbVO);
-			response.sendRedirect("main.jsp");
+			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
+			response.sendRedirect("main.jsp");//메인페이지로 이동
+			return;
 			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
 			String comment_content = request.getParameter("comment_content");
@@ -89,7 +95,10 @@ public class PaceServlet extends HttpServlet {
 			HttpSession se = request.getSession();
 			se.invalidate();
 			response.sendRedirect("main.jsp");
+			return;
 		}
+		response.sendRedirect("main.jsp");
+		System.out.println("여기지나감");
 	}
 			
 			
