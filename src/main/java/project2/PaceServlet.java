@@ -42,7 +42,7 @@ public class PaceServlet extends HttpServlet {
 				se.setAttribute("user_nick", vo.getNick());
 				se.setAttribute("user_no", vo.getUser_no());
 				se.setAttribute("logon", "true");// 로그인이 되었다는 어트리뷰트
-				response.sendRedirect("main222.jsp");
+				response.sendRedirect("pacebook_main.jsp");
 			} else {
 				response.sendRedirect("login.jsp");
 			}
@@ -72,7 +72,7 @@ public class PaceServlet extends HttpServlet {
 			PaceBoardVO pbVO = new PaceBoardVO();
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
-			response.sendRedirect("main.jsp");
+			response.sendRedirect("pacebook_main.jsp");
 			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
 			String comment_content = request.getParameter("comment_content");
