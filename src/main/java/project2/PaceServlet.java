@@ -41,6 +41,7 @@ public class PaceServlet extends HttpServlet {
 				se.setAttribute("user_id", id);
 				se.setAttribute("user_nick", vo.getNick());
 				se.setAttribute("user_no", vo.getUser_no());
+				se.setAttribute("logon", "true");// 로그인이 되었다는 어트리뷰트
 				response.sendRedirect("main.jsp");
 			} else {
 				response.sendRedirect("login.jsp");
