@@ -176,6 +176,12 @@
     			board.action = "pacebook";
     			board.submit();
     		});	
+    		document.querySelector("#logout_btn").addEventListener("click", function(){
+    			let logout = document.logout;
+    			logout.method = "get";
+    			logout.action = "pacebook";
+    			logout.submit();
+    		});	
     	}
     </script>
 </head>
@@ -188,6 +194,9 @@
         <div id="top_search">
             <div id="search_div">
             <input type="text"> <input type="button" value="검색">
+            <form name="logout">
+	            <button id="logout_btn" name="command" value="logout">로그아웃</button>
+            </form>
             </div>
             <div id="user_page"> </div>
         </div>
