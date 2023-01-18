@@ -118,14 +118,6 @@ public class PaceDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	
-
-	public boolean createComment(PaceVO vo, PaceBoardVO pbvo, PaceCommentVO pcvo) {//댓글 작성 메소드
-		boolean result = false;
-		return result;
-		
-	}
 
 	public void createComment(int user_no, int board_no, PaceCommentVO pcvo) {//댓글 작성 메소드
 		try {
