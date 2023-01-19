@@ -11,6 +11,8 @@ public class PaceCommentVO {
 	private int comment_like; // 좋아요
 	private String comment_modify; // 수정여부 
 	
+
+	
 	public int getComment_no() {
 		return comment_no;
 	}
@@ -57,4 +59,6 @@ public class PaceCommentVO {
 	public void setComment_modify(String comment_modify) {
 		this.comment_modify = comment_modify;
 	}
+	
+	
 }

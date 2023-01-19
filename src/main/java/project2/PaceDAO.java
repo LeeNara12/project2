@@ -19,7 +19,7 @@ public class PaceDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env"); //JNDI 사용을 위한 설정
-			dataFactory = (DataSource)envContext.lookup("jdbc/oracle2");
+			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +81,7 @@ public class PaceDAO {
 				pstmt.setString(6, vo.getEmail());
 				pstmt.setString(7, vo.getPhone());
 				pstmt.setString(8, vo.getProfile());
-				
+				pstmt.setString(9, vo.getgender());
 				pstmt.executeUpdate();
 				
 				result = true;
@@ -106,6 +106,11 @@ public class PaceDAO {
 			pstmt = con.prepareStatement(query1);
 			pstmt.setString(1, pbvo.getBoard_content());
 			pstmt.setInt(2, user_no);
+			pstmt.setInt(3, pbvo.getBoard_no());
+			pstmt.setDate(4, pbvo.getBoard_time());
+			pstmt.setInt(5, pbvo.getBoard_modify());
+			pstmt.setDate(6, pbvo.getBoard_modify_time());
+			pstmt.setInt(7, pbvo.getBoard_like());
 			pstmt.executeUpdate();
 			
 			String query2 = " select * from board"
@@ -121,7 +126,7 @@ public class PaceDAO {
 				pbvo.setBoard_like(rs.getInt("board_like"));
 				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
 				pbvo.setUser_no(rs.getInt("user_no"));
-				
+				System.out.println("연동 ");
 				pstmt.executeUpdate();
 			}
 			

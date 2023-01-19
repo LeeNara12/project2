@@ -50,7 +50,7 @@ public class PaceBoardVO {
 		this.board_like = board_like;
 	}
 	//게시글 수정 시간 
-	public  Date Board_modify_time() {
+	public  Date getBoard_modify_time() {
 		return board_modify_time;
 	}
 	public void setBoard_modify_time(Date board_modify_time) {
