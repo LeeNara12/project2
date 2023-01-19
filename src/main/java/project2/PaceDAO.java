@@ -109,9 +109,13 @@ public class PaceDAO {
 			pstmt = con.prepareStatement(query2);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				pbvo.setBoard_no(rs.getInt("board_no"));
+				pbvo.setBoard_no(rs.getInt("board_no")); 
 				pbvo.setBoard_time(rs.getDate("board_time"));
 				pbvo.setBoard_modify(rs.getInt("board_modify"));
+				pbvo.setBoard_content(rs.getString("board_content")); // 추가 
+				pbvo.setBoard_like(rs.getInt("board_like"));
+				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
+				pbvo.setUser_no(rs.getInt("user_no"));
 			}
 			
 		} catch (SQLException e) {

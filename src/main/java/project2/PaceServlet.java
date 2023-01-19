@@ -70,7 +70,7 @@ public class PaceServlet extends HttpServlet {
 				System.out.println("회원가입 실패");
 				return;
 		    }
-<<<<<<< HEAD
+
 
 		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
 			
@@ -86,7 +86,7 @@ public class PaceServlet extends HttpServlet {
 			String user_time = request.getParameter("user_time");
 			String  user_no1 = request.getParameter("user_no1");
 			
-=======
+
 		} else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
 			return;
@@ -99,7 +99,7 @@ public class PaceServlet extends HttpServlet {
 			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
 			response.sendRedirect("main.jsp");//메인페이지로 이동
 			return;
->>>>>>> cb21dc020d4cbc0563766f0e2c26fbd24e6d2c6c
+
 			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
 			String comment_content = request.getParameter("comment_content");

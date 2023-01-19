@@ -3,9 +3,13 @@ package project2;
 import java.sql.Date;
 
 public class PaceCommentVO {
-	private Date comment_time;
-	private String comment_content;
-	private int comment_no;
+	private Date comment_time; // 댓글 작성 시간 
+	private String comment_content; // 댓글 내용
+	private int comment_no; // 댓글넘버
+	private int user_no; // 회원 넘버
+	private int board_no; // 게시글 넘버
+	private int comment_like; // 좋아요
+	private String comment_modify; // 수정여부 
 	
 	public int getComment_no() {
 		return comment_no;
@@ -26,4 +30,31 @@ public class PaceCommentVO {
 		this.comment_content = comment_content;
 	}
 	
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
+	
+	public int getBoard_no() {
+		return board_no;
+	}
+	public void setBoard_no(int board_no) {
+		this.board_no = board_no;
+	}
+	
+	public int gptComment_like() {
+		return comment_like;
+	}
+	public void setComment_like(int comment_like) {
+		this.comment_like = comment_like;
+	}
+	
+	public String getComment_modify() {
+		return comment_modify;
+	}
+	public void setComment_modify(String comment_modify) {
+		this.comment_modify = comment_modify;
+	}
 }
