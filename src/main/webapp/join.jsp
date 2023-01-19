@@ -36,6 +36,22 @@
   }
 
     </style>
+     <script>
+        window.onload = function(){
+            document.querySelector(".button").addEventListener("click", function(){
+                let join= document.join;
+               join.method = "get";
+                join.action = "login.jsp";
+                join.submit();
+            });
+            document.querySelector(".button").addEventListener("click", function(){
+                let join = document.login;
+                join.method = "post";
+                join.action = "login.jsp";
+                join.submit();
+            });
+        }
+    </script>
 </head>
 <body>
   <div class="login">
@@ -95,7 +111,7 @@
 
     </from>
     <div>
-      <button class="button"><b>가입하기</b></button>
+      <button  class="button"  ><b>가입하기</b></button>
     </div>
 </div>       
     
