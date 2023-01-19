@@ -44,7 +44,7 @@ public class PaceCommentVO {
 		this.board_no = board_no;
 	}
 	
-	public int gptComment_like() {
+	public int getComment_like() {
 		return comment_like;
 	}
 	public void setComment_like(int comment_like) {

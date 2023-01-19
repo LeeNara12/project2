@@ -78,6 +78,12 @@ public class PaceDAO {
 				pstmt.setString(1,vo.getId());
 				pstmt.setString(2,vo.getPw());
 				pstmt.setString(3,vo.getNick());
+				pstmt.setDate(4, vo.getJoindate());
+				pstmt.setString(5, vo.getName());
+				pstmt.setString(6, vo.getEmail());
+				pstmt.setString(7, vo.getPhone());
+				pstmt.setString(8, vo.getProfile());
+				
 				pstmt.executeUpdate();
 				
 				result = true;
@@ -117,6 +123,8 @@ public class PaceDAO {
 				pbvo.setBoard_like(rs.getInt("board_like"));
 				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
 				pbvo.setUser_no(rs.getInt("user_no"));
+				
+				pstmt.executeUpdate();
 			}
 			
 		} catch (SQLException e) {
@@ -135,6 +143,12 @@ public class PaceDAO {
 			pstmt.setString(1, pcvo.getComment_content());
 			pstmt.setInt(2, board_no);
 			pstmt.setInt(3, user_no);
+			pstmt.setDate(4, pcvo.getComment_time());
+			pstmt.setInt(5, pcvo.getComment_no());
+			pstmt.setInt(6, pcvo.getComment_like());
+			pstmt.setString(7,pcvo.getComment_modify());
+			
+			
 			pstmt.executeUpdate();
 			
 			String query2 = " select * from board_comment"
@@ -145,6 +159,12 @@ public class PaceDAO {
 			while(rs.next()) {
 				pcvo.setComment_no(rs.getInt("comment_no"));
 				pcvo.setComment_time(rs.getDate("comment_time"));
+				pcvo.setComment_content(rs.getString("comment_content"));
+				pcvo.setComment_like(rs.getInt("comment_like"));
+				pcvo.setComment_modify(rs.getString("comment_modify"));
+				pcvo.setUser_no(rs.getInt("user_no"));
+				pcvo.setBoard_no(rs.getInt("board_no"));
+				
 			}
 			
 		} catch (SQLException e) {

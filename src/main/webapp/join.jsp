@@ -38,6 +38,7 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="login">
      <div id="logo">
      <h1><img src="logo.png" width="50%" height="20%"></h1>
@@ -48,6 +49,36 @@
         <input type="email" id="id" name="id" class="book" title="ID">
       </div>
       <br>
+=======
+    <div>
+        <h1>Pacebook</h1>
+        <p> 친구들과 사진과 동영상 보려면 가입하세요</p>
+        <div id='btn_kakao_login'>
+            <img id='kakao' src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd" width="30px">카톡으로 로그인
+        </div>
+        <br>
+        <div id="hr">
+        --------------------또는-----------------------
+        </div>
+        <br>
+        <form name="join">
+	        <div class="join_input">
+	            <input type="text" name="id" placeholder="아이디" size="30px" ><br>
+	            <input type="text" name="pw" placeholder="비밀번호" size="30px"><br>
+	            <input type="text" name="nick" placeholder="사용자이름" size="30px"><br>
+	        </div>
+	        <div>
+	            <p id='description'>저희 서비스를 이용하는 사람이 회원님의 연락처 정보를</p>
+	            <p id='description'>PACEBOOK에 업로드했을 수도 있습니다. <a href="">더알아보기</a></p>
+	        </div>
+	        <div id="div_submit">
+	            <button id="join" name="command" value="joinUp">회원가입</button>
+	       	</div>
+        </form>
+        <div>
+            <p id="description_login">계정이 있으신가요? <a href="login.jsp">로그인</a></p>
+        </div>
+>>>>>>> 6146d9447a2e7419bd01620bd794ead922689e63
 
       <div>
         <div><b>비밀번호</b></div>
