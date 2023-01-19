@@ -76,13 +76,11 @@ public class PaceServlet extends HttpServlet {
 			
 			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
 			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
+			int user_no = (int)se.getAttribute("no");
 			PaceBoardVO pbVO = new PaceBoardVO();
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
 			response.sendRedirect("main.jsp");
-		
-
 		} else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
 			return;
@@ -103,7 +101,7 @@ public class PaceServlet extends HttpServlet {
 			pcvo.setComment_content(comment_content);
 			HttpSession se = request.getSession();
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
-			int user_no = (int)se.getAttribute("user_no");//수정함
+			int user_no = (int)se.getAttribute("id");
 			dao.createComment(user_no, board_no, pcvo);
 		} else if("logout".equals(command)) {
 			HttpSession se = request.getSession();

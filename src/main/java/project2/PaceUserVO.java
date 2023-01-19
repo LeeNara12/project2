@@ -12,7 +12,7 @@ public class PaceUserVO {//회원정보
 	private String email;
 	private String phone;
 	private String profile;
-	
+	private String gender;
 	
 	public int getUser_no() {
 		return user_no;
@@ -84,7 +84,12 @@ public class PaceUserVO {//회원정보
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-	
+	public String getgender() {
+		return gender;
+	}
+	public void setjender(String comment_gender) {
+		this.gender = comment_gender;
+	}
 	
 
 }
