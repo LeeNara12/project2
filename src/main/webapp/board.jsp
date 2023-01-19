@@ -155,20 +155,17 @@
         window.onload = function(){
 
             document.querySelector("#board_btn").addEventListener("click", function(){
+            
                 let board = document.board;
                 board.method = "get";
                 board.action = "pacebook";
                 board.submit();
             });
             document.querySelector("#cancel_btn").addEventListener("click", function(){
-                //let board = document.board;
-                //board.method = "get";
-                //board.action = "main.jsp"
-                //board.submit();
-               // window.location.href = '/main.jsp';
+                let board = document.board;
+                board.method = "get";
+                board.action = "main.jsp"
                 
-                $('#frm').attr('action','.jsp')
-    			$('#frm').submit();
                 
                 
             });
@@ -197,7 +194,7 @@
                         <div id="title_id">@아이디</div>
                     </div>
                     <br>
-                    <textarea id="content_text" type="text" placeholder="내용:" name="content"></textarea>
+                    <textarea id="content_text" type="text" placeholder="내용을 적어주세요" name="content"></textarea>
                 </div>
             </form>
         </div>

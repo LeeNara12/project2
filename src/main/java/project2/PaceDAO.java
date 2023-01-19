@@ -19,7 +19,7 @@ public class PaceDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env"); //JNDI 사용을 위한 설정
-			dataFactory = (DataSource)envContext.lookup("jdbc/oracle");
+			dataFactory = (DataSource)envContext.lookup("jdbc/oracle2");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -100,23 +100,30 @@ public class PaceDAO {
 	public void createBoard(int user_no, PaceBoardVO pbvo) {//게시글 작성 메소드
 		
 		try {
+			
+			//DB연결
 			con = dataFactory.getConnection();
 			
+			
+			/// 데이터 베이스에 데이터를 추가
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
-			
+					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?,?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+			                  //1. 게시판시퀀스 2. 생성일 3.게시판 수정여부 4. 게시판수정시간 5. 게시판내용 6. 게시판 좋아요수 7. 회원 시퀀스 (user_no)
 			pstmt = con.prepareStatement(query1);
-			pstmt.setString(1, pbvo.getBoard_content());
-			pstmt.setInt(2, user_no);
-			pstmt.setInt(3, pbvo.getBoard_no());
-			pstmt.setDate(4, pbvo.getBoard_time());
-			pstmt.setInt(5, pbvo.getBoard_modify());
-			pstmt.setDate(6, pbvo.getBoard_modify_time());
-			pstmt.setInt(7, pbvo.getBoard_like());
-			pstmt.executeUpdate();
 			
+			pstmt.setDate(1, pbvo.getBoard_modify_time());
+			pstmt.setString(2, pbvo.getBoard_content());
+			pstmt.setInt(3, pbvo.getBoard_like());
+			pstmt.setInt(4, user_no);
+			
+			pstmt.executeUpdate();
+			/////////////////////////////
+			
+			
+			//데이베이스에 추가된 데이터를 조회
 			String query2 = " select * from board"
 					+ " where board_no = seq_board.currval";  //PaceBoardVO객체에 나머지 정보들 추가
+			            //게시판 넘버가 현재인 것 가져옴
 			
 			pstmt = con.prepareStatement(query2);
 			ResultSet rs = pstmt.executeQuery();
@@ -124,10 +131,11 @@ public class PaceDAO {
 				pbvo.setBoard_no(rs.getInt("board_no")); 
 				pbvo.setBoard_time(rs.getDate("board_time"));
 				pbvo.setBoard_modify(rs.getInt("board_modify"));
+				pbvo.setBoard_time(rs.getDate("board_time"));
 				pbvo.setBoard_content(rs.getString("board_content")); // 추가 
+				pbvo.setUser_no(rs.getInt("user_no"));
 				pbvo.setBoard_like(rs.getInt("board_like"));
 				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
-				pbvo.setUser_no(rs.getInt("user_no"));
 				System.out.println("연동 ");
 				pstmt.executeUpdate();
 			}

@@ -129,7 +129,7 @@
         </form>
     </div>
     <table border="0" style="text-align: center;margin: auto; margin-top: 50px;font-size: 13px;">
-            <div class="table">
+         <tr class="table">
             <td>Meta</td>
             <td>소개</td>
             <td>블러그</td>
@@ -142,8 +142,8 @@
             <td>위치</td>
             <td>Pacebook Lite</td>
             <td>연락처 업로드 & 비사용자</td>
-        </div>
-       </table>   
+       	 </tr>
+    </table>   
 </div>    
 </body>
 </html>

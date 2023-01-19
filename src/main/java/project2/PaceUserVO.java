@@ -6,8 +6,8 @@ public class PaceUserVO {//회원정보
 	private int user_no;
 	private String id;
 	private String pw;
-	private String nick;
 	private Date joindate;//user_time 에서 바뀜
+	private String nick;
 	private String name;
 	private String email;
 	private String phone;
