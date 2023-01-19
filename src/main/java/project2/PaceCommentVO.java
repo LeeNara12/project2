@@ -9,7 +9,7 @@ public class PaceCommentVO {
 	private int user_no; // 회원 넘버
 	private int board_no; // 게시글 넘버
 	private int comment_like; // 좋아요
-	private String comment_modify; // 수정여부 
+	private String comment_modify; // 
 	
 	public int getComment_no() {
 		return comment_no;

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 작성</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <style>
         /* 로고가 들어가 있는 큰박스 */
         #top { 
@@ -64,7 +65,7 @@
         #br_top{
             text-align: left;
         }
-        #cancell_btn{
+        #cancel_btn{
             height:40px;
             margin: 20px 10px;
             border: 1px solid #3169f6;
@@ -154,16 +155,22 @@
         window.onload = function(){
 
             document.querySelector("#board_btn").addEventListener("click", function(){
-                let board = documetn.board;
+                let board = document.board;
                 board.method = "get";
                 board.action = "pacebook";
                 board.submit();
             });
-            document.querySelector("#cancell_btn").addEventListener("click", function(){
-                let board = document.board;
-                board.method = "get";
-                board.action = "main.jsp"
-                board.submit();
+            document.querySelector("#cancel_btn").addEventListener("click", function(){
+                //let board = document.board;
+                //board.method = "get";
+                //board.action = "main.jsp"
+                //board.submit();
+               // window.location.href = '/main.jsp';
+                
+                $('#frm').attr('action','.jsp')
+    			$('#frm').submit();
+                
+                
             });
             document.querySelector("#board_btn").addEventListener("click", function(){
             	 let board = document.board;
@@ -185,7 +192,7 @@
         <div id="book_right">
             <form name="board">
                 <div id="br_top">
-                    <button id="cancell_btn">뒤로가기</button>
+                    <button id="cancel_btn">뒤로가기</button>
                     <button id="board_btn" name="command" value="board">게시글 작성</button>
                 </div>
                 <div id="img_box">
