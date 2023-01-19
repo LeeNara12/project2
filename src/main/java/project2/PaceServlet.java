@@ -76,7 +76,7 @@ public class PaceServlet extends HttpServlet {
 			
 			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
 			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("no");
+			int user_no = (int)se.getAttribute("user_no");
 			PaceBoardVO pbVO = new PaceBoardVO();
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
@@ -103,7 +103,7 @@ public class PaceServlet extends HttpServlet {
 			pcvo.setComment_content(comment_content);
 			HttpSession se = request.getSession();
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
-			int user_no = (int)se.getAttribute("id");
+			int user_no = (int)se.getAttribute("user_no");//수정함
 			dao.createComment(user_no, board_no, pcvo);
 		} else if("logout".equals(command)) {
 			HttpSession se = request.getSession();
