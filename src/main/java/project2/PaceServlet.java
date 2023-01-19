@@ -81,11 +81,7 @@ public class PaceServlet extends HttpServlet {
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
 			response.sendRedirect("main.jsp");
-			
-			String user_nick = request.getParameter("user_nick");
-			String user_time = request.getParameter("user_time");
-			String  user_no1 = request.getParameter("user_no1");
-			
+		
 
 		} else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동

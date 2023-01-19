@@ -64,7 +64,7 @@
 
 <body>
     <div>
-        <h1>pacebook</h1>
+        <h1>Pacebook</h1>
         <p> 친구들과 사진과 동영상 보려면 가입하세요</p>
         <div id='btn_kakao_login'>
             <img id='kakao' src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd" width="30px">카톡으로 로그인
