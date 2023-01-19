@@ -75,11 +75,12 @@ public class PaceServlet extends HttpServlet {
 			PaceBoardVO pbVO = new PaceBoardVO();
 			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
-<<<<<<< HEAD
-			response.sendRedirect("pacebook_main.jsp");
-=======
 			response.sendRedirect("main.jsp");
->>>>>>> 8ab969fa024e3bd74d1204808a20072447e5c44c
+			
+			String user_nick = request.getParameter("user_nick");
+			String user_time = request.getParameter("user_time");
+			String  user_no1 = request.getParameter("user_no1");
+			
 			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
 			String comment_content = request.getParameter("comment_content");

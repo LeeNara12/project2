@@ -164,7 +164,14 @@
                 board.method = "get";
                 board.action = "main.jsp"
                 board.submit();
-            })
+            });
+            document.querySelector("#board_btn").addEventListener("click", function(){
+            	 let board = document.board;
+                 board.method = "get";
+                 board.action = "main.jsp"
+                 board.submit();
+             });
+            }
         }
     </script>
 </head>

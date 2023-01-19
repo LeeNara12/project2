@@ -7,6 +7,9 @@ public class PaceBoardVO {
 	private int board_modify;//수정여부
 	private Date board_time;//게시판 생성 날짜;
 	private int board_no; //게시판 번호
+	private int user_no; // 회원넘버
+	private int board_like; // 좋아요 
+	private Date board_modify_time;// 게시글 수정 시간 
 	
 	public int getBoard_no() {
 		return board_no;
@@ -32,6 +35,29 @@ public class PaceBoardVO {
 	public void setBoard_time(Date board_time) {
 		this.board_time = board_time;
 	}
+	// 회원넘버
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
+	// 좋아요 
+	public int getBoard_like() {
+		return board_like;
+	}
+	public void setBoard_like(int board_like) {
+		this.board_like = board_like;
+	}
+	//게시글 수정 시간 
+	public  Date Board_modify_time() {
+		return board_modify_time;
+	}
+	public void setBoard_modify_time(Date board_modify_time) {
+		this.board_modify_time = board_modify_time;
+	}
 	
+	
+
 	
 }
