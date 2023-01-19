@@ -37,20 +37,29 @@
 
     </style>
      <script>
-        window.onload = function(){
-            document.querySelector(".button").addEventListener("click", function(){
-                let join= document.join;
-               join.method = "get";
-                join.action = "login.jsp";
-                join.submit();
-            });
-            document.querySelector(".button").addEventListener("click", function(){
-                let join = document.login;
-                join.method = "post";
-                join.action = "login.jsp";
-                join.submit();
-            });
-        }
+     window.onload = function(){
+
+         document.querySelector("#button_a").addEventListener("click", function(){
+             let join= document.join;
+            join.method = "get";
+             join.action = "login.jsp";
+             join.submit();
+         });
+         document.querySelector("#button_a").addEventListener("click", function(){
+             //let board = document.board;
+             //board.method = "get";
+             //board.action = "main.jsp"
+             //board.submit();
+            // window.location.href = '/main.jsp';
+             
+             $('#frm').attr('action','.jsp')
+ 			$('#frm').submit();
+             
+             
+         });
+
+     }
+ </script>
     </script>
 </head>
 <body>
@@ -110,8 +119,8 @@
       <br>
 
     </form>
-    <div>
-      <button  class="button"  ><b>가입하기</b></button>
+    <div id="button_a">
+      <button  class="button" ><b>가입하기</b></button>
     </div>
 </div>       
     

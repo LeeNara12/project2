@@ -84,6 +84,7 @@ public class PaceDAO {
 				pstmt.setString(7, vo.getPhone());
 				pstmt.setString(8, vo.getProfile());
 				pstmt.setString(9, vo.getgender());
+				
 				pstmt.executeUpdate();
 				
 				result = true;
