@@ -31,7 +31,7 @@ public class PaceServlet extends HttpServlet {
 		if("login".equals(command)) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			PaceVO vo = new PaceVO();
+			PaceUserVO vo = new PaceUserVO();
 			vo.setId(id);
 			vo.setPw(pw);
 			boolean logon = dao.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
@@ -55,7 +55,7 @@ public class PaceServlet extends HttpServlet {
 			String id = request.getParameter("id");//넘겨받은 아이디,비밀번호 등을 변수로 저장
 			String pw = request.getParameter("pw");
 			String nick = request.getParameter("nick");
-			PaceVO vo = new PaceVO();// PaceVO객체 생성
+			PaceUserVO vo = new PaceUserVO();// PaceVO객체 생성
 			vo.setId(id);//생성한 객체에 변수로 저장했던 아이디,비밀번호 등 값을 넣어줌
 			vo.setPw(pw);
 			vo.setNick(nick);
