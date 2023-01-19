@@ -25,7 +25,7 @@ public class PaceDAO {
 		}
 	}
 	
-	public boolean login(PaceVO vo) {// 로그인 메소드
+	public boolean login(PaceUserVO vo) {// 로그인 메소드
 		boolean result = false;
 		try {
 			con = dataFactory.getConnection();
@@ -39,7 +39,7 @@ public class PaceDAO {
 			if(rs.next()) {
 				vo.setUser_no(rs.getInt("user_no"));
 				vo.setNick(rs.getString("nick"));
-				vo.setUser_time(rs.getDate("user_time"));
+				vo.setJoindate(rs.getDate("user_time"));
 				result=true;
 			} else {
 				result=false;
@@ -53,7 +53,7 @@ public class PaceDAO {
 	}
 	
 	
-	public boolean join(PaceVO vo) {//회원가입 메소드
+	public boolean join(PaceUserVO vo) {//회원가입 메소드
 		boolean result = false;
 		try {
 			con = dataFactory.getConnection();
@@ -95,8 +95,7 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate,\"\r\n"
-					+ "	0, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+					+ "	values(seq_board.nextval, sysdate, 0, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			
 			pstmt = con.prepareStatement(query1);
 			pstmt.setString(1, pbvo.getBoard_content());
