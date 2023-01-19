@@ -95,7 +95,7 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate, 0, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			
 			pstmt = con.prepareStatement(query1);
 			pstmt.setString(1, pbvo.getBoard_content());
