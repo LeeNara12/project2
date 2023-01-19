@@ -107,41 +107,23 @@ public class PaceDAO {
 			
 			/// 데이터 베이스에 데이터를 추가
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?,?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			                  //1. 게시판시퀀스 2. 생성일 3.게시판 수정여부 4. 게시판수정시간 5. 게시판내용 6. 게시판 좋아요수 7. 회원 시퀀스 (user_no)
 			pstmt = con.prepareStatement(query1);
 			
-			pstmt.setDate(1, pbvo.getBoard_modify_time());
-			pstmt.setString(2, pbvo.getBoard_content());
+			pstmt.setString(1, pbvo.getBoard_content());
+			pstmt.setInt(2, user_no);
 			pstmt.setInt(3, pbvo.getBoard_like());
-			pstmt.setInt(4, user_no);
+			pstmt.setDate(4, pbvo.getBoard_modify_time());
 			
 			pstmt.executeUpdate();
 			/////////////////////////////
-			
-			
-			//데이베이스에 추가된 데이터를 조회
-			String query2 = " select * from board"
-					+ " where board_no = seq_board.currval";  //PaceBoardVO객체에 나머지 정보들 추가
-			            //게시판 넘버가 현재인 것 가져옴
-			
-			pstmt = con.prepareStatement(query2);
-			ResultSet rs = pstmt.executeQuery();
-			while(rs.next()) {
-				pbvo.setBoard_no(rs.getInt("board_no")); 
-				pbvo.setBoard_time(rs.getDate("board_time"));
-				pbvo.setBoard_modify(rs.getInt("board_modify"));
-				pbvo.setBoard_time(rs.getDate("board_time"));
-				pbvo.setBoard_content(rs.getString("board_content")); // 추가 
-				pbvo.setUser_no(rs.getInt("user_no"));
-				pbvo.setBoard_like(rs.getInt("board_like"));
-				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
-				System.out.println("연동 ");
-				pstmt.executeUpdate();
-			}
+			pstmt.close();
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}
 	}
 
