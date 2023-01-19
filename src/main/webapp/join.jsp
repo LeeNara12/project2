@@ -38,7 +38,10 @@
     </style>
 </head>
 <body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c867fd5e07d01132ecc4876b73af356aa24bf820
   <div class="login">
      <div id="logo">
      <h1><img src="logo.png" width="50%" height="20%"></h1>
@@ -49,6 +52,7 @@
         <input type="email" id="id" name="id" class="book" title="ID">
       </div>
       <br>
+<<<<<<< HEAD
 
     <div>
         <h1>Pacebook</h1>
@@ -79,6 +83,8 @@
             <p id="description_login">계정이 있으신가요? <a href="login.jsp">로그인</a></p>
         </div>
 
+=======
+>>>>>>> c867fd5e07d01132ecc4876b73af356aa24bf820
 
       <div>
         <div><b>비밀번호</b></div>
