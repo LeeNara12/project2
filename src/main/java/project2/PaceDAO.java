@@ -36,6 +36,8 @@ public class PaceDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, vo.getId());
 			ResultSet rs = pstmt.executeQuery(); 
+			
+			
 			if(rs.next()) {
 				vo.setUser_no(rs.getInt("user_no"));
 				vo.setNick(rs.getString("nick"));
