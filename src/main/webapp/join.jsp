@@ -42,8 +42,8 @@
      <div id="logo">
      <h1><img src="logo.png" width="50%" height="20%"></h1>
      </div>
-  </div>
-    <form>
+  
+    <from>
       <div>  
         <div><b>아이디</b></div>
         <input type="email" id="id" name="id" class="book" title="ID">
@@ -92,11 +92,12 @@
         <input type="radio" name="gender" value="female"> 여자  
       </div>
       <br>
-    </form>
+
+    </from>
     <div>
       <button class="button"><b>가입하기</b></button>
     </div>
-            
+</div>       
     
 </body>
 </html>
