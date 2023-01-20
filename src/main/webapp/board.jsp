@@ -100,12 +100,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor:pointer;
+            flex-direction:column;
+            /* cursor:pointer; */
             font-size:2vh;
             font-weight: bolder;
             color:#F39C12;
+            
         }
-        #img_load{
+        #url_input_box{
+            width: 100%;
+            height: 9%;
+            display: flex;
+            justify-content: center;
+        }
+        #url_address_out{
+            width: 70%;
+            height: 95%;
+            border: 1px solid #F39C12;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 4px;
+        }
+        #url_address_in{
+            width: 86%;
+            height: 71%;
+            border: 1px solid #ffffff;
+            outline: none;
+        }
+        #btn_url{
+            border: 1px solid #F39C12;
+            background-color: white;
+            color: #F39C12;
+            font-weight:bolder;
+        }
+        #btn_url:active{
+            background-color: #F39C12;
+            color: white;
+        }
+
+        
+      
+
+
+        /* #img_load{
             display: none;
         }
         #img_btn:hover{
@@ -113,6 +152,9 @@
             color:aliceblue;
             border-color: #F39C12;
         }
+        */
+
+
         /* //////////////////////////////////////////////////////////// */
         /* 오른쪽 책 아래부분 아이디,제목,내용이 들어가는 박스 */
         #br_bottom{
@@ -150,19 +192,39 @@
     </style>
     <script>
         window.onload = function(){
+        	
+       		init();
+       		bind();
+        } 
+        
+        function init(){
 
-            document.querySelector("#board_btn").addEventListener("click", function(){
-                let board = documetn.board;
-                board.method = "get";
-                board.action = "pacebook";
-                board.submit();
-            });
-            document.querySelector("#cancell_btn").addEventListener("click", function(){
-                let board = document.board;
-                board.method = "get";
-                board.action = "main.jsp"
-                board.submit();
-            })
+        }
+        function bind(){
+
+            //게시판 작성버튼
+        	 document.querySelector("#board_btn").addEventListener("click", function(){
+                 let board = documetn.board;
+                 board.method = "get";
+                 board.action = "pacebook";
+                 board.submit();
+             });
+             //게시판 뒤로가기 버튼
+             document.querySelector("#cancell_btn").addEventListener("click", function(){
+                 let board = document.board;
+                 board.method = "get";
+                 board.action = "main.jsp"
+                 board.submit();
+             })
+           
+
+
+
+        }
+       
+            
+            
+            
 
             // 이미지 업로드 보류
             // let fileInput = document.querySelector("#img_load");
@@ -176,7 +238,7 @@
             //     };
             // };
             // fileInput.addEventListener("change", PreviewImage);
-        }
+        
     </script>
 </head>
 <body>
@@ -184,23 +246,28 @@
         <img class="logo" src="assets\image\PACEBOOK.png">
     </div>
     <hr color = "#3169f6" size="1px">
-    <div id="content">
+    <div id="content"> 
         <div id="book_left"></div>
-        <div id="book_right">
-            <form name="board">
+        <div id="book_right"> 
+            <form name="board"> 
                 <div id="br_top">
                     <button id="cancell_btn">뒤로가기</button>
                     <button id="board_btn" name="command" value="board">게시글 작성</button>
                 </div>
-                <form method="post">
-                    <label for="img_load">
-                        <div id="img_box">
-                            이미지 추가
-                            <img id="user_img" src="#" alt="">
-                            <input type="file" id="img_load" accept="image/*" multiple>
+                
+                <div id="img_box">
+                    <div>url을 입력해주세요</div>
+                    <br>
+                    <div id="url_input_box">
+                        <div id="url_address_out">
+                            <input id="url_address_in" type="text">
                         </div>
-                    </label>
-                </form>
+                        <input id="btn_url" type="submit" value="확인">
+                        
+                        <!-- <img id="user_img" src="#"> -->
+                    </div>
+                </div>
+                    
                 <div id="br_bottom">
                     <div id="br_bottom_top">
                         <div id="title_id">@아이디</div>
