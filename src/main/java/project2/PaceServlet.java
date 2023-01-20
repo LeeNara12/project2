@@ -25,7 +25,7 @@ public class PaceServlet extends HttpServlet {
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		
-		
+		System.out.println(command);
 		PaceDAO dao = new PaceDAO();
 		
 		// command=login으로 받아왔을때
@@ -39,10 +39,6 @@ public class PaceServlet extends HttpServlet {
 			if(logon) {// 로그인 성공했을 경우
 				HttpSession se = request.getSession();//세션 생성
 				se.setAttribute("user_id", id);// 세션에 값을 넣어줌
-<<<<<<< HEAD
-			
-=======
->>>>>>> 2bfaa294a5b05a39cdc68e997ca1154309f46f28
 				se.setAttribute("user_no", vo.getUser_no());
 				se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
 				

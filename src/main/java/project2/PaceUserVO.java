@@ -7,10 +7,6 @@ public class PaceUserVO {//회원정보
 	private String id;
 	private String pw;
 	private Date joindate;//user_time 에서 바뀜
-<<<<<<< HEAD
-
-=======
->>>>>>> 2bfaa294a5b05a39cdc68e997ca1154309f46f28
 	private String name;
 	private String email;
 	private String phone;
@@ -59,11 +55,7 @@ public class PaceUserVO {//회원정보
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
-<<<<<<< HEAD
 
-=======
->>>>>>> 2bfaa294a5b05a39cdc68e997ca1154309f46f28
 	public Date getJoindate() {
 		return joindate;
 	}

@@ -193,19 +193,10 @@
     <script>
         window.onload = function(){
         	
-       		init();
-       		bind();
-        } 
-        
-        function init(){
-
-        }
-
-        function bind(){
-        	
+       	
             //게시판 작성버튼
         	 document.querySelector("#board_btn").addEventListener("click", function(){
-                 let board = documetn.board;
+                 let board = document.board;
                  board.method = "get";
                  board.action = "pacebook";
                  board.submit();
@@ -218,18 +209,8 @@
                  board.submit();
              })
              //url 확인버튼
-             document.querySelector("#input_url").addEventListener("click",function(){
-            	 
-            	 <%
-            	 
-            	 
-            	 %>
-            	 
-             })
-           
-
-
-
+             //document.querySelector("#input_url").addEventListener("click",function(){
+            
         }
        
             
@@ -267,7 +248,8 @@
             <form name="board"> 
                 <div id="br_top">
                     <button id="cancell_btn">뒤로가기</button>
-                    <button id="board_btn" name="command" value="board" type="submit">게시글 작성</button>
+                    <button id="board_btn"  type="button">게시글 작성</button>
+                    <input type="hidden" name="command" value="board" >
                 </div>
                 
                 <div id="img_box">
