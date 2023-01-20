@@ -68,6 +68,7 @@
 
     .user_section p {
       margin: 0;
+
     }
 
     .user_section img {
@@ -123,7 +124,7 @@
     background-color: #F39C12;
     margin-left: 326%;
     margin-top: 8%;
-    font-size: 17px
+    font-size: 19px;;
 }
     
     #bottom2{
@@ -131,6 +132,73 @@
         float: right;
 
     }
+    .follow {
+	box-shadow: 0px 0px 0px 2px #f39c12;
+	background:linear-gradient(to bottom, #f39c12, #ffab23 100%);
+	background-color:#f39c12;
+	border-radius:10px;
+	border:1px solid #ffaa22;
+	display:inline-block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:19px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #f39c12;
+  width: 13%;
+}
+.myButton:hover {
+	background:#f39c12;
+	background-color:#ffab23;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+.follown:hover {
+	background:#F39C12;
+	background-color:#ffab23;
+  
+}
+.follow:active {
+	position:relative;
+	top:1px;
+}  
+
+      
+    
+    .myButton {
+    box-shadow: 0px 0px 0px 2px #f39c12;
+    background: #F39C12;
+    background-color: #F39C12;
+    border-radius: 10px;
+    border: 1px solid #ffaa22;
+    display: inline-block;
+    cursor: pointer;
+    color: #333333;
+    font-family: Arial;
+    font-size: 20px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #f39c12;
+    margin-left: 223%;
+    margin-top: 24%;
+    height: 31px;
+    width: 102%;
+    padding-left: 6%;
+}
+.myButton:hover {
+	background:#F39C12;
+	background-color:#ffab23;
+  
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}  
+
+ 
 
 
   </style>
@@ -154,8 +222,8 @@
         <div class="bottom">
           <div class="other_user">
             <div class="user_section">
-              <p>메신저 닉네임</p>
-              <p>유저 이름</p>
+              <p><b>메신저 닉네임</b></p>
+              <p><b>유저 이름</b></p>
               <div>
                 <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                   alt="">
@@ -170,15 +238,15 @@
                 alt="">
             </div>
             <div class="bottom_section">
-              <button>팔로우</button>
+              <a href="#" class="follow">팔로우</a>
             </div>
           </div>
           
           <div class="bottom">
             <div class="other_user">
               <div class="user_section">
-                <p>메신저 닉네임</p>
-                <p>유저 이름</p>
+                <p ><b>메신저 닉네임</b></p>
+                <p><b>유저 이름</b></p>
                 <div>
                   <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                     alt="">
@@ -193,14 +261,14 @@
                   alt="">
               </div>
               <div class="bottom_section">
-                <button>팔로우</button>
+                <a href="#" class="follow">팔로우</a>
               </div>
             </div>
         </div>
     </div>    
     <div id="bottom2">
         <footer id="join">
-            <button id="main_button" >로그인하기</button>
+          <a href="#" class="myButton">메인화면으로 가기</a>
         </footer>
     </div>
             
