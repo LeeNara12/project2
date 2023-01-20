@@ -60,22 +60,22 @@ public class PaceServlet extends HttpServlet {
 		} else if("joinUp".equals(command)) {//회원가입 페이지에서 회원가입 버튼 누를시
 //			String board_content = request.getParameter("board_content");//넘겨받은 아이디,비밀번호 등을 변수로 저장
 //			System.out.println(board_content);
+			
 			String id = request.getParameter("id");
-			System.out.println("id"+id);
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
-			String phone = request.getParameter("cell");
-			String profile = request.getParameter("profile");
+			String phone = request.getParameter("phone");
 			String gender = request.getParameter("gender");
+			String birth = request.getParameter("birth");
 			PaceUserVO vo = new PaceUserVO();// PaceVO객체 생성
 			vo.setId(id);//생성한 객체에 변수로 저장했던 아이디,비밀번호 등 값을 넣어줌
 			vo.setPw(pw);
-			vo.setNick(name);
-			vo.setNick(email);
-			vo.setNick(phone);
-			vo.setNick(profile);
-			vo.setNick(gender);
+			vo.setName(name);
+			vo.setEmail(email);
+			vo.setPhone(phone);
+			vo.setBirth(birth);
+			vo.setGender(gender);
 			boolean result = dao.join(vo); // dao의 join메소드로 vo객체를 넘김
 
 			if (result) {// 회원가입이 성공했을 때
