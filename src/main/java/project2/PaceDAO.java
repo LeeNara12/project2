@@ -61,11 +61,19 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query = " select * from user_info"
-					+ " where user_id = ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
+					+ " where user_id = ? ,? ,? ,? ,?, ?, ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, vo.getId());
+			pstmt.setString(2,vo.getPw());
+			pstmt.setString(3, vo.getName());
+			pstmt.setString(4, vo.getEmail());
+			pstmt.setString(5, vo.getPhone());
+			pstmt.setString(6, vo.getProfile());
+			pstmt.setString(7, vo.getgender());
+			
+			pstmt.executeUpdate();
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -118,7 +126,7 @@ public class PaceDAO {
 			pstmt.setDate(4, pbvo.getBoard_modify_time());
 			
 			pstmt.executeUpdate();
-<<<<<<< HEAD
+
 			
 			
 			
@@ -141,11 +149,10 @@ public class PaceDAO {
 //				System.out.println("연동 ");
 //				pstmt.executeUpdate();
 //			}
-=======
+
 			/////////////////////////////
 			pstmt.close();
->>>>>>> e37b2a2fe258d74b6a83d8d1b2e7ba706b0a845c
-			
+
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

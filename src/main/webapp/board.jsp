@@ -169,8 +169,13 @@
                 
                 
             });
-  
         }
+        function content_text(){
+        	board.method = "post";
+        	document.board.action = "pacebook";
+    		document.board.submit();
+    	}
+       
     </script>
 </head>
 <body>
@@ -194,7 +199,7 @@
                         <div id="title_id">@아이디</div>
                     </div>
                     <br>
-                    <textarea id="content_text" type="text" placeholder="내용을 적어주세요" name="content"></textarea>
+                    <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" value="board_content"></textarea>
                 </div>
             </form>
         </div>

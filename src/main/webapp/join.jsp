@@ -110,7 +110,7 @@
 
     </form>
     <div id="button_a">
-      <button  class="button" ><b>가입하기</b></button>
+      <button  class="button"  type="submit"  name="board_content "><b>가입하기</b></button>
     </div>
 </div>       
     
