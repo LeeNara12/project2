@@ -98,7 +98,7 @@
      <h1><img src="logo.png" width="50%" height="20%"></h1>
      </div>
   
-    <form name="join">
+    <form name="join" >
       <div>  
         <div><b>아이디</b></div>
         <input type="email" id="id" name="id" class="book" title="ID">
