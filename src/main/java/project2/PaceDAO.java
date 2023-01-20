@@ -60,12 +60,24 @@ public class PaceDAO {
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = " select * from user_info"
-					+ " where user_id = ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
+			String query = " select * from user_info ";
+			query  	    	+= " (id,pw,joindate,nick,name,email,phone,profile,gender) ";
+			query 		 	+= " values (?,?,?,?,?,?,?,?,?)";
+//					+ " where value = ? ,? ,? ,? ,?, ?, ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, vo.getId());
+			pstmt.setString(2,vo.getPw());
+			pstmt.setDate(3, vo.getJoindate());
+			pstmt.setString(4, vo.getNick());
+			pstmt.setString(5, vo.getName());
+			pstmt.setString(6, vo.getEmail());
+			pstmt.setInt(7, vo.getPhone());
+			pstmt.setDate(8, vo.getProfile());
+			pstmt.setString(9, vo.getgender());
+			
+			pstmt.executeUpdate();
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -74,16 +86,16 @@ public class PaceDAO {
 			}else {
 				String query2 = "insert into user_info "
 						+ " values ( seq_user.nextval, ? , ?, sysdate, ?)";
-				pstmt = con.prepareStatement(query2);
-				pstmt.setString(1,vo.getId());
+				pstmt.setString(1, vo.getId());
 				pstmt.setString(2,vo.getPw());
-				pstmt.setString(3,vo.getNick());
-				pstmt.setDate(4, vo.getJoindate());
+				pstmt.setDate(3, vo.getJoindate());
+				pstmt.setString(4, vo.getNick());
 				pstmt.setString(5, vo.getName());
 				pstmt.setString(6, vo.getEmail());
-				pstmt.setString(7, vo.getPhone());
-				pstmt.setString(8, vo.getProfile());
+				pstmt.setInt(7, vo.getPhone());
+				pstmt.setDate(8, vo.getProfile());
 				pstmt.setString(9, vo.getgender());
+				
 				pstmt.executeUpdate();
 				
 				result = true;
@@ -117,9 +129,33 @@ public class PaceDAO {
 			pstmt.setDate(4, pbvo.getBoard_modify_time());
 			
 			pstmt.executeUpdate();
+
+			
+			
+			
+			//데이베이스에 추가된 데이터를 조회
+//			String query2 = " select * from board"
+//					+ " where board_no = seq_board.currval";  //PaceBoardVO객체에 나머지 정보들 추가
+//			            //게시판 넘버가 현재인 것 가져옴
+//			
+//			pstmt = con.prepareStatement(query2);
+//			ResultSet rs = pstmt.executeQuery();
+//			while(rs.next()) {
+//				pbvo.setBoard_no(rs.getInt("board_no")); 
+//				pbvo.setBoard_time(rs.getDate("board_time"));
+//				pbvo.setBoard_modify(rs.getInt("board_modify"));
+//				pbvo.setBoard_time(rs.getDate("board_time"));
+//				pbvo.setBoard_content(rs.getString("board_content")); // 추가 
+//				pbvo.setUser_no(rs.getInt("user_no"));
+//				pbvo.setBoard_like(rs.getInt("board_like"));
+//				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
+//				System.out.println("연동 ");
+//				pstmt.executeUpdate();
+//			}
+
 			/////////////////////////////
 			pstmt.close();
-			
+
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

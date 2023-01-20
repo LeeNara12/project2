@@ -295,6 +295,25 @@
         }
     </style>
     <script>
+<<<<<<< HEAD
+    	window.onload = function(){
+    		document.querySelector("#board_btn").addEventListener("click", function(){
+    			let board = document.board;
+    			board.method = "get";
+    			board.action = "pacebook";
+    			board.submit();
+    		});	
+    		document.querySelector("#logout_btn").addEventListener("click", function(){
+    			let logout = document.logout;
+    			logout.method = "get";
+    			logout.action = "pacebook";
+    			logout.submit();
+    		});	
+    	}
+    	
+    	
+=======
+>>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
     </script>
 </head>
 <body>

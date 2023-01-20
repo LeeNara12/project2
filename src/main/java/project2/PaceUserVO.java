@@ -10,8 +10,8 @@ public class PaceUserVO {//회원정보
 	private String nick;
 	private String name;
 	private String email;
-	private String phone;
-	private String profile;
+	private int phone;
+	private Date profile;
 	private String gender;
 	
 	public int getUser_no() {
@@ -70,18 +70,18 @@ public class PaceUserVO {//회원정보
 	}
 	
 	
-	public String getPhone() {
+	public int getPhone() {
 		return phone;
 	}
-	public void setPhone(String phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 	
 	
-	public String getProfile() {
+	public Date getProfile() {
 		return profile;
 	}
-	public void setProfile(String profile) {
+	public void setProfile(Date profile) {
 		this.profile = profile;
 	}
 	public String getgender() {

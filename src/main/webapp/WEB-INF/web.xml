@@ -8,4 +8,14 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>PaceServlet11111</display-name>
+    <servlet-name>PaceServlet11111</servlet-name>
+    <servlet-class>project2.PaceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaceServlet11111</servlet-name>
+    <url-pattern>/PaceServlet11111</url-pattern>
+  </servlet-mapping>
 </web-app>
