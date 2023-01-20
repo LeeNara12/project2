@@ -161,13 +161,8 @@
                 let board = document.board;
                 board.method = "get";
                 board.action = "main.jsp"
-<<<<<<< HEAD
-                
-                
-                
             });
-=======
-                board.submit();
+
             })
 
             // 이미지 업로드 보류
@@ -182,9 +177,9 @@
             //     };
             // };
             // fileInput.addEventListener("change", PreviewImage);
->>>>>>> aafeb428ac081063d80c377df006cb39f93ddc31
-        }
-        function content_text(){
+
+        
+        function board_btn(){
         	board.method = "post";
         	document.board.action = "pacebook";
     		document.board.submit();
@@ -203,7 +198,7 @@
             <form name="board">
                 <div id="br_top">
                     <button id="cancell_btn">뒤로가기</button>
-                    <button id="board_btn" name="command" value="board">게시글 작성</button>
+                    <button id="board_btn" name="content" value="board" type="submit">게시글 작성</button>
                 </div>
                 <form method="post">
                     <label for="img_load">
@@ -219,11 +214,7 @@
                         <div id="title_id">@아이디</div>
                     </div>
                     <br>
-<<<<<<< HEAD
                     <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" value="board_content"></textarea>
-=======
-                    <textarea id="content_text" type="text" placeholder="내용:" name="content"></textarea>
->>>>>>> aafeb428ac081063d80c377df006cb39f93ddc31
                 </div>
             </form>
         </div>

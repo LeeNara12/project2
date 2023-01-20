@@ -46,7 +46,47 @@
              join.action = "login.jsp";
              join.submit();
          });
-       
+       	
+         function id() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function pw() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function name() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function email() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function phone() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function date() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function gender() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
+         function button_a() {
+        	 join.method="post";
+        	 document.join.action="pacebook"
+        	 document.join.submit();
+		}
 
      }
  </script>
@@ -91,27 +131,27 @@
 
       <div>
         <div><b>전화번호</b></div>
-        <input type="tel" id="number" name="number" class="book" title="number">
+        <input type="tel" id="number" name="phone" class="book" title="number">
       </div>
       <br>
 
       <div>
         <div><b>생년월일</b></div>
-        <input type="date" id="date" name="date" class="book" title="date">
+        <input type="date" id="date" name="profile" class="book" title="date">
       </div>
       <br>
 
-      <div>
+      <div id="gender">
         <div><b>성별</b></div>
         <input type="radio" name="gender" value="male" checked> 남자
         <input type="radio" name="gender" value="female"> 여자  
       </div>
       <br>
 
-    </form>
     <div id="button_a">
       <button  class="button"  type="submit"  name="board_content "><b>가입하기</b></button>
     </div>
+    </form>
 </div>       
     
 </body>

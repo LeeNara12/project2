@@ -52,7 +52,10 @@ public class PaceServlet extends HttpServlet {
 			}
 		
 		} else if("joinUp".equals(command)) {//회원가입 페이지에서 회원가입 버튼 누를시
-			String id = request.getParameter("id");//넘겨받은 아이디,비밀번호 등을 변수로 저장
+//			String board_content = request.getParameter("board_content");//넘겨받은 아이디,비밀번호 등을 변수로 저장
+//			System.out.println(board_content);
+			String id = request.getParameter("id");
+			System.out.println("id"+id);
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
@@ -83,13 +86,12 @@ public class PaceServlet extends HttpServlet {
 
 		} else if("board".equals(command)) { //게시글 작성 버튼을 누를시
 			
-			String content = request.getParameter("content");//게시글 내용 가져오기
-//			System.out.println("content : "+ content);
-			
+			String cotent = request.getParameter("cotent");//게시글 내용 가져오기
+			System.out.println("content : "+cotent );
 			HttpSession se = request.getSession();
 			int user_no = (int)se.getAttribute("user_no");
 			PaceBoardVO pbVO = new PaceBoardVO();
-			pbVO.setBoard_content(content);//게시글 내용 pbVO에 넣기
+			pbVO.setBoard_content(cotent);//게시글 내용 pbVO에 넣기
 			dao.createBoard(user_no, pbVO);
 			response.sendRedirect("main.jsp");
 			
