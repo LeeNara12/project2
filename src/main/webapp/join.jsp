@@ -211,7 +211,6 @@
     <div class="login">
       <div id="logo">
           <img src="assets/image/PACEBOOK.png">
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
       </div>
     <form>
         <div>  
@@ -248,23 +247,23 @@
       <br>
       <div>
         <div><b>전화번호</b></div>
-<<<<<<< HEAD
+
         <input type="tel" id="number" name="phone" class="book" title="number">
-=======
+
         <input type="tel" id="cell" name="cell" class="book" title="number" pattern="^\d{3}-\d{3,4}-\d{4}$" required>
         <div id="cell_" class="hidden_msg">번호를 입력해주세요</div>
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
+
       </div>
       <br>
 
       <div>
         <div><b>생년월일</b></div>
-<<<<<<< HEAD
+
         <input type="date" id="date" name="profile" class="book" title="date">
-=======
+
         <input type="date" id="birth" name="birth" class="book" title="date">
         <div id="birth_" class="hidden_msg">생년월일을 입력해주세요</div>
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
+
       </div>
       <br>
 
@@ -274,15 +273,14 @@
             <input type="radio" name="gender" value="female"> 여자  
          </div>
       <br>
-<<<<<<< HEAD
 
-    <div id="button_a">
-      <button  class="button"  type="submit"  name="board_content "><b>가입하기</b></button>
-=======
-    </form>
+
+<!--     <div id="button_a"> -->
+<!--       <button  class="button"  type="submit"  name="board_content "><b>가입하기</b></button> -->
+
+<!--     </form> -->
     <div>
       <button class="button"><b>가입하기</b></button>
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
     </div>
     </form>
 </div>       

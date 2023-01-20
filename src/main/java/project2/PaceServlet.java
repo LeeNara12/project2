@@ -65,7 +65,7 @@ public class PaceServlet extends HttpServlet {
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
-			String phone = request.getParameter("phone");
+			String phone = request.getParameter("cell");
 			String profile = request.getParameter("profile");
 			String gender = request.getParameter("gender");
 			PaceUserVO vo = new PaceUserVO();// PaceVO객체 생성
@@ -77,7 +77,7 @@ public class PaceServlet extends HttpServlet {
 			vo.setNick(profile);
 			vo.setNick(gender);
 			boolean result = dao.join(vo); // dao의 join메소드로 vo객체를 넘김
-<<<<<<< HEAD
+
 			if (result) {// 회원가입이 성공했을 때
 				response.sendRedirect("login.jsp");// ==임시==
 				return;
@@ -88,6 +88,16 @@ public class PaceServlet extends HttpServlet {
 				System.out.println("회원가입 실패");
 				return;
 		    }
+//			if (result) {// 회원가입이 성공했을 때
+//				response.sendRedirect("login.jsp");// ==임시==
+//				return;
+//			}else {// 회원가입에 실패했을 때
+//				request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
+//				RequestDispatcher dispatch = request.getRequestDispatcher("join.jsp");
+//				dispatch.forward(request, response);// 현재 request, response를 회원가입 페이지로 넘김
+//				System.out.println("회원가입 실패");
+//				return;
+//			}
 
 
 
@@ -108,19 +118,9 @@ public class PaceServlet extends HttpServlet {
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
 			return;
 			
-=======
-				if (result) {// 회원가입이 성공했을 때
-					response.sendRedirect("login.jsp");// ==임시==
-					return;
-				}else {// 회원가입에 실패했을 때
-					request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
-					RequestDispatcher dispatch = request.getRequestDispatcher("join.jsp");
-					dispatch.forward(request, response);// 현재 request, response를 회원가입 페이지로 넘김
-					System.out.println("회원가입 실패");
-					return;
-			    }
+
 		
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
+
 			
 //		} else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 //			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
