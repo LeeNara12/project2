@@ -108,16 +108,17 @@ public class PaceDAO {
 			
 			/// 데이터 베이스에 데이터를 추가
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?,?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			                  //1. 게시판시퀀스 2. 생성일 3.게시판 수정여부 4. 게시판수정시간 5. 게시판내용 6. 게시판 좋아요수 7. 회원 시퀀스 (user_no)
 			pstmt = con.prepareStatement(query1);
 			
-			pstmt.setDate(1, pbvo.getBoard_modify_time());
-			pstmt.setString(2, pbvo.getBoard_content());
+			pstmt.setString(1, pbvo.getBoard_content());
+			pstmt.setInt(2, user_no);
 			pstmt.setInt(3, pbvo.getBoard_like());
-			pstmt.setInt(4, user_no);
+			pstmt.setDate(4, pbvo.getBoard_modify_time());
 			
 			pstmt.executeUpdate();
+<<<<<<< HEAD
 			
 			
 			
@@ -140,9 +141,15 @@ public class PaceDAO {
 //				System.out.println("연동 ");
 //				pstmt.executeUpdate();
 //			}
+=======
+			/////////////////////////////
+			pstmt.close();
+>>>>>>> e37b2a2fe258d74b6a83d8d1b2e7ba706b0a845c
 			
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+			
 		}
 	}
 
