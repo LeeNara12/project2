@@ -34,7 +34,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 			
 			StringBuffer sb  = req.getRequestURL();
 			String url = sb.toString();
-			System.out.println(url);
+			System.out.println("현재위치는 "+url);
 			if(url.indexOf("/login") != -1
 					|| url.indexOf("/join") != -1
 					|| url.indexOf("/pacebook") != -1){

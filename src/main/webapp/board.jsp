@@ -216,6 +216,15 @@
                  board.action = "main.jsp"
                  board.submit();
              })
+             //url 확인버튼
+             document.querySelector("#input_url").addEventListener("click",function(){
+            	 
+            	 <%
+            	 
+            	 
+            	 %>
+            	 
+             })
            
 
 
@@ -243,7 +252,7 @@
 </head>
 <body>
     <div id="top">
-        <img class="logo" src="assets\image\PACEBOOK.png">
+        <img class="logo" src="logo.png">
     </div>
     <hr color = "#3169f6" size="1px">
     <div id="content"> 
@@ -260,11 +269,9 @@
                     <br>
                     <div id="url_input_box">
                         <div id="url_address_out">
-                            <input id="url_address_in" type="text">
+                            <input id="url_address_in" type="text"  name="content">
                         </div>
                         <input id="btn_url" type="submit" value="확인">
-                        
-                        <!-- <img id="user_img" src="#"> -->
                     </div>
                 </div>
                     
