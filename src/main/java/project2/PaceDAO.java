@@ -40,7 +40,6 @@ public class PaceDAO {
 			
 			if(rs.next()) {
 				vo.setUser_no(rs.getInt("user_no"));
-				vo.setNick(rs.getString("nick"));
 				vo.setJoindate(rs.getDate("user_time"));
 				result=true;
 			} else {

@@ -199,24 +199,10 @@
         
         function init(){
 
-<<<<<<< HEAD
-            document.querySelector("#board_btn").addEventListener("click", function(){
-                let board = documetn.board;
-                board.method = "get";
-                board.action = "pacebook";
-                board.submit();
-            });
-            document.querySelector("#cancell_btn").addEventListener("click", function(){
-                let board = document.board;
-                board.method = "get";
-                board.action = "main.jsp"
-            });
-
-            })
-=======
         }
-        function bind(){
 
+        function bind(){
+        	
             //게시판 작성버튼
         	 document.querySelector("#board_btn").addEventListener("click", function(){
                  let board = documetn.board;
@@ -249,7 +235,7 @@
             
             
             
->>>>>>> dff38c9307b956480fcdf8957436905d597df497
+
 
             // 이미지 업로드 보류
             // let fileInput = document.querySelector("#img_load");
@@ -263,18 +249,11 @@
             //     };
             // };
             // fileInput.addEventListener("change", PreviewImage);
-<<<<<<< HEAD
 
-        
-        function board_btn(){
-        	board.method = "post";
-        	document.board.action = "pacebook";
-    		document.board.submit();
-    	}
+
+    
        
-=======
-        
->>>>>>> dff38c9307b956480fcdf8957436905d597df497
+
     </script>
 </head>
 <body>
@@ -288,7 +267,7 @@
             <form name="board"> 
                 <div id="br_top">
                     <button id="cancell_btn">뒤로가기</button>
-                    <button id="board_btn" name="content" value="board" type="submit">게시글 작성</button>
+                    <button id="board_btn" name="command" value="board" type="submit">게시글 작성</button>
                 </div>
                 
                 <div id="img_box">
@@ -296,7 +275,7 @@
                     <br>
                     <div id="url_input_box">
                         <div id="url_address_out">
-                            <input id="url_address_in" type="text"  name="content">
+                            <input id="url_address_in" type="text"  name="content" >
                         </div>
                         <input id="btn_url" type="submit" value="확인">
                     </div>
@@ -307,7 +286,7 @@
                         <div id="title_id">@아이디</div>
                     </div>
                     <br>
-                    <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" value="board_content"></textarea>
+                    <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" ></textarea>
                 </div>
             </form>
         </div>
