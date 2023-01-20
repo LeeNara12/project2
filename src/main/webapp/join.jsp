@@ -42,21 +42,11 @@
          document.querySelector("#button_a").addEventListener("click", function(){
              let join= document.join;
             join.method = "get";
+             // join.action = "login_sucess.jsp";
              join.action = "login.jsp";
              join.submit();
          });
-         document.querySelector("#button_a").addEventListener("click", function(){
-             //let board = document.board;
-             //board.method = "get";
-             //board.action = "main.jsp"
-             //board.submit();
-            // window.location.href = '/main.jsp';
-             
-             $('#frm').attr('action','.jsp')
- 			$('#frm').submit();
-             
-             
-         });
+       
 
      }
  </script>
@@ -68,7 +58,7 @@
      <h1><img src="logo.png" width="50%" height="20%"></h1>
      </div>
   
-    <form>
+    <form name="join">
       <div>  
         <div><b>아이디</b></div>
         <input type="email" id="id" name="id" class="book" title="ID">
