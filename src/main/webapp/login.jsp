@@ -75,6 +75,10 @@
             border-radius: 10px;
             height: 40px;
             width: 300px;
+            outline: none;
+        }
+        #login_btn:hover{
+            background-color: #2483db;
         }
         #join_btn{
             border:1px solid #3169f6 ;
@@ -84,6 +88,10 @@
             border-radius: 10px;
             height: 40px;
             width: 300px;
+            outline: none;
+        }
+        #join_btn:hover{
+            background-color: #0b4df3;
         }
         /* .table {
             margin-right: 30px;
