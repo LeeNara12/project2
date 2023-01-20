@@ -40,7 +40,6 @@ public class PaceDAO {
 			
 			if(rs.next()) {
 				vo.setUser_no(rs.getInt("user_no"));
-				vo.setNick(rs.getString("nick"));
 				vo.setJoindate(rs.getDate("user_time"));
 				result=true;
 			} else {
@@ -83,13 +82,12 @@ public class PaceDAO {
 				
 				pstmt.setString(1, vo.getId());
 				pstmt.setString(2,vo.getPw());
-				pstmt.setDate(3, vo.getJoindate());
-				pstmt.setString(4, vo.getNick());
-				pstmt.setString(5, vo.getName());
-				pstmt.setString(6, vo.getEmail());
-				pstmt.setString(7, vo.getPhone());
-				pstmt.setString(8, vo.getProfile());
-//				pstmt.setString(9, vo.getGender());
+//				pstmt.setDate(3, vo.getJoindate());
+				pstmt.setString(3, vo.getName());
+				pstmt.setString(4, vo.getEmail());
+				pstmt.setString(5, vo.getPhone());
+				pstmt.setString(6, vo.getProfile());
+				pstmt.setString(7, vo.getGender());
 				
 				pstmt.executeUpdate();
 				

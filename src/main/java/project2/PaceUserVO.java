@@ -7,7 +7,6 @@ public class PaceUserVO {//회원정보
 	private String id;
 	private String pw;
 	private Date joindate;//user_time 에서 바뀜
-	private String nick;
 	private String name;
 	private String email;
 	private String phone;
@@ -56,15 +55,6 @@ public class PaceUserVO {//회원정보
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
-	
-	public String getNick() {
-		return nick;
-	}
-	public void setNick(String nick) {
-		this.nick = nick;
-	}
-	
 	
 	public Date getJoindate() {
 		return joindate;

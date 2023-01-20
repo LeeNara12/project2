@@ -39,7 +39,6 @@ public class PaceServlet extends HttpServlet {
 			if(logon) {// 로그인 성공했을 경우
 				HttpSession se = request.getSession();//세션 생성
 				se.setAttribute("user_id", id);// 세션에 값을 넣어줌
-				se.setAttribute("user_nick", vo.getNick());
 				se.setAttribute("user_no", vo.getUser_no());
 				se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
 				
