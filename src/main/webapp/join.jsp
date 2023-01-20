@@ -50,93 +50,6 @@
         background-color: blue;
     } */
 
-<<<<<<< HEAD
-        }
-  .book{
-                width:50%;
-                height:25px;
-                font-size:16px;
-
-  }
-  #date{
-    font-size: 16px;;
-  }
-  .button{
-    width: 53%;
-    background-color: darkorange;
-    height: 40px;
-    font-size: 16px;
-    
-  }
-
-    </style>
-     <script>
-     window.onload = function(){
-
-         document.querySelector("#button_a").addEventListener("click", function(){
-             let join= document.join;
-            join.method = "get";
-             // join.action = "login_sucess.jsp";
-             join.action = "login.jsp";
-             join.submit();
-         });
-       	
-         function id() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function pw() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function name() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function email() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function phone() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function date() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function gender() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-         function button_a() {
-        	 join.method="post";
-        	 document.join.action="pacebook"
-        	 document.join.submit();
-		}
-
-     }
- </script>
-    </script>
-</head>
-<body>
-  <div class="login">
-     <div id="logo">
-     <h1><img src="logo.png" width="50%" height="20%"></h1>
-     </div>
-  
-    <form name="join" >
-      <div>  
-        <div><b>아이디</b></div>
-        <input type="email" id="id" name="id" class="book" title="ID">
-=======
 </style>
 <script>
     window.onload = function(){
@@ -247,42 +160,28 @@
       <br>
       <div>
         <div><b>전화번호</b></div>
-
-        <input type="tel" id="number" name="phone" class="book" title="number">
-
         <input type="tel" id="cell" name="cell" class="book" title="number" pattern="^\d{3}-\d{3,4}-\d{4}$" required>
         <div id="cell_" class="hidden_msg">번호를 입력해주세요</div>
-
       </div>
       <br>
 
       <div>
         <div><b>생년월일</b></div>
-
-        <input type="date" id="date" name="profile" class="book" title="date">
-
         <input type="date" id="birth" name="birth" class="book" title="date">
         <div id="birth_" class="hidden_msg">생년월일을 입력해주세요</div>
-
       </div>
       <br>
 
-      <div id="gender">
+      <div>
         <div><b>성별</b></div>
             <input type="radio" name="gender" value="male" checked> 남자
             <input type="radio" name="gender" value="female"> 여자  
          </div>
       <br>
-
-
-<!--     <div id="button_a"> -->
-<!--       <button  class="button"  type="submit"  name="board_content "><b>가입하기</b></button> -->
-
-<!--     </form> -->
+    </form>
     <div>
       <button class="button"><b>가입하기</b></button>
     </div>
-    </form>
 </div>       
     
 </body>
