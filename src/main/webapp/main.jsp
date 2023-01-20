@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pacebook</title>
+    <title>pacebook2</title>
     <style>
         body{
             margin: 0px;
@@ -306,7 +306,7 @@
             <form name="search">
                 <div id="search_box">
                     <button type="submit" id="search_btn" name="main_page" value="search"
-                        formmethod="get" formaction="pacebook">
+                        formmethod="get" formaction="pacebook2">
                         검색
                     </button>
                     <input type="text" id="search_text" name="search_content">
@@ -315,7 +315,7 @@
             <form name="my_profile">
                 <div id="my_profile">
                         <button class="profile_img" type="submit" name="main_page" value="my_profile" style="background-image:url('assets/image/background.png')"
-                        formmethod="get" formaction="pacebook">
+                        formmethod="get" formaction="pacebook2">
                     </button>
                 </div>
             </form>
@@ -328,37 +328,37 @@
                 <ul id="tool_list">
                     <li>
                         <button type="submit" class="tool_btn  side_home" name="main_page" value="home"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             홈
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             알림
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             메시지
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_make" name="main_page" value="make"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             만들기
                         </button>
                     </li>
                 </ul>
                 <button type="submit" class="tool_btn  side_more" name="main_page" value="more"
-                        formmethod="get" formaction="pacebook">
+                        formmethod="get" formaction="pacebook2">
                         더보기
                 </button>
             </div>
@@ -370,7 +370,7 @@
                 <!-- 데이터베이스에서 가져와서 친구표시 -->
                 <li class="friend_pf">
                     <button class="profile_img" type="submit" name="main_page" value="fr_profile" 
-                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/background.png')">
+                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/background.png')">
                     </button>
                 </li>
                 <!-- 친구표시 -->
@@ -384,7 +384,7 @@
                         <div class="board_top_left">
                             <div class="board_profile">
                                 <button class="profile_img" type="submit" name="main_page" value="bd_profile" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/background.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/background.png')">
                                 </button>
                             </div>
                             <div class="board_top_content">
@@ -395,7 +395,7 @@
                         <div class="board_top_right">
                             <div class="board_more board_btn ">
                                 <button class="profile_img" type="submit" name="main_page" value="bd_more" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/more_btn.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/more_btn.png')">
                                 </button>
                             </div>
                         </div>
@@ -408,24 +408,24 @@
                             <div class="content_top_left">
                                 <div class="board_like board_btn ">
                                     <button class="profile_img" type="submit" name="main_page" value="like" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/like_btn.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/like_btn.png')">
                                     </button>
                                 </div>
                                 <div class="board_comment board_btn ">
                                     <button class="profile_img" type="submit" name="main_page" value="comment" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/comment_btn.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/comment_btn.png')">
                                     </button>
                                 </div>
                                 <div class="board_share board_btn ">
                                     <button class="profile_img" type="submit" name="main_page" value="share" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/share_btn.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/share_btn.png')">
                                     </button>
                                 </div>
                             </div>
                             <div class="content_top_right">
                                 <div class="board_record board_btn ">
                                     <button class="profile_img" type="submit" name="main_page" value="record" 
-                                    formmethod="get" formaction="pacebook"style="background-image:url('assets/image/record_btn.png')">
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/record_btn.png')">
                                     </button>
                                 </div>
                             </div>

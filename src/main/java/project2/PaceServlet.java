@@ -25,6 +25,7 @@ public class PaceServlet extends HttpServlet {
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		
+		
 		PaceDAO dao = new PaceDAO();
 		
 		// command=login으로 받아왔을때
@@ -41,7 +42,12 @@ public class PaceServlet extends HttpServlet {
 				se.setAttribute("user_nick", vo.getNick());
 				se.setAttribute("user_no", vo.getUser_no());
 				se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
+				
+				
+				
+						
 				response.sendRedirect("main.jsp");//메인페이지로 이동
+				
 				return;// 리턴을 넣어준 이유 : 맨밑에 기본값으로 메인페이지로 리다이렉트 하는데 리다이렉트를 두번하면 오류가 나기때문
 			} else {// 로그인 실패했을 경우
 				request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
@@ -60,22 +66,17 @@ public class PaceServlet extends HttpServlet {
 			vo.setPw(pw);
 			vo.setNick(nick);
 			boolean result = dao.join(vo); // dao의 join메소드로 vo객체를 넘김
-			if (result) {// 회원가입이 성공했을 때
-				response.sendRedirect("login.jsp");// ==임시==
-				return;
-			}else {// 회원가입에 실패했을 때
-				request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
-				RequestDispatcher dispatch = request.getRequestDispatcher("join.jsp");
-				dispatch.forward(request, response);// 현재 request, response를 회원가입 페이지로 넘김
-				System.out.println("회원가입 실패");
-				return;
-		    }
-
-
-		} else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
-			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
-			return;
-			
+				if (result) {// 회원가입이 성공했을 때
+					response.sendRedirect("login.jsp");// ==임시==
+					return;
+				}else {// 회원가입에 실패했을 때
+					request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
+					RequestDispatcher dispatch = request.getRequestDispatcher("join.jsp");
+					dispatch.forward(request, response);// 현재 request, response를 회원가입 페이지로 넘김
+					System.out.println("회원가입 실패");
+					return;
+			    }
+		
 			
 		} else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
