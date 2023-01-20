@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시글 작성</title>
-    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
     <style>
         /* 로고가 들어가 있는 큰박스 */
         #top { 
@@ -65,7 +64,7 @@
         #br_top{
             text-align: left;
         }
-        #cancel_btn{
+        #cancell_btn{
             height:40px;
             margin: 20px 10px;
             border: 1px solid #3169f6;
@@ -101,15 +100,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        #img_btn{
-            width: 200px;
-            height: 100px;
-            border:1px solid #3169f6;
-            color:#F39C12;
+            cursor:pointer;
+            font-size:2vh;
             font-weight: bolder;
-            font-size: 2vh;
-            background-color: white;
+            color:#F39C12;
+        }
+        #img_load{
+            display: none;
         }
         #img_btn:hover{
             background-color: #F39C12;
@@ -155,20 +152,37 @@
         window.onload = function(){
 
             document.querySelector("#board_btn").addEventListener("click", function(){
-            
-                let board = document.board;
+                let board = documetn.board;
                 board.method = "get";
                 board.action = "pacebook";
                 board.submit();
             });
-            document.querySelector("#cancel_btn").addEventListener("click", function(){
+            document.querySelector("#cancell_btn").addEventListener("click", function(){
                 let board = document.board;
                 board.method = "get";
                 board.action = "main.jsp"
+<<<<<<< HEAD
                 
                 
                 
             });
+=======
+                board.submit();
+            })
+
+            // 이미지 업로드 보류
+            // let fileInput = document.querySelector("#img_load");
+            // function PreviewImage(e) {
+            //     let selectedFiles = [...fileInput.files];
+            //     let preview = new FileReader();
+            //     console.log(selectedFiles);
+            //     preview.readAsDataURL(selectedFiles.files[0]);
+            //     preview.onload = () => {
+            //         document.querySelector("#user_image").src = preview.result;
+            //     };
+            // };
+            // fileInput.addEventListener("change", PreviewImage);
+>>>>>>> aafeb428ac081063d80c377df006cb39f93ddc31
         }
         function content_text(){
         	board.method = "post";
@@ -188,18 +202,28 @@
         <div id="book_right">
             <form name="board">
                 <div id="br_top">
-                    <button id="cancel_btn">뒤로가기</button>
+                    <button id="cancell_btn">뒤로가기</button>
                     <button id="board_btn" name="command" value="board">게시글 작성</button>
                 </div>
-                <div id="img_box">
-                    <button id="img_btn">사진</button>
-                </div>
+                <form method="post">
+                    <label for="img_load">
+                        <div id="img_box">
+                            이미지 추가
+                            <img id="user_img" src="#" alt="">
+                            <input type="file" id="img_load" accept="image/*" multiple>
+                        </div>
+                    </label>
+                </form>
                 <div id="br_bottom">
                     <div id="br_bottom_top">
                         <div id="title_id">@아이디</div>
                     </div>
                     <br>
+<<<<<<< HEAD
                     <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" value="board_content"></textarea>
+=======
+                    <textarea id="content_text" type="text" placeholder="내용:" name="content"></textarea>
+>>>>>>> aafeb428ac081063d80c377df006cb39f93ddc31
                 </div>
             </form>
         </div>
