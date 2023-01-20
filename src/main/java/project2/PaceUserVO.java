@@ -7,13 +7,36 @@ public class PaceUserVO {//회원정보
 	private String id;
 	private String pw;
 	private Date joindate;//user_time 에서 바뀜
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2bfaa294a5b05a39cdc68e997ca1154309f46f28
 	private String name;
 	private String email;
-	private int phone;
-	private Date profile;
+	private String phone;
+	private String profile;
 	private String gender;
+	private String birth;
 	
+	
+	public String getGender() {
+		return gender;
+	}
+	public String getBirth() {
+		return birth;
+	}
+//	public void setPhone(String phone) {
+//		this.phone = phone;
+//	}
+//	public void setProfile(String profile) {
+//		this.profile = profile;
+//	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
 	public int getUser_no() {
 		return user_no;
 	}
@@ -37,7 +60,10 @@ public class PaceUserVO {//회원정보
 		this.pw = pw;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2bfaa294a5b05a39cdc68e997ca1154309f46f28
 	public Date getJoindate() {
 		return joindate;
 	}
@@ -62,18 +88,18 @@ public class PaceUserVO {//회원정보
 	}
 	
 	
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	
 	
-	public Date getProfile() {
+	public String getProfile() {
 		return profile;
 	}
-	public void setProfile(Date profile) {
+	public void setProfile(String profile) {
 		this.profile = profile;
 	}
 	public String getgender() {

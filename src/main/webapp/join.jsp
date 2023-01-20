@@ -160,7 +160,7 @@
       <br>
       <div>
         <div><b>전화번호</b></div>
-        <input type="tel" id="cell" name="cell" class="book" title="number" pattern="^\d{3}-\d{3,4}-\d{4}$" required>
+        <input type="tel" id="phone" name="phone" class="book" title="number" pattern="^\d{3}-\d{3,4}-\d{4}$" required>
         <div id="cell_" class="hidden_msg">번호를 입력해주세요</div>
       </div>
       <br>
@@ -178,10 +178,10 @@
             <input type="radio" name="gender" value="female"> 여자  
          </div>
       <br>
-    </form>
     <div>
-      <button class="button"><b>가입하기</b></button>
+      <button class="button" name="command" value="joinUp"type="submit" formmethod="get"formaction="pacebook"><b>가입하기</b></button>
     </div>
+    </form>
 </div>       
     
 </body>

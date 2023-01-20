@@ -59,22 +59,15 @@ public class PaceDAO {
 		try {
 			con = dataFactory.getConnection();
 			
-			String query = " select * from user_info ";
-			query  	    	+= " (id,pw,joindate,nick,name,email,phone,profile,gender) ";
-			query 		 	+= " values (?,?,?,?,?,?,?,?,?)";
+			String query = " select * from user_info"
+					+ " where user_id=? ";
+		
 //					+ " where value = ? ,? ,? ,? ,?, ?, ?";//SQL문 작성  // 회원넘버 시퀀스이름 : seq_user
 			
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, vo.getId());
-			pstmt.setString(2,vo.getPw());
-			pstmt.setDate(3, vo.getJoindate());
-			pstmt.setString(4, vo.getNick());
-			pstmt.setString(5, vo.getName());
-			pstmt.setString(6, vo.getEmail());
-			pstmt.setInt(7, vo.getPhone());
-			pstmt.setDate(8, vo.getProfile());
-			pstmt.setString(9, vo.getgender());
+			
 			
 			pstmt.executeUpdate();
 			
@@ -84,16 +77,17 @@ public class PaceDAO {
 				result= false;
 			}else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, sysdate, ?)";
+						+ " values ( seq_user.nextval, ? , ?, sysdate, ?,?,?,?,?)";
+				pstmt=con.prepareStatement(query2);
+				
 				pstmt.setString(1, vo.getId());
 				pstmt.setString(2,vo.getPw());
-				pstmt.setDate(3, vo.getJoindate());
-				pstmt.setString(4, vo.getNick());
-				pstmt.setString(5, vo.getName());
-				pstmt.setString(6, vo.getEmail());
-				pstmt.setInt(7, vo.getPhone());
-				pstmt.setDate(8, vo.getProfile());
-				pstmt.setString(9, vo.getgender());
+//				pstmt.setDate(3, vo.getJoindate());
+				pstmt.setString(3, vo.getName());
+				pstmt.setString(4, vo.getEmail());
+				pstmt.setString(5, vo.getPhone());
+				pstmt.setString(6, vo.getProfile());
+				pstmt.setString(7, vo.getGender());
 				
 				pstmt.executeUpdate();
 				
