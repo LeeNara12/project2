@@ -108,7 +108,7 @@ public class PaceServlet extends HttpServlet {
 			int user_no = (int) se.getAttribute("user_no");//세션에 유저넘버 값을 넣어줌 
 			
 			PaceBoardVO pbVO = new PaceBoardVO();// PaceBoardVO객체 생성
-			pbVO.setBoard_content(board_content[0]+"/"+board_content[1]);//게시글 내용 pbVO에 넣기
+			pbVO.setBoard_content(board_content[0]+"+++"+board_content[1]);//게시글 내용 pbVO에 넣기
 			
 			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
 			

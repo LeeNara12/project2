@@ -295,7 +295,7 @@
         }
     </style>
     <script>
-<<<<<<< HEAD
+
     	window.onload = function(){
     		document.querySelector("#board_btn").addEventListener("click", function(){
     			let board = document.board;
@@ -312,8 +312,7 @@
     	}
     	
     	
-=======
->>>>>>> 2e07445d58cc2eed9baf05e86a2780a9de483f8b
+
     </script>
 </head>
 <body>
