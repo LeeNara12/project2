@@ -36,14 +36,14 @@
             ;
         }
 
-        .button {
+        #join_btn {
             width: 53%;
             background-color: #F39C12;
             height: 40px;
             font-size: 16px;
             margin-bottom: 40px;
         }
-        .button:hover{
+        #join_btn:button:hover{
             transition: transform 0.1s linear;
             transform: scale(.9);
             background-color: #f8a41c;
@@ -114,25 +114,20 @@
                     document.querySelector("#email_").style.position = "absolute";
                 }
             });
-            document.querySelector("#cell").addEventListener("focusout", function () {
-                document.querySelector("#cell_").style.visibility = "visible";
-                document.querySelector("#cell_").style.position = "relative";
-                let regex = /(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/;
-                if (document.querySelector("#cell").value == "") {
-                    document.querySelector("#cell_").innerHTML = "필수 정보 입니다.";
-                } else if (!regex.test(document.querySelector("#cell").value)) {
-                    document.querySelector("#cell_").innerHTML = "숫자만 입력해주세요."
+            document.querySelector("#phone").addEventListener("focusout", function () {
+                document.querySelector("#phone_").style.visibility = "visible";
+                document.querySelector("#phone_").style.position = "relative";
+                let regex = /^(\d{2,3}).-(\d{3,4}).-(\d{4})$/;
+                if (document.querySelector("#phone").value == "") {
+                    document.querySelector("#phone_").innerHTML = "필수 정보 입니다.";
+                } else if (!regex.test(document.querySelector("#phone").value)) {
+                    document.querySelector("#phone_").innerHTML = "전화번호 형식이 올바르지 않습니다."
                 } else {
-                    document.querySelector("#cell_").style.visibility = "hidden";
-                    document.querySelector("#cell_").style.position = "absolute";
+                    document.querySelector("#phone_").style.visibility = "hidden";
+                    document.querySelector("#phone_").style.position = "absolute";
                 }
             });
 
-            document.querySelector(".button").addEventListener("cilck", function(){
-                let join = document.join;
-                join.method = "get";
-                join.action = "pacebook";
-            });
         }
     </script>
 </head>
@@ -151,15 +146,13 @@
             <br>
             <div>
                 <div><b>비밀번호</b></div>
-                <input type="password" id="pw" name="pw" class="book" title="pw"
-                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" required>
+                <input type="password" id="pw" name="pw" class="book" title="pw" required>
                 <div id="pw_" class="hidden_msg">비밀번호를 입력해주세요</div>
             </div>
             <br>
             <div>
                 <div><b>비밀번호재확인</b></div>
-                <input type="password" id="pw2" name="pw2" class="book" title="pw"
-                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,16}$" required>
+                <input type="password" id="pw2" name="pw2" class="book" title="pw" required>
                 <div id="pw2_" class="hidden_msg">비밀번호를 입력해주세요</div>
             </div>
             <br>
@@ -171,15 +164,14 @@
             <br>
             <div>
                 <div><b>이메일</b></div>
-                <input type="text" id="email" name="email" class="book" title="email" pattern="[a-zA-Z0-9]{}" required>
+                <input type="text" id="email" name="email" class="book" title="email" required>
                 <div id="email_" class="hidden_msg">이메일을 입력해주세요</div>
             </div>
             <br>
             <div>
                 <div><b>전화번호</b></div>
-                <input type="tel" id="cell" name="cell" class="book" title="number" pattern="^\d{3}-\d{3,4}-\d{4}$"
-                    required>
-                <div id="cell_" class="hidden_msg">번호를 입력해주세요</div>
+                <input type="text" id="phone" name="phone" class="book" title="number" oninput="autoHyphen(this)" maxlength="13" required>
+                <div id="phone_" class="hidden_msg">번호를 입력해주세요</div>
             </div>
             <br>
 
@@ -197,12 +189,23 @@
             </div>
             <br>
             <div>
-                <button class="button" name="command" value="joinUp">가입하기</button>
+                <button id="join_btn" name="command" value="joinUp">가입하기</button>
             </div>
         </form>
         <div id="login_btn">
             <a href="login.jsp">로그인페이지로 이동</a>
         </div>
     </div>
+    <script>
+        let autoHyphen = (target) => {
+            target.value = target.value.replace(/[^0-9]/g, "").replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, `$1-$2-$3`).replace(/(\-{1,2})$/g, "");
+        };
+        document.querySelector("#join_btn").addEventListener("click", function(){
+            let join = document.join;
+            join.method = "get";
+            join.action = "pacebook";
+            join.submit();
+        });
+    </script>
 </body>
 </html>

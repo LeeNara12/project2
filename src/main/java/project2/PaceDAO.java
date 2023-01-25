@@ -68,9 +68,6 @@ public class PaceDAO {
 			
 			pstmt.setString(1, vo.getId());
 			
-			
-			pstmt.executeUpdate();
-			
 			ResultSet rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
