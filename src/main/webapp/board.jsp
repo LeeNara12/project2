@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,7 @@
         .logo{
             width: 300px;
             margin-bottom: 10px;
+            cursor: pointer; 
         }
         /* 게시글 작성 큰박스 */
         #content{
@@ -101,17 +103,28 @@
             align-items: center;
             justify-content: center;
             flex-direction:column;
+            flex-wrap: wrap;
             /* cursor:pointer; */
             font-size:2vh;
             font-weight: bolder;
             color:#F39C12;
             
         }
+        #img_show{
+            position: fixed; 
+            z-index: 99;
+            object-fit: contain;
+            width: 589.5px;
+            height: 378px;
+            
+
+        }
         #url_input_box{
             width: 100%;
             height: 9%;
             display: flex;
             justify-content: center;
+            
         }
         #url_address_out{
             width: 70%;
@@ -122,12 +135,16 @@
             align-items: center;
             flex-direction: column;
             margin-right: 4px;
+           
+           
         }
         #url_address_in{
             width: 86%;
             height: 71%;
             border: 1px solid #ffffff;
             outline: none;
+           
+         
         }
         #btn_url{
             border: 1px solid #F39C12;
@@ -139,21 +156,7 @@
             background-color: #F39C12;
             color: white;
         }
-
-        
-      
-
-
-        /* #img_load{
-            display: none;
-        }
-        #img_btn:hover{
-            background-color: #F39C12;
-            color:aliceblue;
-            border-color: #F39C12;
-        }
-        */
-
+       
 
         /* //////////////////////////////////////////////////////////// */
         /* 오른쪽 책 아래부분 아이디,제목,내용이 들어가는 박스 */
@@ -208,29 +211,36 @@
                  board.action = "main.jsp"
                  board.submit();
              })
-             //url 확인버튼
-             //document.querySelector("#input_url").addEventListener("click",function(){
+             //url 확인버튼 => url 이미지삽입
+             document.querySelector("#btn_url").addEventListener("click", function(e){
+                e.stopPropagation();
+                let url = document.querySelector('#url_address_in');
+               
+                if(url != null){
+                    document.url.src = url.value;
+                }
+                document.querySelector('#img_show').style.display = 'block';
+                document.querySelector('#img_show').style.visibility = 'visible';
+             })
+
+           
+             
             
         }
-       
-            
-            
-            
 
+        //url 없애고, 이미지 취소
+        function url_cancle(){
+        let cancle = document.querySelector('#img_show')
+        console.log(cancle.style.display);
+            if(cancle.style.display === 'block'){
+                let url = document.querySelector('#url_address_in');
+                document.url.src = '';
+                cancle.style.visibility = 'hidden';
+            }
+        }
 
-            // 이미지 업로드 보류
-            // let fileInput = document.querySelector("#img_load");
-            // function PreviewImage(e) {
-            //     let selectedFiles = [...fileInput.files];
-            //     let preview = new FileReader();
-            //     console.log(selectedFiles);
-            //     preview.readAsDataURL(selectedFiles.files[0]);
-            //     preview.onload = () => {
-            //         document.querySelector("#user_image").src = preview.result;
-            //     };
-            // };
-            // fileInput.addEventListener("change", PreviewImage);
-
+        
+ 
 
     
        
@@ -238,8 +248,15 @@
     </script>
 </head>
 <body>
+	<%
+		HttpSession se = request.getSession();
+		String id = (String)se.getAttribute("user_id");
+	
+	%>
     <div id="top">
-        <img class="logo" src="logo.png">
+    	<a href='main.jsp'>
+        	<img class="logo" src="logo.png">
+    	</a>
     </div>
     <hr color = "#3169f6" size="1px">
     <div id="content"> 
@@ -252,20 +269,22 @@
                     <input type="hidden" name="command" value="board" >
                 </div>
                 
-                <div id="img_box">
+                <div id="img_box" onclick="url_cancle()">
+                	
                     <div>url을 입력해주세요</div>
                     <br>
                     <div id="url_input_box">
                         <div id="url_address_out">
                             <input id="url_address_in" type="text"  name="content" >
                         </div>
-                        <input id="btn_url" type="submit" value="확인">
+                        <input id="btn_url"  type="button" value="확인">
                     </div>
+                    <img id='img_show' name='url' hidden >
                 </div>
                     
                 <div id="br_bottom">
                     <div id="br_bottom_top">
-                        <div id="title_id">@아이디</div>
+                        <div id="title_id"><%=id %></div>
                     </div>
                     <br>
                     <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" ></textarea>
