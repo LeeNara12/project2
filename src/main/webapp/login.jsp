@@ -113,6 +113,11 @@
         /* .table {
             margin-right: 30px;
         } */
+<<<<<<< HEAD
+       
+        
+=======
+>>>>>>> 1df12f9f4b59d41dca405d424cfa924d0b5fb07d
     </style>
 </head>
 
