@@ -17,6 +17,7 @@
         .logo{
             width: 300px;
             margin-bottom: 10px;
+            cursor: pointer; 
         }
         /* 게시글 작성 큰박스 */
         #content{
@@ -247,8 +248,15 @@
     </script>
 </head>
 <body>
+	<%
+		HttpSession se = request.getSession();
+		String id = (String)se.getAttribute("user_id");
+	
+	%>
     <div id="top">
-        <img class="logo" src="logo.png">
+    	<a href='main.jsp'>
+        	<img class="logo" src="logo.png">
+    	</a>
     </div>
     <hr color = "#3169f6" size="1px">
     <div id="content"> 
@@ -276,7 +284,7 @@
                     
                 <div id="br_bottom">
                     <div id="br_bottom_top">
-                        <div id="title_id">@아이디</div>
+                        <div id="title_id"><%=id %></div>
                     </div>
                     <br>
                     <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" ></textarea>

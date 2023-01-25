@@ -74,7 +74,7 @@ public class PaceDAO {
 				result= false;
 			}else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, sysdate, ?,?,?,?,?)";
+						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?)";
 				pstmt=con.prepareStatement(query2);
 				
 				// 값을 주는 애들은 jsp
@@ -111,7 +111,7 @@ public class PaceDAO {
 			
 			/// 데이터 베이스에 데이터를 추가
 			String query1 = " insert into board"
-					+ "	values(seq_board.nextval, sysdate, 0, ?, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+					+ "	values(seq_board.nextval, current_date, 0, ?, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
 			                  //1. 게시판시퀀스 2. 생성일 3.게시판 수정여부 4. 게시판수정시간 5. 게시판내용 6. 게시판 좋아요수 7. 회원 시퀀스 (user_no)
 			pstmt = con.prepareStatement(query1);
 			
@@ -137,7 +137,7 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query1 = " insert into board_comment"
-					+ " values(seq_comment.nextval, sysdate, ?, ?, ?)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+					+ " values(seq_comment.nextval, current_date, ?, ?, ?)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
 			
 			pstmt = con.prepareStatement(query1);
 			pstmt.setString(1, pcvo.getComment_content());
