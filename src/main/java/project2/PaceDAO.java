@@ -125,30 +125,7 @@ public class PaceDAO {
 			
 			pstmt.executeUpdate();
 
-			
-			
-			
-			//데이베이스에 추가된 데이터를 조회
-//			String query2 = " select * from board"
-//					+ " where board_no = seq_board.currval";  //PaceBoardVO객체에 나머지 정보들 추가
-//			            //게시판 넘버가 현재인 것 가져옴
-//			
-//			pstmt = con.prepareStatement(query2);
-//			ResultSet rs = pstmt.executeQuery();
-//			while(rs.next()) {
-//				pbvo.setBoard_no(rs.getInt("board_no")); 
-//				pbvo.setBoard_time(rs.getDate("board_time"));
-//				pbvo.setBoard_modify(rs.getInt("board_modify"));
-//				pbvo.setBoard_time(rs.getDate("board_time"));
-//				pbvo.setBoard_content(rs.getString("board_content")); // 추가 
-//				pbvo.setUser_no(rs.getInt("user_no"));
-//				pbvo.setBoard_like(rs.getInt("board_like"));
-//				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
-//				System.out.println("연동 ");
-//				pstmt.executeUpdate();
-//			}
 
-			/////////////////////////////
 			pstmt.close();
 
 		} catch (SQLException e) {

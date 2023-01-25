@@ -55,7 +55,7 @@ public class PaceUserVO {//회원정보
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	
+
 	public Date getJoindate() {
 		return joindate;
 	}

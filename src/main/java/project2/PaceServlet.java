@@ -25,7 +25,7 @@ public class PaceServlet extends HttpServlet {
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		
-		
+		System.out.println(command);
 		PaceDAO dao = new PaceDAO();
 		
 		// command=login으로 받아왔을때
@@ -103,13 +103,13 @@ public class PaceServlet extends HttpServlet {
 
 		}else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String [] board_content = request.getParameterValues("content");//게시글 내용 가져오기
-			System.out.println("content 내용 = "+board_content);
+			System.out.println("content 내용 = "+board_content[0]+" "+board_content[1]);
 			
 			HttpSession se = request.getSession();//세션 생성 및 가져오기
 			int user_no = (int) se.getAttribute("user_no");//세션에 유저넘버 값을 넣어줌 
 			
 			PaceBoardVO pbVO = new PaceBoardVO();// PaceBoardVO객체 생성
-			pbVO.setBoard_content(board_content[0]+"/"+board_content[1]);//게시글 내용 pbVO에 넣기
+			pbVO.setBoard_content(board_content[0]+"+++"+board_content[1]);//게시글 내용 pbVO에 넣기
 			
 			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
 			
@@ -121,25 +121,6 @@ public class PaceServlet extends HttpServlet {
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
 
 			return;
-			
-
-		
-
-			
-//		} else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
-//			String board_content = request.getParameter("board_content");//게시글 내용 가져오기
-//			System.out.println(board_content);
-//			
-//			HttpSession se = request.getSession();//세션 생성 및 가져오기
-//			int user_no = (int) se.getAttribute("user_no");//세션에 유저넘버 값을 넣어줌 
-//			
-//			PaceBoardVO pbVO = new PaceBoardVO();// PaceBoardVO객체 생성
-//			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
-//			
-//			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
-//			
-//			response.sendRedirect("main.jsp");//메인페이지로 이동
-//			return;
 
 			//취소 버튼은 자바스크립트로
 		} else if("comment".equals(command)) {//댓글 작성
