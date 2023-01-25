@@ -60,6 +60,7 @@ public class PaceServlet extends HttpServlet {
 //			String board_content = request.getParameter("board_content");//넘겨받은 아이디,비밀번호 등을 변수로 저장
 //			System.out.println(board_content);
 			
+			// 값을 받는 법
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
 			String name = request.getParameter("name");
@@ -116,7 +117,7 @@ public class PaceServlet extends HttpServlet {
 			
 			return ;
 
-		}else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
+			}else if("goToBoard".equals(command)) {//메인페이지에서 게시글 만들기 버튼 누를시
 			response.sendRedirect("board.jsp");//게시글 작성페이지로 이동
 
 			return;

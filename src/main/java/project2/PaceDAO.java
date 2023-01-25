@@ -80,6 +80,8 @@ public class PaceDAO {
 						+ " values ( seq_user.nextval, ? , ?, sysdate, ?,?,?,?,?)";
 				pstmt=con.prepareStatement(query2);
 				
+				// 값을 주는 애들은 jsp
+				// 값을 받아오는 애들 
 				pstmt.setString(1, vo.getId());
 				pstmt.setString(2,vo.getPw());
 //				pstmt.setDate(3, vo.getJoindate());

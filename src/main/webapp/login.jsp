@@ -96,13 +96,7 @@
         /* .table {
             margin-right: 30px;
         } */
-        .a00 {
-            
-            font-size: 20px;
-            color: #F39C12;
-            font-family :  "Godoa", "굴림";
-        
-        }
+       
         
     </style>
 </head>
