@@ -245,7 +245,7 @@ public class PaceDAO {
 			e.printStackTrace();
 		}
 		return puvo;
-	
+	}
 	
 	//해당 user_no의 게시글 수
 	public int BoardCount(int user_no) {
@@ -277,12 +277,16 @@ public class PaceDAO {
 	
 	
 	//해당 게시글의 내용
-	public HashMap<Integer,List> BoardContent(int user_no, PaceBoardVO pbvo, PaceUserVO puvo) {
+	public HashMap<Integer,List> BoardContent(int user_no) {
 		
 		HashMap<Integer,List> map = new HashMap<Integer,List>();
 		List <PaceBoardVO> pbvo_list = new ArrayList <>();
 		List <PaceUserVO> puvo_list = new ArrayList <>(); 
+		PaceBoardVO pbvo = new PaceBoardVO();
+		PaceUserVO puvo = new PaceUserVO();
+		
 		try {
+			
 			
 			con = dataFactory.getConnection();
 			String query1 = "Select * from board b, user_info ui"
