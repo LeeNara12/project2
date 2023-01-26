@@ -1,112 +1,128 @@
-<%@page import="project2.PaceBoardVO"%>
-<%@page import="project2.PaceUserVO"%>
-<%@page import="project2.PaceDAO"%>
+<%@ page import="project2.*" %>
 <%@page import="java.util.*"%>
 <%@page import ="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pacebook2</title>
+    <title>pacebook</title>
     <style>
-        body{
+        body {
             margin: 0px;
         }
+
         /* /////////////상단 바 /////////////////////*/
-        #top{
+        #top {
             border-bottom: 1px solid #3169f6;
             display: flex;
             justify-content: space-between;
-            width:100%;
+            width: 100%;
             position: fixed;
             z-index: 4;
             background-color: white;
         }
+<<<<<<< HEAD
         #logo{
             /*margin: 10px 20px;*/
             width: 300px;
             cursor: pointer;
             margin-bottom: 10px;
+=======
+
+        #logo {
+            margin: 10px 20px;
+>>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
         }
-        #top_right{
+
+        #top_right {
             width: 400px;
             align-items: center;
             display: flex;
             margin-right: 20px;
             justify-content: space-between;
         }
-        #search_box{
-            width:300px;
-            height:40px;
+
+        #search_box {
+            width: 300px;
+            height: 40px;
             display: flex;
         }
-        #search_btn{
+
+        #search_btn {
             flex-grow: 1;
-            border:1px solid #3169f6;
-            color:#F39C12;
+            border: 1px solid #3169f6;
+            color: #F39C12;
             background-color: white;
             font-weight: bolder;
         }
-        #search_btn:hover{
+
+        #search_btn:hover {
             background-color: #F39C12;
             color: white;
             border-color: #F39C12;
         }
-        #search_text{
+
+        #search_text {
             flex-grow: 2;
-            border:1px solid #3169f6;
+            border: 1px solid #3169f6;
             border-left: 0px;
             outline: none;
         }
-        #my_profile{
-            border:2px solid gray;
+
+        #my_profile {
+            border: 2px solid gray;
             width: 70px;
             height: 70px;
             border-radius: 50%;
             overflow: hidden;
         }
+
         /* fixed된 상단영역 대체 */
-        .top{
+        .top {
             box-sizing: border-box;
-            height:91px;
+            height: 91px;
             position: relative;
         }
 
         /* /////////////////////////////////////// */
-        #center{
+        #center {
             display: flex;
         }
-        #side_tool{
+
+        #side_tool {
             background-color: white;
-            top:91px;
+            top: 91px;
             /* border-right:1px solid rgb(167, 167, 167); */
-            border-right:1px solid #3169f6;
+            border-right: 1px solid #3169f6;
             box-sizing: border-box;
             display: flex;
-            width:20%;
+            width: 20%;
             height: 90%;
             flex-direction: column;
             justify-content: space-between;
-            position:fixed;
+            position: fixed;
             z-index: 3;
         }
-        #tool_list{
-            margin:0;
+
+        #tool_list {
+            margin: 0;
             box-sizing: border-box;
             list-style: none;
-            padding:0;
+            padding: 0;
             display: flex;
             flex-direction: column;
         }
-        .tool_btn{
-            width:100%;
-            height:100px;
+
+        .tool_btn {
+            width: 100%;
+            height: 100px;
             border: 0px;
-            border-bottom:1px solid #3169f6;
+            border-bottom: 1px solid #3169f6;
             cursor: pointer;
             color: #F39C12;
             font-weight: bolder;
@@ -114,86 +130,97 @@
             text-align: start;
             padding-left: 30px;
         }
-        .tool_btn:hover{
-            color:white;
+
+        .tool_btn:hover {
+            color: white;
             background-color: #F39C12;
         }
-        .side_more{
-            border-top:1px solid #3169f6;
+
+        .side_more {
+            border-top: 1px solid #3169f6;
         }
+
         /* fixed된 사이드 영역을 대체 */
-        .side_tool{
+        .side_tool {
             box-sizing: border-box;
-            width:20%;
-            height:900px;
+            width: 20%;
+            height: 900px;
             position: relative;
             display: inline-block;
         }
+
         /* ////////////////////////////////////// */
-        #center_box{
-            border-right:1px solid #3169f6;
+        #center_box {
+            border-right: 1px solid #3169f6;
             box-sizing: border-box;
-            width:60%;
+            width: 60%;
             min-width: 835px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        #friend_pofiles{
+
+        #friend_profiles {
             margin: 0px;
             box-sizing: border-box;
-            width:100%;
+            width: 100%;
             height: 15%;
-            padding:15px 50px;
+            padding: 15px 50px;
             overflow-x: scroll;
             white-space: nowrap;
         }
-        .friend_pf{
-            border:2px solid gray;
+
+        .friend_pf {
+            border: 2px solid gray;
             border-radius: 50%;
-            width:70px;
+            width: 70px;
             height: 70px;
-            margin:0px 10px;
+            margin: 0px 10px;
             display: inline-block;
             overflow: hidden;
         }
-        ::-webkit-scrollbar{
+
+        #friend_profiles::-webkit-scrollbar {
             display: none;
         }
-        
+
         /* 게시글이 보이는 영역 */
-        #show_boards{
-            height:100%;
+        #show_boards {
+            height: 100%;
             list-style: none;
             padding: 0px;
             width: 500px;
             max-width: 500px;
             box-sizing: border-box;
         }
+
         /* 보드 css */
-        .board{
+        .board {
             box-sizing: border-box;
-            border:1px solid #3169f6;
-            height:600px;
+            border: 1px solid #3169f6;
+            height: 600px;
             max-height: 600px;
             margin-bottom: 40px;
         }
-        .board_top{
-            height:10%;
+
+        .board_top {
+            height: 10%;
             display: flex;
             align-items: center;
         }
-        .board_top_left{
-            flex-grow:3;
+
+        .board_top_left {
+            flex-grow: 3;
             height: 100%;
             box-sizing: border-box;
             display: flex;
             align-items: center;
         }
-        .board_profile{
-            border:2px solid gray;
+
+        .board_profile {
+            border: 2px solid gray;
             border-radius: 50%;
-            width:50px;
+            width: 50px;
             height: 50px;
             min-width: 50px;
             min-height: 50px;
@@ -202,17 +229,17 @@
         }
 
 
-        .profile_img{
-            width:100%;
-            height:100%;
+        .profile_img {
+            width: 100%;
+            height: 100%;
             background-size: cover;
             border: none;
             cursor: pointer;
         }
-        
 
 
-        .board_top_content{
+
+        .board_top_content {
             box-sizing: border-box;
             height: 100%;
             width: 100%;
@@ -220,7 +247,8 @@
             display: flex;
             flex-direction: column;
         }
-        .btc{
+
+        .btc {
             box-sizing: border-box;
             min-width: fit-content;
             white-space: nowrap;
@@ -228,16 +256,19 @@
             max-width: 300px;
             min-width: 300px;
         }
-        .btc_id{
+
+        .btc_id {
             flex-grow: 4;
             font-weight: bolder;
         }
-        .btc_email{
+
+        .btc_email {
             flex-grow: 1;
             color: gray;
             max-width: 300px;
         }
-        .board_top_right{
+
+        .board_top_right {
             box-sizing: border-box;
             flex-grow: 1;
             height: 100%;
@@ -245,66 +276,298 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         /* 게시글 이미지박스 */
-        .board_img{
-            border-top:1px solid black;
+        .board_img {
+            border-top: 1px solid black;
             border-bottom: 1px solid black;
             height: 60%;
             box-sizing: border-box;
         }
+
         /* 이미지아래 전체박스 */
-        .board_content{
+        .board_content {
             box-sizing: border-box;
             height: 30%;
             padding: 10px;
         }
+
         /* 게시글 아래 버튼 영역 */
-        .content_top{
+        .content_top {
             display: flex;
             justify-content: space-between;
             box-sizing: border-box;
         }
+
         /* 왼쪽버튼 박스 */
-        .content_top_left{
+        .content_top_left {
             display: flex;
             box-sizing: border-box;
             justify-content: space-between;
             flex-grow: 1;
         }
+
         /* 오른쪽 버튼 박스 */
-        .content_top_right{
+        .content_top_right {
             flex-grow: 5;
             justify-content: right;
             display: flex;
             box-sizing: border-box;
         }
-        .board_btn{
+
+        .board_btn {
             display: inline-block;
-            width:30px;
+            width: 30px;
             height: 30px;
             box-sizing: border-box;
-            cursor:pointer;
+            cursor: pointer;
         }
-        .board_btn:hover{
+
+        .board_btn:hover {
             box-shadow: 0px 1px 5px 1px gray, 2px 2px 5px gray;
         }
+
         /* 아이디 들어가는곳 */
-        .board_id{
+        .board_id {
             display: inline-block;
-            margin-top:10px;
+            margin-top: 10px;
         }
+
         /* 내용 들어가는 곳 */
-        .content{
+        .content {
             margin-top: 10px;
             width: 100%;
             height: 50%;
             display: block;
         }
+<<<<<<< HEAD
       
+=======
+
+
+        #side_comment {
+            border: 1px solid #3169f6;
+            position: fixed;
+            z-index: 100;
+            right: 0px;
+            box-sizing: border-box;
+            width: 50%;
+            height: 822px;
+            /* 평소에는 댓글 숨김 */
+            visibility: hidden;
+            /* /////////////////// */
+        }
+
+        #comment_area {
+            height: 90%;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            overflow: auto;
+        }
+
+        .comment_profile {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            min-height: 50px;
+            overflow: hidden;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 20px 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .comment_box {
+            border-bottom: 1px solid #999;
+            align-items: center;
+            height: fit-content;
+        }
+
+        .comment_info {
+            font-size: 1.5vh;
+            width: 84%;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            display: inline-block;
+        }
+
+        .comment_top {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .comment_id {
+            box-sizing: border-box;
+            width: fit-content;
+            display: inline-block;
+        }
+        .comment_close_btn {
+            border: 1px solid #999;
+            float: right;
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            background-color: rgb(214, 214, 214);
+            padding: 0px;
+        }
+
+        .comment_close_btn:hover {
+            background-color: #999;
+        }
+
+        .comment {
+            box-sizing: border-box;
+            margin: 5px 0px;
+            font-size: 2vh;
+        }
+
+        .c_comment_btn {
+            border: 1px solid rgb(214, 214, 214);
+            background-color: inherit;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .c_comment_btn:active {
+            background-color: #999;
+        }
+
+        .c_comment_area {
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            position: relative;
+            /* 평소에는 히든이랑 앱솔루트로 되어있음 */
+            visibility: hidden;
+            position: absolute;
+            /* /////////////////////////////////// */
+        }
+
+        .c_comment {
+            box-sizing: border-box;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .c_comment_line {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            border-left: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+
+
+
+        #chat_area {
+            box-sizing: border-box;
+            background-color: #999;
+            height: 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat_area_right {
+            height: 100%;
+            display: flex;
+            flex-grow: 10;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 20px;
+        }
+
+        .comment_text {
+            border: 1px solid black;
+            outline: none;
+            border-radius: 50px 0px 0px 50px;
+            height: 50%;
+            padding: 0px 20px;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            flex-grow: 10;
+            font-size: 2vh;
+        }
+
+        .comment_btn {
+            flex-grow: 1;
+            border: 1px solid black;
+            border-left: 0px;
+            border-radius: 0px 50px 50px 0px;
+            height: 50%;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            font-weight: bolder;
+        }
+
+        .comment_btn:hover {
+            background-color: #999;
+        }
+
+        #comment_close {
+            border: 1px solid #999;
+            border-left: none;
+            background: none;
+            position: absolute;
+            top: 40%;
+            left: 10px;
+            width: 50px;
+            height: 100px;
+            font-size: 4vh;
+            color: #999;
+        }
+
+        @keyframes wobble-horizontal {
+            16.65% {
+                transform: translateX(8px);
+            }
+
+            33.3% {
+                transform: translateX(-6px);
+            }
+
+            49.95% {
+                transform: translateX(4px);
+            }
+
+            66.6% {
+                transform: translateX(-2px);
+            }
+
+            83.25% {
+                transform: translateX(1px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        #comment_close:hover {
+            animation-name: wobble-horizontal;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+        }
+
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+>>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
     </style>
     <script>
+        // window.onload = function () {
 
+<<<<<<< HEAD
     	window.onload = function(){
     		document.querySelector("#board_btn").addEventListener("click", function(){
     			let board = document.board;
@@ -322,20 +585,32 @@
     		
     	
 
+=======
+        //     document.querySelector("#board_comment_btn").addEventListener("click", function () {
+        //         debugger
+        //         document.querySelector("#side_comment").style.visibility = "visible";
+        //     });
+        // }
+>>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
     </script>
 </head>
+
 <body>
     <div id="top">
         <div id="logo">
+<<<<<<< HEAD
             <a href="main.jsp">
             <img class="logo" src="logo.png">
             </a>
+=======
+            <img src="assets/image/PACEBOOK.png">
+>>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
         </div>
         <div id="top_right">
             <form name="search">
                 <div id="search_box">
-                    <button type="submit" id="search_btn" name="main_page" value="search"
-                        formmethod="get" formaction="pacebook2">
+                    <button type="submit" id="search_btn" name="main_page" value="search" formmethod="get"
+                        formaction="pacebook">
                         검색
                     </button>
                     <input type="text" id="search_text" name="search_content">
@@ -343,8 +618,9 @@
             </form>
             <form name="my_profile">
                 <div id="my_profile">
-                        <button class="profile_img" type="submit" name="main_page" value="my_profile" style="background-image:url('assets/image/background.png')"
-                        formmethod="get" formaction="pacebook2">
+                    <button class="profile_img" type="submit" name="main_page" value="my_profile"
+                        style="background-image:url('assets/image/background.png')" formmethod="get"
+                        formaction="pacebook">
                     </button>
                 </div>
             </form>
@@ -356,85 +632,80 @@
             <div id="side_tool">
                 <ul id="tool_list">
                     <li>
-                        <button type="submit" class="tool_btn  side_home" name="main_page" value="home"
-                            formmethod="get" formaction="pacebook2">
+                        <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
+                            formaction="pacebook">
                             홈
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             알림
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             메시지
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="tool_btn  side_make" name="main_page" value="make"
-                            formmethod="get" formaction="pacebook2">
+                        <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
+                            formaction="pacebook">
                             만들기
                         </button>
                     </li>
                 </ul>
-                <button type="submit" class="tool_btn  side_more" name="main_page" value="more"
-                        formmethod="get" formaction="pacebook2">
-                        더보기
+                <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
+                    formaction="pacebook">
+                    더보기
                 </button>
             </div>
         </form>
         <div class="side_tool"></div>
-        <div id="center_box" >
-            <ul id="friend_pofiles">
+        <div id="center_box">
+            <ul id="friend_profiles">
                 <form name="friend">
-                <!-- 데이터베이스에서 가져와서 친구표시 -->
-                <li class="friend_pf">
-                    <button class="profile_img" type="submit" name="main_page" value="fr_profile" 
-                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/background.png')">
-                    </button>
-                </li>
-                <!-- 친구표시 -->
+                    <!-- 데이터베이스에서 가져와서 친구표시 -->
+                    <li class="friend_pf">
+                        <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
+                            formaction="pacebook" style="background-image:url('assets/image/background.png')">
+                        </button>
+                    </li>
+                    <!-- 친구표시 -->
                 </form>
             </ul>
-            
-            
-            
             <form>
             <ul id="show_boards">
-            
             <%
             PaceDAO dao = new PaceDAO();
             HttpSession se = request.getSession();
             int user_no = (int)se.getAttribute("user_no");
             int count = dao.BoardCount(user_no);
-            
-            PaceUserVO puvo = new PaceUserVO();
-            PaceBoardVO pbvo = new PaceBoardVO();
-            
-            HashMap <Integer, List> map = dao.BoardContent(user_no, pbvo, puvo );
+            HashMap <Integer, List> map = dao.BoardContent(user_no);
             List <PaceUserVO> getPuvo = map.get(1); 
             List <PaceBoardVO> getPbvo = map.get(2); 
             Date date = new Date();
             SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
             	
-            for(int i = 0; i<count; i++ ){
-            	String id= getPuvo.get(i).getId();
-            	String email = getPuvo.get(i).getEmail();
-            	Date board_time = getPbvo.get(i).getBoard_time();
-            	String board_content = getPbvo.get(i).getBoard_content();
-            	String [] content = board_content.split("\\+++");
-            	String url= content[0];
-            	String text= content[1];
+ //           for(int i = 0; i<count; i++ ){
+ //           	String id= getPuvo.get(i).getId();
+ //           	String email = getPuvo.get(i).getEmail();
+ //           	Date board_time = getPbvo.get(i).getBoard_time();
+ //           	String board_content = getPbvo.get(i).getBoard_content();
+ //           	String [] content = board_content.split("\\+++");
+ //           	System.out.println(board_content +" " + content);
+ //           	System.out.println(content.length);
+ //           	
+ //           	String url= content[0];
+ //           	String text= content[1];
             	
             	
             %>
@@ -443,19 +714,21 @@
                     <div class="board_top">
                         <div class="board_top_left">
                             <div class="board_profile">
-                                <button class="profile_img" type="submit" name="main_page" value="bd_profile" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/background.png')">
+                                <button class="profile_img" type="submit" name="main_page" value="bd_profile"
+                                    formmethod="get" formaction="pacebook"
+                                    style="background-image:url('assets/image/background.png')">
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id + " "  %></div>
+                                <div class="btc_id btc">아이디 작성시간</div>
                                 <div class="btc_email btc">이메일</div>
                             </div>
                         </div>
                         <div class="board_top_right">
                             <div class="board_more board_btn ">
-                                <button class="profile_img" type="submit" name="main_page" value="bd_more" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/more_btn.png')">
+                                <button class="profile_img" type="submit" name="main_page" value="bd_more"
+                                    formmethod="get" formaction="pacebook"
+                                    style="background-image:url('assets/image/more_btn.png')">
                                 </button>
                             </div>
                         </div>
@@ -467,25 +740,28 @@
                         <div class="content_top">
                             <div class="content_top_left">
                                 <div class="board_like board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="like" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/like_btn.png')">
+                                    <button class="profile_img" type="submit" name="main_page" value="like"
+                                        formmethod="get" formaction="pacebook"
+                                        style="background-image:url('assets/image/like_btn.png')">
                                     </button>
                                 </div>
                                 <div class="board_comment board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="comment" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/comment_btn.png')">
+                                    <button id="board_comment_btn" class="profile_img"
+                                        style="background-image:url('assets/image/comment_btn.png')">
                                     </button>
                                 </div>
                                 <div class="board_share board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="share" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/share_btn.png')">
+                                    <button class="profile_img" type="submit" name="main_page" value="share"
+                                        formmethod="get" formaction="pacebook"
+                                        style="background-image:url('assets/image/share_btn.png')">
                                     </button>
                                 </div>
                             </div>
                             <div class="content_top_right">
                                 <div class="board_record board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="record" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/record_btn.png')">
+                                    <button class="profile_img" type="submit" name="main_page" value="record"
+                                        formmethod="get" formaction="pacebook"
+                                        style="background-image:url('assets/image/record_btn.png')">
                                     </button>
                                 </div>
                             </div>
@@ -503,18 +779,105 @@
               <%
               
               
-            	}
+//            	}
               
               
               %>  
                 
                 
             </ul>
-            </form>
+        </div>
+        <div id="side_comment">
+            <ul id="comment_area">
+                <!-- 댓글 -->
+                
+                <% String mp = request.getParameter("main_page");
+                	if("comment".equals(mp)) {
+	        			int board_no = Integer.parseInt(request.getParameter("board_no"));
+	        			PaceBoardVO pbvo = new PaceBoardVO();
+	        			pbvo.setBoard_no(board_no);
+	        			List<PaceCommentVO> list = dao.Comment(user_no, board_no);
+       			 		for(PaceCommentVO vo : list){ %>
+                <li class="comment_box">
+                    <div class="comment_profile">
+                        <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
+                            formaction="pacebook" style="background-image:url('assets/image/background.png')">
+                        </button>
+                    </div>
+                    <div class="comment_info">
+                        <div class="comment_top">
+                            <div class="comment_id">
+                                <% int c_user_no = vo.getUser_no();
+                                	PaceUserVO puvo = dao.getUserInfo(c_user_no);
+                                	String id = puvo.getId();%>
+                                <%= id %>
+                            </div>
+                            <span class="comment_modify">
+                                <% int comment_modify = vo.getComment_modify();
+                                if(comment_modify == 1){ %>
+                                	(수정됨)
+                                <% } %>
+                            </span>
+                            <% if(user_no == c_user_no){ %>
+                            <button class="comment_close_btn">
+                                X
+                            </button>
+                            <% } %>
+                        </div>
+                        <div class="comment">
+                            <% String comment = vo.getComment_content(); %>
+                            <%= comment %>
+                        </div>
+                        <div class="comment_btns">
+                            <button class="c_comment_btn">답글달기</button>
+                            <ul>
+                                <!-- 답글 -->
+                                <li class="c_comment_area">
+                                    <div class="c_comment_line"></div>
+                                    <button class="profile_img comment_profile" type="submit" name="main_page"
+                                        value="fr_profile" formmethod="get" formaction="pacebook"
+                                        style="background-image:url('assets/image/background.png')">
+                                    </button>
+                                    <div class="c_comment">
+                                        <div>아이디</div>
+                                        답글
+                                    </div>
+                                </li>
+                                <!-- 답글 끝 -->
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <%	} %>
+                <% } %>
+                <!-- 댓글 끝 -->
+            </ul>
+            <button id="comment_close">></button>
+            <div id="chat_area">
+                <div class="profile_img comment_profile" style="background-image:url('assets/image/background.png')">
+                </div>
+                <div class="chat_area_right">
+                    <input type="text" class="comment_text">
+                    <button class="comment_btn">게시</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="bottom">
-
-    </div>
+    <script>
+        document.querySelector("#board_comment_btn").addEventListener("click", function () {
+            document.querySelector("#side_comment").style.visibility = "visible";
+        });
+        document.querySelector("#comment_close").addEventListener("click", function(){
+            document.querySelector("#side_comment").style.visibility = "hidden";
+        });
+        // let comments = document.querySelectorAll(".comment_close_btn");
+        // comments.forEach( (btn) => {
+        //     console.log(this);
+        //     btn.addEventListener("click", function(){
+        //         this.parentNode.parentNode.parentNode.remove();
+        //     });
+        // });
+    </script>
 </body>
+
 </html>

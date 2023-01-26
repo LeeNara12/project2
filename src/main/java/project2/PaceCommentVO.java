@@ -9,10 +9,17 @@ public class PaceCommentVO {
 	private int user_no; // 회원 넘버
 	private int board_no; // 게시글 넘버
 	private int comment_like; // 좋아요
-	private String comment_modify; // 
+	private int comment_modify; // 
+	private Date comment_modify_time;
 	
 
 	
+	public Date getComment_modify_time() {
+		return comment_modify_time;
+	}
+	public void setComment_modify_time(Date comment_modify_time) {
+		this.comment_modify_time = comment_modify_time;
+	}
 	public int getComment_no() {
 		return comment_no;
 	}
@@ -53,10 +60,10 @@ public class PaceCommentVO {
 		this.comment_like = comment_like;
 	}
 	
-	public String getComment_modify() {
+	public int getComment_modify() {
 		return comment_modify;
 	}
-	public void setComment_modify(String comment_modify) {
+	public void setComment_modify(int comment_modify) {
 		this.comment_modify = comment_modify;
 	}
 	

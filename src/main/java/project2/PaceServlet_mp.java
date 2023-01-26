@@ -1,11 +1,15 @@
 package project2;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/pacebook2")
@@ -25,6 +29,7 @@ public class PaceServlet_mp extends HttpServlet {
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String mp = request.getParameter("main_page");
+		PaceDAO dao = new PaceDAO();
 		
 		if("my_profile".equals(mp)) {//프로필, 사이드프로필버튼
 			
@@ -87,9 +92,16 @@ public class PaceServlet_mp extends HttpServlet {
 			response.sendRedirect("main.jsp");//메인페이지로 이동
 			
 		}else if("comment".equals(mp)) {//댓글 버튼++++++++++
-			
-			response.sendRedirect("main.jsp");//메인페이지로 이동
-			
+			int board_no = Integer.parseInt(request.getParameter("board_no"));
+			PaceBoardVO pbvo = new PaceBoardVO();
+			pbvo.setBoard_no(board_no);
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("user_no");
+			List<PaceCommentVO> list = dao.Comment(user_no, board_no);
+			request.setAttribute("comment_list", list);
+			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
+			dispatch.forward(request, response);
+			return;
 		}else if("share".equals(mp)) {//공유 버튼
 			
 			response.sendRedirect("main.jsp");//메인페이지로 이동
