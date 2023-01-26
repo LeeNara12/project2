@@ -2,7 +2,7 @@
 <%@page import="project2.PaceUserVO"%>
 <%@page import="project2.PaceDAO"%>
 <%@page import="java.util.*"%>
-<%@page import java.text.SimpleDateFormat"%>
+<%@page import = "java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -442,7 +442,7 @@
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id + " " +(board_time-date) %></div>
+                                <div class="btc_id btc"><%=id + " "  %></div>
                                 <div class="btc_email btc">이메일</div>
                             </div>
                         </div>
