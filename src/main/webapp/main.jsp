@@ -26,17 +26,11 @@
             z-index: 4;
             background-color: white;
         }
-<<<<<<< HEAD
         #logo{
-            /*margin: 10px 20px;*/
+            margin: 10px 20px;
             width: 300px;
             cursor: pointer;
             margin-bottom: 10px;
-=======
-
-        #logo {
-            margin: 10px 20px;
->>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
         }
 
         #top_right {
@@ -340,11 +334,7 @@
             height: 50%;
             display: block;
         }
-<<<<<<< HEAD
       
-=======
-
-
         #side_comment {
             border: 1px solid #3169f6;
             position: fixed;
@@ -562,12 +552,9 @@
             margin: 0px;
             padding: 0px;
         }
->>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
     </style>
     <script>
-        // window.onload = function () {
 
-<<<<<<< HEAD
     	window.onload = function(){
     		document.querySelector("#board_btn").addEventListener("click", function(){
     			let board = document.board;
@@ -585,30 +572,20 @@
     		
     	
 
-=======
         //     document.querySelector("#board_comment_btn").addEventListener("click", function () {
         //         debugger
         //         document.querySelector("#side_comment").style.visibility = "visible";
         //     });
         // }
->>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
     </script>
 </head>
 
 <body>
     <div id="top">
         <div id="logo">
-<<<<<<< HEAD
-<<<<<<< HEAD
             <a href="main.jsp">
             <img class="logo" src="logo.png">
             </a>
-=======
-            <img src="assets/image/PACEBOOK.png">
->>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
-=======
-            <img src="logo.png">
->>>>>>> ec69003a838505e5aa276481d3bc9eb3977c080b
         </div>
         <div id="top_right">
             <form name="search">
@@ -643,13 +620,13 @@
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             알림
                         </button>
                     </li>
