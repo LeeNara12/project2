@@ -1,3 +1,8 @@
+<%@page import="project2.PaceBoardVO"%>
+<%@page import="project2.PaceUserVO"%>
+<%@page import="project2.PaceDAO"%>
+<%@page import="java.util.*"%>
+<%@page import = "java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="project2.*" %>
@@ -642,8 +647,36 @@
                     <!-- 친구표시 -->
                 </form>
             </ul>
+            <form>
             <ul id="show_boards">
-                <!-- 게시글 시작 데이터베이스에서 가져와서 for문으로 표시 -->
+            <%
+            PaceDAO dao = new PaceDAO();
+            HttpSession se = request.getSession();
+            int user_no = (int)se.getAttribute("user_no");
+            int count = dao.BoardCount(user_no);
+            
+            PaceUserVO puvo = new PaceUserVO();
+            PaceBoardVO pbvo = new PaceBoardVO();
+            
+            HashMap <Integer, List> map = dao.BoardContent(user_no, pbvo, puvo );
+            List <PaceUserVO> getPuvo = map.get(1); 
+            List <PaceBoardVO> getPbvo = map.get(2); 
+            Date date = new Date();
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+            
+            	
+            for(int i = 0; i<count; i++ ){
+            	String id= getPuvo.get(i).getId();
+            	String email = getPuvo.get(i).getEmail();
+            	Date board_time = getPbvo.get(i).getBoard_time();
+            	String board_content = getPbvo.get(i).getBoard_content();
+            	String [] content = board_content.split("\\+++");
+            	String url= content[0];
+            	String text= content[1];
+            	
+            	
+            %>
+                
                 <li class="board">
                     <div class="board_top">
                         <div class="board_top_left">
@@ -654,7 +687,7 @@
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc">아이디 및 생성 날짜</div>
+                                <div class="btc_id btc"><%=id + " "  %></div>
                                 <div class="btc_email btc">이메일</div>
                             </div>
                         </div>
@@ -709,6 +742,16 @@
                     </div>
                 </li>
                 <!-- 게시글 끝 -->
+                
+              <%
+              
+              
+            	}
+              
+              
+              %>  
+                
+                
             </ul>
         </div>
         <div id="side_comment">
