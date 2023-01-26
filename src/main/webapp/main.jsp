@@ -2,7 +2,7 @@
 <%@page import="project2.PaceUserVO"%>
 <%@page import="project2.PaceDAO"%>
 <%@page import="java.util.*"%>
-<%@page import = "java.text.SimpleDateFormat"%>
+<%@page import ="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,7 +27,10 @@
             background-color: white;
         }
         #logo{
-            margin: 10px 20px;
+            /*margin: 10px 20px;*/
+            width: 300px;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
         #top_right{
             width: 400px;
@@ -298,6 +301,7 @@
             height: 50%;
             display: block;
         }
+      
     </style>
     <script>
 
@@ -315,7 +319,7 @@
     			logout.submit();
     		});	
     	}
-    	
+    		
     	
 
     </script>
@@ -323,7 +327,9 @@
 <body>
     <div id="top">
         <div id="logo">
-            <img src="logo.png">
+            <a href="main.jsp">
+            <img class="logo" src="logo.png">
+            </a>
         </div>
         <div id="top_right">
             <form name="search">

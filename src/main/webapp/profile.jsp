@@ -351,7 +351,9 @@
 <body>
     <div id="top">
         <div id="logo">
-            <img src="logo.png">
+            <a href="main.jsp">
+            <img class="logo" src="logo.png">
+            </a>
         </div>
         <div id="top_right">
             <form name="search">

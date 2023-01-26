@@ -28,7 +28,7 @@ public class PaceServlet_mp extends HttpServlet {
 		
 		if("my_profile".equals(mp)) {//프로필, 사이드프로필버튼
 			
-			response.sendRedirect("main.jsp");//메인페이지로 이동
+			response.sendRedirect("profile.jsp");//메인페이지로 이동
 			
 		}else if("search".equals(mp)) {//검색버튼
 			
