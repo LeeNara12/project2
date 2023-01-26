@@ -167,7 +167,7 @@
             height: 50px;
             width: 100%;
             margin-top: 23%;
-            margin-left: 35%;
+            margin-left: 25%;
         }
         /* 보드 css */
         .board{
@@ -313,24 +313,32 @@
             margin-left: 27%;
             font-size: 20px;
         }
-        .gradient-btn {
-    display: inline-block;
-    padding: 1em 2em;
-    border-radius: 0;
-    color: #b2876f;
-    margin-top: 2rem;
-    font-weight: bold;
-    font-size: 0.678rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    background: linear-gradient(to right, rgba(178, 135, 111, 0) 25%, rgba(178, 135, 111, 0.8) 75%);
-    background-position: 1% 50%;
-    background-size: 400% 300%;
-    border: 1px solid #b2876f;
-    transition: 700ms cubic-bezier(0.165, 0.84, 0.44, 1);
+        .myButton {
+	box-shadow:inset 0px 0px 14px -3px #f2fadc;
+	background-color:white;
+	border-radius:6px;
+	border:1px solid #b2b8ad;
+	display:inline-block;
+	cursor:pointer;
+	color:#757d6f;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ced9bf;
 }
-
+.myButton:hover {
+	background-color:#F39C12;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.tap{
+    color:black
+}
+        
 
   
     </style>
@@ -417,16 +425,19 @@
                     </button>
                 </li>
                 <div class="header">닉네임
-                    <br><br><div>게시물 00      팔로워 000      팔로워000</div>
+                    <br><br><div>게시물00   
+                        <a href="#" class="tap">팔로우000</a>
+                        <a href="#" class="tap">팔로워000</a>
+                    </div>
                 </div>
                 
                 </form>
             </ul>
             <form>
                 <div id="show_boards">
-                        <button class="post">게시물</button>
-                        <button class="post">저장됨</button>
-                        <button class="post">태그됨</button>
+                    <a href="#" class="myButton">게시물</a>
+                    <a href="#" class="myButton">저장됨</a>
+                    <a href="#" class="myButton">태그됨</a>
                 </div>
                     <div>
                         <div class="contact_section">
