@@ -30,6 +30,7 @@
             text-align: center;
             overflow: hidden;
             white-space: nowrap;
+            padding-top: 50px;
         }
         .left {
             box-sizing: border-box;

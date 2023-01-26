@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +52,8 @@ public class PaceDAO {
 				result=false;
 			}
 			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,7 +82,11 @@ public class PaceDAO {
 				result= false;
 			}else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?)";
+						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?,?)";
+				/*(1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL, 7. USER_PHONE, 
+				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER)*/
+				
+				
 				pstmt=con.prepareStatement(query2);
 				
 				// 값을 주는 애들은 jsp
@@ -90,13 +98,19 @@ public class PaceDAO {
 				pstmt.setString(4, vo.getEmail());
 				pstmt.setString(5, vo.getPhone());
 				pstmt.setString(6, vo.getProfile());
-				pstmt.setString(7, vo.getGender());
+				pstmt.setString(7, vo.getBirth());
+				pstmt.setString(8, vo.getGender());
 				
 				pstmt.executeUpdate();
 				
 				result = true;
+				
+				
 			}
 			
+			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,6 +142,7 @@ public class PaceDAO {
 
 
 			pstmt.close();
+			con.close();
 
 		} catch (SQLException e) {
 			
@@ -150,7 +165,7 @@ public class PaceDAO {
 			pstmt.setDate(4, pcvo.getComment_time());
 			pstmt.setInt(5, pcvo.getComment_no());
 			pstmt.setInt(6, pcvo.getComment_like());
-			pstmt.setString(7,pcvo.getComment_modify());
+			pstmt.setInt(7,pcvo.getComment_modify());
 			
 			
 			pstmt.executeUpdate();
@@ -165,7 +180,7 @@ public class PaceDAO {
 				pcvo.setComment_time(rs.getDate("comment_time"));
 				pcvo.setComment_content(rs.getString("comment_content"));
 				pcvo.setComment_like(rs.getInt("comment_like"));
-				pcvo.setComment_modify(rs.getString("comment_modify"));
+				pcvo.setComment_modify(rs.getInt("comment_modify"));
 				pcvo.setUser_no(rs.getInt("user_no"));
 				pcvo.setBoard_no(rs.getInt("board_no"));
 				
@@ -175,7 +190,62 @@ public class PaceDAO {
 			e.printStackTrace();
 		}
 	}
-	
+	public List<PaceCommentVO> Comment(int user_no, int board_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
+		List<PaceCommentVO> list = new ArrayList<PaceCommentVO>();
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " select * from board_comment"
+					+ " where board_no = ?";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, board_no);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PaceCommentVO pcvo = new PaceCommentVO();
+				pcvo.setComment_no(rs.getInt("comment_no"));
+				pcvo.setComment_time(rs.getDate("comment_time"));
+				pcvo.setComment_content(rs.getString("comment_content"));
+				pcvo.setUser_no(rs.getInt("user_no"));
+				pcvo.setBoard_no(board_no);
+				pcvo.setComment_like(rs.getInt("comment_like"));
+				pcvo.setComment_modify(rs.getInt("comment_modify"));
+				pcvo.setComment_modify_time(rs.getDate("comment_modify_time"));
+				
+				list.add(pcvo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public PaceUserVO getUserInfo(int user_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
+		PaceUserVO puvo = new PaceUserVO();
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " select * from user_info"
+					+ " where user_no = ?";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				puvo.setUser_no(user_no);
+				puvo.setId("user_id");
+				puvo.setName("user_name");
+				puvo.setEmail("user_email");
+				puvo.setBirth("user_birth");
+				puvo.setPhone("user_phone");
+				puvo.setProfile("user_profile");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return puvo;
+	}
 	
 	//해당 user_no의 게시글 수
 	public int BoardCount(int user_no) {
@@ -194,6 +264,8 @@ public class PaceDAO {
 			
 			result = rs.getInt("count(*)");
 			
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -205,12 +277,16 @@ public class PaceDAO {
 	
 	
 	//해당 게시글의 내용
-	public HashMap<Integer,List> BoardContent(int user_no, PaceBoardVO pbvo, PaceUserVO puvo) {
+	public HashMap<Integer,List> BoardContent(int user_no) {
 		
 		HashMap<Integer,List> map = new HashMap<Integer,List>();
 		List <PaceBoardVO> pbvo_list = new ArrayList <>();
 		List <PaceUserVO> puvo_list = new ArrayList <>(); 
+		PaceBoardVO pbvo = new PaceBoardVO();
+		PaceUserVO puvo = new PaceUserVO();
+		
 		try {
+			
 			
 			con = dataFactory.getConnection();
 			String query1 = "Select * from board b, user_info ui"
@@ -240,7 +316,8 @@ public class PaceDAO {
 			
 			
 			
-			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			

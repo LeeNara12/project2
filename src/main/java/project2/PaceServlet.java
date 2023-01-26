@@ -79,7 +79,7 @@ public class PaceServlet extends HttpServlet {
 			boolean result = dao.join(vo); // dao의 join메소드로 vo객체를 넘김
 
 			if (result) {// 회원가입이 성공했을 때
-				response.sendRedirect("login.jsp");// ==임시==
+				response.sendRedirect("join_success.jsp");
 				return;
 			}else {// 회원가입에 실패했을 때
 				request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
