@@ -599,18 +599,22 @@
     <div id="top">
         <div id="logo">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="main.jsp">
             <img class="logo" src="logo.png">
             </a>
 =======
             <img src="assets/image/PACEBOOK.png">
 >>>>>>> dbb28cd4b97df872a90cd9ba67eb6ea754c434c3
+=======
+            <img src="logo.png">
+>>>>>>> ec69003a838505e5aa276481d3bc9eb3977c080b
         </div>
         <div id="top_right">
             <form name="search">
                 <div id="search_box">
                     <button type="submit" id="search_btn" name="main_page" value="search" formmethod="get"
-                        formaction="pacebook">
+                        formaction="pacebook2">
                         검색
                     </button>
                     <input type="text" id="search_text" name="search_content">
@@ -620,7 +624,7 @@
                 <div id="my_profile">
                     <button class="profile_img" type="submit" name="main_page" value="my_profile"
                         style="background-image:url('assets/image/background.png')" formmethod="get"
-                        formaction="pacebook">
+                        formaction="pacebook2">
                     </button>
                 </div>
             </form>
@@ -633,37 +637,37 @@
                 <ul id="tool_list">
                     <li>
                         <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
-                            formaction="pacebook">
+                            formaction="pacebook2">
                             홈
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             알림
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook">
+                            formmethod="get" formaction="pacebook2">
                             메시지
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
-                            formaction="pacebook">
+                            formaction="pacebook2">
                             만들기
                         </button>
                     </li>
                 </ul>
                 <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
-                    formaction="pacebook">
+                    formaction="pacebook2">
                     더보기
                 </button>
             </div>
@@ -675,7 +679,7 @@
                     <!-- 데이터베이스에서 가져와서 친구표시 -->
                     <li class="friend_pf">
                         <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
-                            formaction="pacebook" style="background-image:url('assets/image/background.png')">
+                            formaction="pacebook2" style="background-image:url('assets/image/background.png')">
                         </button>
                     </li>
                     <!-- 친구표시 -->
@@ -695,17 +699,16 @@
             SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
             	
- //           for(int i = 0; i<count; i++ ){
- //           	String id= getPuvo.get(i).getId();
- //           	String email = getPuvo.get(i).getEmail();
- //           	Date board_time = getPbvo.get(i).getBoard_time();
- //           	String board_content = getPbvo.get(i).getBoard_content();
- //           	String [] content = board_content.split("\\+++");
- //           	System.out.println(board_content +" " + content);
- //           	System.out.println(content.length);
- //           	
- //           	String url= content[0];
- //           	String text= content[1];
+            for(int i = 0; i<count; i++ ){
+            	String id= getPuvo.get(i).getId();
+            	String email = getPuvo.get(i).getEmail();
+            	Date board_time = getPbvo.get(i).getBoard_time();
+            	String board_content = getPbvo.get(i).getBoard_content();
+            	String [] content = board_content.split("\\+++");
+            	
+            	
+            	String url= content[0];
+            	String text= content[1];
             	
             	
             %>
@@ -720,15 +723,24 @@
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc">아이디 작성시간</div>
-                                <div class="btc_email btc">이메일</div>
+                                <div class="btc_id btc"><%=id %> 작성시간</div>
+                                <div class="btc_email btc"><%=email %></div>
                             </div>
                         </div>
                         <div class="board_top_right">
                             <div class="board_more board_btn ">
+<<<<<<< HEAD
+                                <button class="profile_img" type="submit" name="main_page" value="bd_more" 
+                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/more_btn.png')">
+                                	 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                    </svg>
+=======
                                 <button class="profile_img" type="submit" name="main_page" value="bd_more"
                                     formmethod="get" formaction="pacebook"
                                     style="background-image:url('assets/image/more_btn.png')">
+>>>>>>> 21ad82392480df1f33f1045bbcd2434a7a42805f
                                 </button>
                             </div>
                         </div>
@@ -740,6 +752,29 @@
                         <div class="content_top">
                             <div class="content_top_left">
                                 <div class="board_like board_btn ">
+<<<<<<< HEAD
+                                     <button class="profile_img" type="submit" name="main_page" value="like" 
+                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/like_btn.png')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                         <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="board_comment board_btn ">
+                                    <button class="profile_img" type="submit" name="main_page" value="comment" 
+                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/comment_btn.png')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
+                                            <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="board_share board_btn ">
+                                    <button class="profile_img" type="submit" name="main_page" value="share" 
+                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/share_btn.png')">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                                        </svg>
+=======
                                     <button class="profile_img" type="submit" name="main_page" value="like"
                                         formmethod="get" formaction="pacebook"
                                         style="background-image:url('assets/image/like_btn.png')">
@@ -754,20 +789,30 @@
                                     <button class="profile_img" type="submit" name="main_page" value="share"
                                         formmethod="get" formaction="pacebook"
                                         style="background-image:url('assets/image/share_btn.png')">
+>>>>>>> 21ad82392480df1f33f1045bbcd2434a7a42805f
                                     </button>
                                 </div>
                             </div>
                             <div class="content_top_right">
                                 <div class="board_record board_btn ">
+<<<<<<< HEAD
+                                    <button class="profile_img"type="submit" name="main_page" value="record" 
+                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/record_btn.png') ">
+                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                                            <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+                                         </svg>
+=======
                                     <button class="profile_img" type="submit" name="main_page" value="record"
                                         formmethod="get" formaction="pacebook"
                                         style="background-image:url('assets/image/record_btn.png')">
+>>>>>>> 21ad82392480df1f33f1045bbcd2434a7a42805f
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div class="board_id">
-                            @아이디
+                            @<%=id %>
                         </div>
                         <p class="content">
                             내용
@@ -779,10 +824,11 @@
               <%
               
               
-//            	}
+            	}
               
               
               %>  
+                
                 
                 
             </ul>

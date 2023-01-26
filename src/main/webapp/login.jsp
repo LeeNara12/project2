@@ -115,6 +115,10 @@
         /* .table {
             margin-right: 30px;
         } */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 62bc0e81a0e418eb602aa605d6a22bde393f9181
     </style>
 </head>
 
