@@ -1,12 +1,8 @@
-<%@page import="project2.PaceBoardVO"%>
-<%@page import="project2.PaceUserVO"%>
-<%@page import="project2.PaceDAO"%>
+<%@ page import="project2.*" %>
 <%@page import="java.util.*"%>
 <%@page import = "java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="project2.*" %>
-<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -654,11 +650,7 @@
             HttpSession se = request.getSession();
             int user_no = (int)se.getAttribute("user_no");
             int count = dao.BoardCount(user_no);
-            
-            PaceUserVO puvo = new PaceUserVO();
-            PaceBoardVO pbvo = new PaceBoardVO();
-            
-            HashMap <Integer, List> map = dao.BoardContent(user_no, pbvo, puvo );
+            HashMap <Integer, List> map = dao.BoardContent(user_no);
             List <PaceUserVO> getPuvo = map.get(1); 
             List <PaceBoardVO> getPbvo = map.get(2); 
             Date date = new Date();
@@ -761,14 +753,11 @@
             <ul id="comment_area">
                 <!-- 댓글 -->
                 
-                <% PaceDAO dao = new PaceDAO();%>
                 <% String mp = request.getParameter("main_page");
                 	if("comment".equals(mp)) {
 	        			int board_no = Integer.parseInt(request.getParameter("board_no"));
 	        			PaceBoardVO pbvo = new PaceBoardVO();
 	        			pbvo.setBoard_no(board_no);
-	        			HttpSession se = request.getSession();
-	        			int user_no = (int)se.getAttribute("user_no");
 	        			List<PaceCommentVO> list = dao.Comment(user_no, board_no);
        			 		for(PaceCommentVO vo : list){ %>
                 <li class="comment_box">
