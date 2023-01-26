@@ -8,7 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+    <script>
+    window.onload = function(){
+        document.querySelector(".myButton").addEventListener("click", function(){
+            let login = document.login;
+            login.method = "get";
+            login.action = "login.jsp";
+            login.submit();
+        });
+        document.querySelector(".follow").addEventListener("click", function(){
+            let login = document.login;
+            login.method = "post";
+            login.action = "pacebook";
+            login.submit();
+        });
+    }
+    </script>
+  <style>
         /* 아래부분 - 컨텐츠부분 - 위 */
         #pacebook_contents {
             /* border: 1px solid rgb(0, 162, 255); */
@@ -133,11 +149,12 @@
             float: right;
 
         }
-
+        
+        
         .follow {
             box-shadow: 0px 0px 0px 2px #f39c12;
-            background: linear-gradient(to bottom, #f39c12, #ffab23 100%);
-            background-color: #f39c12;
+            background: linear-gradient(to bottom, #f39c12, #e6cba0 100%);
+            background-color: #e9cb9b;
             border-radius: 10px;
             border: 1px solid #ffaa22;
             display: inline-block;
@@ -149,16 +166,8 @@
             text-shadow: 0px 1px 0px #f39c12;
             /* width: 17%; */
         }
-
-        .myButton:hover {
-            background: #f39c12;
-            background-color: #ffab23;
-        }
-
-        .myButton:active {
-            position: relative;
-            top: 1px;
-        }
+        
+   
 
 
         .follown:hover {
@@ -171,9 +180,8 @@
            
             top: 1px;
         }
-
-
-
+        
+        
         .myButton {
             box-shadow: 0px 0px 0px 2px #f39c12;
             background: #F39C12;
@@ -187,8 +195,8 @@
             font-size: 20px;
             text-decoration: none;
             text-shadow: 0px 1px 0px #f39c12;
-            margin-left: 165%;
-            margin-top: 24%;
+            margin-left: 195%;
+            margin-top: 19%;
             height: 31px;
             width: 102%;
             padding-left: 6%;
@@ -209,12 +217,10 @@
     <head>
 
     <body>
-
+		<form name = "login">
         <!--컨텐츠 내용-->
         <div id="pacebook_contents">
-
-
-            <div id="content_wrap">
+			 <div id="content_wrap">
                 <div id="top2">
                     <h1 id="wellcome">Pace Book에 오신 것을 환영합니다</h1>
                     <div id="wellcome1">
@@ -272,10 +278,10 @@
                 </div>
                 <div id="bottom2">
                     <footer id="join">
-                        <a href="#" class="myButton">메인화면으로 가기</a>
+                        <a href="#" class="myButton">로그인 하러가기</a>
                     </footer>
                 </div>
-
+            </form>
 </head>
 
 </body>
