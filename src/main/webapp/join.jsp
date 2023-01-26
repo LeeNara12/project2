@@ -61,6 +61,7 @@
             visibility: hidden;
             color: red;
             font-size: 20px;
+            margin-bottom: 10px;
         }
         input[type=radio]{
             display: none;
@@ -80,26 +81,28 @@
     </style>
     <script>
         window.onload = function () {
-            document.querySelector("#id").addEventListener("focusout", function () {
+            let id_regex = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
+            let id = document.querySelector("#id");
+            id.addEventListener("focusout", function () {
                 document.querySelector("#id_").style.visibility = "visible";
                 document.querySelector("#id_").style.position = "relative";
-                let regex = /^[A-Za-z]{1}[A-Za-z0-9]{3,19}$/;
-                if (document.querySelector("#id").value == "") {
+                if (id.value == "") {
                     document.querySelector("#id_").innerHTML = "필수 정보 입니다.";
-                } else if (!regex.test(document.querySelector("#id").value)) {
+                } else if (!id_regex.test(id.value)) {
                     document.querySelector("#id_").innerHTML = "4~20자의 영문 소문자, 대문자, 숫자만 사용 가능합니다.";
                 } else {
                     document.querySelector("#id_").style.visibility = "hidden";
                     document.querySelector("#id_").style.position = "absolute";
                 }
             });
-            document.querySelector("#pw").addEventListener("focusout", function () {
+            let pw_regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+            let pw = document.querySelector("#pw");
+            pw.addEventListener("focusout", function () {
                 document.querySelector("#pw_").style.visibility = "visible";
                 document.querySelector("#pw_").style.position = "relative";
-                let regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
-                if (document.querySelector("#pw").value == "") {
+                if (pw.value == "") {
                     document.querySelector("#pw_").innerHTML = "필수 정보 입니다.";
-                } else if (!regex.test(document.querySelector("#pw").value)) {
+                } else if (!pw_regex.test(pw.value)) {
                     document.querySelector("#pw_").innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
                 } else {
                     document.querySelector("#pw_").style.visibility = "hidden";
@@ -111,39 +114,88 @@
                 document.querySelector("#pw2_").style.position = "relative";
                 if (document.querySelector("#pw2").value == "") {
                     document.querySelector("#pw2_").innerHTML = "필수 정보 입니다.";
-                } else if (document.querySelector("#pw").value != document.querySelector("#pw2").value) {
+                } else if (pw.value != document.querySelector("#pw2").value) {
                     document.querySelector("#pw2_").innerHTML = "비밀번호가 일치하지 않습니다.";
                 } else {
                     document.querySelector("#pw2_").style.visibility = "hidden";
                     document.querySelector("#pw2_").style.position = "absolute";
                 }
             });
-            document.querySelector("#email").addEventListener("focusout", function () {
+            let email_regex = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
+            let email = document.querySelector("#email");
+            email.addEventListener("focusout", function () {
                 document.querySelector("#email_").style.visibility = "visible";
                 document.querySelector("#email_").style.position = "relative";
-                let regex = /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/;
-                if (document.querySelector("#email").value == "") {
+                if (email.value == "") {
                     document.querySelector("#email_").innerHTML = "필수 정보 입니다.";
-                } else if (!regex.test(document.querySelector("#email").value)) {
+                } else if (!email_regex.test(email.value)) {
                     document.querySelector("#email_").innerHTML = "이메일 형식이 올바르지 않습니다."
                 } else {
                     document.querySelector("#email_").style.visibility = "hidden";
                     document.querySelector("#email_").style.position = "absolute";
                 }
             });
-            document.querySelector("#phone").addEventListener("focusout", function () {
+            let phone_regex = /^(\d{2,3}).-(\d{3,4}).-(\d{4})$/;
+            let phone = document.querySelector("#phone");
+            phone.addEventListener("focusout", function () {
                 document.querySelector("#phone_").style.visibility = "visible";
                 document.querySelector("#phone_").style.position = "relative";
-                let regex = /^(\d{2,3}).-(\d{3,4}).-(\d{4})$/;
-                if (document.querySelector("#phone").value == "") {
+                if (phone.value == "") {
                     document.querySelector("#phone_").innerHTML = "필수 정보 입니다.";
-                } else if (!regex.test(document.querySelector("#phone").value)) {
+                } else if (!phone_regex.test(phone.value)) {
                     document.querySelector("#phone_").innerHTML = "전화번호 형식이 올바르지 않습니다."
                 } else {
                     document.querySelector("#phone_").style.visibility = "hidden";
                     document.querySelector("#phone_").style.position = "absolute";
                 }
             });
+            document.querySelector("#join_btn").addEventListener("click", function () {
+                debugger
+                let join = document.join;
+                let ready = [];
+                let istrue = false;
+                if(id_regex.test(id.value)){
+                    ready[0] = true;
+                } else {
+                    ready[0] = false;
+                    id.value = "";
+                    id.parentElement.lastElementChild.style.visibility = "visible";
+                }
+                if(pw_regex.test(pw.value)){
+                    ready[1] = true;
+                } else {
+                    ready[1] = false;
+                    pw.value = "";
+                    pw.parentElement.lastElementChild.style.visibility = "visible";
+                }
+                if(email_regex.test(email.value)){
+                    ready[2] = true;
+                } else {
+                    ready[2] = false;
+                    email.value = "";
+                    email.parentElement.lastElementChild.style.visibility = "visible";
+                }
+                if(phone_regex.test(phone.value)){
+                    ready[3] = true;
+                } else {
+                    ready[3] = false;
+                    phone.value = "";
+                    phone.parentElement.lastElementChild.style.visibility = "visible";
+                }
+                for(i of ready){
+                    if(i==false){
+                        istrue = false;
+                        break;
+                    } else {
+                        istrue = true;
+                    }
+                }
+                if(istrue == true){
+                    join.method = "get";
+                    join.action = "pacebook";
+                    join.submit();
+                }
+           });
 
         }
     </script>
@@ -158,7 +210,7 @@
             <div id="text_boxes">
                 <div class="box">
                     <div><b>아이디</b></div>
-                    <input type="text" id="id" name="id" class="book" title="ID" required>
+                    <input type="text" id="id" name="id" class="book" id="ID" required>
                     <div id="id_" class="hidden_msg"></div>
                 </div>
                 <br>
@@ -218,13 +270,6 @@
         let autoHyphen = (target) => {
             target.value = target.value.replace(/[^0-9]/g, "").replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, `$1-$2-$3`).replace(/(\-{1,2})$/g, "");
         };
-        document.querySelector("#join_btn").addEventListener("click", function () {
-            let join = document.join;
-            join.method = "get";
-            join.action = "pacebook";
-            join.submit();
-        });
     </script>
 </body>
-
 </html>
