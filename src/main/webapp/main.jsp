@@ -595,7 +595,7 @@
             <form name="search">
                 <div id="search_box">
                     <button type="submit" id="search_btn" name="main_page" value="search" formmethod="get"
-                        formaction="pacebook2">
+                        formaction="pacebook">
                         검색
                     </button>
                     <input type="text" id="search_text" name="search_content">
@@ -605,7 +605,7 @@
                 <div id="my_profile">
                     <button class="profile_img" type="submit" name="main_page" value="my_profile"
                         style="background-image:url('assets/image/background.png')" formmethod="get"
-                        formaction="pacebook2">
+                        formaction="pacebook">
                     </button>
                 </div>
             </form>
@@ -618,37 +618,37 @@
                 <ul id="tool_list">
                     <li>
                         <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
-                            formaction="pacebook2">
+                            formaction="pacebook">
                             홈
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             알림
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook2">
+                            formmethod="get" formaction="pacebook">
                             메시지
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
-                            formaction="pacebook2">
+                            formaction="pacebook">
                             만들기
                         </button>
                     </li>
                 </ul>
                 <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
-                    formaction="pacebook2">
+                    formaction="pacebook">
                     더보기
                 </button>
             </div>
@@ -660,7 +660,7 @@
                     <!-- 데이터베이스에서 가져와서 친구표시 -->
                     <li class="friend_pf">
                         <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
-                            formaction="pacebook2" style="background-image:url('assets/image/background.png')">
+                            formaction="pacebook" style="background-image:url('assets/image/background.png')">
                         </button>
                     </li>
                     <!-- 친구표시 -->
@@ -680,16 +680,17 @@
             SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
             	
-            for(int i = 0; i<count; i++ ){
-            	String id= getPuvo.get(i).getId();
-            	String email = getPuvo.get(i).getEmail();
-            	Date board_time = getPbvo.get(i).getBoard_time();
-            	String board_content = getPbvo.get(i).getBoard_content();
-            	String [] content = board_content.split("\\+++");
-            	
-            	
-            	String url= content[0];
-            	String text= content[1];
+ //           for(int i = 0; i<count; i++ ){
+ //           	String id= getPuvo.get(i).getId();
+ //           	String email = getPuvo.get(i).getEmail();
+ //           	Date board_time = getPbvo.get(i).getBoard_time();
+ //           	String board_content = getPbvo.get(i).getBoard_content();
+ //           	String [] content = board_content.split("\\+++");
+ //           	System.out.println(board_content +" " + content);
+ //           	System.out.println(content.length);
+ //           	
+ //           	String url= content[0];
+ //           	String text= content[1];
             	
             	
             %>
@@ -704,8 +705,8 @@
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id %> 작성시간</div>
-                                <div class="btc_email btc"><%=email %></div>
+                                <div class="btc_id btc">아이디 작성시간</div>
+                                <div class="btc_email btc">이메일</div>
                             </div>
                         </div>
                         <div class="board_top_right">
@@ -793,7 +794,7 @@
                             </div>
                         </div>
                         <div class="board_id">
-                            @<%=id %>
+                            @아이디
                         </div>
                         <p class="content">
                             내용
@@ -805,11 +806,10 @@
               <%
               
               
-            	}
+//            	}
               
               
               %>  
-                
                 
                 
             </ul>
