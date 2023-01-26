@@ -418,7 +418,7 @@
             List <PaceUserVO> getPuvo = map.get(1); 
             List <PaceBoardVO> getPbvo = map.get(2); 
             Date date = new Date();
-            SimpleDateFormat format = new SimpleDaateFormat("yyyy-mm-dd HH:mm:ss");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
             	
             for(int i = 0; i<count; i++ ){
