@@ -566,7 +566,7 @@
 <body>
     <div id="top">
         <div id="logo">
-            <img src="assets/image/PACEBOOK.png">
+            <img src="logo.png">
         </div>
         <div id="top_right">
             <form name="search">
