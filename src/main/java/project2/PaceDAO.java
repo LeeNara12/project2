@@ -50,6 +50,8 @@ public class PaceDAO {
 				result=false;
 			}
 			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,7 +80,11 @@ public class PaceDAO {
 				result= false;
 			}else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?)";
+						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?,?)";
+				/*(1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL, 7. USER_PHONE, 
+				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER)*/
+				
+				
 				pstmt=con.prepareStatement(query2);
 				
 				// 값을 주는 애들은 jsp
@@ -90,13 +96,19 @@ public class PaceDAO {
 				pstmt.setString(4, vo.getEmail());
 				pstmt.setString(5, vo.getPhone());
 				pstmt.setString(6, vo.getProfile());
-				pstmt.setString(7, vo.getGender());
+				pstmt.setString(7, vo.getBirth());
+				pstmt.setString(8, vo.getGender());
 				
 				pstmt.executeUpdate();
 				
 				result = true;
+				
+				
 			}
 			
+			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -128,6 +140,7 @@ public class PaceDAO {
 
 
 			pstmt.close();
+			con.close();
 
 		} catch (SQLException e) {
 			
@@ -194,6 +207,8 @@ public class PaceDAO {
 			
 			result = rs.getInt("count(*)");
 			
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -240,7 +255,8 @@ public class PaceDAO {
 			
 			
 			
-			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			

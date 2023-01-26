@@ -421,14 +421,17 @@
             SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
             	
-            for(int i = 0; i<count; i++ ){
-            	String id= getPuvo.get(i).getId();
-            	String email = getPuvo.get(i).getEmail();
-            	Date board_time = getPbvo.get(i).getBoard_time();
-            	String board_content = getPbvo.get(i).getBoard_content();
-            	String [] content = board_content.split("\\+++");
-            	String url= content[0];
-            	String text= content[1];
+ //           for(int i = 0; i<count; i++ ){
+ //           	String id= getPuvo.get(i).getId();
+ //           	String email = getPuvo.get(i).getEmail();
+ //           	Date board_time = getPbvo.get(i).getBoard_time();
+ //           	String board_content = getPbvo.get(i).getBoard_content();
+ //           	String [] content = board_content.split("\\+++");
+ //           	System.out.println(board_content +" " + content);
+ //           	System.out.println(content.length);
+ //           	
+ //           	String url= content[0];
+ //           	String text= content[1];
             	
             	
             %>
@@ -442,7 +445,7 @@
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id + " "  %></div>
+                                <div class="btc_id btc">아이디 작성시간</div>
                                 <div class="btc_email btc">이메일</div>
                             </div>
                         </div>
@@ -497,7 +500,7 @@
               <%
               
               
-            	}
+//            	}
               
               
               %>  
