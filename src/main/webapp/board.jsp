@@ -34,7 +34,7 @@
         /* 책 왼쪽 */
         #book_left{
             vertical-align: top;
-            border: 1px solid #3169f6;
+            border: 1px solid #F39C12;
             width:27%;
             height: 95%;
             display: inline-block;
@@ -50,7 +50,7 @@
         /* 책 오른쪽 */
         #book_right{
             margin-top:20px;
-            border: 1px solid #3169f6;
+            border: 1px solid #F39C12;
             border-left: 0px;
             background-color: white;
             width:50%;
@@ -69,7 +69,7 @@
         #cancell_btn{
             height:40px;
             margin: 20px 10px;
-            border: 1px solid #3169f6;
+            border: 1px solid #F39C12;
             color: #F39C12;
             font-weight: bolder;
             font-size: 2vh;
@@ -78,7 +78,7 @@
         #board_btn{
             height:40px;
             margin: 20px 10px;
-            border: 1px solid #3169f6;
+            border: 1px solid#F39C12;
             color: #F39C12;
             font-weight: bolder;
             font-size: 2vh;
@@ -94,7 +94,7 @@
         /* 사진이 올라가는 박스 */
         #img_box{ 
             box-sizing: border-box;
-            border:1px solid #3169f6;
+            border:1px solid #F39C12;
             box-sizing: border-box;
             margin: 10px;
             height:400px;
@@ -199,10 +199,23 @@
        	
             //게시판 작성버튼
         	 document.querySelector("#board_btn").addEventListener("click", function(){
-                 let board = document.board;
+        		let url = document.querySelector("#url_address_in").value; 
+        		let content = document.querySelector("#content_text").value; 
+                if(
+              		(url==null||url==undefined||url=="") || (content==null||content==undefined||content=="")
+                ){
+                	alert('게시글을 작성해주세요!');
+                }else{
+                	
+        		 let board = document.board;
                  board.method = "get";
                  board.action = "pacebook";
                  board.submit();
+                }
+        		 
+        		 
+                 
+                 
              });
              //게시판 뒤로가기 버튼
              document.querySelector("#cancell_btn").addEventListener("click", function(){

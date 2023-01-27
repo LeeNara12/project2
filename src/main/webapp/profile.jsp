@@ -13,7 +13,8 @@
         }
         /* /////////////상단 바 /////////////////////*/
         #top{
-            border-bottom: 1px solid #3169f6;
+            box-shadow: 1px 1px 2px 2px grey;
+            border-bottom: 1px solid #F39C12;
             display: flex;
             justify-content: space-between;
             width:100%;
@@ -38,7 +39,7 @@
         }
         #search_btn{
             flex-grow: 1;
-            border:1px solid #3169f6;
+            border:1px solid #F39C12;
             color:#F39C12;
             background-color: white;
             font-weight: bolder;
@@ -50,7 +51,7 @@
         }
         #search_text{
             flex-grow: 2;
-            border:1px solid #3169f6;
+            border:1px solid #F39C12;
             border-left: 0px;
             outline: none;
         }
@@ -76,7 +77,7 @@
             background-color: white;
             top:91px;
             /* border-right:1px solid rgb(167, 167, 167); */
-            border-right:1px solid #3169f6;
+            border-right:1px solid #F39C12;
             box-sizing: border-box;
             display: flex;
             width:20%;
@@ -98,8 +99,7 @@
             width:100%;
             height:100px;
             border: 0px;
-            border-bottom:1px solid #3169f6;
-            cursor: pointer;
+            border-bottom:1px solid #F39C12;
             color: #F39C12;
             font-weight: bolder;
             background-color: white;
@@ -111,7 +111,7 @@
             background-color: #F39C12;
         }
         .side_more{
-            border-top:1px solid #3169f6;
+            border-top:1px solid #F39C12;
         }
         /* fixed된 사이드 영역을 대체 */
         .side_tool{
@@ -123,7 +123,7 @@
         }
         /* ////////////////////////////////////// */
         #center_box{
-            border-right:1px solid #3169f6;
+            border-right:1px solid #F39C12;
             box-sizing: border-box;
             width:60%;
             min-width: 835px;
@@ -139,7 +139,7 @@
             padding:15px 50px;
             overflow-x: scroll;
             white-space: nowrap;
-            border: 1px solid #3169f6;
+            border: 1px solid #F39C12;
             display: block;
         }
         .friend_pf{
@@ -172,7 +172,7 @@
         /* 보드 css */
         .board{
             box-sizing: border-box;
-            border:1px solid #3169f6;
+            border:1px solid #F39C12;
             height:600px;
             max-height: 600px;
             margin-bottom: 40px;

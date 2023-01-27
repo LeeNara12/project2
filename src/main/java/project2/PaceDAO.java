@@ -1,6 +1,7 @@
 package project2;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -135,6 +136,19 @@ public class PaceDAO {
 	           pstmt.setInt(3, pbvo.getBoard_like());
 	           pstmt.setDate(4, pbvo.getBoard_modify_time());
 	           pstmt.setString(5, pbvo.getBoard_content());
+=======
+			String query1 = " insert into board"
+					+ "	values(seq_board.nextval, current_date, 0, ?, ?, ?, ?, ?)";//SQL문 작성   // 게시글 넘버 시쿼스이름 : seq_board
+			                  //1. 게시판시퀀스 2. 생성일 3.게시판 수정여부 4.게시판 이미지 url 5. 회원 시퀀스 (user_no) 6. 게시판 좋아요수  7. 게시판수정시간 8. 게시판내용  
+			pstmt = con.prepareStatement(query1);
+			
+			pstmt.setString(1, pbvo.getBoard_url());
+			pstmt.setInt(2, user_no);
+			pstmt.setInt(3, pbvo.getBoard_like());
+			pstmt.setDate(4, pbvo.getBoard_modify_time());
+			pstmt.setString(5, pbvo.getBoard_content());
+			
+>>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
 			
 			pstmt.executeUpdate();
 
@@ -145,6 +159,7 @@ public class PaceDAO {
 		}
 	}
 
+<<<<<<< HEAD
 	public void createComment(int user_no, int board_no,PaceCommentVO pcvo) {//댓글 작성 메소드
 		try {
 			con = dataFactory.getConnection();
@@ -183,6 +198,10 @@ public class PaceDAO {
 	}
 	
 	public List<PaceCommentVO> Comment(int board_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
+=======
+
+	public List<PaceCommentVO> Comment(int user_no, int board_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
+>>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
 		List<PaceCommentVO> list = new ArrayList<PaceCommentVO>();
 		try {
 			con = dataFactory.getConnection();
@@ -289,6 +308,7 @@ public class PaceDAO {
 			
 			while(rs.next()) {
 				PaceBoardVO pbvo = new PaceBoardVO();
+<<<<<<< HEAD
 				pbvo.setBoard_no(rs.getInt("board_no"));
 				pbvo.setBoard_time(rs.getDate("board_time"));
 				pbvo.setBoard_modify(rs.getInt("board_modify"));
@@ -322,6 +342,209 @@ public class PaceDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	//프로필 url 불러오는 메소드
+	public String profile(int user_no) {
+		String profile="";
+		
+		try {
+			con = dataFactory.getConnection();
+			String query1 = "Select * from user_info"
+							+" Where user_no = ?";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			profile = rs.getString("user_profile");
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return profile;
+	}
+	
+	//?시간전 인지 가져오는 메소드
+	//sql.date를 변수로 넣음 
+	public String time(Date time) {
+		
+	long write_time= time.getTime();
+	
+	long now = System.currentTimeMillis()/1000;
+		
+	long diff = now-write_time;
+	long diff1 = diff/1000; //log 범위를 넘어가서...
+	
+	int result= 0;
+	String a = "";
+		
+		
+		if(diff1<60) {
+			//초단위
+			System.out.println(diff/1000);
+			result = (int)diff/1000;
+			a = "초 전";
+			
+		}else if(diff1<60*60){
+			//분단위
+			
+			result = (int)diff/1000*60;
+			a = "분 전";
+			System.out.println(result+a);
+					
+		}else if(diff1<60*60*24) {
+			//시간단위
+			
+			result = (int)diff/1000*60*60;
+			a = "시간 전";
+			System.out.println(result+a);
+		}else if(diff1<60*60*24*30) {
+			//일 단위
+			
+			result = (int)diff/1000*60*60*24;
+			a = "일 전";
+			System.out.println(result+a);
+		}else if(diff1<60*60*24*30*12) {
+			//월 단위
+			
+			result = (int)diff/1000*60*60*24*30;
+			a = "달 전";
+			System.out.println(result+a);
+		}else {
+			//년 이상
+			
+			result = (int)diff/1000*60*60*24*30*12;
+			a = "년 전";
+			System.out.println(result+a);
+			
+		}
+		
+		return result+a;
+		
+	}
+	
+	public List<PaceBoardVO> getBoard() {//게시물 가져오는 메소드
+	      List<PaceBoardVO> list = new ArrayList<PaceBoardVO>();
+	      try {
+	         con = dataFactory.getConnection();
+	         
+	         String query1 = " select * from board"
+	               + " order by board_time desc";
+	         
+	         pstmt = con.prepareStatement(query1);
+	         ResultSet rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	            PaceBoardVO pbvo = new PaceBoardVO();
+	            pbvo.setBoard_no(rs.getInt("board_no"));
+	            pbvo.setBoard_time(rs.getDate("board_time"));
+	            pbvo.setBoard_modify(rs.getInt("board_modify"));
+	            pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
+	            pbvo.setBoard_content(rs.getString("board_content"));
+	            pbvo.setUser_no(rs.getInt("user_no"));
+	            pbvo.setBoard_like(rs.getInt("board_like"));
+	            pbvo.setBoard_url(rs.getString("board_url"));
+	            
+	            list.add(pbvo);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
+	
+	
+	public List<PaceCommentVO> Comment(int board_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
+	      List<PaceCommentVO> list = new ArrayList<PaceCommentVO>();
+	      try {
+	         con = dataFactory.getConnection();
+	         
+	         String query1 = " select * from board_comment"
+	               + " where board_no = ?"
+	               + " order by comment_time asc";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+	         
+	         pstmt = con.prepareStatement(query1);
+	         pstmt.setInt(1, board_no);
+	         ResultSet rs = pstmt.executeQuery();
+	         
+	         while(rs.next()) {
+	            PaceCommentVO pcvo = new PaceCommentVO();
+	            pcvo.setComment_no(rs.getInt("comment_no"));
+	            pcvo.setComment_time(rs.getDate("comment_time"));
+	            pcvo.setComment_content(rs.getString("comment_content"));
+	            pcvo.setUser_no(rs.getInt("user_no"));
+	            pcvo.setBoard_no(board_no);
+	            pcvo.setComment_like(rs.getInt("comment_like"));
+	            pcvo.setComment_modify(rs.getInt("comment_modify"));
+	            pcvo.setComment_modify_time(rs.getDate("comment_modify_time"));
+	            
+	            list.add(pcvo);
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
+	
+	public void createComment(int user_no, int board_no,PaceCommentVO pcvo) {//댓글 작성 메소드
+	      try {
+	         con = dataFactory.getConnection();
+	         
+	         String query1 = " insert into board_comment(comment_no, comment_time, comment_content,"
+	               + " user_no, board_no, comment_like, comment_modify, comment_modify_time)"
+	               + " values(seq_comment.nextval, current_date, ?, ?, ?, 0, 0, null)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+	         
+	         pstmt = con.prepareStatement(query1);
+	         pstmt.setString(1, pcvo.getComment_content());
+	         pstmt.setInt(2, user_no);
+	         pstmt.setInt(3, board_no);
+	         
+	         pstmt.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	   }
+	
+	public void delComment(int comment_no) {//댓글 작성 메소드
+	      try {
+	         con = dataFactory.getConnection();
+	         
+	         String query1 = " delete from board_comment"
+	               + " where comment_no = ?";
+	         
+	         pstmt = con.prepareStatement(query1);
+	         pstmt.setInt(1, comment_no);
+	         
+	         pstmt.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	   }
+	
+	public void delBoard(int board_no) {
+	      try {
+	         con = dataFactory.getConnection();
+	         
+	         String query1 = " delete from board"
+	               + " where board_no = ?";
+	         
+	         pstmt = con.prepareStatement(query1);
+	         pstmt.setInt(1, board_no);
+	         pstmt.executeUpdate();
+	         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	   }
+	
 }
 
  
