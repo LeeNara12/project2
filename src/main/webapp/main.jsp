@@ -11,68 +11,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pacebook</title>
-    <style>
-        body {
+   <style>
+        body{
             margin: 0px;
         }
-
         /* /////////////상단 바 /////////////////////*/
-        #top {
-            border-bottom: 1px solid #3169f6;
+        #top{
+            box-shadow: 1px 1px 2px 2px grey;
+            border-bottom: 1px solid #F39C12;
             display: flex;
             justify-content: space-between;
-            width: 100%;
+            width:100%;
             position: fixed;
             z-index: 4;
             background-color: white;
         }
-
-        #logo {
+        #logo{
             margin: 10px 20px;
         }
-
-        #top_right {
+        #top_right{
             width: 400px;
             align-items: center;
             display: flex;
             margin-right: 20px;
             justify-content: space-between;
         }
-
-        #search_box {
-            width: 300px;
-            height: 40px;
+        #search_box{
+            width:300px;
+            height:40px;
             display: flex;
         }
-
-        #search_btn {
+        #search_btn{
             flex-grow: 1;
-            border: 1px solid #3169f6;
-            color: #F39C12;
+            border:1px solid  #F39C12;
+            color:#F39C12;
             background-color: white;
             font-weight: bolder;
         }
-
-        #search_btn:hover {
+        #search_btn:hover{
             background-color: #F39C12;
             color: white;
             border-color: #F39C12;
         }
-
-        #search_text {
+        #search_text{
             flex-grow: 2;
-            border: 1px solid #3169f6;
+            border:1px solid #F39C12;
             border-left: 0px;
             outline: none;
         }
-
-        #my_profile {
-            border: 2px solid gray;
+        #my_profile{
+            border:2px solid gray;
             width: 70px;
             height: 70px;
             border-radius: 50%;
             overflow: hidden;
         }
+<<<<<<< HEAD
         #profile_top{
         	
         	object-fit: cover;
@@ -82,47 +76,46 @@
         
         }
 
+=======
+>>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
         /* fixed된 상단영역 대체 */
-        .top {
+        .top{
             box-sizing: border-box;
-            height: 91px;
+            height:91px;
             position: relative;
         }
 
         /* /////////////////////////////////////// */
-        #center {
+        #center{
             display: flex;
         }
-
-        #side_tool {
+        #side_tool{
             background-color: white;
-            top: 91px;
+            top:91px;
             /* border-right:1px solid rgb(167, 167, 167); */
-            border-right: 1px solid #3169f6;
+            border-right:1px solid  #F39C12;
             box-sizing: border-box;
             display: flex;
-            width: 20%;
+            width:20%;
             height: 90%;
             flex-direction: column;
             justify-content: space-between;
-            position: fixed;
+            position:fixed;
             z-index: 3;
         }
-
-        #tool_list {
-            margin: 0;
+        #tool_list{
+            margin:0;
             box-sizing: border-box;
             list-style: none;
-            padding: 0;
+            padding:0;
             display: flex;
             flex-direction: column;
         }
-
-        .tool_btn {
-            width: 100%;
-            height: 100px;
+        .tool_btn{
+            width:100%;
+            height:100px;
             border: 0px;
-            border-bottom: 1px solid #3169f6;
+            border-bottom:1px solid  #F39C12;
             cursor: pointer;
             color: #F39C12;
             font-weight: bolder;
@@ -130,97 +123,91 @@
             text-align: start;
             padding-left: 30px;
         }
-
-        .tool_btn:hover {
-            color: white;
+        .tool_btn:hover{
+            color:white;
             background-color: #F39C12;
         }
-
-        .side_more {
-            border-top: 1px solid #3169f6;
+        .side_more{
+            border-top:1px solid #F39C12;
         }
-
         /* fixed된 사이드 영역을 대체 */
-        .side_tool {
+        .side_tool{
             box-sizing: border-box;
-            width: 20%;
-            height: 900px;
+            width:20%;
+            height:900px;
             position: relative;
             display: inline-block;
         }
-
         /* ////////////////////////////////////// */
-        #center_box {
-            border-right: 1px solid #3169f6;
+        #center_box{
+            border-right:1px solid #F39C12;
             box-sizing: border-box;
-            width: 60%;
+            width:60%;
             min-width: 835px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
-        #friend_profiles {
+        #friend_pofiles{
             margin: 0px;
             box-sizing: border-box;
-            width: 100%;
+            width:100%;
             height: 15%;
-            padding: 15px 50px;
+            padding:15px 50px;
             overflow-x: scroll;
             white-space: nowrap;
         }
-
-        .friend_pf {
-            border: 2px solid gray;
+        .friend_pf{
+            border:2px solid gray;
             border-radius: 50%;
-            width: 70px;
+            width:70px;
             height: 70px;
-            margin: 0px 10px;
+            margin:0px 10px;
             display: inline-block;
             overflow: hidden;
         }
-
-        #friend_profiles::-webkit-scrollbar {
+        ::-webkit-scrollbar{
             display: none;
         }
-
+        
         /* 게시글이 보이는 영역 */
+<<<<<<< HEAD
         #show_boards {
             /*height: 100%;*/
+=======
+        #show_boards{
+            height:100%;
+>>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
             list-style: none;
             padding: 0px;
             width: 500px;
             max-width: 500px;
             box-sizing: border-box;
         }
-
         /* 보드 css */
-        .board {
+        .board{
             box-sizing: border-box;
-            border: 1px solid #3169f6;
-            height: 600px;
+            border:1px solid #F39C12;
+            height:600px;
             max-height: 600px;
             margin-bottom: 40px;
         }
-
-        .board_top {
-            height: 10%;
+        .board_top{
+            height:10%;
             display: flex;
             align-items: center;
         }
-
-        .board_top_left {
-            flex-grow: 3;
+        .board_top_left{
+            flex-grow:3;
             height: 100%;
             box-sizing: border-box;
             display: flex;
             align-items: center;
         }
-
-        .board_profile {
-            border: 2px solid gray;
+        .board_profile{
+            border:2px solid gray;
             border-radius: 50%;
-            width: 50px;
+            width:50px;
             height: 50px;
             min-width: 50px;
             min-height: 50px;
@@ -230,9 +217,9 @@
         }
         
 
-        .profile_img {
-            width: 100%;
-            height: 100%;
+        .profile_img{
+            width:100%;
+            height:100%;
             background-size: cover;
             border: none;
             cursor: pointer;
@@ -247,10 +234,10 @@
         
         
         }
+        
 
 
-
-        .board_top_content {
+        .board_top_content{
             box-sizing: border-box;
             height: 100%;
             width: 100%;
@@ -258,8 +245,7 @@
             display: flex;
             flex-direction: column;
         }
-
-        .btc {
+        .btc{
             box-sizing: border-box;
             min-width: fit-content;
             white-space: nowrap;
@@ -267,19 +253,16 @@
             max-width: 300px;
             min-width: 300px;
         }
-
-        .btc_id {
+        .btc_id{
             flex-grow: 4;
             font-weight: bolder;
         }
-
-        .btc_email {
+        .btc_email{
             flex-grow: 1;
             color: gray;
             max-width: 300px;
         }
-
-        .board_top_right {
+        .board_top_right{
             box-sizing: border-box;
             flex-grow: 1;
             height: 100%;
@@ -287,14 +270,15 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         /* 게시글 이미지박스 */
-        .board_img {
-            border-top: 1px solid black;
+        .board_img{
+            border-top:1px solid black;
             border-bottom: 1px solid black;
             height: 60%;
             box-sizing: border-box;
         }
+<<<<<<< HEAD
         
         #board_url{
         	object-fit: contain;
@@ -304,63 +288,57 @@
         
         }
 
+=======
+>>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
         /* 이미지아래 전체박스 */
-        .board_content {
+        .board_content{
             box-sizing: border-box;
             height: 30%;
             padding: 10px;
         }
-
         /* 게시글 아래 버튼 영역 */
-        .content_top {
+        .content_top{
             display: flex;
             justify-content: space-between;
             box-sizing: border-box;
         }
-
         /* 왼쪽버튼 박스 */
-        .content_top_left {
+        .content_top_left{
             display: flex;
             box-sizing: border-box;
             justify-content: space-between;
             flex-grow: 1;
         }
-
         /* 오른쪽 버튼 박스 */
-        .content_top_right {
+        .content_top_right{
             flex-grow: 5;
             justify-content: right;
             display: flex;
             box-sizing: border-box;
         }
-
-        .board_btn {
+        .board_btn{
             display: inline-block;
-            width: 30px;
+            width:30px;
             height: 30px;
             box-sizing: border-box;
-            cursor: pointer;
+            cursor:pointer;
         }
-
-        .board_btn:hover {
+        .board_btn:hover{
             box-shadow: 0px 1px 5px 1px gray, 2px 2px 5px gray;
         }
-
         /* 아이디 들어가는곳 */
-        .board_id {
+        .board_id{
             display: inline-block;
-            margin-top: 10px;
+            margin-top:10px;
         }
-
         /* 내용 들어가는 곳 */
-        .content {
+        .content{
             margin-top: 10px;
             width: 100%;
             height: 50%;
             display: block;
         }
-
-
+        
         #side_comment {
             border: 1px solid #3169f6;
             position: fixed;
@@ -602,9 +580,15 @@
 <body>
     <div id="top">
         <div id="logo">
+
+        	<a href="main.jsp">
+	            <img src="logo.png">
+        	</a>
+
            <a href="main.jsp">
                <img src="logo.png">
            </a>
+
         </div>
         <div id="top_right">
             <form name="search">
@@ -638,37 +622,49 @@
                     <li>
                         <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
                             formaction="pacebook2">
-                            홈
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                              </svg>홈
                         </button>
                     </li>
                     <li>
-                        <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook2">
-                            프로필
+                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                              </svg>프로필
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
                             formmethod="get" formaction="pacebook2">
-                            알림
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                              </svg>알림
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
                             formmethod="get" formaction="pacebook2">
-                            메시지
+                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+                            <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+                          </svg>메시지
                         </button>
                     </li>
                     <li>
                         <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
                             formaction="pacebook2">
-                            만들기
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
+                                <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                              </svg>만들기
                         </button>
                     </li>
                 </ul>
                 <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
                     formaction="pacebook2">
-                    더보기
+                   <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                      </svg>더보기
                 </button>
             </div>
         </form>
