@@ -199,10 +199,23 @@
        	
             //게시판 작성버튼
         	 document.querySelector("#board_btn").addEventListener("click", function(){
-                 let board = document.board;
+        		let url = document.querySelector("#url_address_in").value; 
+        		let content = document.querySelector("#content_text").value; 
+                if(
+              		(url==null||url==undefined||url=="") || (content==null||content==undefined||content=="")
+                ){
+                	alert('게시글을 작성해주세요!');
+                }else{
+                	
+        		 let board = document.board;
                  board.method = "get";
                  board.action = "pacebook";
                  board.submit();
+                }
+        		 
+        		 
+                 
+                 
              });
              //게시판 뒤로가기 버튼
              document.querySelector("#cancell_btn").addEventListener("click", function(){
@@ -275,7 +288,7 @@
                     <br>
                     <div id="url_input_box">
                         <div id="url_address_out">
-                            <input id="url_address_in" type="text"  name="content" >
+                            <input id="url_address_in" type="text"  name="url" >
                         </div>
                         <input id="btn_url"  type="button" value="확인">
                     </div>

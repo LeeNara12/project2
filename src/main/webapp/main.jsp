@@ -73,6 +73,14 @@
             border-radius: 50%;
             overflow: hidden;
         }
+        #profile_top{
+        	
+        	object-fit: cover;
+        	width:74px;
+        	height:74px;
+        	
+        
+        }
 
         /* fixed된 상단영역 대체 */
         .top {
@@ -178,7 +186,7 @@
 
         /* 게시글이 보이는 영역 */
         #show_boards {
-            height: 100%;
+            /*height: 100%;*/
             list-style: none;
             padding: 0px;
             width: 500px;
@@ -218,8 +226,9 @@
             min-height: 50px;
             margin: 10px;
             overflow: hidden;
+            
         }
-
+        
 
         .profile_img {
             width: 100%;
@@ -227,6 +236,16 @@
             background-size: cover;
             border: none;
             cursor: pointer;
+            paddig: 0px
+        }
+        
+        #board_profile_img{
+	        width: 50px;
+	    	height: 50px;
+	    	object-fit: cover;
+	    	
+        
+        
         }
 
 
@@ -275,6 +294,14 @@
             border-bottom: 1px solid black;
             height: 60%;
             box-sizing: border-box;
+        }
+        
+        #board_url{
+        	object-fit: contain;
+        	width: 498px;
+        	height: 356.797px;
+        
+        
         }
 
         /* 이미지아래 전체박스 */
@@ -563,6 +590,15 @@
     </script>
 </head>
 
+	<%
+	PaceDAO dao = new PaceDAO();
+	
+	HttpSession se = request.getSession();
+	int user_no = (int)se.getAttribute("user_no");
+	
+	String profile_top = dao.profile(user_no);
+	%>
+
 <body>
     <div id="top">
         <div id="logo">
@@ -582,9 +618,13 @@
             </form>
             <form name="my_profile">
                 <div id="my_profile">
+                	
+                	<img id='profile_top' src=<%=profile_top %>>
+                	
                     <button class="profile_img" type="submit" name="main_page" value="my_profile"
                         style="background-image:url('assets/image/background.png')" formmethod="get"
                         formaction="pacebook2">
+                    	
                     </button>
                 </div>
             </form>
@@ -645,46 +685,60 @@
                     <!-- 친구표시 -->
                 </form>
             </ul>
-            <form>
-            <ul id="show_boards">
-            <%
-            PaceDAO dao = new PaceDAO();
-            HttpSession se = request.getSession();
-            int user_no = (int)se.getAttribute("user_no");
-            int count = dao.BoardCount(user_no);
-            HashMap <Integer, List> map = dao.BoardContent(user_no);
-            List <PaceUserVO> getPuvo = map.get(1); 
-            List <PaceBoardVO> getPbvo = map.get(2); 
-            Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
             
+            
+            <%
+    		
+    		
+    		int count = dao.BoardCount(user_no);
+    		
+    		HashMap <Integer, List> map = dao.BoardContent(user_no);
+    		List <PaceUserVO> getPuvo = map.get(1); 
+    		List <PaceBoardVO> getPbvo = map.get(2);
+    		
+    		
+    		
                
             for(int i = 0; i<count; i++ ){
+              
+               System.out.println(i);
+               System.out.println(getPuvo.get(i));
+               
                String id= getPuvo.get(i).getId();
                String email = getPuvo.get(i).getEmail();
-               Date board_time = getPbvo.get(i).getBoard_time();
+               String profile = getPuvo.get(i).getProfile();
+               
+               java.sql.Date board_time = getPbvo.get(i).getBoard_time();//sql
+               
+               String borad_time2 = dao.time(board_time);
+               //String time= format.format(board_time);
+               //System.out.println(time);
+               
+               
+               String board_url = getPbvo.get(i).getBoard_url();
                String board_content = getPbvo.get(i).getBoard_content();
-               String [] content = board_content.split("\\+++");
-               
-               
-               String url= content[0];
-               String text= content[1];
-               
+               System.out.println(board_content);
+              
+              
                
             %>
+            <form>
+            <ul id="show_boards">
                 
                 <li class="board">
                     <div class="board_top">
                         <div class="board_top_left">
                             <div class="board_profile">
+                            	<img id='board_profile_img' src=<%=profile %>>
                                 <button class="profile_img" type="submit" name="main_page" value="bd_profile"
                                     formmethod="get" formaction="pacebook"
                                     style="background-image:url('assets/image/background.png')">
+                                    
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id %> 작성시간</div>
-                                <div class="btc_email btc"><%=email %></div>
+                                <div class="btc_id btc"><%=id+" "+borad_time2 %> 작성시간</div>
+                                <div class="btc_email btc"><%=email %>이메일</div>
                             </div>
                         </div>
                         <div class="board_top_right">
@@ -700,7 +754,7 @@
                         </div>
                     </div>
                     <div class="board_img">
-                        <img src="">
+                        <img id='board_url' src=<%=board_url %>>
                     </div>
                     <div class="board_content">
                         <div class="content_top">
@@ -746,7 +800,7 @@
                             @<%=id %>
                         </div>
                         <p class="content">
-                            내용
+                            <%=board_content %>게시글내용
                         </p>
                     </div>
                 </li>

@@ -102,14 +102,16 @@ public class PaceServlet extends HttpServlet {
 
 
 		}else if("board".equals(command)) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
-			String [] board_content = request.getParameterValues("content");//게시글 내용 가져오기
-			System.out.println("content 내용 = "+board_content[0]+" "+board_content[1]);
+			String board_url = request.getParameter("url");//게시글 내용 가져오기
+			String board_content = request.getParameter("content");//게시글 내용 가져오기
+			System.out.println("content 내용 = "+board_url+" "+board_content);
 			
 			HttpSession se = request.getSession();//세션 생성 및 가져오기
 			int user_no = (int) se.getAttribute("user_no");//세션에 유저넘버 값을 넣어줌 
 			
 			PaceBoardVO pbVO = new PaceBoardVO();// PaceBoardVO객체 생성
-			pbVO.setBoard_content(board_content[0]+"+++"+board_content[1]);//게시글 내용 pbVO에 넣기
+			pbVO.setBoard_url(board_url);//게시글 내용 pbVO에 넣기
+			pbVO.setBoard_content(board_content);//게시글 내용 pbVO에 넣기
 			
 			dao.createBoard(user_no, pbVO);// dao의 createBoard메소드에 유저넘버랑 내용을 넘김//DB에 게시글 내용 저장
 			
