@@ -298,6 +298,224 @@
             height: 50%;
             display: block;
         }
+        
+        #side_comment {
+            border: 1px solid #3169f6;
+            position: fixed;
+            z-index: 100;
+            right: 0px;
+            box-sizing: border-box;
+            width: 50%;
+            height: 822px;
+            /* 평소에는 댓글 숨김 */
+            visibility: hidden;
+            /* /////////////////// */
+        }
+
+        #comment_area {
+            height: 90%;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            overflow: auto;
+        }
+
+        .comment_profile {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            min-height: 50px;
+            overflow: hidden;
+            text-align: center;
+            box-sizing: border-box;
+            margin: 20px 20px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .comment_box {
+            border-bottom: 1px solid #999;
+            align-items: center;
+            height: fit-content;
+        }
+
+        .comment_info {
+            font-size: 1.5vh;
+            width: 84%;
+            box-sizing: border-box;
+            padding: 10px 10px;
+            display: inline-block;
+        }
+
+        .comment_top {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .comment_id {
+            box-sizing: border-box;
+            width: fit-content;
+            display: inline-block;
+        }
+        .comment_close_btn {
+            border: 1px solid #999;
+            float: right;
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            background-color: rgb(214, 214, 214);
+            padding: 0px;
+        }
+
+        .comment_close_btn:hover {
+            background-color: #999;
+        }
+
+        .comment {
+            box-sizing: border-box;
+            margin: 5px 0px;
+            font-size: 2vh;
+        }
+
+        .c_comment_btn {
+            border: 1px solid rgb(214, 214, 214);
+            background-color: inherit;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .c_comment_btn:active {
+            background-color: #999;
+        }
+
+        .c_comment_area {
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            position: relative;
+            /* 평소에는 히든이랑 앱솔루트로 되어있음 */
+            visibility: hidden;
+            position: absolute;
+            /* /////////////////////////////////// */
+        }
+
+        .c_comment {
+            box-sizing: border-box;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .c_comment_line {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            left: 0px;
+            border-left: 1px solid #999;
+            border-bottom: 1px solid #999;
+        }
+
+
+
+        #chat_area {
+            box-sizing: border-box;
+            background-color: #999;
+            height: 10%;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat_area_right {
+            height: 100%;
+            display: flex;
+            flex-grow: 10;
+            align-items: center;
+            justify-content: center;
+            padding: 0px 20px;
+        }
+
+        .comment_text {
+            border: 1px solid black;
+            outline: none;
+            border-radius: 50px 0px 0px 50px;
+            height: 50%;
+            padding: 0px 20px;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            flex-grow: 10;
+            font-size: 2vh;
+        }
+
+        .comment_btn {
+            flex-grow: 1;
+            border: 1px solid black;
+            border-left: 0px;
+            border-radius: 0px 50px 50px 0px;
+            height: 50%;
+            box-sizing: border-box;
+            background-color: rgb(214, 214, 214);
+            font-weight: bolder;
+        }
+
+        .comment_btn:hover {
+            background-color: #999;
+        }
+
+        #comment_close {
+            border: 1px solid #999;
+            border-left: none;
+            background: none;
+            position: absolute;
+            top: 40%;
+            left: 10px;
+            width: 50px;
+            height: 100px;
+            font-size: 4vh;
+            color: #999;
+        }
+
+        @keyframes wobble-horizontal {
+            16.65% {
+                transform: translateX(8px);
+            }
+
+            33.3% {
+                transform: translateX(-6px);
+            }
+
+            49.95% {
+                transform: translateX(4px);
+            }
+
+            66.6% {
+                transform: translateX(-2px);
+            }
+
+            83.25% {
+                transform: translateX(1px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        #comment_close:hover {
+            animation-name: wobble-horizontal;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+        }
+
+
+        ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
     </style>
     <script>
         // window.onload = function () {
