@@ -68,18 +68,12 @@
             border-radius: 50%;
             overflow: hidden;
         }
-<<<<<<< HEAD
         #profile_top{
         	
         	object-fit: cover;
         	width:74px;
         	height:74px;
-        	
-        
         }
-
-=======
->>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
         /* fixed된 상단영역 대체 */
         .top{
             box-sizing: border-box;
@@ -150,7 +144,7 @@
             flex-direction: column;
             align-items: center;
         }
-        #friend_pofiles{
+        #friend_profiles{
             margin: 0px;
             box-sizing: border-box;
             width:100%;
@@ -173,13 +167,8 @@
         }
         
         /* 게시글이 보이는 영역 */
-<<<<<<< HEAD
-        #show_boards {
-            /*height: 100%;*/
-=======
         #show_boards{
             height:100%;
->>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
             list-style: none;
             padding: 0px;
             width: 500px;
@@ -189,15 +178,9 @@
         /* 보드 css */
         .board{
             box-sizing: border-box;
-<<<<<<< HEAD
-            border: 1px solid #3169f6;
-            min-height: 600px;
-            height: fit-content;
-=======
             border:1px solid #F39C12;
             height:600px;
             max-height: 600px;
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
             margin-bottom: 40px;
         }
         .board_top{
@@ -280,39 +263,19 @@
         }
         
         /* 게시글 이미지박스 */
-<<<<<<< HEAD
-        .board_img_box{
+        .board_img {
             border-top: 1px solid black;
-=======
-        .board_img{
-            border-top:1px solid black;
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
             border-bottom: 1px solid black;
-            min-height: 400px;
+            height: 60%;
             box-sizing: border-box;
             background-color: black;
-            display:flex;
-            justify-content: center;
-            align-items: center;
         }
-        /* 게시글 이미지 */
-        .board_img{
-        	max-width: 100%; 
-        	max-height: 400px;
-        	vertical-align: bottom;
-        }
-<<<<<<< HEAD
         
         #board_url{
-        	object-fit: contain;
-        	width: 498px;
-        	height: 356.797px;
-        
-        
+           object-fit: contain;
+           width: 498px;
+           height: 356.797px;
         }
-
-=======
->>>>>>> 2d7d20fc5ae52e6bfe4e1f380be8db4e3898a14c
         /* 이미지아래 전체박스 */
         .board_content{
             box-sizing: border-box;
@@ -546,14 +509,6 @@
         }
     </style>
 </head>
-<<<<<<< HEAD
-<body>
-    <div id="top">
-        <div id="logo">
-        	<a href="main.jsp">
-	            <img src="logo.png">
-        	</a>
-=======
 
 	<%
 	PaceDAO dao = new PaceDAO();
@@ -563,20 +518,12 @@
 	
 	String profile_top = dao.profile(user_no);
 	%>
-
 <body>
     <div id="top">
         <div id="logo">
-
         	<a href="main.jsp">
 	            <img src="logo.png">
         	</a>
-
-           <a href="main.jsp">
-               <img src="logo.png">
-           </a>
-
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
         </div>
         <div id="top_right">
             <form name="search" method="get" action="main.jsp">
@@ -589,17 +536,10 @@
             </form>
             <form name="my_profile">
                 <div id="my_profile">
-<<<<<<< HEAD
-                    <button class="profile_img" type="submit" name="main_page" value="my_profile">
-=======
-                	
                 	<img id='profile_top' src=<%=profile_top %>>
-                	
                     <button class="profile_img" type="submit" name="main_page" value="my_profile"
                         style="background-image:url('assets/image/background.png')" formmethod="get"
                         formaction="pacebook2">
-                    	
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
                     </button>
                 </div>
             </form>
@@ -607,101 +547,62 @@
     </div>
     <div class="top"></div>
     <div id="center">
-<<<<<<< HEAD
-   		<div id="side_tool">
-        	<ul id="tool_list">
-            	<li>
-	            	<a href="main.jsp">
-	                <button type="submit" class="tool_btn  side_home">
-	                     홈
-	                </button>
-	                </a>
-	             </li>
-	             <li>
-	             	<form>
-		                <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-		                    formmethod="get" formaction="pacebook2">
-		                    프로필
-		                </button>
-	                </form>
-	             </li>
-	             <li>
-	                <button type="submit" class="tool_btn  side_notice">
-	                    알림
-	                </button>
-	             </li>
-	             <li>
-	                <button type="submit" class="tool_btn side_message" name="main_page" value="message">
-	                    메시지
-	                </button>
-	             </li>
-	             <li>
-	             	<form>
-		                <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
-		                    formaction="pacebook2">
-		                    만들기
-		                </button>
-	                </form>
-	             </li>
-        	</ul>
-	        <button type="submit" class="tool_btn  side_more">
-	            더보기
-	        </button>
-     	</div>
-=======
-        <form name="side">
-            <div id="side_tool">
-                <ul id="tool_list">
-                    <li>
-                        <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
-                            formaction="pacebook2">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-                              </svg>홈
-                        </button>
-                    </li>
-                    <li>
-                       <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                              </svg>프로필
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook2">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-                              </svg>알림
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook2">
-                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
-                            <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
-                            <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
-                          </svg>메시지
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
-                            formaction="pacebook2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
-                                <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
-                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                              </svg>만들기
-                        </button>
-                    </li>
-                </ul>
-                <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
-                    formaction="pacebook2">
-                   <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                        <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                      </svg>더보기
-                </button>
-            </div>
-        </form>
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
+        <div id="side_tool">
+            <ul id="tool_list">
+                <li>
+                <form>
+                    <button type="submit" class="tool_btn  side_home" formmethod="get"
+                        formaction="main.jsp">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+                          </svg>홈
+                    </button>
+                </form>
+                </li>
+                <li>
+                <form>
+                	<button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
+                        formmethod="get" formaction="pacebook2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+							<path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+						</svg>
+                        프로필
+                    </button>
+                </form>
+                </li>
+                <li>
+                    <button class="tool_btn  side_notice">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                          </svg>알림
+                    </button>
+                </li>
+                <li>
+                    <button class="tool_btn  side_message">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+                        <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+                        <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+                      </svg>메시지
+                    </button>
+                </li>
+                <li>
+                	<form>
+                    <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
+                        formaction="pacebook2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 16 16">
+                            <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
+                            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                         </svg>만들기
+                    </button>
+                	</form>
+                </li>
+            </ul>
+            <button class="tool_btn  side_more">
+               <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-2.5a2 2 0 0 0-1.6.8L8 14.333 6.1 11.8a2 2 0 0 0-1.6-.8H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2.5a1 1 0 0 1 .8.4l1.9 2.533a1 1 0 0 0 1.6 0l1.9-2.533a1 1 0 0 1 .8-.4H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                  </svg>더보기
+            </button>
+        </div>
         <div class="side_tool"></div>
         <div id="center_box">
             <ul id="friend_profiles">
@@ -713,113 +614,58 @@
 	            </li>
 	            <!-- 친구표시 -->
             </ul>
-<<<<<<< HEAD
             <ul id="show_boards">
-            <%
-            PaceDAO dao = new PaceDAO();
-            HttpSession se = request.getSession();
-            int user_no = (int)se.getAttribute("user_no");
-            %>
             <%
             List<PaceBoardVO> boardList = null;
             if("search".equals(request.getParameter("main_page"))){
-            	boardList = dao.search(request.getParameter("search_content"));
+               boardList = dao.search(request.getParameter("search_content"));
             } else {
-	            boardList = dao.getBoard();
+               boardList = dao.getBoard();
             }
-           	for(PaceBoardVO pbvo : boardList){
-           		int boardUserNo = pbvo.getUser_no();
-           		PaceUserVO puvo = dao.getUserInfo(boardUserNo);
-           		String id = puvo.getId();
-           		String email = puvo.getEmail();
-           		
-           		String picture = pbvo.getBoard_url();
-           		String content = pbvo.getBoard_content();
-           		
-           		int board_no = pbvo.getBoard_no();
-=======
-            
-            
-            <%
-    		
-    		
-    		int count = dao.BoardCount(user_no);
-    		
-    		HashMap <Integer, List> map = dao.BoardContent(user_no);
-    		List <PaceUserVO> getPuvo = map.get(1); 
-    		List <PaceBoardVO> getPbvo = map.get(2);
-    		
-    		
-    		
-               
-            for(int i = 0; i<count; i++ ){
-              
-               System.out.println(i);
-               System.out.println(getPuvo.get(i));
-               
-               String id= getPuvo.get(i).getId();
-               String email = getPuvo.get(i).getEmail();
-               String profile = getPuvo.get(i).getProfile();
-               
-               java.sql.Date board_time = getPbvo.get(i).getBoard_time();//sql
-               
-               String borad_time2 = dao.time(board_time);
-               //String time= format.format(board_time);
-               //System.out.println(time);
-               
-               
-               String board_url = getPbvo.get(i).getBoard_url();
-               String board_content = getPbvo.get(i).getBoard_content();
-               System.out.println(board_content);
-              
-              
-               
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
+              for(PaceBoardVO pbvo : boardList){
+                 int boardUserNo = pbvo.getUser_no();
+                 PaceUserVO puvo = dao.getUserInfo(boardUserNo);
+                 String id = puvo.getId();
+                 String email = puvo.getEmail();
+                 
+                 String board_url = pbvo.getBoard_url();
+                 String content = pbvo.getBoard_content();
+                 
+                 int board_no = pbvo.getBoard_no();
             %>
-            <form>
-            <ul id="show_boards">
-                
                 <li class="board">
                     <div class="board_top">
                         <div class="board_top_left">
                             <div class="board_profile">
-<<<<<<< HEAD
-                                <button class="profile_img" name="main_page" value="bd_profile"
-=======
-                            	<img id='board_profile_img' src=<%=profile %>>
+                            	<img id='board_profile_img' src=<%= profile_top %>>
                                 <button class="profile_img" type="submit" name="main_page" value="bd_profile"
                                     formmethod="get" formaction="pacebook"
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
                                     style="background-image:url('assets/image/background.png')">
-                                    
                                 </button>
                             </div>
                             <div class="board_top_content">
-                                <div class="btc_id btc"><%=id+" "+borad_time2 %> 작성시간</div>
+                                <div class="btc_id btc"><%=id %></div>
                                 <div class="btc_email btc"><%=email %>이메일</div>
                             </div>
                         </div>
                         <div class="board_top_right">
                             <div class="board_more board_btn">
                             	<% if(user_no == boardUserNo){ %>
+                            	<form method="get" action="pacebook2">
                                 <button class="profile_img" name="main_page" value="del_board">
                                     <svg width="16" height="16">
                                         <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                     </svg>
                                 </button>
-                                <input type="hidden" name="board_no" value="<%= boardUserNo %>">
+                                <input type="hidden" name="board_no" value="<%= board_no %>">
+                            	</form>
                                 <% } %>
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                    <div class="board_img_box">
-                        <img class="board_img" src="<%=picture%>">
-=======
                     <div class="board_img">
                         <img id='board_url' src=<%=board_url %>>
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
                     </div>
                     <div class="board_content">
                         <div class="content_top">
@@ -863,11 +709,7 @@
                             @<%=id %>
                         </div>
                         <p class="content">
-<<<<<<< HEAD
-                            <%= content %>
-=======
-                            <%=board_content %>게시글내용
->>>>>>> eae4cb46a806b67cef22a100dc7ebc99b1a888b7
+                            <%=content %>
                         </p>
                     </div>
                 </li>
@@ -890,7 +732,7 @@
             <ul id="comment_area">
                 <!-- 댓글 -->
                 <%
-             		List<PaceCommentVO> commentList = dao.Comment(board_no);
+             		List<PaceCommentVO> commentList = dao.comment(board_no);
                 	if(commentList != null){
               			for(PaceCommentVO pcvo : commentList){
 	                    	int c_user_no = pcvo.getUser_no();

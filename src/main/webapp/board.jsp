@@ -271,7 +271,7 @@
         	<img class="logo" src="logo.png">
     	</a>
     </div>
-    <hr color = "#3169f6" size="1px">
+    <hr color = "#F39C12" size="1px">
     <div id="content"> 
         <div id="book_left"></div>
         <div id="book_right"> 

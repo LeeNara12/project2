@@ -57,6 +57,8 @@ public class PaceServlet_mp extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher("main.jsp");
 			dispatch.forward(request, response);
 			
+		} else if("make".equals(mp)) {
+			response.sendRedirect("board.jsp");
 		}
 	}
 }
