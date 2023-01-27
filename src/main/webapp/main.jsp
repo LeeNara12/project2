@@ -11,110 +11,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pacebook</title>
-    <style>
-        body {
+   <style>
+        body{
             margin: 0px;
         }
-
         /* /////////////상단 바 /////////////////////*/
-        #top {
-            border-bottom: 1px solid #3169f6;
+        #top{
+            box-shadow: 1px 1px 2px 2px grey;
+            border-bottom: 1px solid #F39C12;
             display: flex;
             justify-content: space-between;
-            width: 100%;
+            width:100%;
             position: fixed;
             z-index: 4;
             background-color: white;
         }
-
-        #logo {
+        #logo{
             margin: 10px 20px;
         }
-
-        #top_right {
+        #top_right{
             width: 400px;
             align-items: center;
             display: flex;
             margin-right: 20px;
             justify-content: space-between;
         }
-
-        #search_box {
-            width: 300px;
-            height: 40px;
+        #search_box{
+            width:300px;
+            height:40px;
             display: flex;
         }
-
-        #search_btn {
+        #search_btn{
             flex-grow: 1;
-            border: 1px solid #3169f6;
-            color: #F39C12;
+            border:1px solid  #F39C12;
+            color:#F39C12;
             background-color: white;
             font-weight: bolder;
         }
-
-        #search_btn:hover {
+        #search_btn:hover{
             background-color: #F39C12;
             color: white;
             border-color: #F39C12;
         }
-
-        #search_text {
+        #search_text{
             flex-grow: 2;
-            border: 1px solid #3169f6;
+            border:1px solid #F39C12;
             border-left: 0px;
             outline: none;
         }
-
-        #my_profile {
-            border: 2px solid gray;
+        #my_profile{
+            border:2px solid gray;
             width: 70px;
             height: 70px;
             border-radius: 50%;
             overflow: hidden;
         }
-
         /* fixed된 상단영역 대체 */
-        .top {
+        .top{
             box-sizing: border-box;
-            height: 91px;
+            height:91px;
             position: relative;
         }
 
         /* /////////////////////////////////////// */
-        #center {
+        #center{
             display: flex;
         }
-
-        #side_tool {
+        #side_tool{
             background-color: white;
-            top: 91px;
+            top:91px;
             /* border-right:1px solid rgb(167, 167, 167); */
-            border-right: 1px solid #3169f6;
+            border-right:1px solid  #F39C12;
             box-sizing: border-box;
             display: flex;
-            width: 20%;
+            width:20%;
             height: 90%;
             flex-direction: column;
             justify-content: space-between;
-            position: fixed;
+            position:fixed;
             z-index: 3;
         }
-
-        #tool_list {
-            margin: 0;
+        #tool_list{
+            margin:0;
             box-sizing: border-box;
             list-style: none;
-            padding: 0;
+            padding:0;
             display: flex;
             flex-direction: column;
         }
-
-        .tool_btn {
-            width: 100%;
-            height: 100px;
+        .tool_btn{
+            width:100%;
+            height:100px;
             border: 0px;
-            border-bottom: 1px solid #3169f6;
+            border-bottom:1px solid  #F39C12;
             cursor: pointer;
             color: #F39C12;
             font-weight: bolder;
@@ -122,97 +111,86 @@
             text-align: start;
             padding-left: 30px;
         }
-
-        .tool_btn:hover {
-            color: white;
+        .tool_btn:hover{
+            color:white;
             background-color: #F39C12;
         }
-
-        .side_more {
-            border-top: 1px solid #3169f6;
+        .side_more{
+            border-top:1px solid #F39C12;
         }
-
         /* fixed된 사이드 영역을 대체 */
-        .side_tool {
+        .side_tool{
             box-sizing: border-box;
-            width: 20%;
-            height: 900px;
+            width:20%;
+            height:900px;
             position: relative;
             display: inline-block;
         }
-
         /* ////////////////////////////////////// */
-        #center_box {
-            border-right: 1px solid #3169f6;
+        #center_box{
+            border-right:1px solid #F39C12;
             box-sizing: border-box;
-            width: 60%;
+            width:60%;
             min-width: 835px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
-        #friend_profiles {
+        #friend_pofiles{
             margin: 0px;
             box-sizing: border-box;
-            width: 100%;
+            width:100%;
             height: 15%;
-            padding: 15px 50px;
+            padding:15px 50px;
             overflow-x: scroll;
             white-space: nowrap;
         }
-
-        .friend_pf {
-            border: 2px solid gray;
+        .friend_pf{
+            border:2px solid gray;
             border-radius: 50%;
-            width: 70px;
+            width:70px;
             height: 70px;
-            margin: 0px 10px;
+            margin:0px 10px;
             display: inline-block;
             overflow: hidden;
         }
-
-        #friend_profiles::-webkit-scrollbar {
+        ::-webkit-scrollbar{
             display: none;
         }
-
+        
         /* 게시글이 보이는 영역 */
-        #show_boards {
-            height: 100%;
+        #show_boards{
+            height:100%;
             list-style: none;
             padding: 0px;
             width: 500px;
             max-width: 500px;
             box-sizing: border-box;
         }
-
         /* 보드 css */
-        .board {
+        .board{
             box-sizing: border-box;
-            border: 1px solid #3169f6;
-            height: 600px;
+            border:1px solid #F39C12;
+            height:600px;
             max-height: 600px;
             margin-bottom: 40px;
         }
-
-        .board_top {
-            height: 10%;
+        .board_top{
+            height:10%;
             display: flex;
             align-items: center;
         }
-
-        .board_top_left {
-            flex-grow: 3;
+        .board_top_left{
+            flex-grow:3;
             height: 100%;
             box-sizing: border-box;
             display: flex;
             align-items: center;
         }
-
-        .board_profile {
-            border: 2px solid gray;
+        .board_profile{
+            border:2px solid gray;
             border-radius: 50%;
-            width: 50px;
+            width:50px;
             height: 50px;
             min-width: 50px;
             min-height: 50px;
@@ -221,17 +199,17 @@
         }
 
 
-        .profile_img {
-            width: 100%;
-            height: 100%;
+        .profile_img{
+            width:100%;
+            height:100%;
             background-size: cover;
             border: none;
             cursor: pointer;
         }
+        
 
 
-
-        .board_top_content {
+        .board_top_content{
             box-sizing: border-box;
             height: 100%;
             width: 100%;
@@ -239,8 +217,7 @@
             display: flex;
             flex-direction: column;
         }
-
-        .btc {
+        .btc{
             box-sizing: border-box;
             min-width: fit-content;
             white-space: nowrap;
@@ -248,19 +225,16 @@
             max-width: 300px;
             min-width: 300px;
         }
-
-        .btc_id {
+        .btc_id{
             flex-grow: 4;
             font-weight: bolder;
         }
-
-        .btc_email {
+        .btc_email{
             flex-grow: 1;
             color: gray;
             max-width: 300px;
         }
-
-        .board_top_right {
+        .board_top_right{
             box-sizing: border-box;
             flex-grow: 1;
             height: 100%;
@@ -268,288 +242,61 @@
             align-items: center;
             justify-content: center;
         }
-
+        
         /* 게시글 이미지박스 */
-        .board_img {
-            border-top: 1px solid black;
+        .board_img{
+            border-top:1px solid black;
             border-bottom: 1px solid black;
             height: 60%;
             box-sizing: border-box;
         }
-
         /* 이미지아래 전체박스 */
-        .board_content {
+        .board_content{
             box-sizing: border-box;
             height: 30%;
             padding: 10px;
         }
-
         /* 게시글 아래 버튼 영역 */
-        .content_top {
+        .content_top{
             display: flex;
             justify-content: space-between;
             box-sizing: border-box;
         }
-
         /* 왼쪽버튼 박스 */
-        .content_top_left {
+        .content_top_left{
             display: flex;
             box-sizing: border-box;
             justify-content: space-between;
             flex-grow: 1;
         }
-
         /* 오른쪽 버튼 박스 */
-        .content_top_right {
+        .content_top_right{
             flex-grow: 5;
             justify-content: right;
             display: flex;
             box-sizing: border-box;
         }
-
-        .board_btn {
+        .board_btn{
             display: inline-block;
-            width: 30px;
+            width:30px;
             height: 30px;
             box-sizing: border-box;
-            cursor: pointer;
+            cursor:pointer;
         }
-
-        .board_btn:hover {
+        .board_btn:hover{
             box-shadow: 0px 1px 5px 1px gray, 2px 2px 5px gray;
         }
-
         /* 아이디 들어가는곳 */
-        .board_id {
+        .board_id{
             display: inline-block;
-            margin-top: 10px;
+            margin-top:10px;
         }
-
         /* 내용 들어가는 곳 */
-        .content {
+        .content{
             margin-top: 10px;
             width: 100%;
             height: 50%;
             display: block;
-        }
-
-
-        #side_comment {
-            border: 1px solid #3169f6;
-            position: fixed;
-            z-index: 100;
-            right: 0px;
-            box-sizing: border-box;
-            width: 50%;
-            height: 822px;
-            /* 평소에는 댓글 숨김 */
-            visibility: hidden;
-            /* /////////////////// */
-        }
-
-        #comment_area {
-            height: 90%;
-            box-sizing: border-box;
-            background-color: rgb(214, 214, 214);
-            overflow: auto;
-        }
-
-        .comment_profile {
-            border: 1px solid black;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            min-width: 50px;
-            min-height: 50px;
-            overflow: hidden;
-            text-align: center;
-            box-sizing: border-box;
-            margin: 20px 20px;
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        .comment_box {
-            border-bottom: 1px solid #999;
-            align-items: center;
-            height: fit-content;
-        }
-
-        .comment_info {
-            font-size: 1.5vh;
-            width: 84%;
-            box-sizing: border-box;
-            padding: 10px 10px;
-            display: inline-block;
-        }
-
-        .comment_top {
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .comment_id {
-            box-sizing: border-box;
-            width: fit-content;
-            display: inline-block;
-        }
-        .comment_close_btn {
-            border: 1px solid #999;
-            float: right;
-            box-sizing: border-box;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            background-color: rgb(214, 214, 214);
-            padding: 0px;
-        }
-
-        .comment_close_btn:hover {
-            background-color: #999;
-        }
-
-        .comment {
-            box-sizing: border-box;
-            margin: 5px 0px;
-            font-size: 2vh;
-        }
-
-        .c_comment_btn {
-            border: 1px solid rgb(214, 214, 214);
-            background-color: inherit;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-
-        .c_comment_btn:active {
-            background-color: #999;
-        }
-
-        .c_comment_area {
-            display: flex;
-            align-items: center;
-            padding-left: 30px;
-            position: relative;
-            /* 평소에는 히든이랑 앱솔루트로 되어있음 */
-            visibility: hidden;
-            position: absolute;
-            /* /////////////////////////////////// */
-        }
-
-        .c_comment {
-            box-sizing: border-box;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .c_comment_line {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            top: 5px;
-            left: 0px;
-            border-left: 1px solid #999;
-            border-bottom: 1px solid #999;
-        }
-
-
-
-        #chat_area {
-            box-sizing: border-box;
-            background-color: #999;
-            height: 10%;
-            display: flex;
-            align-items: center;
-        }
-
-        .chat_area_right {
-            height: 100%;
-            display: flex;
-            flex-grow: 10;
-            align-items: center;
-            justify-content: center;
-            padding: 0px 20px;
-        }
-
-        .comment_text {
-            border: 1px solid black;
-            outline: none;
-            border-radius: 50px 0px 0px 50px;
-            height: 50%;
-            padding: 0px 20px;
-            box-sizing: border-box;
-            background-color: rgb(214, 214, 214);
-            flex-grow: 10;
-            font-size: 2vh;
-        }
-
-        .comment_btn {
-            flex-grow: 1;
-            border: 1px solid black;
-            border-left: 0px;
-            border-radius: 0px 50px 50px 0px;
-            height: 50%;
-            box-sizing: border-box;
-            background-color: rgb(214, 214, 214);
-            font-weight: bolder;
-        }
-
-        .comment_btn:hover {
-            background-color: #999;
-        }
-
-        #comment_close {
-            border: 1px solid #999;
-            border-left: none;
-            background: none;
-            position: absolute;
-            top: 40%;
-            left: 10px;
-            width: 50px;
-            height: 100px;
-            font-size: 4vh;
-            color: #999;
-        }
-
-        @keyframes wobble-horizontal {
-            16.65% {
-                transform: translateX(8px);
-            }
-
-            33.3% {
-                transform: translateX(-6px);
-            }
-
-            49.95% {
-                transform: translateX(4px);
-            }
-
-            66.6% {
-                transform: translateX(-2px);
-            }
-
-            83.25% {
-                transform: translateX(1px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        #comment_close:hover {
-            animation-name: wobble-horizontal;
-            animation-duration: 1s;
-            animation-timing-function: ease-in-out;
-            animation-iteration-count: 1;
-        }
-
-
-        ul {
-            list-style: none;
-            margin: 0px;
-            padding: 0px;
         }
     </style>
     <script>
