@@ -275,7 +275,7 @@
                     <br>
                     <div id="url_input_box">
                         <div id="url_address_out">
-                            <input id="url_address_in" type="text"  name="content" >
+                            <input id="url_address_in" type="text"  name="url" >
                         </div>
                         <input id="btn_url"  type="button" value="확인">
                     </div>

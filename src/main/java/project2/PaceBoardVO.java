@@ -7,10 +7,18 @@ public class PaceBoardVO {
 	private Date board_time;//게시판 생성 날짜;
 	private int board_modify;//수정여부
 	private Date board_modify_time;// 게시글 수정 시간 
+	private String board_url;
 	private String board_content;//게시판 내용
 	private int user_no; // 회원넘버
 	private int board_like; // 좋아요 
 	
+	
+	public String getBoard_url() {
+		return board_url;
+	}
+	public void setBoard_url(String board_url) {
+		this.board_url = board_url;
+	}
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -56,8 +64,5 @@ public class PaceBoardVO {
 	public void setBoard_modify_time(Date board_modify_time) {
 		this.board_modify_time = board_modify_time;
 	}
-	
-	
-
 	
 }

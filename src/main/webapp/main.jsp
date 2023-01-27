@@ -3,6 +3,7 @@
 <%@page import = "java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page buffer="8kb" autoFlush="true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +26,7 @@
             position: fixed;
             z-index: 4;
             background-color: white;
+            height: 91px;
         }
 
         #logo {
@@ -190,8 +192,8 @@
         .board {
             box-sizing: border-box;
             border: 1px solid #3169f6;
-            height: 600px;
-            max-height: 600px;
+            min-height: 600px;
+            height: fit-content;
             margin-bottom: 40px;
         }
 
@@ -270,11 +272,21 @@
         }
 
         /* 게시글 이미지박스 */
-        .board_img {
+        .board_img_box{
             border-top: 1px solid black;
             border-bottom: 1px solid black;
-            height: 60%;
+            min-height: 400px;
             box-sizing: border-box;
+            background-color: black;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 게시글 이미지 */
+        .board_img{
+        	max-width: 100%; 
+        	max-height: 400px;
+        	vertical-align: bottom;
         }
 
         /* 이미지아래 전체박스 */
@@ -329,8 +341,10 @@
         .content {
             margin-top: 10px;
             width: 100%;
-            height: 50%;
+            min-height: 100px;
+            height: fit-content;
             display: block;
+            word-wrap: break-word;
         }
 
 
@@ -340,11 +354,8 @@
             z-index: 100;
             right: 0px;
             box-sizing: border-box;
-            width: 50%;
+            height: fit-content;
             height: 822px;
-            /* 평소에는 댓글 숨김 */
-            visibility: hidden;
-            /* /////////////////// */
         }
 
         #comment_area {
@@ -373,6 +384,7 @@
             border-bottom: 1px solid #999;
             align-items: center;
             height: fit-content;
+            display: flex;
         }
 
         .comment_info {
@@ -386,12 +398,18 @@
         .comment_top {
             white-space: nowrap;
             overflow: hidden;
+            display: flex;
         }
 
         .comment_id {
+            vertical-align: top;
             box-sizing: border-box;
             width: fit-content;
             display: inline-block;
+        }
+        #comment_close_form{
+        	display:inline-block;
+        	width: 100%;
         }
         .comment_close_btn {
             border: 1px solid #999;
@@ -413,47 +431,6 @@
             margin: 5px 0px;
             font-size: 2vh;
         }
-
-        .c_comment_btn {
-            border: 1px solid rgb(214, 214, 214);
-            background-color: inherit;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-
-        .c_comment_btn:active {
-            background-color: #999;
-        }
-
-        .c_comment_area {
-            display: flex;
-            align-items: center;
-            padding-left: 30px;
-            position: relative;
-            /* 평소에는 히든이랑 앱솔루트로 되어있음 */
-            visibility: hidden;
-            position: absolute;
-            /* /////////////////////////////////// */
-        }
-
-        .c_comment {
-            box-sizing: border-box;
-            width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        .c_comment_line {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            top: 5px;
-            left: 0px;
-            border-left: 1px solid #999;
-            border-bottom: 1px solid #999;
-        }
-
-
 
         #chat_area {
             box-sizing: border-box;
@@ -552,35 +529,18 @@
             padding: 0px;
         }
     </style>
-    <script>
-        // window.onload = function () {
-
-        //     document.querySelector("#board_comment_btn").addEventListener("click", function () {
-        //         debugger
-        //         document.querySelector("#side_comment").style.visibility = "visible";
-        //     });
-        // }
-    </script>
 </head>
-
 <body>
     <div id="top">
         <div id="logo">
-<<<<<<< HEAD
         	<a href="main.jsp">
 	            <img src="logo.png">
         	</a>
-=======
-           <a href="main.jsp">
-               <img src="logo.png">
-           </a>
->>>>>>> df998771552998011be36e51ea72e119d0a97a9f
         </div>
         <div id="top_right">
-            <form name="search">
+            <form name="search" method="get" action="main.jsp">
                 <div id="search_box">
-                    <button type="submit" id="search_btn" name="main_page" value="search" formmethod="get"
-                        formaction="pacebook2">
+                    <button type="submit" id="search_btn" name="main_page" value="search">
                         검색
                     </button>
                     <input type="text" id="search_text" name="search_content">
@@ -588,9 +548,7 @@
             </form>
             <form name="my_profile">
                 <div id="my_profile">
-                    <button class="profile_img" type="submit" name="main_page" value="my_profile"
-                        style="background-image:url('assets/image/background.png')" formmethod="get"
-                        formaction="pacebook2">
+                    <button class="profile_img" type="submit" name="main_page" value="my_profile">
                     </button>
                 </div>
             </form>
@@ -598,93 +556,87 @@
     </div>
     <div class="top"></div>
     <div id="center">
-        <form name="side">
-            <div id="side_tool">
-                <ul id="tool_list">
-                    <li>
-                        <button type="submit" class="tool_btn  side_home" name="main_page" value="home" formmethod="get"
-                            formaction="pacebook2">
-                            홈
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
-                            formmethod="get" formaction="pacebook2">
-                            프로필
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_notice" name="main_page" value="notice"
-                            formmethod="get" formaction="pacebook2">
-                            알림
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_message" name="main_page" value="message"
-                            formmethod="get" formaction="pacebook2">
-                            메시지
-                        </button>
-                    </li>
-                    <li>
-                        <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
-                            formaction="pacebook2">
-                            만들기
-                        </button>
-                    </li>
-                </ul>
-                <button type="submit" class="tool_btn  side_more" name="main_page" value="more" formmethod="get"
-                    formaction="pacebook2">
-                    더보기
-                </button>
-            </div>
-        </form>
+   		<div id="side_tool">
+        	<ul id="tool_list">
+            	<li>
+	            	<a href="main.jsp">
+	                <button type="submit" class="tool_btn  side_home">
+	                     홈
+	                </button>
+	                </a>
+	             </li>
+	             <li>
+	             	<form>
+		                <button type="submit" class="tool_btn  side_profile" name="main_page" value="my_profile"
+		                    formmethod="get" formaction="pacebook2">
+		                    프로필
+		                </button>
+	                </form>
+	             </li>
+	             <li>
+	                <button type="submit" class="tool_btn  side_notice">
+	                    알림
+	                </button>
+	             </li>
+	             <li>
+	                <button type="submit" class="tool_btn side_message" name="main_page" value="message">
+	                    메시지
+	                </button>
+	             </li>
+	             <li>
+	             	<form>
+		                <button type="submit" class="tool_btn  side_make" name="main_page" value="make" formmethod="get"
+		                    formaction="pacebook2">
+		                    만들기
+		                </button>
+	                </form>
+	             </li>
+        	</ul>
+	        <button type="submit" class="tool_btn  side_more">
+	            더보기
+	        </button>
+     	</div>
         <div class="side_tool"></div>
         <div id="center_box">
             <ul id="friend_profiles">
-                <form name="friend">
-                    <!-- 데이터베이스에서 가져와서 친구표시 -->
-                    <li class="friend_pf">
-                        <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
-                            formaction="pacebook2" style="background-image:url('assets/image/background.png')">
-                        </button>
-                    </li>
-                    <!-- 친구표시 -->
-                </form>
+	            <!-- 데이터베이스에서 가져와서 친구표시 -->
+	            <li class="friend_pf">
+	                <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
+	                    formaction="pacebook2" style="background-image:url('assets/image/background.png')">
+	                </button>
+	            </li>
+	            <!-- 친구표시 -->
             </ul>
-            <form>
             <ul id="show_boards">
             <%
             PaceDAO dao = new PaceDAO();
             HttpSession se = request.getSession();
             int user_no = (int)se.getAttribute("user_no");
-            int count = dao.BoardCount(user_no);
-            HashMap <Integer, List> map = dao.BoardContent(user_no);
-            List <PaceUserVO> getPuvo = map.get(1); 
-            List <PaceBoardVO> getPbvo = map.get(2); 
-            Date date = new Date();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-            
-               
-            for(int i = 0; i<count; i++ ){
-               String id= getPuvo.get(i).getId();
-               String email = getPuvo.get(i).getEmail();
-               Date board_time = getPbvo.get(i).getBoard_time();
-               String board_content = getPbvo.get(i).getBoard_content();
-               String [] content = board_content.split("\\+++");
-               
-               
-               String url= content[0];
-               String text= content[1];
-               
-               
+            %>
+            <%
+            List<PaceBoardVO> boardList = null;
+            if("search".equals(request.getParameter("main_page"))){
+            	boardList = dao.search(request.getParameter("search_content"));
+            } else {
+	            boardList = dao.getBoard();
+            }
+           	for(PaceBoardVO pbvo : boardList){
+           		int boardUserNo = pbvo.getUser_no();
+           		PaceUserVO puvo = dao.getUserInfo(boardUserNo);
+           		String id = puvo.getId();
+           		String email = puvo.getEmail();
+           		
+           		String picture = pbvo.getBoard_url();
+           		String content = pbvo.getBoard_content();
+           		
+           		int board_no = pbvo.getBoard_no();
             %>
                 
                 <li class="board">
                     <div class="board_top">
                         <div class="board_top_left">
                             <div class="board_profile">
-                                <button class="profile_img" type="submit" name="main_page" value="bd_profile"
-                                    formmethod="get" formaction="pacebook"
+                                <button class="profile_img" name="main_page" value="bd_profile"
                                     style="background-image:url('assets/image/background.png')">
                                 </button>
                             </div>
@@ -694,43 +646,44 @@
                             </div>
                         </div>
                         <div class="board_top_right">
-                            <div class="board_more board_btn ">
-                                <button class="profile_img" type="submit" name="main_page" value="bd_more" 
-                                    formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/more_btn.png')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-dots" viewBox="0 0 16 16">
+                            <div class="board_more board_btn">
+                            	<% if(user_no == boardUserNo){ %>
+                                <button class="profile_img" name="main_page" value="del_board">
+                                    <svg width="16" height="16">
                                         <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
                                         <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                     </svg>
                                 </button>
+                                <input type="hidden" name="board_no" value="<%= boardUserNo %>">
+                                <% } %>
                             </div>
                         </div>
                     </div>
-                    <div class="board_img">
-                        <img src="">
+                    <div class="board_img_box">
+                        <img class="board_img" src="<%=picture%>">
                     </div>
                     <div class="board_content">
                         <div class="content_top">
                             <div class="content_top_left">
                                 <div class="board_like board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="like" 
-                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/like_btn.png')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                    <button class="profile_img" name="main_page" value="like">
+                                        <svg width="16" height="16">
                                          <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="board_comment board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="comment" 
-                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/comment_btn.png')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
-                                            <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
-                                        </svg>
-                                    </button>
+                                <div class="board_comment board_btn">
+                                	<form method="get" action="main.jsp">
+	                                    <button id="board_comment_btn" class="profile_img" name="board_no" value="<%= board_no %>"> 
+	                                        <svg width="16" height="16">
+	                                            <path d="M2.678 11.894a1 1 0 0 1 .287.801 10.97 10.97 0 0 1-.398 2c1.395-.323 2.247-.697 2.634-.893a1 1 0 0 1 .71-.074A8.06 8.06 0 0 0 8 14c3.996 0 7-2.807 7-6 0-3.192-3.004-6-7-6S1 4.808 1 8c0 1.468.617 2.83 1.678 3.894zm-.493 3.905a21.682 21.682 0 0 1-.713.129c-.2.032-.352-.176-.273-.362a9.68 9.68 0 0 0 .244-.637l.003-.01c.248-.72.45-1.548.524-2.319C.743 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.52.263-1.639.742-3.468 1.105z"/>
+	                                        </svg>
+	                                    </button>
+                                	</form>
                                 </div>
                                 <div class="board_share board_btn ">
-                                    <button class="profile_img" type="submit" name="main_page" value="share" 
-                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/share_btn.png')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                    <button class="profile_img">
+                                        <svg width="16" height="16">
                                             <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
                                         </svg>
                                     </button>
@@ -738,9 +691,8 @@
                             </div>
                             <div class="content_top_right">
                                 <div class="board_record board_btn ">
-                                    <button class="profile_img"type="submit" name="main_page" value="record" 
-                                        formmethod="get" formaction="pacebook2"style="background-image:url('assets/image/record_btn.png') ">
-                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"fill="currentColor"  class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                                    <button class="profile_img">
+                                         <svg width="16" height="16">
                                             <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
                                             <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
                                          </svg>
@@ -752,35 +704,36 @@
                             @<%=id %>
                         </div>
                         <p class="content">
-                            내용
+                            <%= content %>
                         </p>
                     </div>
                 </li>
+                <% } %>
                 <!-- 게시글 끝 -->
-                
-              <%
-              
-              
-               }
-              
-              
-              %>  
-                
-                
-                
             </ul>
         </div>
-        <div id="side_comment">
+       	<% 
+       		int board_no = 0;
+       		if(request.getParameter("board_no") != null){
+               	board_no = Integer.parseInt(request.getParameter("board_no"));
+       		}
+       		String visibility = "hidden";
+       		System.out.println(board_no);
+       		if(board_no != 0){
+       			visibility = "visible";
+       		}
+       	%>
+        <div id="side_comment" style="visibility:<%= visibility %>">
             <ul id="comment_area">
                 <!-- 댓글 -->
-                
-                <% String mp = request.getParameter("main_page");
-                   if("comment".equals(mp)) {
-                    int board_no = Integer.parseInt(request.getParameter("board_no"));
-                    PaceBoardVO pbvo = new PaceBoardVO();
-                    pbvo.setBoard_no(board_no);
-                    List<PaceCommentVO> list = dao.Comment(user_no, board_no);
-                       for(PaceCommentVO vo : list){ %>
+                <%
+             		List<PaceCommentVO> commentList = dao.Comment(board_no);
+                	if(commentList != null){
+              			for(PaceCommentVO pcvo : commentList){
+	                    	int c_user_no = pcvo.getUser_no();
+	                    	PaceUserVO c_puvo = dao.getUserInfo(c_user_no);
+	                    	String id = c_puvo.getId();
+                 %>
                 <li class="comment_box">
                     <div class="comment_profile">
                         <button class="profile_img" type="submit" name="main_page" value="fr_profile" formmethod="get"
@@ -790,76 +743,56 @@
                     <div class="comment_info">
                         <div class="comment_top">
                             <div class="comment_id">
-                                <% int c_user_no = vo.getUser_no();
-                                   PaceUserVO puvo = dao.getUserInfo(c_user_no);
-                                   String id = puvo.getId();%>
                                 <%= id %>
                             </div>
                             <span class="comment_modify">
-                                <% int comment_modify = vo.getComment_modify();
+                                <% int comment_modify = pcvo.getComment_modify();
                                 if(comment_modify == 1){ %>
                                    (수정됨)
                                 <% } %>
                             </span>
                             <% if(user_no == c_user_no){ %>
-                            <button class="comment_close_btn">
-                                X
+                            <form id="comment_close_form"method="get" action="pacebook2">
+                            <% int comment_no = pcvo.getComment_no(); %>
+                            <button class="comment_close_btn" name="main_page" value="comment_del">
+	                            	<input type="hidden" name="comment_no" value="<%= comment_no %>">
+	                            	<input type="hidden" name="board_no" value="<%= board_no %>">
+	                                X
                             </button>
+                            </form>
                             <% } %>
                         </div>
                         <div class="comment">
-                            <% String comment = vo.getComment_content(); %>
+                            <% String comment = pcvo.getComment_content(); %>
                             <%= comment %>
-                        </div>
-                        <div class="comment_btns">
-                            <button class="c_comment_btn">답글달기</button>
-                            <ul>
-                                <!-- 답글 -->
-                                <li class="c_comment_area">
-                                    <div class="c_comment_line"></div>
-                                    <button class="profile_img comment_profile" type="submit" name="main_page"
-                                        value="fr_profile" formmethod="get" formaction="pacebook"
-                                        style="background-image:url('assets/image/background.png')">
-                                    </button>
-                                    <div class="c_comment">
-                                        <div>아이디</div>
-                                        답글
-                                    </div>
-                                </li>
-                                <!-- 답글 끝 -->
-                            </ul>
                         </div>
                     </div>
                 </li>
-                <%   } %>
                 <% } %>
+                <%} %>
                 <!-- 댓글 끝 -->
             </ul>
             <button id="comment_close">></button>
             <div id="chat_area">
                 <div class="profile_img comment_profile" style="background-image:url('assets/image/background.png')">
                 </div>
-                <div class="chat_area_right">
-                    <input type="text" class="comment_text">
-                    <button class="comment_btn">게시</button>
-                </div>
+               	<form class="chat_area_right" method="get" action="pacebook2">
+                    <input type="text" class="comment_text" name="comment_content">
+                    <button type="submit" class="comment_btn" name="main_page" value="comment">
+                    	게시
+                    	<input type="hidden" name="board_no" value="<%= board_no %>">
+                    </button>
+               	</form>
             </div>
         </div>
     </div>
     <script>
-        document.querySelector("#board_comment_btn").addEventListener("click", function () {
-            document.querySelector("#side_comment").style.visibility = "visible";
-        });
-        document.querySelector("#comment_close").addEventListener("click", function(){
-            document.querySelector("#side_comment").style.visibility = "hidden";
-        });
-        // let comments = document.querySelectorAll(".comment_close_btn");
-        // comments.forEach( (btn) => {
-        //     console.log(this);
-        //     btn.addEventListener("click", function(){
-        //         this.parentNode.parentNode.parentNode.remove();
-        //     });
-        // });
+	    let comment_btns = document.querySelectorAll("#board_comment_btn");
+	    comment_btns.forEach( (btn) => {
+	        document.querySelector("#comment_close").addEventListener("click", function(){
+	            document.querySelector("#side_comment").style.visibility = "hidden";
+	        });
+	    });
     </script>
 </body>
 </html>
