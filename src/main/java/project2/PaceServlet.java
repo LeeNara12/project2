@@ -34,6 +34,13 @@ public class PaceServlet extends HttpServlet {
 			String pw = request.getParameter("pw");
 			PaceUserVO vo = new PaceUserVO();
 			vo.setId(id);
+			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
+				request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
+				RequestDispatcher dispatch = request.getRequestDispatcher("login.jsp");
+				dispatch.forward(request, response);// 현재 request, response를 login페이지로 넘김 
+				System.out.println("로그인 실패");
+				return;
+			}
 			vo.setPw(pw);
 			boolean logon = dao.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 			if(logon) {// 로그인 성공했을 경우

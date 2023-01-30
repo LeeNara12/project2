@@ -38,11 +38,11 @@ public class PaceDAO {
 			con = dataFactory.getConnection();
 			
 			String query = " select * from user_info"
-					+ " where user_id = ?";//SQL문 작성
+					+ " where user_id = ? and user_pw = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, vo.getId());
-//			pstmt.setString(2, vo.getPw());
+			pstmt.setString(2, vo.getPw());
 			ResultSet rs = pstmt.executeQuery(); 
 			
 			
