@@ -54,6 +54,7 @@ public class PaceDAO {
 				result=false;
 			}
 			
+			rs.close();
 			pstmt.close();
 			con.close();
 			
@@ -110,6 +111,10 @@ public class PaceDAO {
 				
 			}
 			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -138,6 +143,9 @@ public class PaceDAO {
            pstmt.setString(5, pbvo.getBoard_content());
 		
            pstmt.executeUpdate();
+           
+           pstmt.close();
+           con.close();
 
 		} catch (SQLException e) {
 			
@@ -161,6 +169,9 @@ public class PaceDAO {
 			
 			pstmt.executeUpdate();
 			
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -177,6 +188,9 @@ public class PaceDAO {
 			pstmt.setInt(1, comment_no);
 			
 			pstmt.executeUpdate();
+			
+			pstmt.close();
+			con.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -208,6 +222,10 @@ public class PaceDAO {
 				
 				list.add(pcvo);
 			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -238,6 +256,10 @@ public class PaceDAO {
 				puvo.setBirth(rs.getString("user_birth"));
 				puvo.setGender(rs.getString("user_gender"));
 			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -268,6 +290,10 @@ public class PaceDAO {
 				
 				list.add(pbvo);
 			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -301,6 +327,10 @@ public class PaceDAO {
 				list.add(pbvo);
 			}
 			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -325,6 +355,9 @@ public class PaceDAO {
 			pstmt.setInt(1, board_no);
 			pstmt.executeUpdate();
 			
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -348,6 +381,10 @@ public class PaceDAO {
 			profile = rs.getString("user_profile");
 			
 			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -356,145 +393,6 @@ public class PaceDAO {
 		
 		return profile;
 	}
-	
-	//?시간전 인지 가져오는 메소드
-	//sql.date를 변수로 넣음 
-	public String time(Date time) {
-		
-	long write_time= time.getTime();
-	
-	long now = System.currentTimeMillis()/1000;
-		
-	long diff = now-write_time;
-	long diff1 = diff/1000; //log 범위를 넘어가서...
-	
-	int result= 0;
-	String a = "";
-		
-		
-		if(diff1<60) {
-			//초단위
-			System.out.println(diff/1000);
-			result = (int)diff/1000;
-			a = "초 전";
-			
-		}else if(diff1<60*60){
-			//분단위
-			
-			result = (int)diff/1000*60;
-			a = "분 전";
-			System.out.println(result+a);
-					
-		}else if(diff1<60*60*24) {
-			//시간단위
-			
-			result = (int)diff/1000*60*60;
-			a = "시간 전";
-			System.out.println(result+a);
-		}else if(diff1<60*60*24*30) {
-			//일 단위
-			
-			result = (int)diff/1000*60*60*24;
-			a = "일 전";
-			System.out.println(result+a);
-		}else if(diff1<60*60*24*30*12) {
-			//월 단위
-			
-			result = (int)diff/1000*60*60*24*30;
-			a = "달 전";
-			System.out.println(result+a);
-		}else {
-			//년 이상
-			
-			result = (int)diff/1000*60*60*24*30*12;
-			a = "년 전";
-			System.out.println(result+a);
-			
-		}
-		
-		return result+a;
-		
-	}
-	//해당 user_no의 게시글 수
-   public int BoardCount(int user_no) {
-      int result=0;
-      
-      try {
-         con = dataFactory.getConnection();
-         String query1 = "select count(*) from board"
-               +" where user_no = ?";
-         pstmt = con.prepareStatement(query1);
-         pstmt.setInt(1, user_no);
-         
-         ResultSet rs = pstmt.executeQuery();
-         
-         rs.next();
-         
-         result = rs.getInt("count(*)");
-         
-         pstmt.close();
-         con.close();
-      } catch (SQLException e) {
-         
-         e.printStackTrace();
-      }
-      
-      
-      return result;
-   }
-   
- //해당 게시글의 내용 가져오는 메소드
-   public HashMap<Integer,List> BoardContent(int user_no) {
-      
-      HashMap<Integer,List> map = new HashMap<Integer,List>();
-      List <PaceBoardVO> pbvo_list = new ArrayList <>();
-      List <PaceUserVO> puvo_list = new ArrayList <>(); 
-      
-      
-      try {
-         
-         
-         con = dataFactory.getConnection();
-         String query1 = "Select * from board b, user_info ui"
-               + " where b.user_no = ui.user_no"
-               + " and b.user_no = ?"
-               + " order by board_time desc";
-         pstmt = con.prepareStatement(query1);
-         pstmt.setInt(1, user_no);
-         
-         ResultSet rs = pstmt.executeQuery();
-         
-         while(rs.next()) {
-            PaceBoardVO pbvo = new PaceBoardVO();
-            PaceUserVO puvo = new PaceUserVO();
-            
-            puvo.setEmail(rs.getString("user_email"));//이메일
-            puvo.setId(rs.getString("user_id"));//아이디
-            puvo.setProfile(rs.getString("user_profile"));//프로필 url
-            pbvo.setBoard_time(rs.getDate("board_time"));// 작성시간
-            pbvo.setBoard_url(rs.getString("board_url"));// 게시글 이미지 url
-            pbvo.setBoard_content(rs.getString("board_content"));//게시글 내용
-            pbvo.setUser_no(rs.getInt("user_no"));
-            pbvo.setBoard_no(rs.getInt("board_no"));
-            
-            puvo_list.add(puvo);
-            pbvo_list.add(pbvo);
-            
-            
-         }
-         
-         map.put(1, puvo_list);
-         map.put(2, pbvo_list);
-         
-         
-         
-      } catch (SQLException e) {
-         
-         e.printStackTrace();
-      }
-      
-      return map;
-   }
 }
 
  
