@@ -26,6 +26,8 @@ public class PaceDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context)ctx.lookup("java:/comp/env"); //JNDI 사용을 위한 설정
+																																	//데이터베이스와 연결된 커넥션을 미리 만들어서 저장해두고 있다가 
+																																	//	필요할 때 저장된 공간(pool)에서 가져다 쓰고 반환하는 기법을 말합니다. 
 			dataFactory = (DataSource)envContext.lookup("jdbc/oracle2");
 		} catch (NamingException e) {
 			e.printStackTrace();
