@@ -123,7 +123,7 @@ public class PaceDAO {
 		return result;
 	}
 	
-	
+
 	public void createBoard(int user_no, PaceBoardVO pbvo) {//게시글 작성 메소드
 		
 		try {
