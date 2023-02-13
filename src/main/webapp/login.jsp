@@ -11,16 +11,10 @@
     <script>
         window.onload = function () {
 
-            document.querySelector("#login_btn").addEventListener("click", function () {
-                let login = document.login;
-                login.method = "post";
-                login.action = "pacebook";
-                login.submit();
-            });
             document.querySelector("#join_btn").addEventListener("click", function () {
                 let join = document.join;
                 join.method = "get";
-                join.action = "join.jsp";
+                join.action = "/project2/join.jsp";
                 join.submit();
             });
         }
@@ -120,7 +114,7 @@
 
 <body>
     <div>
-        <img src="logo.png">
+        <img src="/project2/image/logo.png">
     </div>
     <div id="main">
         <div class="left">
@@ -129,7 +123,7 @@
         </div>
         <div class="right">
             <h1 class="a2">PACEBOOK LOGIN</h1>
-            <form name="login">
+            <form name="login" method="post" action="/project2/pacebook/login">
                 <div class="login">
                     <input class="text" type="text" name="id" placeholder="Id">
                     <br>
@@ -141,7 +135,7 @@
                     <%}%>
                 </div>
                 <br>
-                <button id="login_btn" name="command" value="login">로그인</button>
+                <button type="submit" id="login_btn" >로그인</button>
             </form>
             <br>
             <form name="join">

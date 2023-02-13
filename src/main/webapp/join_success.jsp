@@ -13,7 +13,7 @@
         document.querySelector(".myButton").addEventListener("click", function(){
             let login = document.login;
             login.method = "get";
-            login.action = "login.jsp";
+            login.action = "/project2/login.jsp";
             login.submit();
         });
         document.querySelector(".follow").addEventListener("click", function(){

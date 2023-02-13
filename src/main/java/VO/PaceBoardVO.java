@@ -1,4 +1,4 @@
-package project2;
+package VO;
 
 import java.sql.Date;
 
@@ -6,11 +6,11 @@ public class PaceBoardVO {
 	private int board_no; //게시판 번호
 	private Date board_time;//게시판 생성 날짜;
 	private int board_modify;//수정여부
-	private Date board_modify_time;// 게시글 수정 시간 
-	private String board_url;
 	private String board_content;//게시판 내용
+	private String board_url;
 	private int user_no; // 회원넘버
 	private int board_like; // 좋아요 
+	private Date board_modify_time;// 게시글 수정 시간 
 	
 	
 	public String getBoard_url() {
