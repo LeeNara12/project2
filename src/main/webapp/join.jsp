@@ -191,8 +191,8 @@
                     }
                 }
                 if(istrue == true){
-                    join.method = "get";
-                    join.action = "pacebook";
+                    join.method = "post";
+                    join.action = "pacebook/join";
                     join.submit();
                 }
            });
@@ -204,7 +204,7 @@
 <body>
     <div class="login">
         <div id="logo">
-            <img src="logo.png">
+            <img src="/project2/image/logo.png">
         </div>
         <form name="join">
             <div id="text_boxes">
@@ -258,7 +258,7 @@
                 </div>
                 <br>
                 <div>
-                    <button id="join_btn" name="command" value="joinUp">가입하기</button>
+                    <button id="join_btn">가입하기</button>
                 </div>
             </div>
         </form>
