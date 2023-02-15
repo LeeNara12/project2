@@ -89,4 +89,9 @@ public class PaceUserVO {//회원정보
 	public void setUser_sleep(int user_sleep) {
 		this.user_sleep = user_sleep;
 	}
+	public void setJoindate(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

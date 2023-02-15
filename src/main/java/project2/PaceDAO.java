@@ -17,6 +17,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import VO.PaceBoardVO;
+import VO.PaceCommentVO;
+import VO.PaceUserVO;
+
 public class PaceDAO {
 	private Connection con;
 	private PreparedStatement pstmt;
@@ -43,8 +47,8 @@ public class PaceDAO {
 					+ " where user_id = ? and user_pw = ?";//SQL문 작성
 			
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPw());
+			pstmt.setString(1, vo.getUser_id());
+			pstmt.setString(2, vo.getUser_pw());
 			ResultSet rs = pstmt.executeQuery(); 
 			
 			
@@ -79,7 +83,7 @@ public class PaceDAO {
 			
 			pstmt = con.prepareStatement(query);
 			
-			pstmt.setString(1, vo.getId());
+			pstmt.setString(1, vo.getUser_id());
 			
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -96,15 +100,15 @@ public class PaceDAO {
 				
 				// 값을 주는 애들은 jsp
 				// 값을 받아오는 애들 
-				pstmt.setString(1, vo.getId());
-				pstmt.setString(2,vo.getPw());
+				pstmt.setString(1, vo.getUser_id());
+				pstmt.setString(2,vo.getUser_pw());
 //				pstmt.setDate(3, vo.getJoindate());
-				pstmt.setString(3, vo.getName());
-				pstmt.setString(4, vo.getEmail());
-				pstmt.setString(5, vo.getPhone());
-				pstmt.setString(6, vo.getProfile());
-				pstmt.setString(7, vo.getBirth());
-				pstmt.setString(8, vo.getGender());
+				pstmt.setString(3, vo.getUser_name());
+				pstmt.setString(4, vo.getUser_email());
+				pstmt.setString(5, vo.getUser_phone());
+				pstmt.setString(6, vo.getUser_profile());
+				pstmt.setString(7, vo.getUser_birth());
+				pstmt.setString(8, vo.getUser_gender());
 				
 				pstmt.executeUpdate();
 				
@@ -248,15 +252,15 @@ public class PaceDAO {
 			
 			while(rs.next()) {
 				puvo.setUser_no(user_no);
-				puvo.setId(rs.getString("user_id"));
+				puvo.setUser_id(rs.getString("user_id"));
 				puvo.setJoindate(rs.getDate("user_time"));
-				puvo.setName(rs.getString("user_name"));
-				puvo.setEmail(rs.getString("user_email"));
-				puvo.setBirth(rs.getString("user_birth"));
-				puvo.setPhone(rs.getString("user_phone"));
-				puvo.setProfile(rs.getString("user_profile"));
-				puvo.setBirth(rs.getString("user_birth"));
-				puvo.setGender(rs.getString("user_gender"));
+				puvo.setUser_name(rs.getString("user_name"));
+				puvo.setUser_email(rs.getString("user_email"));
+				puvo.setUser_birth(rs.getString("user_birth"));
+				puvo.setUser_phone(rs.getString("user_phone"));
+				puvo.setUser_profile(rs.getString("user_profile"));
+				puvo.setUser_birth(rs.getString("user_birth"));
+				puvo.setUser_gender(rs.getString("user_gender"));
 			}
 			
 			rs.close();
