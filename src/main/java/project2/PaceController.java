@@ -39,8 +39,8 @@ public class PaceController extends HttpServlet {
 			nextPage = "/main.jsp";
 		}else if( action.equals("/join")){
 			System.out.println("abc들어옴");
-			PaceService ce = new PaceService();
-			ce.a();
+//			service.a();
+			List<PaceUserVO> up = service.a();
 			
 //			PaceDAO da = new PaceDAO();
 //			da.count();

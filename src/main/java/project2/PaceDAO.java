@@ -448,6 +448,7 @@ public class PaceDAO {
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_no(user_no);
 			uv.add(vo); //리스트에 있는 메소드  // 기능 : 넣는다 
+			
 		}
 		
 	} catch (SQLException e) {
