@@ -199,15 +199,15 @@ public class User_infoDAO {
 			
 			vo.setUser_profile(profile);
 			vo.setUser_name(name);
-			
-			String query2 = "Select * from user_followlist"
-					+" Where user_no = ?";
-			pstmt = con.prepareStatement(query2);
-			
-	
-			String follow = rs.getString("user_follow");
-			String follower = rs.getString("user_follower");
-			
+//			
+//			String query2 = "Select * from user_followlist"
+//					+" Where user_no = ?";
+//			pstmt = con.prepareStatement(query2);
+//			pstmt.setString(1, user_);
+//	
+//			String follow = rs.getString("user_follow");
+//			String follower = rs.getString("user_follower");
+//			
 			
 			
 			

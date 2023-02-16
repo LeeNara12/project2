@@ -141,6 +141,8 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/get_board")) {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
+		}else if(action.equals("/profile")) {
+			
 		}
 		
 		System.out.println("nextPage : "+nextPage);
