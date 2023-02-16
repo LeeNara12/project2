@@ -178,4 +178,50 @@ public class User_infoDAO {
 		
 		return profile;
 	}
+	
+	
+	public PaceUserVO profile1(int user_no) {
+		PaceUserVO vo = new PaceUserVO();
+		
+		try {
+			con = dataFactory.getConnection();
+			String query1 = "Select * from user_info"
+							+" Where user_no = ?";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			
+			String profile = rs.getString("user_profile");
+			String name = rs.getString("user_name");
+			
+			vo.setUser_profile(profile);
+			vo.setUser_name(name);
+			
+			String query2 = "Select * from user_followlist"
+					+" Where user_no = ?";
+			pstmt = con.prepareStatement(query2);
+			
+	
+			String follow = rs.getString("user_follow");
+			String follower = rs.getString("user_follower");
+			
+			
+			
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return vo;
+	}
+
 }
