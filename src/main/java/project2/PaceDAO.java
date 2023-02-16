@@ -407,8 +407,10 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public String count() {
+	public  List<PaceUserVO> count() {
 		System.out.println("count실행됨");
+		List<PaceUserVO> uv = new ArrayList();
+		
 	try {
 		con = dataFactory.getConnection();
 		String query="";
@@ -419,7 +421,7 @@ public class PaceDAO {
 		int count = rs.getInt("count(*)");
 		int [] ka = new int[2]; // 배열의 길이 선언
 		ka[0] =(int) (Math.random()*count);
-		ka[1] =(int) (Math.random()*count);
+	
 		
 //		if(ka[1] == ka[0] ) {
 //			ka[1] =(int) (Math.random()*count);
@@ -428,18 +430,30 @@ public class PaceDAO {
 //		}
 		
 		do { // 실행문 
-			ka[0] =(int) (Math.random()*count);
 			ka[1] =(int) (Math.random()*count);
-		}while(ka[1] == ka[0]); { // 조건문 
-			ka[1] =(int) (Math.random()*count);
-		}
+		}while(ka[1] == ka[0]);  // 조건문 
+		
 		System.out.println(ka[0]);
 		System.out.println(ka[1]);
+		
+		String squ = "SELECT  user_no, rownum  FROM user_info"
+                                  + "  WHERE rownum = ? OR rownum = ?";
+		pstmt = con.prepareStatement(squ);
+		pstmt.setInt(1, ka[0]);
+		pstmt.setInt(2, ka[1]);
+		rs =  pstmt.executeQuery(); 
+//		rs.next();
+		while(rs.next()) {
+			int user_no = rs.getInt("user_no");
+			PaceUserVO vo = new PaceUserVO();
+			vo.setUser_no(user_no);
+			uv.add(vo); //리스트에 있는 메소드  // 기능 : 넣는다 
+		}
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return null;
+	return uv;
 	
 	
 	}
