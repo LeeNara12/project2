@@ -46,4 +46,8 @@ public class PaceService {
 	public List<PaceBoardVO> getBoard(){
 		return boardDAO.getBoard();
 	}
+	
+	public List<PaceUserVO> getFollowList(int user_no){
+		return User_infoDAO.getFollowList(int user_no);
+	}
 }

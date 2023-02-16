@@ -1,308 +1,130 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시글 작성</title>
-    <style>
-        /* 로고가 들어가 있는 큰박스 */
-        #top { 
-            padding : auto;
-            padding: 4px;
-        }
-        .logo{
-            width: 300px;
-            margin-bottom: 10px;
-            cursor: pointer; 
-        }
-        /* 게시글 작성 큰박스 */
-        #content{
-            margin-top:30px;
-            box-sizing: border-box;
-            border:1px solid #F39C12;
-            height:700px;
-            border-left: 0px;
-            background-size: 1200px;
-            border-radius: 0px 10px 10px 0px;
-            padding:10px 0px;
-            font-size: 0px;
-        }
-        /* 책 왼쪽 */
-        #book_left{
-            vertical-align: top;
-            border: 1px solid #F39C12;
-            width:27%;
-            height: 95%;
-            display: inline-block;
-            border-radius: 0px 20px 0px 0px;
-            border-top-right-radius: 50px 20px;
-            border-top-left-radius: 0px 20px;
-            background-color: white;
-            background-size: cover;
-            border-left: 0px;
-            margin-top:20px;
-        }
-        /* //////////////////////////////////////////////////////////// */
-        /* 책 오른쪽 */
-        #book_right{
-            margin-top:20px;
-            border: 1px solid #F39C12;
-            border-left: 0px;
-            background-color: white;
-            width:50%;
-            height: 95%;
-            display: inline-block;
-            border-top-right-radius: 100px 10px;
-            border-top-left-radius: 50px 20px;
-            background-size: cover;
-            font-size: 10px;
-        }
-        /* //////////////////////////////////////////////////////////// */
-        /* 게시글 작성버튼이 들어가 있는 책 위쪽부분 */
-        #br_top{
-            text-align: left;
-        }
-        #cancell_btn{
-            height:40px;
-            margin: 20px 10px;
-            border: 1px solid #F39C12;
-            color: #F39C12;
-            font-weight: bolder;
-            font-size: 2vh;
-            background-color: white;
-        }
-        #board_btn{
-            height:40px;
-            margin: 20px 10px;
-            border: 1px solid#F39C12;
-            color: #F39C12;
-            font-weight: bolder;
-            font-size: 2vh;
-            background-color: white;
-            float:right;
-        }
-        #br_top>button:hover{
-            background-color: #F39C12;
-            color:aliceblue;
-            border-color: #F39C12;
-        }
-        /* //////////////////////////////////////////////////////////// */
-        /* 사진이 올라가는 박스 */
-        #img_box{ 
-            box-sizing: border-box;
-            border:1px solid #F39C12;
-            box-sizing: border-box;
-            margin: 10px;
-            height:400px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction:column;
-            flex-wrap: wrap;
-            /* cursor:pointer; */
-            font-size:2vh;
-            font-weight: bolder;
-            color:#F39C12;
-            
-        }
-        #img_show{
-            position: fixed; 
-            z-index: 99;
-            object-fit: contain;
-            width: 589.5px;
-            height: 378px;
-            
-
-        }
-        #url_input_box{
-            width: 100%;
-            height: 9%;
-            display: flex;
-            justify-content: center;
-            
-        }
-        #url_address_out{
-            width: 70%;
-            height: 95%;
-            border: 1px solid #F39C12;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-right: 4px;
-           
-           
-        }
-        #url_address_in{
-            width: 86%;
-            height: 71%;
-            border: 1px solid #ffffff;
-            outline: none;
-           
-         
-        }
-        #btn_url{
-            border: 1px solid #F39C12;
-            background-color: white;
-            color: #F39C12;
-            font-weight:bolder;
-        }
-        #btn_url:active{
-            background-color: #F39C12;
-            color: white;
-        }
-       
-
-        /* //////////////////////////////////////////////////////////// */
-        /* 오른쪽 책 아래부분 아이디,제목,내용이 들어가는 박스 */
-        #br_bottom{
-            height: 120px;
-            padding: 10px;
-        }
-        /* 아이디랑 타이틀 박스 */
-        #br_bottom_top{
-            display: flex;
-            align-items: center;
-        }
-        #title_id{
-            display: inline-block;
-            width:fit-content;
-            height: fit-content;
-            font-size: 2vh;
-            padding-left: 10px;
-        }
-        /* //////////////////////////////////////////////////////////// */
-        /* 내용 */
-        #content_text{
-            border:0px;
-            width: 98%;
-            padding-left: 10px;
-            height: 60px;
-            overflow:hidden;
-            resize: none;
-        }
-        textarea:focus{
-            outline: none;
-        }
-        select:focus{
-            outline: none;
-        }
-    </style>
-    <script>
-        window.onload = function(){
-        	
-       	
-            //게시판 작성버튼
-        	 document.querySelector("#board_btn").addEventListener("click", function(){
-        		let url = document.querySelector("#url_address_in").value; 
-        		let content = document.querySelector("#content_text").value; 
-                if(
-              		(url==null||url==undefined||url=="") || (content==null||content==undefined||content=="")
-                ){
-                	alert('게시글을 작성해주세요!');
-                }else{
-                	
-        		 let board = document.board;
-                 board.method = "get";
-                 board.action = "pacebook";
-                 board.submit();
-                }
-        		 
-        		 
-                 
-                 
-             });
-             //게시판 뒤로가기 버튼
-             document.querySelector("#cancell_btn").addEventListener("click", function(){
-                 let board = document.board;
-                 board.method = "get";
-                 board.action = "main.jsp"
-                 board.submit();
-             })
-             //url 확인버튼 => url 이미지삽입
-             document.querySelector("#btn_url").addEventListener("click", function(e){
-                e.stopPropagation();
-                let url = document.querySelector('#url_address_in');
-               
-                if(url != null){
-                    document.url.src = url.value;
-                }
-                document.querySelector('#img_show').style.display = 'block';
-                document.querySelector('#img_show').style.visibility = 'visible';
-             })
-
-           
-             
-            
-        }
-
-        //url 없애고, 이미지 취소
-        function url_cancle(){
-        let cancle = document.querySelector('#img_show')
-        console.log(cancle.style.display);
-            if(cancle.style.display === 'block'){
-                let url = document.querySelector('#url_address_in');
-                document.url.src = '';
-                cancle.style.visibility = 'hidden';
-            }
-        }
-
-        
- 
-
-    
-       
-
-    </script>
+    <title>pacebook</title>
+    <link rel="stylesheet" href="css/board.css">
 </head>
 <body>
-	<%
-		HttpSession se = request.getSession();
-		String id = (String)se.getAttribute("user_id");
-	
-	%>
     <div id="top">
-    	<a href='main.jsp'>
-        	<img class="logo" src="logo.png">
-    	</a>
+        <div id="logo">PACEBOOK</div>
+        <div id="top_right">
+            <button id="back_btn" class="top_btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+                <span class="btn_text">뒤로가기</span>
+            </button>
+            <button id="file_upload_btn" class="top_btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+                    <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z"/>
+                </svg>
+                <span class="btn_text">파일 업로드</span>
+            </button>
+            <button id="make_board_btn" class="top_btn">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                <span class="btn_text">게시글 작성</span>
+            </button>
+        </div>
     </div>
-    <hr color = "#F39C12" size="1px">
-    <div id="content"> 
-        <div id="book_left"></div>
-        <div id="book_right"> 
-            <form name="board"> 
-                <div id="br_top">
-                    <button id="cancell_btn">뒤로가기</button>
-                    <button id="board_btn"  type="button">게시글 작성</button>
-                    <input type="hidden" name="command" value="board" >
-                </div>
-                
-                <div id="img_box" onclick="url_cancle()">
-                	
-                    <div>url을 입력해주세요</div>
-                    <br>
-                    <div id="url_input_box">
-                        <div id="url_address_out">
-                            <input id="url_address_in" type="text"  name="url" >
+    <div id="main">
+        <div id="main_left">
+            <div id="left_box">
+                <div id="profile_box">
+                    <div id="profile_top">
+                        <div id="profile" class="profile_div">
+                            <img class="profile" src="image/20230213_101810.png">
                         </div>
-                        <input id="btn_url"  type="button" value="확인">
+                        <div id="id">
+                            <span>user_id</span>
+                        </div>
                     </div>
-                    <img id='img_show' name='url' hidden >
-                </div>
-                    
-                <div id="br_bottom">
-                    <div id="br_bottom_top">
-                        <div id="title_id"><%=id %></div>
+                    <div id="profile_middle">
+                        <div id="follow">
+                            <span>follow</span>
+                        </div>
+                        <div id="follow_count">
+                            <span>5</span>
+                        </div>
                     </div>
-                    <br>
-                    <textarea id="content_text"  placeholder="내용을 적어주세요" name="content" ></textarea>
+                    <div id="profile_bottom">
+                        <div id="following">
+                            <span>following</span>
+                        </div>
+                        <div id="following_count">
+                            <span>5</span>
+                        </div>
+                    </div>
                 </div>
-            </form>
+                <div id="friend_box">
+                    <div id="friend_box_top">
+                        <span>친구 목록</span>
+                    </div>
+                    <ul id="friend_list">
+                        <li id="friend">
+                            <div id="friend_profile" class="profile_div">
+                                <img class="profile" src="image/20230213_101810.png">
+                            </div>
+                            <div id="friend_name">
+                                <span>서한수</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="main_center">
+            <div id="center_box">
+                <div id="image_box">
+                    <ul>
+                        <!-- <div id="file_none">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </div> -->
+                        <li>
+                            <img class="image" src="image/20230213_101810.png">
+                        </li>
+                    </ul>
+                </div>
+                <div id="content_box">
+                    <textarea id="board_content" placeholder="내용을 입력해 주세요">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div id="main_right">
+            <div id="right_box">
+                <div id="right_box_top">
+                    <span>내 게시글 목록</span>
+                </div>
+                <table id="my_board_list">
+                    <tr>
+                        <td id="my_board">
+                            <img class="image" src="image/20230213_101810.png">
+                        </td>
+                        <td id="my_board">
+                            <img class="image" src="image/20230213_101810.png">
+                        </td>
+                        <td id="my_board">
+                            <img class="image" src="image/like_btn.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="my_board">
+                            <img class="image" src="image/background.png">
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </body>

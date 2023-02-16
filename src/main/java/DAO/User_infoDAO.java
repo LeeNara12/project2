@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -164,6 +166,35 @@ public class User_infoDAO {
 			rs.next();
 			
 			profile = rs.getString("user_profile");
+			
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		return profile;
+	}
+	
+	public List<PaceUserVO> getFollowList(int user_no) {
+		List<PaceUserVO> puvoList = new ArrayList<PaceUserVO>();
+		
+		try {
+			con = dataFactory.getConnection();
+			String query1 = "Select * from user_info"
+					+" Where user_no = ?";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			rs.next();
+			
 			
 			
 			rs.close();
