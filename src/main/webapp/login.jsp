@@ -2,164 +2,112 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>loginPage</title>
+    <title>로그인</title>
+    <link rel="stylesheet" href="/project2/css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        window.onload = function () {
 
-            document.querySelector("#join_btn").addEventListener("click", function () {
-                let join = document.join;
-                join.method = "get";
-                join.action = "/project2/join.jsp";
-                join.submit();
+    window.onload = function(){
+        init();
+        bind();
+    }   
+    function init(){
+
+    }
+    function bind(){
+
+        //이미지 슬라이드 효과
+        function fnSlide() {
+            $("#slide").animate({ "margin-left": "-511.27px"}, 3000, function () {
+                $("#slide").css({ "margin-left": "0px" });
+                $("img:first-child").insertAfter("img:last-child");
             });
-        }
+        };
+        setInterval(fnSlide, 4000);
+
+        //비밀번호 보이기 효과
+        $('.eyes').on('click',function(){
+            $('.input').toggleClass('active');
+            console.log(this);
+            if( $('.input').hasClass('active') == true ){
+                
+                $(this).find('.bi.bi-eye-fill').attr('class',"bi bi-eye-slash-fill");
+                $(this).parents('.input').find('#input').attr('type',"text");
+             
+            }else{
+                $(this).find('.bi.bi-eye-slash-fill').attr('class',"bi bi-eye-fill");
+                $(this).parents('.input').find('#input').attr('type','password');
+            }
+
+        /*
+            JQeury
+            -find함수: $()선택자의 하위요소를 찾는다
+            -attr함수: attr(속성이름, 결과)=> 속성을 제어
+            -parents함수: 셀렉터selector로 잡히는 모든 상위 요소를 반환한다.
+            -this: 클릭한 그것
+        */
+        });
+    
+
+
+
+    }
+    
+
+
+
     </script>
-    <style>
-        #main{
-            text-align: center;
-            overflow: hidden;
-            white-space: nowrap;
-            padding-top: 50px;
-        }
-        .left {
-            box-sizing: border-box;
-            border-radius: 20px;
-            height: 600px;
-            width: 400px;
-            display: inline-block;
-            white-space:normal;
-            font-size: 0px;
-        }
 
-        .imgs {
-            width: 100%;
-            height: 50%;
-            border-radius: 20px;
-            font-size: 0px;
-            margin-bottom: 10px;
-        }
-
-        .right {
-            border: 1px solid rgb(8, 133, 243);
-            white-space:normal;
-            box-sizing: border-box;
-            height: 610px;
-            width: 400px;
-            border-radius: 20px;
-            display: inline-block;
-            text-align: center;
-            vertical-align: top;
-        }
-
-
-        .text {
-            height: 40px;
-            width: 350px;
-            border-radius: 10px;
-            border: 1px solid rgba(77, 73, 73, 0.644);
-            padding-left: 10px;
-        }
-
-        #hidden_msg {
-            color: red;
-            position: relative;
-        }
-
-        .a2 {
-            font-size: 65px;
-            color: #F39C12;
-            margin-bottom: 80px;
-        }
-
-        #login_btn {
-            border: 1px solid #3196f6;
-            background-color: #3196f6;
-            color: rgba(253, 253, 253, 0.644);
-            padding: 5px;
-            border-radius: 10px;
-            height: 40px;
-            width: 300px;
-            outline: none;
-        }
-
-        #login_btn:hover {
-            background-color: #2483db;
-        }
-
-
-        #join_btn {
-            border: 1px solid #3169f6;
-            background-color: #3169f6;
-            color: rgba(253, 253, 253, 0.644);
-            padding: 5px;
-            border-radius: 10px;
-            height: 40px;
-            width: 300px;
-        }
-
-        #join_btn:hover {
-            background-color: #0b4df3;
-        }
-
-        /* .table {
-            margin-right: 30px;
-        } */
-    </style>
 </head>
-
 <body>
-    <div>
-        <img src="/project2/image/logo.png">
-    </div>
-    <div id="main">
-        <div class="left">
-            <img class="imgs" src="https://masism.kr/wp-content/uploads/2018/05/ti2.jpg">
-            <img class="imgs" src="https://image.dongascience.com/Photo/2022/04/1a883a4f90cc55e30dc6ffab8b92a310.JPG">
+    <div id="wrap">
+        <div id="logo_wrap">
+            <h1 id="logo">PACEBOOK</h1>
         </div>
-        <div class="right">
-            <h1 class="a2">PACEBOOK LOGIN</h1>
-            <form name="login" method="post" action="/project2/pacebook/login">
-                <div class="login">
-                    <input class="text" type="text" name="id" placeholder="Id">
-                    <br>
-                    <br>
-                    <input class="text" type="password" name="pw" placeholder="Password">
-                    <% String logon = (String)request.getAttribute("logon");
-                    if("false".equals(logon)){%>
-                    <div id="hidden_msg">아이디 또는 비밀번호가 없거나 틀렸습니다.</div>
-                    <%}%>
+        <div id="content_wrap">
+            <div id="image_wrap">
+                <div id="slide">
+
+                    <img src="/project2/image/slide1.jpg">
+                    <img src="/project2/image/slide2.jpg">
+                    <img src="/project2/image/slide3.jpg">
+                    <img src="/project2/image/slide4.jpg">
+                 
                 </div>
-                <br>
-                <button type="submit" id="login_btn" >로그인</button>
-            </form>
-            <br>
-            <form name="join">
-                <button id="join_btn">
-                    회원가입
-                </button>
-            </form>
+            </div>
+            <div id="login_wrap">
+                <div id="title_wrap">
+                    <h1 id="title">PACEBOOK</h1>
+                    <h1 id="title">LOGIN</h1>
+                </div>
+                <div id="input_wrap">
+                    <input id="input" type="text" placeholder=" 아이디입력">
+                    <div class="input">
+                        <input id="input" type="password" placeholder=" 비밀번호입력">
+                        <div class="eyes">
+                            <i id="icon" class="bi bi-eye-fill"></i>
+                        </div>
+                    </div>
+                    <div id="checkbox">
+                        <input type="checkbox" value="true"> 
+                        <span id="login_con"> 로그인 상태 유지</span>
+                    </div>
+                </div>
+                <div id="loginbtn_wrap">
+                    <input id="loginbtn" type="button" value="로그인">
+                </div>
+                <div id="detail_wrap">
+                    <a id="detail" href="#">아이디 찾기</a> |
+                    <a id="detail" href="#">비밀번호 찾기</a> |
+                    <a id="detail" href="#">회원가입</a> 
+                </div>
+            </div>
         </div>
     </div>
-    <table style="text-align: center;margin: auto; margin-top: 50px;font-size: 13px;">
-        <tr class="table">
-            <td>Meta</td>
-            <td>소개</td>
-            <td>블러그</td>
-            <td>채용 정보</td>
-            <td>도움말</td>
-            <td>API</td>
-            <td>개인정보처리방침</td>
-            <td>약관</td>
-            <td>인기계정</td>
-            <td>위치</td>
-            <td>Pacebook Lite</td>
-            <td>연락처 업로드 & 비사용자</td>
-        </tr>
-    </table>
 </body>
 </html>
