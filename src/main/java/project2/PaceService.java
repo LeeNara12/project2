@@ -46,4 +46,16 @@ public class PaceService {
 	public List<PaceBoardVO> getBoard(){
 		return boardDAO.getBoard();
 	}
+	
+	public List<PaceUserVO>  a () {
+		 List<PaceUserVO> pu; 
+		PaceDAO PaceDAO = new PaceDAO();
+		pu= PaceDAO.count();
+		System.out.println("service출력");
+		
+		return pu;
+		
+	}
+
+	
 }

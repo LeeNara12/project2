@@ -34,8 +34,16 @@ public class PaceController extends HttpServlet {
 		String nextPage = null;
 		System.out.println("action : "+action);
 		
+		
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
+		}else if( action.equals("/join")){
+			System.out.println("abc들어옴");
+//			service.a();
+			List<PaceUserVO> up = service.a();
+			
+//			PaceDAO da = new PaceDAO();
+//			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -89,6 +97,10 @@ public class PaceController extends HttpServlet {
 				System.out.println("회원가입 실패");
 				nextPage = "/join.jsp";
 		    }
+			
+			
+			
+			
 
 		}else if(action.equals("/board")) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
