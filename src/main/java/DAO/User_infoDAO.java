@@ -195,6 +195,24 @@ public class User_infoDAO {
 			
 			rs.next();
 			
+<<<<<<< HEAD
+=======
+			String profile = rs.getString("user_profile");
+			String name = rs.getString("user_name");
+			
+			vo.setUser_profile(profile);
+			vo.setUser_name(name);
+			
+			String query2 = "Select * from user_followlist"
+					+" Where user_no = ?";
+			pstmt = con.prepareStatement(query2);
+			
+	
+			String follow = rs.getString("user_follow");
+			String follower = rs.getString("user_follower");
+			
+			
+>>>>>>> e1b452a380ee44a538bb6044b9650ce1167062f0
 			
 			
 			rs.close();
@@ -207,6 +225,12 @@ public class User_infoDAO {
 		}
 		
 		
+<<<<<<< HEAD
 		return profile;
 	}
+=======
+		return vo;
+	}
+
+>>>>>>> e1b452a380ee44a538bb6044b9650ce1167062f0
 }

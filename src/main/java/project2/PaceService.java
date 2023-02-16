@@ -50,4 +50,15 @@ public class PaceService {
 	public List<PaceUserVO> getFollowList(int user_no){
 		return User_infoDAO.getFollowList(int user_no);
 	}
+	public List<PaceUserVO>  a () {
+		 List<PaceUserVO> pu; 
+		PaceDAO PaceDAO = new PaceDAO();
+		pu= PaceDAO.count();
+		System.out.println("service출력");
+		
+		return pu;
+		
+	}
+
+	
 }

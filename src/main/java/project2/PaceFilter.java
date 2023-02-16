@@ -67,6 +67,8 @@ public class PaceFilter extends HttpFilter implements Filter {
 						|| url.indexOf("/pwFind2") != -1//나중에 pwFind1이 성공하면 나오는걸로 바꾸기
 						|| url.indexOf("/idFind1") != -1
 						|| url.indexOf("/idFind2") != -1
+						|| url.indexOf("/setting") != -1
+						
 				){
 					System.out.println("그냥 통과");
 					chain.doFilter(request, response);
@@ -78,7 +80,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 						chain.doFilter(request, response);
 					} else {
 						chain.doFilter(request, response);
-						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
+//						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
 				}
 			}
