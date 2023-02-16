@@ -65,6 +65,8 @@
 
 </head>
 <body>
+<form action="main.jsp">
+
     <div id="wrap">
         <div id="logo_wrap">
             <h1 id="logo">PACEBOOK</h1>
@@ -85,6 +87,7 @@
                     <h1 id="title">PACEBOOK</h1>
                     <h1 id="title">LOGIN</h1>
                 </div>
+                
                 <div id="input_wrap">
                     <input id="input" type="text" placeholder=" 아이디입력">
                     <div class="input">
@@ -99,15 +102,19 @@
                     </div>
                 </div>
                 <div id="loginbtn_wrap">
-                    <input id="loginbtn" type="button" value="로그인">
+                    <input id="loginbtn" type="submit" value="로그인">
                 </div>
+               
+                
                 <div id="detail_wrap">
-                    <a id="detail" href="#">아이디 찾기</a> |
-                    <a id="detail" href="#">비밀번호 찾기</a> |
-                    <a id="detail" href="#">회원가입</a> 
+                    <a id="detail" href="idFind1.jsp">아이디 찾기</a> |
+                    <a id="detail" href="pwFind1.jsp">비밀번호 찾기</a> |
+                    <a id="detail" href="join.jsp">회원가입</a> 
                 </div>
             </div>
         </div>
     </div>
+    
+</form>
 </body>
 </html>
