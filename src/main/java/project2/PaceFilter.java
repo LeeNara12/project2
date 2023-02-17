@@ -48,8 +48,17 @@ public class PaceFilter extends HttpFilter implements Filter {
 			System.out.println("현재위치는 "+url);
 			
 			
+<<<<<<< HEAD
 			if(url.indexOf("/css") != -1 || url.indexOf("/image") != -1) {
 				
+=======
+			if(
+				url.indexOf("/css") != -1
+				|| url.indexOf("/image") != -1
+				|| url.indexOf("/script") != -1
+				) 
+			{
+>>>>>>> 9f336c9f1dfada56bda4b9cee942c06101a421a8
 				chain.doFilter(request, response);
 				
 			}else {
@@ -59,6 +68,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 				if(url.indexOf("/login") != -1
 						|| url.indexOf("/join") != -1
 						|| url.indexOf("/pacebook") != -1
+						|| url.indexOf("/main") != -1
 						|| url.indexOf("/pwFind1") != -1
 						|| url.indexOf("/pwFind2") != -1//나중에 pwFind1이 성공하면 나오는걸로 바꾸기
 						|| url.indexOf("/idFind1") != -1
