@@ -49,13 +49,10 @@ public class PaceController extends HttpServlet {
 			String pw = request.getParameter("pw");
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
-<<<<<<< HEAD
 			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
-=======
 			vo.setUser_pw(pw);
 		
 			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
->>>>>>> c4606083e2d129b2a157f3324d553583c657f597
 				request.setAttribute("logon", "false");
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
@@ -75,6 +72,7 @@ public class PaceController extends HttpServlet {
 					System.out.println("로그인 실패");
 					nextPage = "/login.jsp";
 				}
+			}
 			}
 		
 		} else if(action.equals("/join")) {//회원가입 페이지에서 회원가입 버튼 누를시
@@ -161,7 +159,10 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 
 		}else if(action.equals("/profile")) {
-
+			System.out.println("profile페이지 들어옴");
+			HttpSession se = request.getSession();
+			nextPage = "/profile.jsp";
+			
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
 //			int user_no = (int)se.getAttribute("user_no");
@@ -173,17 +174,22 @@ public class PaceController extends HttpServlet {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
 			nextPage = "/main.jsp";
+		
+		}else if(action.equals("/idFind1")) {
+			nextPage = "/login.jsp";
+		}else if(action.equals("/idFind1")) {
+			nextPage = "/idFind2.jsp";
 		}
 		
+		
+		
+		///페이지 이동관련
 		System.out.println("nextPage : "+nextPage);
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
-		}else if(action.equals("/profile")) {
-			HttpSession se = request.getSession();
-			String user_no = (String)se.getAttribute("user_no");
-			
 		}
 		
 	}
-}
+	}
+

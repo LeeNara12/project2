@@ -68,7 +68,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 						|| url.indexOf("/idFind1") != -1
 						|| url.indexOf("/idFind2") != -1
 						|| url.indexOf("/setting") != -1
-						
 				){
 					System.out.println("그냥 통과");
 					chain.doFilter(request, response);
