@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,8 +49,8 @@ public class PaceController extends HttpServlet {
 			System.out.println("action값 /login으로 들어옴");
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			String keep = request.getParameter("login_keep");
-			System.out.println(id+" " +pw+" "+keep);
+			
+			System.out.println(id+" " +pw);
 			PaceUserVO vo = new PaceUserVO();
 			
 			vo.setUser_id(id);
@@ -60,17 +61,24 @@ public class PaceController extends HttpServlet {
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
 			} else {
-				vo.setUser_id(id);
-				vo.setUser_pw(pw);
+//				vo.setUser_id(id);
+//				vo.setUser_pw(pw);
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
 					HttpSession se = request.getSession();//세션 생성
+					
+					
 					se.setAttribute("user_id", id);// 세션에 값을 넣어줌
 					se.setAttribute("user_no", vo.getUser_no());
 					se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
-					response.sendRedirect("/project2/main.jsp");
-					System.out.println("여기지나감");
-					return;
+					
+//					
+					
+					System.out.println("로그인 지나감");
+					nextPage = "main";
+					
+					
+					
 				} else {// 로그인 실패했을 경우
 					request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
 					System.out.println("로그인 실패");
@@ -180,11 +188,12 @@ public class PaceController extends HttpServlet {
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
-		}else if(action.equals("/profile")) {
-			HttpSession se = request.getSession();
-			String user_no = (String)se.getAttribute("user_no");
-			
 		}
+//		else if(action.equals("/profile")) {
+//			HttpSession se = request.getSession();
+//			String user_no = (String)se.getAttribute("user_no");
+//			
+//		}
 		
 	}
 }

@@ -250,8 +250,8 @@ public class User_infoDAO {
 				rs1.close();
 			}
 			
-			String profile = rs.getString("user_profile");
-			String name = rs.getString("user_name");
+//			String profile = rs.getString("user_profile");
+//			String name = rs.getString("user_name");
 			
 //			vo.setUser_profile(profile);
 //			vo.setUser_name(name);
