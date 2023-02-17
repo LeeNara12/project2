@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="project2.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="service" value="project2.PaceService"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pacebook</title>
-    <link rel="stylesheet" href="css/main.css">
-    <script type="text/javascript" src="script/main.js"></script>
+    <link rel="stylesheet" href="/project2/css/main.css">
+    <script type="text/javascript" src="/project2/script/main.js"></script>
 </head>
 
 <body>
@@ -27,7 +30,7 @@
                 <input id="search_text" type="text">
             </div>
             <div id="top_profile" class="profile_div">
-                <img class="profile" src="image/20230213_101810.png">
+                <img class="profile" src="/project2/${sessionScope.puvo.user_profile }">
             </div>
         </div>
     </div>
@@ -35,10 +38,10 @@
         <div id="side">
             <div id="profile_box">
                 <div id="profile" class="profile_div">
-                    <img class="profile" src="${sessionScope.puvo.profile }">
+                    <img class="profile" src="/project2/${sessionScope.puvo.user_profile }">
                 </div>
                 <div id="show_id">
-                    <span>${sessionScope.puvo.id }</span>
+                    <span>${sessionScope.puvo.user_id }</span>
                 </div>
             </div>
             <div id="side_tool">
@@ -127,7 +130,7 @@
                 <ul id="notice_list">
                     <li id="notice">
                         <div id="notice_profile" class="profile_div">
-                            <img class="profile" src="image/20230213_101810.png">
+                            <img class="profile" src="#">
                         </div>
                         <span id="notice_text">
                             서한수님이 팔로우 했습니다.
@@ -138,24 +141,36 @@
             </div>
             <div id="main_top">
                 <ul id="profile_list">
-                    <li>
-                        <div id="friend_profile" class="profile_div">
-                            <img class="profile" src="image/20230213_101810.png">
-                        </div>
-                    </li>
+                	<c:forEach var="followUser" items="${followList }">
+	                    <li>
+	                        <div id="friend_profile_outline1">
+	                           	<div id="friend_profile_outline2">
+	                                <div id="friend_profile" class="profile_div">
+		                            	<img class="profile" src="/project2/${followUser.user_profile }">
+	                     			</div>
+	                            </div>
+	                       	</div>
+	                        <div id="friend_profile_name">
+	                            <span>${followUser.user_name }</span>
+	                        </div>
+	                    </li>
+                	</c:forEach>
                 </ul>
             </div>
             <div id="main_middle">
                 <div id="board_area">
                     <ul id="board_list">
+                    <c:forEach var="board" items="${boardList }">
+                    <c:set var="user_no" value="${board.user_no }"/>
+                    <jsp:useBean id="boardPuvo" class="VO.PaceUserVO"/>
                         <li id="board">
                             <div id="board_top">
                                 <div id="board_top_left">
                                     <div id="board_profile" class="profile_div">
-                                        <img class="profile" src="image/20230213_101810.png">
+                                        <img class="profile" src="#">
                                     </div>
                                     <div id="board_id">
-                                        아이디
+                    					${service }.getUserInfo(${user_no })
                                     </div>
                                 </div>
                                 <button id="board_menu" class="board_btn">
@@ -167,7 +182,7 @@
                                 </button>
                             </div>
                             <div id="board_image">
-                                <img class="board_image" src="image/20230213_101810.png">
+                                <img class="board_image" src="/project2/${board.board_url }">
                             </div>
                             <div id="board_tool">
                                 <div id="board_tool_left">
@@ -203,11 +218,11 @@
                             </div>
                             <div id="board_bottom">
                                 <div id="like_count">
-                                    <span>좋아요 4개</span>
+                                    <span>좋아요 ${board.board_like }개</span>
                                 </div>
                                 <div id="board_content">
                                     <P>
-                                        내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
+                           				${board.board_content }          
                                     </P>
                                 </div>
                                 <input type="checkbox" id="board_content_btn">
@@ -217,7 +232,7 @@
                                         <li id="comment">
                                             <div id="comment_top">
                                                 <div id="board_comment_profile" class="profile_div">
-                                                    <img class="profile" src="image/20230213_101810.png">
+                                                    <img class="profile" src="#">
                                                 </div>
                                                 <span id="comment_text">
                                                     댓글
@@ -237,12 +252,13 @@
                                 </div>
                             </div>
                         </li>
+                    </c:forEach>
                     </ul>
                 </div>
                 <ul id="friend_list">
                     <li id="friend">
                         <div id="right_profile" class="profile_div">
-                            <img class="profile" src="image/20230213_101810.png">
+                            <img class="profile" src="#">
                         </div>
                         <div id="right_name">
                             <span>이름</span>
@@ -258,7 +274,7 @@
         <div id="message_room_top">
             <div id="message_room_top1">
                 <div id="target_image" class="profile_div">
-                    <img class="profile" src="image/20230213_101810.png">
+                    <img class="profile" src="#">
                 </div>
                 <div id="target_name">
                     <span>서한수</span>

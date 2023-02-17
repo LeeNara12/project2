@@ -223,14 +223,32 @@ public class User_infoDAO {
 		
 		try {
 			con = dataFactory.getConnection();
-			String query1 = "Select * from user_info"
+			String query1 = "Select * from follow_list"
 					+" Where user_no = ?";
 			pstmt = con.prepareStatement(query1);
 			pstmt.setInt(1, user_no);
 			
 			ResultSet rs = pstmt.executeQuery();
 			
-			rs.next();
+			while(rs.next()) {
+				PaceUserVO puvo = new PaceUserVO();
+				
+				String query2 = "select * from user_info"
+						+ " where user_no = ?";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setInt(1, rs.getInt("follow_u_no"));
+				ResultSet rs1 = pstmt.executeQuery();
+				rs1.next();
+				puvo.setUser_no(rs1.getInt("user_no"));
+				puvo.setUser_name(rs1.getString("user_name"));
+				puvo.setUser_birth(rs1.getString("user_birth"));
+				puvo.setUser_gender(rs1.getString("user_gender"));
+				puvo.setUser_phone(rs1.getString("user_phone"));
+				puvo.setUser_profile(rs1.getString("user_profile"));
+				
+				puvoList.add(puvo);
+				rs1.close();
+			}
 			
 			rs.close();
 			pstmt.close();
@@ -240,8 +258,6 @@ public class User_infoDAO {
 			
 			e.printStackTrace();
 		}
-		
-		
-		return vo;
+		return puvoList;
 	}
 }
