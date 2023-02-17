@@ -48,11 +48,8 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-<<<<<<< HEAD
-=======
 			
 			System.out.println(id+" " +pw);
->>>>>>> d0318e9cc58d272b4fc9c0b740f64349dbb3e006
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
 			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
@@ -63,12 +60,10 @@ public class PaceController extends HttpServlet {
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
 			} else {
-<<<<<<< HEAD
+				
+				vo.setUser_id(id);
 				vo.setUser_pw(pw);
-=======
-//				vo.setUser_id(id);
-//				vo.setUser_pw(pw);
->>>>>>> d0318e9cc58d272b4fc9c0b740f64349dbb3e006
+				
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
 					HttpSession se = request.getSession();//세션 생성
