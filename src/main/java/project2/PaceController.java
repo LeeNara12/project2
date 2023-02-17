@@ -161,6 +161,9 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/get_board")) {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
+
+		}else if(action.equals("/profile")) {
+
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
 //			int user_no = (int)se.getAttribute("user_no");
@@ -178,6 +181,11 @@ public class PaceController extends HttpServlet {
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
+		}else if(action.equals("/profile")) {
+			HttpSession se = se.getAttribute();
+			String user_no = (String)se.getAttribute("user_no");
+			
 		}
+		
 	}
 }
