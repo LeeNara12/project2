@@ -311,6 +311,7 @@ body{
 #like_count{
     max-width: 400px;
     width: fit-content;
+    margin-bottom: 10px
 }
 #board_content{
     display: -webkit-box;
@@ -318,40 +319,83 @@ body{
     -webkit-box-orient: vertical; 
     overflow: hidden;
     word-wrap: break-word;
+    margin-bottom: 10px
 }
 #board_content_btn{
     appearance: none;
     cursor: pointer;
     float: right;
 }
+#board_content_btn::before{
+    content: '더보기';
+}
+#board_content_btn:checked::before{
+    content: '닫기';
+}
+#comment_count{
+    margin-bottom: 10px;
+}
 
 /* 댓글 */
 #comment_list{
-    visibility: hidden;
-    position: absolute;
+    /* visibility: hidden;
+    position: absolute; */
+    border-top: 1px solid rgb(170, 170, 170);
 }
 #comment{
     padding: 5px;
 }
 #comment_top{
     display: flex;
-    align-items: auto;
+    align-items: center;
 }
 #board_comment_profile{
     width: 30px; height: 30px;
     min-width: 30px;
     align-self: stretch;
+    margin: 4px 10px 0px 10px;
 }
-#comment_text{
-    align-self: auto;
-    margin-left: 10px;
-    width: 400px;
-    padding-top:4px;
+.comment_text_box_top{
+    font-size: 13px;
+    display: flex;
+}
+.comment_id{
+    margin-right: 5px;
+}
+.comment_time{
+    margin-right: 5px;
+    color: gray;
+}
+.comment_text_box_bottom{
+    padding-top: 5px;
+    font-size: 12px;
+    color: gray;
+    display: flex;
+}
+#comment_comment{
+    margin-left: 15px;
+}
+.comment_text{
+    font-size: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
 }
 
-#board_time{
-    margin-top: 20px;
+#c_comment_list{
+    margin-top: 10px;
 }
+#c_comment{
+    margin: 5px 0px 5px 10px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+#c_commet_arrow{
+    align-self: stretch;
+}
+
 #board_comment_box{
     display: flex;
     margin: 5px 0px;
