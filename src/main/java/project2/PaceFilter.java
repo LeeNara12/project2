@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/asdfasdfads*")
+@WebFilter("/*")
 public class PaceFilter extends HttpFilter implements Filter {
        
     public PaceFilter() {

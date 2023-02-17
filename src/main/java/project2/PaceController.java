@@ -52,17 +52,14 @@ public class PaceController extends HttpServlet {
 			System.out.println(id+" " +pw);
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
-			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
 			vo.setUser_pw(pw);
-		
-			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
+			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
+			
 				request.setAttribute("logon", "false");
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
-			} else {
 				
-				vo.setUser_id(id);
-				vo.setUser_pw(pw);
+			} else {
 				
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
@@ -86,7 +83,7 @@ public class PaceController extends HttpServlet {
 					nextPage = "/login.jsp";
 				}
 			}
-			}
+			
 		
 		} else if(action.equals("/join")) {//회원가입 페이지에서 회원가입 버튼 누를시
 			// 값을 받는 법
