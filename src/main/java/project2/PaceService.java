@@ -69,4 +69,8 @@ public class PaceService {
 	public List<PaceBoardVO> getprofile(){
 		return boardDAO.getBoard();
 	}
+	
+	public List<PaceCommentVO> comment(int board_no){
+		return commentDAO.comment(board_no);
+	}
 }

@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="project2.*"%>
+    import="project2.*"
+    import="VO.*" 
+    import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="service" value="project2.PaceService"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,14 +58,16 @@
                         </div>
                     </li>
                     <li id="profile_btn">
-                        <div>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-                            </svg>
-                            <span>프로필</span>
-                        </div>
+                    	<a href="/project2/pacebook/profile">
+	                        <div>
+	                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+	                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+	                                <path
+	                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+	                            </svg>
+	                            <span>프로필</span>
+	                        </div>
+                    	</a>
                     </li>
                     <li id="notice_btn">
                         <div>
@@ -161,16 +164,22 @@
                 <div id="board_area">
                     <ul id="board_list">
                     <c:forEach var="board" items="${boardList }">
-                    <c:set var="user_no" value="${board.user_no }"/>
-                    <jsp:useBean id="boardPuvo" class="VO.PaceUserVO"/>
+                    <c:set var="curBoard" value="${board }"/>
+                    <%
+                    	PaceService service = new PaceService();
+                    	PaceBoardVO curPbvo = (PaceBoardVO) pageContext.getAttribute("curBoard");
+                    	int boardUser_no = (int)curPbvo.getUser_no();
+                    	PaceUserVO boardPuvo = service.getUserInfo(boardUser_no);
+                    	pageContext.setAttribute("boardPuvo", boardPuvo);
+                    %>
                         <li id="board">
                             <div id="board_top">
                                 <div id="board_top_left">
                                     <div id="board_profile" class="profile_div">
-                                        <img class="profile" src="#">
+                                        <img class="profile" src="/project2/${boardPuvo.user_profile }">
                                     </div>
                                     <div id="board_id">
-                    					${service }.getUserInfo(${user_no })
+                                    	${boardPuvo.user_name }
                                     </div>
                                 </div>
                                 <button id="board_menu" class="board_btn">
@@ -218,7 +227,11 @@
                             </div>
                             <div id="board_bottom">
                                 <div id="like_count">
-                                    <span>좋아요 ${board.board_like }개</span>
+                                <c:choose>
+                                	<c:when test="${board.board_like != 0 }">
+                                    	<span>좋아요 ${board.board_like }개</span>
+                                	</c:when>
+                                </c:choose>
                                 </div>
                                 <div id="board_content">
                                     <P>
@@ -226,18 +239,105 @@
                                     </P>
                                 </div>
                                 <input type="checkbox" id="board_content_btn">
-                                <div>댓글 n개 모두보기</div>
+                                <%
+                                	int curBoard_no = curPbvo.getBoard_no();
+                                	List<PaceCommentVO> commentList = service.comment(curBoard_no);
+                                	System.out.println(commentList.size());
+                                %>
+                                <c:choose>
+	                                <c:when test="${not empty commentList.size()}">
+		                                <div id="comment_count">
+		                                	<span>댓글 ${commentList.size() }개 모두보기</span>
+                                		</div>
+	                                </c:when>
+	                                <c:when test="${empty commentList.size()}">
+		                                <div id="comment_count">
+		                                	<span>-댓글 달기</span>
+	                                	</div>
+	                                </c:when>
+                                </c:choose>
                                 <div id="board_comment_area">
                                     <ul id="comment_list">
                                         <li id="comment">
                                             <div id="comment_top">
                                                 <div id="board_comment_profile" class="profile_div">
-                                                    <img class="profile" src="#">
+                                                    <img class="profile" src="image/20230213_101810.png">
                                                 </div>
-                                                <span id="comment_text">
-                                                    댓글
-                                                </span>
+                                                <div>
+                                                    <div class="comment_text_box_top">
+                                                        <div class="comment_id">
+                                                            <span>
+                                                                아이디
+                                                            </span>
+                                                        </div>
+                                                        <div class="comment_time">
+                                                            <span>22시간전</span>
+                                                        </div>
+                                                        <div class="comment_modify">
+                                                            <span>(수정됨)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment_text">
+                                                        <span>
+                                                            댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                            댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                        </span>
+                                                    </div>
+                                                    <div class="comment_text_box_bottom">
+                                                        <div>
+                                                            <span>
+                                                                좋아요 1개
+                                                            </span>
+                                                        </div>
+                                                        <div id="comment_comment">
+                                                            <span>
+                                                                답글달기
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <ul id="c_comment_list">
+                                                <li id="c_comment">
+                                                    <span id="c_commet_arrow">└</span>
+                                                    <div id="board_comment_profile" class="profile_div">
+                                                        <img class="profile" src="image/20230213_101810.png">
+                                                    </div>
+                                                    <div>
+                                                        <div class="comment_text_box_top">
+                                                            <div class="comment_id">
+                                                                <span>
+                                                                    아이디
+                                                                </span>
+                                                            </div>
+                                                            <div class="comment_time">
+                                                                <span>22시간전</span>
+                                                            </div>
+                                                            <div class="comment_modify">
+                                                                <span>(수정됨)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="comment_text">
+                                                            <span>
+                                                                댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                                댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                            </span>
+                                                        </div>
+                                                        <div class="comment_text_box_bottom">
+                                                            <div>
+                                                                <span>
+                                                                    좋아요 1개
+                                                                </span>
+                                                            </div>
+                                                            <!-- <div id="comment_comment">
+                                                                <span>
+                                                                    답글달기
+                                                                </span>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </div>
