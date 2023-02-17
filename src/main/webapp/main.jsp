@@ -134,6 +134,7 @@
                     <li id="notice">
                         <div id="notice_profile" class="profile_div">
                             <img class="profile" src="#">
+                            <img class="profile" src="a.jpg">
                         </div>
                         <span id="notice_text">
                             서한수님이 팔로우 했습니다.
@@ -295,6 +296,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
+                                                    <img class="profile" src="a.jpg">
                                                 </div>
                                             </div>
                                             <ul id="c_comment_list">
@@ -358,7 +360,7 @@
                 <ul id="friend_list">
                     <li id="friend">
                         <div id="right_profile" class="profile_div">
-                            <img class="profile" src="#">
+                            <img class="profile" src="a.jpg">
                         </div>
                         <div id="right_name">
                             <span>이름</span>
@@ -374,7 +376,7 @@
         <div id="message_room_top">
             <div id="message_room_top1">
                 <div id="target_image" class="profile_div">
-                    <img class="profile" src="#">
+                    <img class="profile" src="http://127.0.0.1:8080/project2/image/slide1.jpg">
                 </div>
                 <div id="target_name">
                     <span>서한수</span>

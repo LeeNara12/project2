@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,38 +46,44 @@ public class PaceController extends HttpServlet {
 //			PaceDAO da = new PaceDAO();
 //			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
-			System.out.println("action값 /login으로 들어옴");
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
-			String keep = request.getParameter("login_keep");
-			System.out.println(id+" " +pw+" "+keep);
-			PaceUserVO vo = new PaceUserVO();
 			
+			System.out.println(id+" " +pw);
+			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
 			vo.setUser_pw(pw);
-		
-			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
+			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
+			
 				request.setAttribute("logon", "false");
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
+				
 			} else {
-				vo.setUser_id(id);
-				vo.setUser_pw(pw);
+				
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
 					HttpSession se = request.getSession();//세션 생성
+					
+					
 					se.setAttribute("user_id", id);// 세션에 값을 넣어줌
 					se.setAttribute("user_no", vo.getUser_no());
 					se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
-					response.sendRedirect("/project2/main.jsp");
-					System.out.println("여기지나감");
-					return;
+					
+//					
+					
+					System.out.println("로그인 지나감");
+					nextPage = "main";
+					
+					
+					
 				} else {// 로그인 실패했을 경우
 					request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
 					System.out.println("로그인 실패");
 					nextPage = "/login.jsp";
 				}
 			}
+			
 		
 		} else if(action.equals("/join")) {//회원가입 페이지에서 회원가입 버튼 누를시
 			// 값을 받는 법
@@ -162,7 +169,10 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 
 		}else if(action.equals("/profile")) {
-
+			System.out.println("profile페이지 들어옴");
+			HttpSession se = request.getSession();
+			nextPage = "/profile.jsp";
+			
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
 //			int user_no = (int)se.getAttribute("user_no");
@@ -174,17 +184,27 @@ public class PaceController extends HttpServlet {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
 			nextPage = "/main.jsp";
+		
+		}else if(action.equals("/idFind1")) {
+			nextPage = "/login.jsp";
+		}else if(action.equals("/idFind1")) {
+			nextPage = "/idFind2.jsp";
 		}
 		
+		
+		
+		///페이지 이동관련
 		System.out.println("nextPage : "+nextPage);
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
-		}else if(action.equals("/profile")) {
-			HttpSession se = request.getSession();
-			String user_no = (String)se.getAttribute("user_no");
-			
 		}
+//		else if(action.equals("/profile")) {
+//			HttpSession se = request.getSession();
+//			String user_no = (String)se.getAttribute("user_no");
+//			
+//		}
 		
 	}
-}
+	}
+

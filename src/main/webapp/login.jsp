@@ -43,7 +43,6 @@
                 $(this).find('.bi.bi-eye-slash-fill').attr('class',"bi bi-eye-fill");
                 $(this).parents('.input').find('#input').attr('type','password');
             }
-
         /*
             JQeury
             -find함수: $()선택자의 하위요소를 찾는다

@@ -1,3 +1,5 @@
+<%@page import="VO.PaceUserVO"%>
+<%@page import="project2.PaceService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +23,14 @@
     </head>
 
 <body>
+<%-- <%
+	int user_no = (int)request.getAttribute("user_no");
+	PaceService ps = new PaceService();
+	PaceUserVO vo = new PaceUserVO();
+	vo = ps.getProfile(user_no);
+	String profile = vo.getUser_profile();
+	String name = vo.getUser_name();
+%>  --%>
     <div id="top">
         <div id="logo">PACEBOOK</div>
         <div id="top_right">

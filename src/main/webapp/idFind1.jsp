@@ -9,6 +9,10 @@
     <title>아이디찾기1</title>
     <link rel="stylesheet" href="css/idFind1.css">
 </head>
+<style>
+
+</style>
+
 <body>
     <div id="wrap">
 
@@ -47,7 +51,7 @@
                 <div id="idFind_wrap">
                     <input id="idFind_btn" type="button" value="아이디찾기">
                     <span id="space"></span>
-                    <input id="idFind_btn" type="button" value="로그인하러가기">
+                    <a id="idFind_btn" href="login.jsp"><input id="idFind_btn1" type="button" value="로그인하러가기"></a>
                 </div>
 
             </div>
@@ -56,4 +60,5 @@
 
     </div>
 </body>
+</html>
 </html>
