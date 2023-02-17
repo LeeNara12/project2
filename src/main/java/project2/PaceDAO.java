@@ -14,6 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import DAO.BoardDAO;
+import DAO.User_infoDAO;
 import VO.PaceBoardVO;
 import VO.PaceCommentVO;
 import VO.PaceUserVO;
@@ -441,6 +443,8 @@ public class PaceDAO {
 		pstmt = con.prepareStatement(squ);
 		pstmt.setInt(1, ka[0]);
 		pstmt.setInt(2, ka[1]);
+//		pstmt.setInt(1, 1);
+//		pstmt.setInt(2, 3);
 		rs =  pstmt.executeQuery(); 
 //		rs.next();
 		while(rs.next()) {
@@ -448,7 +452,12 @@ public class PaceDAO {
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_no(user_no);
 			uv.add(vo); //리스트에 있는 메소드  // 기능 : 넣는다 
-			
+//			PaceUserVO 객체 만들고 그 객체에 아이디, 프로필 일단 넣어서 넘기고
+//			그 유저넘버로 board테이블에서 그 유저의 board_no들 가지고 와야해요
+//			User_infoDAO ba= new User_infoDAO();
+//			ba.setUser_id(rs.getString("user_id"));
+//			System.out.println(ba);
+			System.out.println(user_no);
 		}
 		
 	} catch (SQLException e) {

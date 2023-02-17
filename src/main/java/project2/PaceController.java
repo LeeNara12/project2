@@ -37,10 +37,12 @@ public class PaceController extends HttpServlet {
 		
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
-		}else if( action.equals("/join")){
+		}else if( action.equals("/join_success")){
 			System.out.println("abc들어옴");
 //			service.a();
 			List<PaceUserVO> up = service.a();
+			
+			
 			
 //			PaceDAO da = new PaceDAO();
 //			da.count();

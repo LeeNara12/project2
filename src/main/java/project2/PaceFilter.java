@@ -37,7 +37,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 		request.setCharacterEncoding("utf-8");
 //		response.setContentType("text/html;charset=utf-8");//css나 image가 적용되는 문제 발생
 		
-	
 		HttpSession session = null;
 		if(request instanceof HttpServletRequest) {
 			HttpServletRequest req = (HttpServletRequest)request;
