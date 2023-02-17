@@ -47,15 +47,23 @@ public class PaceController extends HttpServlet {
 //			PaceDAO da = new PaceDAO();
 //			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
+			System.out.println("action값 /login으로 들어옴");
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
+			String keep = request.getParameter("login_keep");
+			System.out.println(id+" " +pw+" "+keep);
 			PaceUserVO vo = new PaceUserVO();
+			
 			vo.setUser_id(id);
+			vo.setUser_pw(pw);
+		
 			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
 				request.setAttribute("logon", "false");
+				
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
 			} else {
+				vo.setUser_id(id);
 				vo.setUser_pw(pw);
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
@@ -155,6 +163,10 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/get_board")) {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
+		} else if(action.equals("/main")) {
+			HttpSession se = request.getSession();
+			int user_no = (int)request.getAttribute("user_no");
+			
 		}
 		
 		System.out.println("nextPage : "+nextPage);

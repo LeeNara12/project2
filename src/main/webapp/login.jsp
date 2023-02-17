@@ -65,6 +65,8 @@
 
 </head>
 <body>
+<form action="/project2/pacebook/login" method="post">
+
     <div id="wrap">
         <div id="logo_wrap">
             <h1 id="logo">PACEBOOK</h1>
@@ -85,29 +87,34 @@
                     <h1 id="title">PACEBOOK</h1>
                     <h1 id="title">LOGIN</h1>
                 </div>
+                
                 <div id="input_wrap">
-                    <input id="input" type="text" placeholder=" 아이디입력">
+                    <input id="input" name='id' type="text" placeholder=" 아이디입력">
                     <div class="input">
-                        <input id="input" type="password" placeholder=" 비밀번호입력">
+                        <input id="input" name='pw' type="password" placeholder=" 비밀번호입력">
                         <div class="eyes">
                             <i id="icon" class="bi bi-eye-fill"></i>
                         </div>
                     </div>
                     <div id="checkbox">
-                        <input type="checkbox" value="true"> 
+                        <input type="checkbox" name='login_keep' value="true"> 
                         <span id="login_con"> 로그인 상태 유지</span>
                     </div>
                 </div>
                 <div id="loginbtn_wrap">
-                    <input id="loginbtn" type="button" value="로그인">
+                    <input id="loginbtn" type="submit" value="로그인">
                 </div>
+               
+                
                 <div id="detail_wrap">
-                    <a id="detail" href="#">아이디 찾기</a> |
-                    <a id="detail" href="#">비밀번호 찾기</a> |
-                    <a id="detail" href="#">회원가입</a> 
+                    <a id="detail" href="idFind1.jsp">아이디 찾기</a> |
+                    <a id="detail" href="pwFind1.jsp">비밀번호 찾기</a> |
+                    <a id="detail" href="join.jsp">회원가입</a> 
                 </div>
             </div>
         </div>
     </div>
+    
+</form>
 </body>
 </html>
