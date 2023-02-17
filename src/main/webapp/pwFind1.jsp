@@ -9,6 +9,7 @@
     <title>비밀번호찾기1</title>
     <link rel="stylesheet" href="css/pwFind1.css">
 </head>
+
 <body>
     <div id="wrap">
 
@@ -38,9 +39,9 @@
                 <div id="pwFind_wrap">
                     <input id="pwFind_btn" type="button" value="비밀번호 찾기">
                     <span id="space"></span>
-                    <input id="pwFind_btn" type="button" value="로그인하러가기">
+                    <a id="pwFind_btn" href="login.jsp"><input id="pwFind_btn1" type="button" value="로그인하러가기"></a>
                 </div>
-
+				
             </div>
            
         </div>

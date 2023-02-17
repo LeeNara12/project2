@@ -2,6 +2,7 @@
 <%@page import="project2.PaceService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,14 +24,14 @@
     </head>
 
 <body>
-<%-- <%
-	int user_no = (int)request.getAttribute("user_no");
+<% 
+	int user_no = 43;
 	PaceService ps = new PaceService();
 	PaceUserVO vo = new PaceUserVO();
 	vo = ps.getProfile(user_no);
 	String profile = vo.getUser_profile();
 	String name = vo.getUser_name();
-%>  --%>
+%>
     <div id="top">
         <div id="logo">PACEBOOK</div>
         <div id="top_right">
@@ -46,7 +47,7 @@
             </div>
             <div id="top_profile">
                 <img class="profile"
-                    src="http://image.dongascience.com/Photo/2022/06/6982fdc1054c503af88bdefeeb7c8fa8.jpg">
+                    src="<%=profile%>">
             </div>
         </div>
     </div>
@@ -55,10 +56,10 @@
             <div id="profile_box">
                 <div id="profile">
                     <img class="profile"
-                        src="http://image.dongascience.com/Photo/2022/06/6982fdc1054c503af88bdefeeb7c8fa8.jpg">
+                         src="<%=profile%>">
                 </div>
                 <div id="show_id">
-                    <span>강아지</span>
+                    <span><%=name %></span>
                 </div>
                 <div id="followme">
                     <a href="#" class="follow">게시물</a>
