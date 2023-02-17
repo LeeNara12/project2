@@ -65,7 +65,7 @@
 
 </head>
 <body>
-<form action="main.jsp">
+<form action="/project2/pacebook/login" method="post">
 
     <div id="wrap">
         <div id="logo_wrap">
@@ -89,15 +89,15 @@
                 </div>
                 
                 <div id="input_wrap">
-                    <input id="input" type="text" placeholder=" 아이디입력">
+                    <input id="input" name='id' type="text" placeholder=" 아이디입력">
                     <div class="input">
-                        <input id="input" type="password" placeholder=" 비밀번호입력">
+                        <input id="input" name='pw' type="password" placeholder=" 비밀번호입력">
                         <div class="eyes">
                             <i id="icon" class="bi bi-eye-fill"></i>
                         </div>
                     </div>
                     <div id="checkbox">
-                        <input type="checkbox" value="true"> 
+                        <input type="checkbox" name='login_keep' value="true"> 
                         <span id="login_con"> 로그인 상태 유지</span>
                     </div>
                 </div>

@@ -48,15 +48,21 @@ public class PaceFilter extends HttpFilter implements Filter {
 			System.out.println("현재위치는 "+url);
 			
 			
+<<<<<<< HEAD
+			if(url.indexOf("/css") != -1 || url.indexOf("/image") != -1) {
+				
+=======
 			if(
 				url.indexOf("/css") != -1
 				|| url.indexOf("/image") != -1
 				|| url.indexOf("/script") != -1
 				) 
 			{
+>>>>>>> 9f336c9f1dfada56bda4b9cee942c06101a421a8
 				chain.doFilter(request, response);
 				
 			}else {
+				
 				response.setContentType("text/html;charset=utf-8");
 				
 				if(url.indexOf("/login") != -1
@@ -72,12 +78,16 @@ public class PaceFilter extends HttpFilter implements Filter {
 				){
 					System.out.println("그냥 통과");
 					chain.doFilter(request, response);
+					
 				} else { //위에 선언한 url주소가 아닌 곳에 갈때 세션 확인
 					session = req.getSession(); 
 					String logon = (String) session.getAttribute("logon"); //세션에 로그인한 기록이 있으면 진행 없으면 로그인페이지로 리턴
-					System.out.println("filter > logon : "+ logon);
+					System.out.println("filter => logon : "+ logon);
+					
+					
 					if("true".equals(logon)) {
 						chain.doFilter(request, response);
+						
 					} else {
 						chain.doFilter(request, response);
 //						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
@@ -87,6 +97,8 @@ public class PaceFilter extends HttpFilter implements Filter {
 			
 			
 		}
+		
+		
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
