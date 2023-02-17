@@ -15,8 +15,7 @@ public class PaceUserVO {//회원정보
 	private String user_gender;
 	private int user_board_oc;
 	private int user_sleep;
-	private String user_follow;
-	private String user_follower;
+	
 	
 	public int getUser_no() {
 		return user_no;
@@ -90,18 +89,7 @@ public class PaceUserVO {//회원정보
 	public void setUser_sleep(int user_sleep) {
 		this.user_sleep = user_sleep;
 	}
-	public String getUser_follow() {
-		return user_follow;
-	}
-	public void setUser_follow(String user_follow) {
-		this.user_follow = user_follow;
-	}
-	public String getUser_follower() {
-		return user_follower;
-	}
-	public void setUser_follower(String user_follower) {
-		this.user_follower = user_follower;
-	}
+	
 	public void setJoindate(Date date) {
 		// TODO Auto-generated method stub
 		

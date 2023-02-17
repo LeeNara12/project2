@@ -46,18 +46,24 @@ public class PaceFilter extends HttpFilter implements Filter {
 			String url = sb.toString();
 			System.out.println("현재위치는 "+url);
 			
+<<<<<<< HEAD
 			
 
 			if(url.indexOf("/css") != -1 || url.indexOf("/image") != -1) {
 				
 
+=======
+>>>>>>> c4606083e2d129b2a157f3324d553583c657f597
 			if(
 				url.indexOf("/css") != -1
 				|| url.indexOf("/image") != -1
 				|| url.indexOf("/script") != -1
 				) 
 			{
+<<<<<<< HEAD
 
+=======
+>>>>>>> c4606083e2d129b2a157f3324d553583c657f597
 				chain.doFilter(request, response);
 				
 			}else {

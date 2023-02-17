@@ -208,6 +208,7 @@ body{
     justify-content: left;
     overflow-y: hidden;
     overflow-x: scroll;
+    box-sizing: border-box;
 }
 #profile_list::-webkit-scrollbar{
     display: none;
@@ -215,7 +216,19 @@ body{
 #friend_profile{
     width: 80px;
     height: 80px;
+}
+#friend_profile_outline1{
+    border: 3px solid rgb(141, 141, 194);
+    border-radius: 50%;
     margin: 0px 20px;
+}
+#friend_profile_outline2{
+    border: 2px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+#friend_profile_name{
+    text-align: center;
 }
 
 /* 메인 미들 */

@@ -57,9 +57,8 @@ public class PaceController extends HttpServlet {
 			vo.setUser_id(id);
 			vo.setUser_pw(pw);
 		
-			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
+			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
 				request.setAttribute("logon", "false");
-				
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
 			} else {
@@ -163,16 +162,31 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/get_board")) {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
+
+		}else if(action.equals("/profile")) {
+
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
-			int user_no = (int)request.getAttribute("user_no");
-			
+//			int user_no = (int)se.getAttribute("user_no");
+			int user_no = 43;
+			PaceUserVO puvo = service.getUserInfo(user_no);
+			se.setAttribute("puvo", puvo);
+			List<PaceUserVO> followList = service.getFollowList(user_no);
+			request.setAttribute("followList", followList);
+			List<PaceBoardVO> boardList = service.getBoard();
+			request.setAttribute("boardList", boardList);
+			nextPage = "/main.jsp";
 		}
 		
 		System.out.println("nextPage : "+nextPage);
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
+		}else if(action.equals("/profile")) {
+			HttpSession se = request.getSession();
+			String user_no = (String)se.getAttribute("user_no");
+			
 		}
+		
 	}
 }
