@@ -253,8 +253,8 @@ public class User_infoDAO {
 			String profile = rs.getString("user_profile");
 			String name = rs.getString("user_name");
 			
-			vo.setUser_profile(profile);
-			vo.setUser_name(name);
+//			vo.setUser_profile(profile);
+//			vo.setUser_name(name);
 //			
 //			String query2 = "Select * from user_followlist"
 //					+" Where user_no = ?";
