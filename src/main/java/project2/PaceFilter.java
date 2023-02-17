@@ -51,6 +51,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 			if(
 				url.indexOf("/css") != -1
 				|| url.indexOf("/image") != -1
+				|| url.indexOf("/script") != -1
 				) 
 			{
 				chain.doFilter(request, response);
@@ -61,10 +62,13 @@ public class PaceFilter extends HttpFilter implements Filter {
 				if(url.indexOf("/login") != -1
 						|| url.indexOf("/join") != -1
 						|| url.indexOf("/pacebook") != -1
+						|| url.indexOf("/main") != -1
 						|| url.indexOf("/pwFind1") != -1
 						|| url.indexOf("/pwFind2") != -1//나중에 pwFind1이 성공하면 나오는걸로 바꾸기
 						|| url.indexOf("/idFind1") != -1
 						|| url.indexOf("/idFind2") != -1
+						|| url.indexOf("/setting") != -1
+						
 				){
 					System.out.println("그냥 통과");
 					chain.doFilter(request, response);
@@ -76,7 +80,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 						chain.doFilter(request, response);
 					} else {
 						chain.doFilter(request, response);
-						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
+//						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
 				}
 			}

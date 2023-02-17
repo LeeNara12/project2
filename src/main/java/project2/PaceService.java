@@ -46,4 +46,7 @@ public class PaceService {
 	public List<PaceBoardVO> getBoard(){
 		return boardDAO.getBoard();
 	}
+	public List<PaceBoardVO> getprofile(){
+		return boardDAO.getBoard();
+	}
 }
