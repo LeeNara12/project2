@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,11 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
+<<<<<<< HEAD
+=======
+			
+			System.out.println(id+" " +pw);
+>>>>>>> d0318e9cc58d272b4fc9c0b740f64349dbb3e006
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
 			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
@@ -57,16 +63,28 @@ public class PaceController extends HttpServlet {
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
 				nextPage = "/login.jsp";
 			} else {
+<<<<<<< HEAD
 				vo.setUser_pw(pw);
+=======
+//				vo.setUser_id(id);
+//				vo.setUser_pw(pw);
+>>>>>>> d0318e9cc58d272b4fc9c0b740f64349dbb3e006
 				boolean logon = service.login(vo);//로그인 가능한지 boolean 리턴값으로 받아옴
 				if(logon) {// 로그인 성공했을 경우
 					HttpSession se = request.getSession();//세션 생성
+					
+					
 					se.setAttribute("user_id", id);// 세션에 값을 넣어줌
 					se.setAttribute("user_no", vo.getUser_no());
 					se.setAttribute("logon", "true");// 로그인이 되었다는걸 세션어트리뷰트에 넣어줌
-					response.sendRedirect("/project2/main.jsp");
-					System.out.println("여기지나감");
-					return;
+					
+//					
+					
+					System.out.println("로그인 지나감");
+					nextPage = "main";
+					
+					
+					
 				} else {// 로그인 실패했을 경우
 					request.setAttribute("logon", "false");// 로그인이 실패했다는걸 request에 넣어줌  
 					System.out.println("로그인 실패");
@@ -189,6 +207,11 @@ public class PaceController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 		}
+//		else if(action.equals("/profile")) {
+//			HttpSession se = request.getSession();
+//			String user_no = (String)se.getAttribute("user_no");
+//			
+//		}
 		
 	}
 	}
