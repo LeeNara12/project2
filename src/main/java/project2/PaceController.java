@@ -175,8 +175,7 @@ public class PaceController extends HttpServlet {
 			
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
-//			int user_no = (int)se.getAttribute("user_no");
-			int user_no = 43;
+			int user_no = (int)se.getAttribute("user_no");
 			PaceUserVO puvo = service.getUserInfo(user_no);
 			se.setAttribute("puvo", puvo);
 			List<PaceUserVO> followList = service.getFollowList(user_no);
