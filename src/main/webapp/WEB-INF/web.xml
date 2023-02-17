@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  <servlet>
+  <!-- <servlet>
     <description></description>
     <display-name>PaceServlet11111</display-name>
     <servlet-name>PaceServlet11111</servlet-name>
@@ -18,5 +18,5 @@
   <servlet-mapping>
     <servlet-name>PaceServlet11111</servlet-name>
     <url-pattern>/PaceServlet11111</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>
