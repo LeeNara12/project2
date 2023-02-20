@@ -4,15 +4,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pacebook2_profile</title>
-     <link rel="stylesheet" href="/project2/css/profile.css">
-    <!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -20,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>pacebook</title>
-        <link rel="stylesheet" href="css/main2.css">
+        <link rel="stylesheet" href="/project2/css/profile.css">
     </head>
 
 <body>
@@ -47,7 +38,7 @@
             </div>
             <div id="top_profile">
                 <img class="profile"
-                    src="<%=profile%>">
+                    src="http://image.dongascience.com/Photo/2022/06/6982fdc1054c503af88bdefeeb7c8fa8.jpg">
             </div>
         </div>
     </div>
@@ -56,10 +47,10 @@
             <div id="profile_box">
                 <div id="profile">
                     <img class="profile"
-                         src="<%=profile%>">
+                        src="http://image.dongascience.com/Photo/2022/06/6982fdc1054c503af88bdefeeb7c8fa8.jpg">
                 </div>
                 <div id="show_id">
-                    <span><%=name %></span>
+                    <span>강아지</span>
                 </div>
                 <div id="followme">
                     <a href="#" class="follow">게시물</a>
@@ -70,28 +61,30 @@
             </div>
             <div id="side_tool">
                 <ul>
-                    <li>
-                        <div id="home_btn">
+                    <li id="home_btn" class="side_btn" >
+                        <a href="/project2/pacebook/main" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                                 <path
                                     d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
                             </svg>
                             <span>홈</span>
-                        </div>
+                        </a>
                     </li>
-                    <li>
-                        <div id="profile_btn">
+                    <li id="profile_btn" class="side_btn">
+                        <a href="/project2/pacebook/profile" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                 <path
                                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
                             </svg>
-                            <span>프로필</span>
-                        </div>
+                            <div class="side_btn_text">
+                                <span>프로필</span>
+                            </div>
+                        </a>
                     </li>
-                    <li>
-                        <div id="notice_btn">
+                    <li id="notice_btn" class="side_btn">
+                        <div>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
                                 <path
@@ -100,8 +93,8 @@
                             <span>알림</span>
                         </div>
                     </li>
-                    <li>
-                        <div id="message_btn">
+                    <li id="message_btn" class="side_btn">
+                        <div>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
                                 <path
@@ -110,8 +103,8 @@
                             <span>메세지</span>
                         </div>
                     </li>
-                    <li>
-                        <div id="make_btn">
+                    <li id="make_btn" class="side_btn">
+                        <a href="/project2/pacebook/makeboard" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
                                 <path
@@ -120,10 +113,10 @@
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                             </svg>
                             <span>만들기</span>
-                        </div>
+                        </a>
                     </li>
-                    <li>
-                        <div id="set_btn">
+                    <li id="set_btn" class="side_btn">
+                        <a href="/project2/pacebook/setting" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
                                 <path
@@ -132,7 +125,7 @@
                                     d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                             </svg>
                             <span>설정</span>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
