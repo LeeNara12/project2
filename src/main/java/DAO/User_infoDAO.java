@@ -277,10 +277,5 @@ public class User_infoDAO {
 		}
 		return puvoList;
 	}
-<<<<<<< HEAD
 
-	
-
-=======
->>>>>>> 26fc0b35f4eece56d36c24cf6fdaedc224ef750a
 }

@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/join_success.css">
+    
     <script>
     window.onload = function(){
         document.querySelector(".myButton").addEventListener("click", function(){
@@ -36,6 +37,7 @@
 			 <div id="content_wrap">
                 <div id="top2">
                     <h1 id="wellcome">Pace Book에 오신 것을 환영합니다</h1>
+                    ${abc }
                     <div id="wellcome1">
 
                         <p style="font-size: 27px;"><b>사진과 동영상을 보고 싶은 사람을 팔로우 해보세요</b></p>

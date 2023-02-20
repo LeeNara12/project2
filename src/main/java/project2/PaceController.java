@@ -32,7 +32,7 @@ public class PaceController extends HttpServlet {
 		PaceService service = new PaceService();
 		String action = request.getPathInfo();
 		String nextPage = null;
-		System.out.println("action : "+action);
+		System.out.println("action : "+action+action.equals("join_success"));
 		
 		
 		if(action == null || action.equals("") || action.equals("/")) {
@@ -41,9 +41,10 @@ public class PaceController extends HttpServlet {
 			System.out.println("abc들어옴");
 //			service.a();
 			List<PaceUserVO> up = service.a();
-			
-			
-			
+//			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
+//			pp.forward(request, response);
+			request.setAttribute("abc", 123);
+			nextPage = "/join_success.jsp";
 //			PaceDAO da = new PaceDAO();
 //			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
