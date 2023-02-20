@@ -66,7 +66,11 @@ public class PaceService {
 	}
 
 	
-	public List<PaceBoardVO> getprofile(){
-		return boardDAO.getBoard();
+	public PaceUserVO getProfile(int user_no){
+		return user_infoDAO.profile1(user_no);
+	}
+	
+	public List<PaceCommentVO> comment(int board_no){
+		return commentDAO.comment(board_no);
 	}
 }

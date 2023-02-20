@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -36,6 +37,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding("utf-8");
 //		response.setContentType("text/html;charset=utf-8");//css나 image가 적용되는 문제 발생
+
 		
 		HttpSession session = null;
 		if(request instanceof HttpServletRequest) {
@@ -59,7 +61,12 @@ public class PaceFilter extends HttpFilter implements Filter {
 				|| url.indexOf("/script") != -1
 				) 
 			{
+<<<<<<< HEAD
 
+=======
+				System.out.println(1);
+				chain.doFilter(request, response);
+>>>>>>> 4b2e3c8bd4e30d37614bc01402b82d0febcc9427
 				
 			}else {
 				
@@ -74,9 +81,9 @@ public class PaceFilter extends HttpFilter implements Filter {
 						|| url.indexOf("/idFind1") != -1
 						|| url.indexOf("/idFind2") != -1
 						|| url.indexOf("/setting") != -1
-						
 				){
 					System.out.println("그냥 통과");
+					System.out.println(12);
 					chain.doFilter(request, response);
 					
 				} else { //위에 선언한 url주소가 아닌 곳에 갈때 세션 확인
@@ -85,12 +92,17 @@ public class PaceFilter extends HttpFilter implements Filter {
 					System.out.println("filter => logon : "+ logon);
 					
 					
-					if("true".equals(logon)) {
+					
+					
+					
+					if("true".equals(logon) ) {
+						System.out.println(123);
 						chain.doFilter(request, response);
 						
 					} else {
+						System.out.println(1234);
 						chain.doFilter(request, response);
-//						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
+						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
 				}
 			}
