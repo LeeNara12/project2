@@ -45,7 +45,7 @@ public class PaceController extends HttpServlet {
 //			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
 //			pp.forward(request, response);
 			request.setAttribute("abc", 123);
-			nextPage = "/join_success.jsp";
+			nextPage = "/join_success";
 //			PaceDAO da = new PaceDAO();
 //			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
@@ -91,12 +91,15 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/join")) {//회원가입 페이지에서 회원가입 버튼 누를시
 			// 값을 받는 법
 			String id = request.getParameter("id");
+			System.out.println("user_id:"+id);
 			String pw = request.getParameter("pw");
+			System.out.println("user_pw:"+pw);
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String phone = request.getParameter("phone");
 			String gender = request.getParameter("gender");
 			String birth = request.getParameter("birth");
+			System.out.println("birth:"+birth);
 			PaceUserVO vo = new PaceUserVO();// PaceVO객체 생성
 			vo.setUser_id(id);//생성한 객체에 변수로 저장했던 아이디,비밀번호 등 값을 넣어줌
 			vo.setUser_pw(pw);

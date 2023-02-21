@@ -51,23 +51,19 @@ public class PaceFilter extends HttpFilter implements Filter {
 
 			
 
-			if(url.indexOf("/css") != -1 || url.indexOf("/image") != -1) {
+			
 				
 
 
 			if(
-				url.indexOf("/css") != -1
-				|| url.indexOf("/image") != -1
-				|| url.indexOf("/script") != -1
-				) 
-			{
-<<<<<<< HEAD
+						url.indexOf("/css") != -1
+						|| url.indexOf("/image") != -1
+						|| url.indexOf("/script") != -1
+				) 	{
 
-=======
 				System.out.println(1);
 				chain.doFilter(request, response);
->>>>>>> 4b2e3c8bd4e30d37614bc01402b82d0febcc9427
-				
+
 			}else {
 				
 				response.setContentType("text/html;charset=utf-8");
@@ -104,12 +100,17 @@ public class PaceFilter extends HttpFilter implements Filter {
 						chain.doFilter(request, response);
 						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
+					
+					
 				}
 			}
+			
+			
+			
 			}
 		}		
 		
-	}
+	
 
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
