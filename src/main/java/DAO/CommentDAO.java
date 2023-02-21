@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import VO.PaceCmCommentVO;
 import VO.PaceCommentVO;
 
 public class CommentDAO {
@@ -98,6 +99,42 @@ public class CommentDAO {
 				pcvo.setComment_modify_time(rs.getDate("comment_modify_time"));
 				
 				list.add(pcvo);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<PaceCmCommentVO> cmComment(int comment_no) {
+		List<PaceCmCommentVO> list = new ArrayList<PaceCmCommentVO>();
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " select * from cmcomment"
+					+ " where comment_no = ?"
+					+ " order by cmcomment_time asc";
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, comment_no);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PaceCmCommentVO pccvo = new PaceCmCommentVO();
+				pccvo.setCmComment_no(rs.getInt("cmcomment_no"));
+				pccvo.setCmComment_time(rs.getDate("cmcomment_time"));
+				pccvo.setCmComment_content(rs.getString("cmcomment_content"));
+				pccvo.setUser_no(rs.getInt("user_no"));
+				pccvo.setComment_no(comment_no);
+				pccvo.setCmComment_like(rs.getInt("cmcomment_like"));
+				pccvo.setCmComment_modify(rs.getInt("cmcomment_modify"));
+				pccvo.setCmComment_modify_time(rs.getDate("cmcomment_modify_time"));
+				
+				list.add(pccvo);
 			}
 			
 			rs.close();

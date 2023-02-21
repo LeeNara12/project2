@@ -6,6 +6,7 @@ import DAO.BoardDAO;
 import DAO.CommentDAO;
 import DAO.User_infoDAO;
 import VO.PaceBoardVO;
+import VO.PaceCmCommentVO;
 import VO.PaceCommentVO;
 import VO.PaceUserVO;
 
@@ -72,5 +73,9 @@ public class PaceService {
 	
 	public List<PaceCommentVO> comment(int board_no){
 		return commentDAO.comment(board_no);
+	}
+	
+	public List<PaceCmCommentVO> cmComment(int comment_no){
+		return commentDAO.cmComment(comment_no);
 	}
 }
