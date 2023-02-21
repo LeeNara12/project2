@@ -38,13 +38,13 @@ public class PaceController extends HttpServlet {
 		
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
-		}else if( action.equals("/join")){
-			System.out.println("abc들어옴");
-//			service.a();
-			List<PaceUserVO> up = service.a();
-			
-//			PaceDAO da = new PaceDAO();
-//			da.count();
+//		}else if( action.equals("/join")){
+//			System.out.println("abc들어옴");
+////			service.a();
+//			List<PaceUserVO> up = service.a();
+//			
+////			PaceDAO da = new PaceDAO();
+////			da.count();
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
