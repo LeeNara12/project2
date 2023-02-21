@@ -183,7 +183,7 @@ public class PaceController extends HttpServlet {
 			List<PaceBoardVO> boardList = service.getBoard();
 			request.setAttribute("boardList", boardList);
 			nextPage = "/main.jsp";
-		
+			
 		}else if(action.equals("/idFind1")) {
 			nextPage = "/login.jsp";
 		}else if(action.equals("/idFind1")) {
