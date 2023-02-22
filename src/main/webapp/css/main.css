@@ -255,6 +255,7 @@ body{
     height: fit-content;
     display: flex;
     flex-direction: column;
+    padding-bottom: 100px;
 }
 #board{
     height:fit-content;
@@ -324,6 +325,7 @@ body{
 }
 .board_content_text{
     max-width: 255px;
+    width: fit-content;
     max-height: 21px;
     overflow: hidden;
 }
@@ -336,7 +338,7 @@ body{
 #comment_count{
     margin-bottom: 10px;
 }
-#comment_count:hover{
+.show_comment:hover{
     cursor: pointer;
 }
 #board_time{
@@ -349,8 +351,6 @@ body{
 
 /* 댓글 */
 #comment_list{
-    /* visibility: hidden;
-    position: absolute; */
     border-top: 1px solid rgb(170, 170, 170);
 }
 #comment{
@@ -396,8 +396,8 @@ body{
 
 #c_comment_list{
     margin-top: 10px;
-    visibility: hidden;
     position: absolute;
+    visibility: hidden;
 }
 #c_comment{
     margin: 5px 0px 5px 10px;
@@ -413,6 +413,9 @@ body{
     display: flex;
     margin: 5px 0px;
     height:30px;
+}
+#board_comment:focus{
+    border: 2px solid rgb(141, 141, 194);
 }
 #board_comment{
     border:1px solid rgb(141, 141, 194);

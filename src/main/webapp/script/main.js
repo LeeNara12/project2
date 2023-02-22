@@ -85,12 +85,20 @@ window.onload = function () {
     let smx = document.querySelectorAll(".show_more_box");
     smx.forEach(function(box){
         if(box.previousElementSibling.clientWidth >= 255){
-            box.style.display = "initial";
+            box.style.display = "inline";
         } else {
-            box.style.display = "none";
+            if((box.previousElementSibling.className.indexOf("cct") != -1)){
+                if(box.previousElementSibling.clientWidth >= 196){
+                    box.style.display = "inline";
+                } else {
+                    box.style.display = "none";
+                }
+            } else {
+                box.style.display = "none";
+            }
         }
     })
-
+    
     // 게시글 내용, 댓글 더보기 버튼
     let moreBtn = document.querySelectorAll(".show_more_btn");
     
@@ -100,53 +108,110 @@ window.onload = function () {
             e.target.parentNode.style.display = "none";
         })
     })
-
+    
     //게시글 댓글 모두보기 버튼
-    let cmb = document.querySelectorAll("#comment_count");
+    let cmbArrayB = new Array(); // 게시글 댓글 더보기 버튼 담는 배열
+    let cmbArrayC = new Array(); // 댓글 답글 더보기 버튼 담는 배열
+    
+    let bcs = document.querySelectorAll("#comment_top");   
+
+    let cmb = document.querySelectorAll(".show_comment");
     cmb.forEach(function(btn){
-        let beforeText;
         btn.addEventListener("click", function(e){
+            e.target.parentElement.parentElement.lastElementChild.action 
+            = "/project2/pacebook/bcomment";
+            let number = e.target.getAttribute("data-bon");
             if(e.target.innerHTML.indexOf("모두보기") != -1){
-                beforeText = e.target.innerHTML;
+                let cmbObject = {number, bftext: e.target.innerHTML};
+                cmbArrayB = cmbArrayB.filter(e => e.number !== number);
+                cmbArrayB.push(cmbObject);
                 e.target.innerHTML = "댓글 더보기 닫기";
                 e.target.style.color = "rgb(170, 170, 170)";
                 e.target.parentElement.nextElementSibling.nextElementSibling.style.visibility = "visible";
                 e.target.parentElement.nextElementSibling.nextElementSibling.style.position = "relative";
             } else if(e.target.innerHTML == "댓글 더보기 닫기"){
-                e.target.innerHTML = beforeText;
+                let curbtn = cmbArrayB.find(e => e.number === number);
+                e.target.innerHTML = curbtn.bftext;
                 e.target.style.color = "black";
                 e.target.parentElement.nextElementSibling.nextElementSibling.style.visibility = "hidden";
                 e.target.parentElement.nextElementSibling.nextElementSibling.style.position = "absolute";
+                bcs.forEach((e) => {
+                    e.style.backgroundColor = "white";
+                })
             } else if(e.target.innerHTML == "댓글 달기"){
-                e.target.parentElement.parentElement.lastElementChild.firstElementChild.firstElementChild.focus();
+                e.target.parentElement.parentElement.lastElementChild[1].focus();
             }
+            e.target.parentElement.parentElement.lastElementChild.firstElementChild
+            .firstElementChild.value = number;
         })
     })
     
     //답글 달기 버튼 
     let ccbtn = document.querySelectorAll("#c_comment_btn");
-
     ccbtn.forEach(function(btn){
-        let beforeText;
         btn.addEventListener("click", function(e){
-            if(e.target.offsetParent.nextElementSibling.action.indexOf("board") != -1){
-                beforeText = e.target.innerHTML;
-                e.target.offsetParent.nextElementSibling.action 
-                = "/project2/pacebook/commentcomment";
-                e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-                .style.visibility = "visible";
-                e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-                .style.position = "relative";
-                e.target.innerHTML = "답글 닫기";
+            bcs.forEach((e) => {
+                e.style.backgroundColor = "white";
+            })
+            e.target.offsetParent.nextElementSibling.action 
+            = "/project2/pacebook/ccomment";
+            let number = e.target.getAttribute("data-con");
+            if(e.target.innerHTML == "답글 달기"){
+                e.target.parentElement.parentElement.parentElement.parentElement.style.backgroundColor = "rgb(230, 230, 230)";
+                e.target.offsetParent.parentElement.lastElementChild[0].value = number;
             } else {
-                e.target.offsetParent.nextElementSibling.action 
-                = "/project2/pacebook/boardcomment";
-                e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-                .style.visibility = "hidden";
-                e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
-                .style.position = "absolute";
-                e.target.innerHTML = beforeText;
+                if(e.target.innerHTML.indexOf("더보기") != -1){
+                    let cmbObject = {number, bftext: e.target.innerHTML};
+                    cmbArrayC = cmbArrayC.filter(e => e.number !== number);
+                    cmbArrayC.push(cmbObject);
+                    e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+                    .style.visibility = "visible";
+                    e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+                    .style.position = "relative";
+                    e.target.innerHTML = "답글 닫기";
+                    e.target.parentElement.parentElement.parentElement.parentElement.style.backgroundColor = "rgb(230, 230, 230)";
+                    e.target.offsetParent.parentElement.lastElementChild[0].value = number;
+                } else {
+                    e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+                    .style.visibility = "hidden";
+                    e.target.parentElement.parentElement.parentElement.parentElement.nextElementSibling
+                    .style.position = "absolute";
+                    let curbtn = cmbArrayC.find(e => e.number === number);
+                    e.target.innerHTML = curbtn.bftext;
+                    e.target.offsetParent.parentElement.lastElementChild[0].value = 
+                    e.target.offsetParent.parentElement.children[2].firstElementChild.getAttribute("data-bon");
+                    e.target.offsetParent.nextElementSibling.action 
+                    = "/project2/pacebook/bcomment";
+                }
             }
+            e.target.offsetParent.nextElementSibling.firstElementChild.children[1].focus();
         })
     })
+    
+    let commentBtns = document.querySelectorAll("#comment_btn");
+
+    commentBtns.forEach((btn) => {
+        btn.addEventListener("click", function(){
+            let frm = this.parentElement.parentElement;
+            commentButton(frm);
+        })
+    })
+
+    function commentButton(frm){
+        let xhr = new XMLHttpRequest();
+        let no = frm.querySelector("#hidden_board_comment").value;
+        let content = frm.querySelector("#board_comment").value;
+        xhr.open("post", frm.action+"?no="+no+"&content="+content);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send();
+        xhr.onreadystatechange = () => {
+            if(xhr.readyState !== XMLHttpRequest.DONE){
+                if(xhr.status === 200){
+                    console.log(1);
+                } else {
+                    console.log("err");
+                }
+            }
+        }
+    }
 }

@@ -134,8 +134,7 @@
                 <ul id="notice_list">
                     <li id="notice">
                         <div id="notice_profile" class="profile_div">
-                            <img class="profile" src="#">
-                            <img class="profile" src="a.jpg">
+                            <img class="profile" src="javascript:void(0);">
                         </div>
                         <span id="notice_text">
                             서한수님이 팔로우 했습니다.
@@ -255,12 +254,12 @@
                                 <c:choose>
 	                                <c:when test="${commentList.size() != 0}">
 		                                <div id="comment_count">
-		                                	<span>댓글 ${commentList.size() }개 모두보기</span>
+		                                	<span class="show_comment" data-bon="${board.board_no }">댓글 ${commentList.size() }개 모두보기</span>
                                 		</div>
 	                                </c:when>
 	                                <c:when test="${commentList.size() == 0}">
 		                                <div id="comment_count">
-		                                	<span>댓글 달기</span>
+		                                	<span class="show_comment" data-bon="${board.board_no }">댓글 달기</span>
 	                                	</div>
 	                                </c:when>
                                 </c:choose>
@@ -324,10 +323,10 @@
                                                         <div id="comment_comment">
                                                         	<c:choose>
                                                         		<c:when test="${cmCommentList.size() == 0 }">
-		                                                            <span id="c_comment_btn">답글 달기</span>
+		                                                            <span id="c_comment_btn" data-con="${comment.comment_no }">답글 달기</span>
                                                         		</c:when>
                                                         		<c:when test="${cmCommentList.size() != 0 }">
-		                                                            <span id="c_comment_btn">답글 ${cmCommentList.size() }개 더보기</span>
+		                                                            <span id="c_comment_btn" data-con="${comment.comment_no }">답글 ${cmCommentList.size() }개 더보기</span>
                                                         		</c:when>
                                                        		</c:choose>
                                                         </div>
@@ -367,7 +366,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="comment_text">
-                                                            <div class="board_content_text">
+                                                            <div class="board_content_text cct">
                                                                 <span>
                                                                 	${cmComment.cmComment_content }
                                                                 </span>
@@ -397,10 +396,11 @@
                                         </c:forEach>
                                     </ul>
                                 </div>
-                                <form method="get" action="/project2/pacebook/boardcomment">
+                                <form method="post" action="/project2/pacebook/bcomment">
                                     <div id="board_comment_box">
+                                    	<input id="hidden_board_comment" type="hidden" name="no" value="${board.board_no }">
                                         <input id="board_comment" type="text" name="content">
-                                        <input id="comment_btn" type="submit" value="게시">
+                                        <input id="comment_btn" type="button" value="게시">
                                     </div>
                                 </form>
                             </div>
