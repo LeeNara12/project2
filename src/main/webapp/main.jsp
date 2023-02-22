@@ -134,7 +134,7 @@
                 <ul id="notice_list">
                     <li id="notice">
                         <div id="notice_profile" class="profile_div">
-                            <img class="profile" src="#">
+                            <img class="profile" src="javascript: void(0);">
                             <img class="profile" src="a.jpg">
                         </div>
                         <span id="notice_text">

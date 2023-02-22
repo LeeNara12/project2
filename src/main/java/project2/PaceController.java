@@ -56,7 +56,7 @@ public class PaceController extends HttpServlet {
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
 			vo.setUser_pw(pw);
-			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
+			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
 			
 				request.setAttribute("logon", "false");
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
