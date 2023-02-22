@@ -23,6 +23,10 @@ public class PaceService {
 		return user_infoDAO.join(vo);
 	}
 	
+	public boolean idCheck(PaceUserVO vo) {
+		return user_infoDAO.idCheck(vo);
+	}
+	
 	public void createBoard(int user_no, PaceBoardVO pbvo) {
 		boardDAO.createBoard(user_no, pbvo);
 	}

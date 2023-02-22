@@ -12,6 +12,7 @@
 
 <body>
     <div id="wrap">
+ 	<form action='/project2/pacebook/pwFind1' method='post'>
 
         <div id="top_box">
             <span id="margin_left">비밀번호찾기</span>
@@ -23,7 +24,7 @@
                 <div class="detail_wrap" id="margin_top">
                     <div class="name"> <span id="margin_left">이름</span> <span class="star">*</span></div>
                     <div class="detail">
-                        <input class="input_text" type="text" >
+                        <input class="input_text" type="text" name='name'>
                     </div>
                 </div>
                 <div class="detail_wrap" id="border_bottom">
@@ -31,21 +32,21 @@
                         <span class="star">*</span>
                     </div>
                     <div class="detail">
-                        <input class="input_text" type="text" >
+                        <input class="input_text" type="text" name='id'>
                     </div>
                     
                 </div>
               
                 <div id="pwFind_wrap">
-                    <input id="pwFind_btn" type="button" value="비밀번호 찾기">
+                    <input id="pwFind_btn" type="submit" value="비밀번호 찾기">
                     <span id="space"></span>
-                    <a id="pwFind_btn" href="login.jsp"><input id="pwFind_btn1" type="button" value="로그인하러가기"></a>
+                    <a id="pwFind_btn" href="/project2/login.jsp"><input id="pwFind_btn1" type="button" value="로그인하러가기"></a>
                 </div>
 				
             </div>
-           
         </div>
 
+    </form>
     </div>
 </body>
 </html>

@@ -1,6 +1,9 @@
 package project2;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -116,6 +119,51 @@ public class PaceController extends HttpServlet {
 			
 			
 
+		}else if(action.equals("/idFind1")){
+			
+			System.out.println("idFind1로 진입됨");
+			String name = request.getParameter("name");
+			String birth = request.getParameter("birth");
+			String phone = request.getParameter("phone1")+"-"+request.getParameter("phone2")+"-"+request.getParameter("phone3");
+			
+			PaceUserVO  vo = new PaceUserVO();
+			vo.setUser_name(name);
+			vo.setUser_birth(birth);
+			vo.setUser_phone(phone);
+			
+			boolean check = service.idCheck(vo);
+			
+//			String id = str.replace(str.substring(4),"****");
+			
+			if(check) {
+				
+				String str = vo.getUser_id();
+				StringBuffer sb = new StringBuffer();
+				sb.append(str.substring(0,4));
+				while(sb.length() < str.length()){
+					sb.append("*");
+				}
+				
+				String id = sb.toString();
+				System.out.println("idCheck 성공");
+				request.setAttribute("name", name);
+				request.setAttribute("birth", birth);
+				request.setAttribute("phone", phone);
+				request.setAttribute("alert", false);
+				request.setAttribute("id", id);
+				nextPage = "/idFind2.jsp";
+				
+			}else {
+				System.out.println("idCheck 실패");
+				request.setAttribute("alert", true);
+				request.setAttribute("text", "등록된 회원정보가 없습니다.");
+				nextPage = "/idFind1.jsp";
+				
+			}
+			
+			
+			
+			
 		}else if(action.equals("/board")) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
 			String board_url = request.getParameter("url");//게시글 내용 가져오기
@@ -198,12 +246,9 @@ public class PaceController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 		}
-//		else if(action.equals("/profile")) {
-//			HttpSession se = request.getSession();
-//			String user_no = (String)se.getAttribute("user_no");
-//			
-//		}
+
 		
 	}
-	}
+	
+}
 

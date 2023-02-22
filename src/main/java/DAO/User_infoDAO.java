@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -116,6 +118,71 @@ public class User_infoDAO {
 		}
 		return result;
 	}
+	
+	
+	
+	
+	
+	public boolean idCheck(PaceUserVO vo) {// 아이디찾기 메소드
+		
+//		Map map = new HashMap();
+		boolean result = false;
+		
+			
+		try {
+			con = dataFactory.getConnection();
+			
+			StringBuffer query = new StringBuffer();
+			query.append("select * from user_info ");
+			query.append(" where user_name = ?");
+			query.append(" and user_birth = ?");
+			query.append(" and user_phone = ?");
+			
+			System.out.println(query);
+			
+			pstmt = con.prepareStatement(query.toString());
+			pstmt.setString(1, vo.getUser_name());
+			pstmt.setString(2, vo.getUser_birth());
+			pstmt.setString(3, vo.getUser_phone());
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {// where 조건에 맞는 SQL문이 있다면 아이디찾기 가능
+				
+				vo.setUser_id(rs.getString("user_id"));
+				result = true;
+				
+			}//나머지는 불가능
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		return result;
+	}
+	
+	
+	public boolean pwCheck(PaceUserVO vo) {//비밀번호 찾기 메소드
+		boolean result = false;
+		
+		
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
 	
 	public PaceUserVO getUserInfo(int user_no) {//댓글페이지 여는 메소드//댓글정보들을 가져와서 넘기는 메소드
 		PaceUserVO puvo = new PaceUserVO();
