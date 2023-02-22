@@ -147,8 +147,6 @@ public class PaceController extends HttpServlet {
 				String id = sb.toString();
 				System.out.println("idCheck 성공");
 				request.setAttribute("name", name);
-				request.setAttribute("birth", birth);
-				request.setAttribute("phone", phone);
 				request.setAttribute("alert", false);
 				request.setAttribute("id", id);
 				nextPage = "/idFind2.jsp";
@@ -160,6 +158,50 @@ public class PaceController extends HttpServlet {
 				nextPage = "/idFind1.jsp";
 				
 			}
+			
+			
+			
+			
+		}else if(action.equals("/pwFind1")){
+			System.out.println("pwFind1 진입 됨");
+			String name = request.getParameter("name");
+			String id = request.getParameter("id");
+			
+			PaceUserVO vo = new PaceUserVO();
+			vo.setUser_name(name);
+			vo.setUser_id(id);
+			
+			boolean check = service.pwCheck(vo);
+			
+			if(check) {
+				System.out.println("비밀번호는 true");
+				String str = id;
+				StringBuffer sb = new StringBuffer();
+				sb.append(str.substring(0, 4));
+				while(sb.length() < str.length()) {
+					sb.append("*");
+				}
+				id = sb.toString();
+				System.out.println("아이디는 "+id);
+				request.setAttribute("id", id);
+				request.setAttribute("pw", vo.getUser_pw());
+				request.setAttribute("alert", false);
+				nextPage = "/pwFind2.jsp";
+				
+				
+			}else {
+				System.out.println("비밀번호는 false");
+				request.setAttribute("alert", true);
+				request.setAttribute("text", "일치하는 회원정보가 없습니다.");
+				nextPage = "/pwFind1.jsp";
+				
+			}
+			
+			
+			
+			
+			
+			
 			
 			
 			
@@ -241,6 +283,10 @@ public class PaceController extends HttpServlet {
 		
 		
 		///페이지 이동관련
+		/*forward방식은 디폴트로 contextPath를 붙여줌 
+		 *  /main.jsp == /project2/main.jsp
+		 *  main == /project2/pacebook/main 
+		 * */
 		System.out.println("nextPage : "+nextPage);
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);

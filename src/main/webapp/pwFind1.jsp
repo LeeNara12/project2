@@ -7,8 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>비밀번호찾기1</title>
-    <link rel="stylesheet" href="css/pwFind1.css">
+    <link rel="stylesheet" href="/project2/css/pwFind1.css">
 </head>
+<script>
+	//page이동되자마자 alert창 띄우기
+	console.log('${alert }');
+	if(${alert }){
+		alert('${text }');
+	}
+
+</script>
 
 <body>
     <div id="wrap">

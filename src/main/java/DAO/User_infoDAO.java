@@ -15,6 +15,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import VO.PaceUserVO;
+import project2.TemporaryPW;
 
 public class User_infoDAO {
 	
@@ -170,14 +171,66 @@ public class User_infoDAO {
 	}
 	
 	
-	public boolean pwCheck(PaceUserVO vo) {//비밀번호 찾기 메소드
+	
+	
+	public boolean pwCheck(PaceUserVO vo) {//비밀번호 일치 불일치 메소드
 		boolean result = false;
+		TemporaryPW tem = new TemporaryPW();
+		String temPW = tem.temPW();
 		
-		
+		try {
+			con = dataFactory.getConnection();
+			
+			StringBuffer sb = new StringBuffer();
+			sb.append("select * from user_info");
+			sb.append(" where user_name = ?");
+			sb.append(" and user_id = ?");
+			
+			System.out.println(sb);
+			
+			pstmt = con.prepareStatement(sb.toString());
+			pstmt.setString(1, vo.getUser_name());
+			pstmt.setString(2, vo.getUser_id());
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			
+			if(rs.next()) {//where 조건에 맞는 SQL문이 있다면 임시비밀번호 찾기 가능
+				
+				con = dataFactory.getConnection();
+				
+				StringBuffer sb2 = new StringBuffer();
+				sb2.append("update user_info");
+				sb2.append(" set user_pw = ?");
+				sb2.append(" where user_name = ?");
+				sb2.append(" and user_id = ?");
+				
+				System.out.println(sb2);
+				
+//				pstmt.close();
+				
+				pstmt = con.prepareStatement(sb2.toString());
+				pstmt.setString(1, temPW);
+				pstmt.setString(2, vo.getUser_name());
+				pstmt.setString(3, vo.getUser_id());
+				
+				pstmt.executeUpdate();
+				
+				vo.setUser_pw(temPW);
+				result = true;
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		}catch(SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
 		
 		return result;
 	}
-	
 	
 	
 	
