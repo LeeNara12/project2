@@ -52,9 +52,9 @@
 					<span>${vo.user_id }</span>
 				</div>
 				<div id="followme">
-					<a href="#" class="follow">게시물 ${followList.size()}</a> 
-					<a href="#" class="follow">팔로우 ${followList.size()}</a>
-					<a href="#" class="follow">팔로워 ${followList.size()}</a>
+					<a href="#" class="follow">게시물 ${boardList.size() }</a> <a href="#"
+						class="follow">팔로우 ${followList.size()}</a> <a href="#"
+						class="follow">팔로워 ${followList.size()}</a>
 				</div>
 
 			</div>
@@ -132,88 +132,26 @@
 			<div id="main_profile">
 				<div>
 					<form>
-					
+
 						<div id="show_boards">
-							<a href="#" class="myButton">게시물</a> 
-							<a href="#" class="myButton">저장됨</a>
+							<a href="#" class="myButton">게시물</a> <a href="#" class="myButton">저장됨</a>
 							<a href="#" class="myButton">태그됨</a>
 						</div>
 						<div id="image_box">
 							<div>
+							<c:forEach var="board" items="${boardList }">
 								<div class="contact_section">
 									<a href="naver"><img
 										style="width: 300px; height: 300px; border-radius: 30px;"
-										src="/project2/${boardList[0].board_url }" alt=""></a> <a
-										href="naver"><img
-										style="width: 300px; height: 300px; border-radius: 30px;"
-										src="/project2/${boardList[0].board_url }" alt=""></a> <a
-										href="naver"><img
-										style="width: 300px; height: 300px; border-radius: 30px;"
-										src="/project2/${boardList[0].board_url }" alt=""></a>
+										src="/project2/${board.board_url }" alt=""></a>
 								</div>
-							</div>
-							<div class="contact_section">
-								<a href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a>
-							</div>
-
-							<div class="contact_section">
-								<a href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a>
-							</div>
-							<div class="contact_section">
-								<a href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a>
-							</div>
-							<div class="contact_section">
-								<a href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a>
-							</div>
-							<div class="contact_section">
-								<a href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a> <a
-									href="naver"><img
-									style="width: 300px; height: 300px; border-radius: 30px;"
-									src="/project2/${boardList[0].board_url }" alt=""></a>
+								</c:forEach>
 							</div>
 						</div>
+					</form>
 				</div>
-				</form>
 			</div>
 		</div>
-	</div>
 	</div>
 </body>
 
