@@ -2,9 +2,9 @@ package project2;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,18 +38,19 @@ public class PaceController extends HttpServlet {
 		
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
-<<<<<<< HEAD
-		}else if( action.equals("/join_success")){
+
+		}else if( action.equals("/join_success.jsp")){
 			System.out.println("abc들어옴");
 //			service.a();
-			List<PaceUserVO> up = service.a();
+			Map map  = service.a();
 //			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
 //			pp.forward(request, response);
 			request.setAttribute("abc", 123);
-			nextPage = "/join_success";
+			request.setAttribute("ka", map.get("ka")); // map
+			request.setAttribute("uv", map.get("uv"));
+			nextPage = "/join_success.jsp";
 //			PaceDAO da = new PaceDAO();
 //			da.count();
-=======
 //		}else if( action.equals("/join")){
 //			System.out.println("abc들어옴");
 ////			service.a();
@@ -57,7 +58,7 @@ public class PaceController extends HttpServlet {
 //			
 ////			PaceDAO da = new PaceDAO();
 ////			da.count();
->>>>>>> 42f3178ab9fe3da393b55c24ae92f72024c88491
+
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");

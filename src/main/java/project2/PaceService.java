@@ -1,6 +1,7 @@
 package project2;
 
 import java.util.List;
+import java.util.Map;
 
 import DAO.BoardDAO;
 import DAO.CommentDAO;
@@ -52,13 +53,13 @@ public class PaceService {
 		return user_infoDAO.getFollowList(user_no);
 	}
 	
-	public List<PaceUserVO>  a () {
+	public Map  a () {
 		 List<PaceUserVO> pu; 
 		PaceDAO PaceDAO = new PaceDAO();
-		pu= PaceDAO.count();
+		Map map= PaceDAO.count();
 		System.out.println("service출력");
 		
-		return pu;
+		return map;
 		
 	}
 	

@@ -49,12 +49,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 			System.out.println("현재위치는 "+url);
 			
 
-			
-
-			
-				
-
-
 			if(
 						url.indexOf("/css") != -1
 						|| url.indexOf("/image") != -1
@@ -70,6 +64,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 				
 				if(url.indexOf("/login") != -1
 						|| url.indexOf("/join") != -1
+						|| url.indexOf("/join_success") != -1						
 						|| url.indexOf("/pacebook") != -1
 						|| url.indexOf("/main") != -1
 						|| url.indexOf("/pwFind1") != -1
@@ -87,10 +82,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 					String logon = (String) session.getAttribute("logon"); //세션에 로그인한 기록이 있으면 진행 없으면 로그인페이지로 리턴
 					System.out.println("filter => logon : "+ logon);
 					
-					
-					
-					
-					
 					if("true".equals(logon) ) {
 						System.out.println(123);
 						chain.doFilter(request, response);
@@ -104,14 +95,10 @@ public class PaceFilter extends HttpFilter implements Filter {
 					
 				}
 			}
-			
-			
-			
+					
 			}
 		}		
 		
-	
-
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 

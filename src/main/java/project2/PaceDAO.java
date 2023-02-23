@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -409,9 +410,10 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public  List<PaceUserVO> count() {
+	public Map count() {
 		System.out.println("count실행됨");
 		List<PaceUserVO> uv = new ArrayList();
+		int [] ka = new int[2]; // 배열의 길이 선언
 		
 	try {
 		con = dataFactory.getConnection();
@@ -421,7 +423,6 @@ public class PaceDAO {
 		ResultSet rs = pstmt.executeQuery(); //데이터베이스 결과 값 가져오기 
 		rs.next();
 		int count = rs.getInt("count(*)");
-		int [] ka = new int[2]; // 배열의 길이 선언
 		ka[0] =(int) (Math.random()*count);
 	
 		
@@ -463,7 +464,10 @@ public class PaceDAO {
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return uv;
+	Map map = new HashMap();
+	map.put("ka", ka);
+	map.put("uv", uv);
+	return map;
 	
 	
 	}
