@@ -184,34 +184,26 @@ window.onload = function () {
                     = "/project2/pacebook/bcomment";
                 }
             }
-            e.target.offsetParent.nextElementSibling.firstElementChild.children[1].focus();
-        })
-    })
-    
-    let commentBtns = document.querySelectorAll("#comment_btn");
-
-    commentBtns.forEach((btn) => {
-        btn.addEventListener("click", function(){
-            let frm = this.parentElement.parentElement;
-            commentButton(frm);
+            // e.target.offsetParent.nextElementSibling.firstElementChild.children[1].focus();
         })
     })
 
-    function commentButton(frm){
-        let xhr = new XMLHttpRequest();
-        let no = frm.querySelector("#hidden_board_comment").value;
-        let content = frm.querySelector("#board_comment").value;
-        xhr.open("post", frm.action+"?no="+no+"&content="+content);
-        xhr.setRequestHeader("Content-type", "application/json");
-        xhr.send();
-        xhr.onreadystatechange = () => {
-            if(xhr.readyState !== XMLHttpRequest.DONE){
-                if(xhr.status === 200){
-                    console.log(1);
-                } else {
-                    console.log("err");
-                }
-            }
-        }
-    }
+
+    // let commentBtns = document.querySelectorAll("#comment_btn");
+
+    // commentBtns.forEach((btn) => {
+    //     btn.addEventListener("click", function(){
+    //         // let frm = this.parentElement.parentElement;
+    //         // commentButton(frm);
+    //     })
+    // })
+
+    // function commentButton(frm){
+    //     let xhr = new XMLHttpRequest();
+    //     let no = frm.querySelector("#hidden_board_comment").value;
+    //     let content = frm.querySelector("#board_comment").value;
+    //     xhr.open("post", frm.action+"?no="+no+"&content="+content);
+    //     xhr.setRequestHeader("Content-type", "application/json");
+    //     xhr.send();
+    // }
 }

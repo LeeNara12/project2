@@ -95,6 +95,7 @@ public class User_infoDAO {
 				// 값을 주는 애들은 jsp
 				// 값을 받아오는 애들 
 				pstmt.setString(1, vo.getUser_id());
+				System.out.println(vo.getUser_id());
 				pstmt.setString(2,vo.getUser_pw());
 				pstmt.setString(3, vo.getUser_name());
 				pstmt.setString(4, vo.getUser_email());
@@ -380,4 +381,5 @@ public class User_infoDAO {
 		}
 		return puvoList;
 	}
+
 }

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import DAO.BoardDAO;
+import DAO.User_infoDAO;
 import VO.PaceBoardVO;
 import VO.PaceCommentVO;
 import VO.PaceUserVO;
@@ -407,20 +410,22 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public  List<PaceUserVO> count() {
+	public Map count() {
 		System.out.println("count실행됨");
 		List<PaceUserVO> uv = new ArrayList();
+		int [] ka = new int[2]; // 배열의 길이 선언
 		
 	try {
 		con = dataFactory.getConnection();
 		String query="";
-		query = "Select count(*) from user_info" ;//SQL문
+		query = "SELECT * FROM"
+				+"(SELECT  user_no, rownum AS rnum  FROM user_info) tmp" ;//SQL문
+		
 		pstmt = con.prepareStatement(query); // DB연결 /pstmt 디비 영역 객체
 		ResultSet rs = pstmt.executeQuery(); //데이터베이스 결과 값 가져오기 
 		rs.next();
-		int count = rs.getInt("count(*)");
-		int [] ka = new int[2]; // 배열의 길이 선언
-		ka[0] =(int) (Math.random()*count);
+		int rnum = rs.getInt("rnum");
+		ka[0] =(int) (Math.random()*rnum);
 	
 		
 //		if(ka[1] == ka[0] ) {
@@ -430,34 +435,55 @@ public class PaceDAO {
 //		}
 		
 		do { // 실행문 
-			ka[1] =(int) (Math.random()*count);
+			ka[1] =(int) (Math.random()*rnum);
 		}while(ka[1] == ka[0]);  // 조건문 
 		
 		System.out.println(ka[0]);
 		System.out.println(ka[1]);
 		
-		String squ = "SELECT  user_no, rownum  FROM user_info"
-                                  + "  WHERE rownum = ? OR rownum = ?";
+		String squ = "SELECT * FROM"
+								+"(SELECT  user_no, rownum AS rnum  FROM user_info) tmp"
+								+"WHERE rnum = ? OR rnum = ?";
 		pstmt = con.prepareStatement(squ);
 		pstmt.setInt(1, ka[0]);
 		pstmt.setInt(2, ka[1]);
+//		pstmt.setInt(1, 1);
+//		pstmt.setInt(2, 3);
 		rs =  pstmt.executeQuery(); 
 //		rs.next();
 		while(rs.next()) {
 			int user_no = rs.getInt("user_no");
+			String user_profile = rs.getString("user_profile");
+			System.out.println("user_profile :" +user_profile);
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_no(user_no);
+			vo.setUser_profile(user_profile);
 			uv.add(vo); //리스트에 있는 메소드  // 기능 : 넣는다 
-			
+//			PaceUserVO 객체 만들고 그 객체에 아이디, 프로필 일단 넣어서 넘기고
+//			그 유저넘버로 board테이블에서 그 유저의 board_no들 가지고 와야해요
+//			User_infoDAO ba= new User_infoDAO();
+//			ba.setUser_id(rs.getString("user_id"));
+//			System.out.println(ba);
+			System.out.println(user_no);
 		}
 		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	return uv;
+	Map map = new HashMap();
+	map.put("ka", ka);
+	map.put("uv", uv);
+	return map;
 	
 	
 	}
+
+	public Map rnum() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }
 

@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     <li id="profile_btn" class="side_btn">
-                        <a href="/project2/pacebook/profile" class="side_atag">
+                        <a href="/project2/pacebook/profile?user_no=${sessionScope.puvo.user_no }" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
                                 <path
@@ -148,11 +148,13 @@
                 	<c:forEach var="followUser" items="${followList }">
 	                    <li>
 	                        <div id="friend_profile_outline1">
-	                           	<div id="friend_profile_outline2">
-	                                <div id="friend_profile" class="profile_div">
-		                            	<img class="profile" src="/project2/${followUser.user_profile }">
-	                     			</div>
-	                            </div>
+		                    	<a href="/project2/pacebook/profile?user_no=${followUser.user_no }" class="friend_profile_a">
+		                           	<div id="friend_profile_outline2">
+		                                <div id="friend_profile" class="profile_div">
+			                            	<img class="profile" src="/project2/${followUser.user_profile }">
+		                     			</div>
+		                            </div>
+		                    	</a>
 	                       	</div>
 	                        <div id="friend_profile_name">
 	                            <span>${followUser.user_name }</span>
@@ -249,7 +251,6 @@
                                 	int curBoard_no = curPbvo.getBoard_no();
                                 	List<PaceCommentVO> commentList = service.comment(curBoard_no);
                                 	pageContext.setAttribute("commentList", commentList);
-                                	System.out.println("댓글갯수 : "+commentList.size());
                                 %>
                                 <c:choose>
 	                                <c:when test="${commentList.size() != 0}">
@@ -392,15 +393,15 @@
                                                 </li>
                                                 </c:forEach>
                                             </ul>
-                                        </li>
                                         </c:forEach>
+                                        </li>
                                     </ul>
                                 </div>
                                 <form method="post" action="/project2/pacebook/bcomment">
                                     <div id="board_comment_box">
                                     	<input id="hidden_board_comment" type="hidden" name="no" value="${board.board_no }">
                                         <input id="board_comment" type="text" name="content">
-                                        <input id="comment_btn" type="button" value="게시">
+                                        <input id="comment_btn" type="submit" value="게시">
                                     </div>
                                 </form>
                             </div>

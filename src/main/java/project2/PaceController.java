@@ -1,13 +1,10 @@
 package project2;
 
 import java.io.IOException;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,11 +33,24 @@ public class PaceController extends HttpServlet {
 		PaceService service = new PaceService();
 		String action = request.getPathInfo();
 		String nextPage = null;
-		System.out.println("action : "+action);
+		System.out.println("action : "+action+action.equals("join_success"));
 		
 		
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
+
+		}else if( action.equals("/join_success.jsp")){
+			System.out.println("abc들어옴");
+//			service.a();
+			Map map  = service.a();
+//			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
+//			pp.forward(request, response);
+			request.setAttribute("abc", 123);
+			request.setAttribute("ka", map.get("ka")); // map
+			request.setAttribute("uv", map.get("uv"));
+			nextPage = "/join_success.jsp";
+//			PaceDAO da = new PaceDAO();
+//			da.count();
 //		}else if( action.equals("/join")){
 //			System.out.println("abc들어옴");
 ////			service.a();
@@ -48,6 +58,7 @@ public class PaceController extends HttpServlet {
 //			
 ////			PaceDAO da = new PaceDAO();
 ////			da.count();
+
 		} else if(action.equals("/login")) {// 기능 : 메인에서 로그인 버튼을 누를시
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -56,7 +67,7 @@ public class PaceController extends HttpServlet {
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_id(id);
 			vo.setUser_pw(pw);
-			if(("".equals(id) || id == null) || ("".equals(pw) || pw==null)) {
+			if((id.equals("") || id == null) || (pw.equals("") || pw==null)) {
 			
 				request.setAttribute("logon", "false");
 				System.out.println("아이디 또는 비밀번호 입력값이 없음 로그인 실패");
@@ -91,12 +102,15 @@ public class PaceController extends HttpServlet {
 		} else if(action.equals("/join")) {//회원가입 페이지에서 회원가입 버튼 누를시
 			// 값을 받는 법
 			String id = request.getParameter("id");
+			System.out.println("user_id:"+id);
 			String pw = request.getParameter("pw");
+			System.out.println("user_pw:"+pw);
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String phone = request.getParameter("phone");
 			String gender = request.getParameter("gender");
 			String birth = request.getParameter("birth");
+			System.out.println("birth:"+birth);
 			PaceUserVO vo = new PaceUserVO();// PaceVO객체 생성
 			vo.setUser_id(id);//생성한 객체에 변수로 저장했던 아이디,비밀번호 등 값을 넣어줌
 			vo.setUser_pw(pw);
@@ -119,6 +133,7 @@ public class PaceController extends HttpServlet {
 			
 			
 
+<<<<<<< HEAD
 		}else if(action.equals("/idFind1")){
 			
 			System.out.println("idFind1로 진입됨");
@@ -206,6 +221,8 @@ public class PaceController extends HttpServlet {
 			
 			nextPage ="/board.jsp" ;
 			
+=======
+>>>>>>> e432269c6d0e5f0561f21fae5f41b943ab72e294
 		}else if(action.equals("/board")) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
 			String board_url = request.getParameter("url");//게시글 내용 가져오기
@@ -247,21 +264,22 @@ public class PaceController extends HttpServlet {
 			service.delBoard(board_no);
 			nextPage = "main.jsp";
 			
-		} else if(action.equals("/bcomment")) {//댓글 달기
-			int board_no = Integer.parseInt(request.getParameter("no"));
-			String comment_content = request.getParameter("content");
-			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
-			service.createComment(user_no, board_no, comment_content);
-			nextPage = "main";
-		} else if(action.equals("/ccomment")) {// 답글 달기
-			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
-			String content = request.getParameter("content");
-			System.out.println("request.getParameter(\"no\") : "+request.getParameter("no"));
-			int comment_no = Integer.parseInt(request.getParameter("no"));
-			service.createCmComment(user_no, comment_no, content);
-			nextPage = "main";
+		}  else if(action.equals("/bcomment")) {//댓글 달기
+	         int board_no = Integer.parseInt(request.getParameter("no"));
+	         String comment_content = request.getParameter("content");
+	         HttpSession se = request.getSession();
+	         int user_no = (int)se.getAttribute("user_no");
+	         service.createComment(user_no, board_no, comment_content);
+	         nextPage = "main";
+	      } else if(action.equals("/ccomment")) {// 답글 달기
+	         HttpSession se = request.getSession();
+	         int user_no = (int)se.getAttribute("user_no");
+	         String content = request.getParameter("content");
+	         int comment_no = Integer.parseInt(request.getParameter("no"));
+	         service.createCmComment(user_no, comment_no, content);
+	         nextPage = "main";
+
+
 		} else if(action.equals("/del_comment")) {//댓글 삭제 버튼++++++++++
 			
 			int comment_no = Integer.parseInt(request.getParameter("comment_no"));
@@ -297,18 +315,17 @@ public class PaceController extends HttpServlet {
 		
 		
 		///페이지 이동관련
-		/*forward방식은 디폴트로 contextPath를 붙여줌 
-		 *  /main.jsp == /project2/main.jsp
-		 *  main == /project2/pacebook/main 
-		 * */
 		System.out.println("nextPage : "+nextPage);
 		if(nextPage != null) {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 			dispatch.forward(request, response);
 		}
-
+//		else if(action.equals("/profile")) {
+//			HttpSession se = request.getSession();
+//			String user_no = (String)se.getAttribute("user_no");
+//			
+//		}
 		
 	}
-	
-}
+	}
 

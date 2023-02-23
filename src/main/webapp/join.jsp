@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/join.css">
+    <link rel="stylesheet" href="/project2/css/join.css">
    
     <script>
         window.onload = function () {
@@ -81,7 +81,7 @@
                 }
             });
             document.querySelector("#join_btn").addEventListener("click", function () {
-                debugger
+             
                 let join = document.join;
                 let ready = [];
                 let istrue = false;
@@ -123,7 +123,7 @@
                 }
                 if(istrue == true){
                     join.method = "post";
-                    join.action = "pacebook/join";
+                    join.action = "/project2/pacebook/join";
                     join.submit();
                 }
            });

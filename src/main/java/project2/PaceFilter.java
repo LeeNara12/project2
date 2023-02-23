@@ -39,7 +39,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 //		response.setContentType("text/html;charset=utf-8");//css나 image가 적용되는 문제 발생
 
 		
-	
 		HttpSession session = null;
 		if(request instanceof HttpServletRequest) {
 			HttpServletRequest req = (HttpServletRequest)request;
@@ -49,21 +48,23 @@ public class PaceFilter extends HttpFilter implements Filter {
 			String url = sb.toString();
 			System.out.println("현재위치는 "+url);
 			
+
 			if(
-				url.indexOf("/css") != -1
-				|| url.indexOf("/image") != -1
-				|| url.indexOf("/script") != -1
-				) 
-			{
+						url.indexOf("/css") != -1
+						|| url.indexOf("/image") != -1
+						|| url.indexOf("/script") != -1
+				) 	{
+
 				System.out.println(1);
 				chain.doFilter(request, response);
-				
+
 			}else {
 				
 				response.setContentType("text/html;charset=utf-8");
 				
 				if(url.indexOf("/login") != -1
 						|| url.indexOf("/join") != -1
+						|| url.indexOf("/join_success") != -1						
 						|| url.indexOf("/pacebook") != -1
 						|| url.indexOf("/main") != -1
 						|| url.indexOf("/pwFind1") != -1
@@ -81,10 +82,6 @@ public class PaceFilter extends HttpFilter implements Filter {
 					String logon = (String) session.getAttribute("logon"); //세션에 로그인한 기록이 있으면 진행 없으면 로그인페이지로 리턴
 					System.out.println("filter => logon : "+ logon);
 					
-					
-					
-					
-					
 					if("true".equals(logon) ) {
 						System.out.println(123);
 						chain.doFilter(request, response);
@@ -94,15 +91,14 @@ public class PaceFilter extends HttpFilter implements Filter {
 						chain.doFilter(request, response);
 						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
+					
+					
 				}
 			}
-			
-			
-		}
+					
+			}
+		}		
 		
-		
-	}
-
 	public void init(FilterConfig fConfig) throws ServletException {
 	}
 
