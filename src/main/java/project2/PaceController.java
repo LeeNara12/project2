@@ -133,7 +133,7 @@ public class PaceController extends HttpServlet {
 			
 			
 
-<<<<<<< HEAD
+
 		}else if(action.equals("/idFind1")){
 			
 			System.out.println("idFind1로 진입됨");
@@ -221,8 +221,7 @@ public class PaceController extends HttpServlet {
 			
 			nextPage ="/board.jsp" ;
 			
-=======
->>>>>>> e432269c6d0e5f0561f21fae5f41b943ab72e294
+
 		}else if(action.equals("/board")) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
 			String board_url = request.getParameter("url");//게시글 내용 가져오기
