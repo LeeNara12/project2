@@ -87,7 +87,7 @@ public class User_infoDAO {
 				String query2 = "insert into user_info "
 						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,'image/silde5.jpg',?,?,0,0)";
 				/*(1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL, 7. USER_PHONE, 
-				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER 11.)*/
+				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER )*/
 				
 				
 				pstmt=con.prepareStatement(query2);
@@ -103,6 +103,7 @@ public class User_infoDAO {
 				pstmt.setString(6, vo.getUser_profile());
 				pstmt.setString(7, vo.getUser_birth());
 				pstmt.setString(8, vo.getUser_gender());
+				
 				
 				pstmt.executeUpdate();
 				
