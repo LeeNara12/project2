@@ -47,8 +47,7 @@
                     <div class="other_user">
                         <div class="user_section">
                             <div class="bname">
-                                <p><b>메신저 닉네임</b></p>
-                                ${ka[0]}
+                                <p><b>${ka[0]}</b></p>
                                 <p><b>유저 이름</b></p>
                             </div>
                             <div class="src">
@@ -73,12 +72,13 @@
                         <div class="other_user">
                             <div class="user_section">
                                 <div class="bname1">
-                                    <p><b>메신저 닉네임</b></p>
+                                    <p><b>${uv[0].user_id}</b></p>
                                     <p><b>유저 이름</b></p>
                                 </div>
                                 <div class="src1">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yWNG_boOH4cgRzFeABhwl5JCQ3qdre4AcA&usqp=CAU"
-                                        alt="">
+<!--                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yWNG_boOH4cgRzFeABhwl5JCQ3qdre4AcA&usqp=CAU" -->
+<!--                                         alt=""> -->
+                                    <img src="/project2/${uv[0].user_profile}" alt="">
                                 </div>
                             </div>
                             <div class="contact_section">

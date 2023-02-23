@@ -42,8 +42,8 @@ public class PaceService {
 		boardDAO.delBoard(board_no);
 	}
 	
-	public void createComment(int user_no, int board_no, String content) {
-		commentDAO.createComment(user_no, board_no, content);
+	public void createComment(int user_no, int board_no, PaceCommentVO pcvo) {
+		commentDAO.createComment(user_no, board_no, pcvo);
 	}
 	
 	public void delComment(int comment_no) {
@@ -65,7 +65,7 @@ public class PaceService {
 	public Map  a () {
 		 List<PaceUserVO> pu; 
 		PaceDAO PaceDAO = new PaceDAO();
-		Map map= PaceDAO.count();
+		Map map= PaceDAO.rnum();
 		System.out.println("service출력");
 		
 		return map;
