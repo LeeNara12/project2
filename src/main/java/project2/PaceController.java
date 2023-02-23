@@ -201,10 +201,10 @@ public class PaceController extends HttpServlet {
 			
 			
 			
+		}else if(action.equals("/makeboard")){
 			
 			
-			
-			
+			nextPage ="/board.jsp" ;
 			
 		}else if(action.equals("/board")) { //게시글작성 페이지에서 게시글 작성 버튼을 누를시
 			String board_content = request.getParameter("content");//게시글 내용 가져오기
@@ -228,6 +228,19 @@ public class PaceController extends HttpServlet {
 //			se.invalidate();
 //			response.sendRedirect("main.jsp");
 //			return;
+			
+			
+			
+			
+			
+			
+			
+		} else if(action.equals("/setting")) {
+			
+			
+			nextPage = "/setting.jsp";
+			
+			
 		} else if(action.equals("/del_board")) {// 게시글 삭제버튼
 			
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
@@ -279,10 +292,6 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 			nextPage = "/main.jsp";
 			
-		}else if(action.equals("/idFind1")) {
-			nextPage = "/login.jsp";
-		}else if(action.equals("/idFind1")) {
-			nextPage = "/idFind2.jsp";
 		}
 		
 		
