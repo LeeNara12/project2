@@ -25,6 +25,15 @@ public class PaceService {
 		return user_infoDAO.join(vo);
 	}
 	
+	public boolean idCheck(PaceUserVO vo) {
+		return user_infoDAO.idCheck(vo);
+	}
+	
+	public boolean pwCheck(PaceUserVO vo) {
+		return user_infoDAO.pwCheck(vo);
+	}
+	
+	
 	public void createBoard(int user_no, PaceBoardVO pbvo) {
 		boardDAO.createBoard(user_no, pbvo);
 	}
@@ -33,8 +42,8 @@ public class PaceService {
 		boardDAO.delBoard(board_no);
 	}
 	
-	public void createComment(int user_no, int board_no,PaceCommentVO pcvo) {
-		commentDAO.createComment(user_no, board_no, pcvo);
+	public void createComment(int user_no, int board_no, String content) {
+		commentDAO.createComment(user_no, board_no, content);
 	}
 	
 	public void delComment(int comment_no) {
@@ -78,5 +87,9 @@ public class PaceService {
 	
 	public List<PaceCmCommentVO> cmComment(int comment_no){
 		return commentDAO.cmComment(comment_no);
+	}
+	
+	public void createCmComment(int user_no, int comment_no, String content) {
+		commentDAO.createCmComment(user_no, comment_no, content);
 	}
 }

@@ -31,7 +31,7 @@ public class CommentDAO {
 		}
 	}
 	
-	public void createComment(int user_no, int board_no,PaceCommentVO pcvo) {//댓글 작성 메소드
+	public void createComment(int user_no, int board_no,String content) {//댓글 작성 메소드
 		try {
 			con = dataFactory.getConnection();
 			
@@ -40,7 +40,7 @@ public class CommentDAO {
 					+ " values(seq_comment.nextval, current_date, ?, ?, ?, 0, 0, null)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
 			
 			pstmt = con.prepareStatement(query1);
-			pstmt.setString(1, pcvo.getComment_content());
+			pstmt.setString(1, content);
 			pstmt.setInt(2, user_no);
 			pstmt.setInt(3, board_no);
 			
@@ -144,5 +144,28 @@ public class CommentDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public void createCmComment(int user_no, int comment_no,String content) {//댓글 작성 메소드
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " insert into cmcomment(cmComment_no, cmComment_time, cmComment_content,"
+					+ " user_no, comment_no, cmComment_like, cmComment_modify, cmComment_modify_time)"
+					+ " values(seq_cmcomment.nextval, current_date, ?, ?, ?, 0, 0, null)";//SQL문 작성  // 댓글 넘버 시퀀스 이름 : seq_comment
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setString(1, content);
+			pstmt.setInt(2, user_no);
+			pstmt.setInt(3, comment_no);
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
