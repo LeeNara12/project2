@@ -91,4 +91,5 @@ public class PaceService {
 	public void createCmComment(int user_no, int comment_no, String content) {
 		commentDAO.createCmComment(user_no, comment_no, content);
 	}
+	
 }

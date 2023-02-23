@@ -434,6 +434,16 @@ body{
     cursor: pointer;
 }
 
+#comment_last{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 10px 0px;
+}
+#comment_last:hover{
+    cursor: pointer;
+}
+
 /* 오른쪽 친구 목록 */
 #friend_list{
     border-left: 1px solid rgb(170, 170, 170);

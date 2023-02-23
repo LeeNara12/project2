@@ -245,7 +245,6 @@ public class PaceController extends HttpServlet {
 			HttpSession se = request.getSession();
 			int user_no = (int)se.getAttribute("user_no");
 			String content = request.getParameter("content");
-			System.out.println("request.getParameter(\"no\") : "+request.getParameter("no"));
 			int comment_no = Integer.parseInt(request.getParameter("no"));
 			service.createCmComment(user_no, comment_no, content);
 			nextPage = "main";
