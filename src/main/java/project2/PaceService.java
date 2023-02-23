@@ -42,8 +42,8 @@ public class PaceService {
 		boardDAO.delBoard(board_no);
 	}
 	
-	public void createComment(int user_no, int board_no, PaceCommentVO pcvo) {
-		commentDAO.createComment(user_no, board_no, pcvo);
+	public void createComment(int user_no, int board_no, String content) {
+		commentDAO.createComment(user_no, board_no, content);
 	}
 	
 	public void delComment(int comment_no) {
