@@ -296,11 +296,20 @@ public class PaceController extends HttpServlet {
 		}else if(action.equals("/profile")) {
 			System.out.println("profile페이지 들어옴");
 			HttpSession se = request.getSession();
+			int user_no = Integer.parseInt(request.getParameter("user_no")) ;
+			System.out.println(user_no);
+			PaceUserVO vo = service.getUserInfo(user_no);
+			request.setAttribute("vo",vo);
+			List<PaceBoardVO> boardList = service.getBoard();
+			System.out.println("board 출력" + boardList);
+			request.setAttribute("boardList", boardList);
+			List<PaceUserVO> followList = service.getFollowList(user_no);
+			request.setAttribute("followList", followList);
 			nextPage = "/profile.jsp";
 			
 		} else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
+			int user_no = (int)se.getAttribute("user_no");	
 			PaceUserVO puvo = service.getUserInfo(user_no);
 			se.setAttribute("puvo", puvo);
 			List<PaceUserVO> followList = service.getFollowList(user_no);

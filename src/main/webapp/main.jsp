@@ -182,15 +182,11 @@
                                         <img class="profile" src="/project2/${boardPuvo.user_profile }">
                                     </div>
                                     <div id="board_id">
-                                    	${boardPuvo.user_name }
+                                    	${boardPuvo.user_id }
                                     </div>
                                 </div>
-                                <button id="board_menu" class="board_btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor"
-                                        class="bi bi-list" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                                    </svg>
+                                <button id="board_follow" data-un="${boardPuvo.user_no}">
+                                    <span>팔로우</span>
                                 </button>
                             </div>
                             <div id="board_image">
