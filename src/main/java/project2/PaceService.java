@@ -1,11 +1,13 @@
 package project2;
 
 import java.util.List;
+import java.util.Map;
 
 import DAO.BoardDAO;
 import DAO.CommentDAO;
 import DAO.User_infoDAO;
 import VO.PaceBoardVO;
+import VO.PaceCmCommentVO;
 import VO.PaceCommentVO;
 import VO.PaceUserVO;
 
@@ -23,6 +25,15 @@ public class PaceService {
 		return user_infoDAO.join(vo);
 	}
 	
+	public boolean idCheck(PaceUserVO vo) {
+		return user_infoDAO.idCheck(vo);
+	}
+	
+	public boolean pwCheck(PaceUserVO vo) {
+		return user_infoDAO.pwCheck(vo);
+	}
+	
+	
 	public void createBoard(int user_no, PaceBoardVO pbvo) {
 		boardDAO.createBoard(user_no, pbvo);
 	}
@@ -31,8 +42,8 @@ public class PaceService {
 		boardDAO.delBoard(board_no);
 	}
 	
-	public void createComment(int user_no, int board_no,PaceCommentVO pcvo) {
-		commentDAO.createComment(user_no, board_no, pcvo);
+	public void createComment(int user_no, int board_no, String content) {
+		commentDAO.createComment(user_no, board_no, content);
 	}
 	
 	public void delComment(int comment_no) {
@@ -51,13 +62,13 @@ public class PaceService {
 		return user_infoDAO.getFollowList(user_no);
 	}
 	
-	public List<PaceUserVO>  a () {
+	public Map  a () {
 		 List<PaceUserVO> pu; 
 		PaceDAO PaceDAO = new PaceDAO();
-		pu= PaceDAO.count();
+		Map map= PaceDAO.rnum();
 		System.out.println("service출력");
 		
-		return pu;
+		return map;
 		
 	}
 	
@@ -73,4 +84,13 @@ public class PaceService {
 	public List<PaceCommentVO> comment(int board_no){
 		return commentDAO.comment(board_no);
 	}
+	
+	public List<PaceCmCommentVO> cmComment(int comment_no){
+		return commentDAO.cmComment(comment_no);
+	}
+	
+	public void createCmComment(int user_no, int comment_no, String content) {
+		commentDAO.createCmComment(user_no, comment_no, content);
+	}
+	
 }

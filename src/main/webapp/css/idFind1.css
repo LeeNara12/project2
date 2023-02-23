@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 
+
 body{
     
     width: 100%;
@@ -9,6 +10,7 @@ body{
     justify-content: center; 
     margin-top: 15%;
 }
+
 
 /* 전체영역 */
 #wrap{
@@ -126,11 +128,23 @@ body{
     margin-left: -26px;
 }
 
+.margin_left3{
+    margin-left: -147px;
+    color: red;
+    font-size: 11px;
+    visibility: hidden;
+    
+}
+.on{
+    visibility: visible;
+}
+
+
 
 /* 아이디찾기버튼 영역 */
 #idFind_wrap{
     /* border: 1px solid red; */
-    width: 80%;
+	width: 100%;   
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

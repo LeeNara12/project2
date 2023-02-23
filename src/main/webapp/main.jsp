@@ -4,6 +4,7 @@
     import="VO.*" 
     import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,29 +48,29 @@
             </div>
             <div id="side_tool">
                 <ul>
-                    <li id="home_btn">
-                        <div>
+                    <li id="home_btn" class="side_btn" >
+                        <a href="/project2/pacebook/main" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
                                 <path
                                     d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
                             </svg>
                             <span>홈</span>
-                        </div>
+                        </a>
                     </li>
-                    <li id="profile_btn">
-                    	<a href="/project2/pacebook/profile">
-	                        <div>
-	                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-	                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-	                                <path
-	                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
-	                            </svg>
-	                            <span>프로필</span>
-	                        </div>
-                    	</a>
+                    <li id="profile_btn" class="side_btn">
+                        <a href="/project2/pacebook/profile?user_no=${sessionScope.puvo.user_no }" class="side_atag">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                            </svg>
+                            <div class="side_btn_text">
+                                <span>프로필</span>
+                            </div>
+                        </a>
                     </li>
-                    <li id="notice_btn">
+                    <li id="notice_btn" class="side_btn">
                         <div>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
@@ -79,7 +80,7 @@
                             <span>알림</span>
                         </div>
                     </li>
-                    <li id="message_btn">
+                    <li id="message_btn" class="side_btn">
                         <div>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
@@ -89,8 +90,8 @@
                             <span>메세지</span>
                         </div>
                     </li>
-                    <li id="make_btn">
-                        <div>
+                    <li id="make_btn" class="side_btn">
+                        <a href="/project2/pacebook/makeboard" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
                                 <path
@@ -99,10 +100,10 @@
                                     d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                             </svg>
                             <span>만들기</span>
-                        </div>
+                        </a>
                     </li>
-                    <li id="set_btn">
-                        <div>
+                    <li id="set_btn" class="side_btn">
+                        <a href="/project2/pacebook/setting" class="side_atag">
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                 fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
                                 <path
@@ -111,7 +112,7 @@
                                     d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
                             </svg>
                             <span>설정</span>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -133,8 +134,7 @@
                 <ul id="notice_list">
                     <li id="notice">
                         <div id="notice_profile" class="profile_div">
-                            <img class="profile" src="#">
-                            <img class="profile" src="a.jpg">
+                            <img class="profile" src="javascript:void(0);">
                         </div>
                         <span id="notice_text">
                             서한수님이 팔로우 했습니다.
@@ -148,11 +148,13 @@
                 	<c:forEach var="followUser" items="${followList }">
 	                    <li>
 	                        <div id="friend_profile_outline1">
-	                           	<div id="friend_profile_outline2">
-	                                <div id="friend_profile" class="profile_div">
-		                            	<img class="profile" src="/project2/${followUser.user_profile }">
-	                     			</div>
-	                            </div>
+		                    	<a href="/project2/pacebook/profile?user_no=${followUser.user_no }" class="friend_profile_a">
+		                           	<div id="friend_profile_outline2">
+		                                <div id="friend_profile" class="profile_div">
+			                            	<img class="profile" src="/project2/${followUser.user_profile }">
+		                     			</div>
+		                            </div>
+		                    	</a>
 	                       	</div>
 	                        <div id="friend_profile_name">
 	                            <span>${followUser.user_name }</span>
@@ -169,7 +171,7 @@
                     <%
                     	PaceService service = new PaceService();
                     	PaceBoardVO curPbvo = (PaceBoardVO) pageContext.getAttribute("curBoard");
-                    	int boardUser_no = (int)curPbvo.getUser_no();
+                    	int boardUser_no = curPbvo.getUser_no();
                     	PaceUserVO boardPuvo = service.getUserInfo(boardUser_no);
                     	pageContext.setAttribute("boardPuvo", boardPuvo);
                     %>
@@ -228,107 +230,157 @@
                             </div>
                             <div id="board_bottom">
                                 <div id="like_count">
-                                <c:choose>
-                                	<c:when test="${board.board_like != 0 }">
+                            	<c:choose>
+                            		<c:when test="${board.board_like != 0 }">
                                     	<span>좋아요 ${board.board_like }개</span>
-                                	</c:when>
+                                   	</c:when>
                                 </c:choose>
                                 </div>
-                                <div id="board_content">
-                                    <P>
-                           				${board.board_content }          
-                                    </P>
+                                <div class="board_content">
+                                    <div class="board_content_text">
+                                        <span>
+                                            ${board.board_content }
+                                        </span>
+                                    </div>
+                                    <span class="show_more_box">
+                                        <span>... </span>
+                                        <span class="show_more_btn">더보기</span>
+                                    </span>
                                 </div>
-                                <input type="checkbox" id="board_content_btn">
                                 <%
                                 	int curBoard_no = curPbvo.getBoard_no();
                                 	List<PaceCommentVO> commentList = service.comment(curBoard_no);
-                                	System.out.println(commentList.size());
+                                	pageContext.setAttribute("commentList", commentList);
                                 %>
                                 <c:choose>
-	                                <c:when test="${not empty commentList.size()}">
+	                                <c:when test="${commentList.size() != 0}">
 		                                <div id="comment_count">
-		                                	<span>댓글 ${commentList.size() }개 모두보기</span>
+		                                	<span class="show_comment" data-bon="${board.board_no }">댓글 ${commentList.size() }개 모두보기</span>
                                 		</div>
 	                                </c:when>
-	                                <c:when test="${empty commentList.size()}">
+	                                <c:when test="${commentList.size() == 0}">
 		                                <div id="comment_count">
-		                                	<span>-댓글 달기</span>
+		                                	<span class="show_comment" data-bon="${board.board_no }">댓글 달기</span>
 	                                	</div>
 	                                </c:when>
                                 </c:choose>
+                                <div id="board_time">
+                                    <span>
+                                    	<c:set var="time" value="<%= new Time() %>"/>
+                                    	${time.calculateTime(board.board_time) }
+                                    </span>
+                                </div>
                                 <div id="board_comment_area">
                                     <ul id="comment_list">
+                                    <c:forEach var="comment" items="${commentList }">
+                                    <c:set var="curComment" value="${comment }"/>
+                                    <% 
+                                    	PaceCommentVO curPcvo = (PaceCommentVO)pageContext.getAttribute("curComment");
+                                    	int cUserNo = curPcvo.getUser_no();
+                                    	PaceUserVO cPuvo = service.getUserInfo(cUserNo);
+                                    	pageContext.setAttribute("cPuvo", cPuvo);
+                                    %>
                                         <li id="comment">
                                             <div id="comment_top">
                                                 <div id="board_comment_profile" class="profile_div">
-                                                    <img class="profile" src="image/20230213_101810.png">
+                                                    <img class="profile" src="/project2/${cPuvo.user_profile }">
                                                 </div>
                                                 <div>
                                                     <div class="comment_text_box_top">
                                                         <div class="comment_id">
                                                             <span>
-                                                                아이디
+                                                                ${cPuvo.user_id }
                                                             </span>
                                                         </div>
                                                         <div class="comment_time">
-                                                            <span>22시간전</span>
+                                                            <span>${time.calculateTime(comment.comment_time) }</span>
                                                         </div>
                                                         <div class="comment_modify">
+                                                        <c:if test="${comment.comment_modify != 0 }">
                                                             <span>(수정됨)</span>
+                                                        </c:if>
                                                         </div>
                                                     </div>
                                                     <div class="comment_text">
-                                                        <span>
-                                                            댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
-                                                            댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                        <div class="board_content_text">
+                                                            <span>
+                                                                ${comment.comment_content }
+                                                            </span>
+                                                        </div>
+                                                        <span class="show_more_box">
+                                                            <span>... </span>
+                                                            <span class="show_more_btn">더보기</span>
                                                         </span>
                                                     </div>
                                                     <div class="comment_text_box_bottom">
                                                         <div>
-                                                            <span>
-                                                                좋아요 1개
-                                                            </span>
+                                                           	<span>좋아요 ${comment.comment_like }개</span>
                                                         </div>
+                                                        <%
+                                                        	int curComment_no = curPcvo.getComment_no();
+                                                        	List<PaceCmCommentVO> cmCommentList = service.cmComment(curComment_no);
+                                                       		pageContext.setAttribute("cmCommentList", cmCommentList);
+                                                        %>
                                                         <div id="comment_comment">
-                                                            <span>
-                                                                답글달기
-                                                            </span>
+                                                        	<c:choose>
+                                                        		<c:when test="${cmCommentList.size() == 0 }">
+		                                                            <span id="c_comment_btn" data-con="${comment.comment_no }">답글 달기</span>
+                                                        		</c:when>
+                                                        		<c:when test="${cmCommentList.size() != 0 }">
+		                                                            <span id="c_comment_btn" data-con="${comment.comment_no }">답글 ${cmCommentList.size() }개 더보기</span>
+                                                        		</c:when>
+                                                       		</c:choose>
                                                         </div>
                                                     </div>
-                                                    <img class="profile" src="a.jpg">
                                                 </div>
                                             </div>
                                             <ul id="c_comment_list">
+                                            	<c:forEach var="cmComment" items="${cmCommentList }">
+                                            	<c:set var="curCmComment" value="${cmComment }"/>
+                                            	<%
+	                                            	PaceCmCommentVO curPccvo = (PaceCmCommentVO)pageContext.getAttribute("curCmComment");
+	                                            	int ccUserNo = curPccvo.getUser_no();
+	                                            	PaceUserVO ccPuvo = service.getUserInfo(ccUserNo);
+	                                            	pageContext.setAttribute("ccPuvo", ccPuvo);
+                                            	%>
                                                 <li id="c_comment">
                                                     <span id="c_commet_arrow">└</span>
                                                     <div id="board_comment_profile" class="profile_div">
-                                                        <img class="profile" src="image/20230213_101810.png">
+                                                        <img class="profile" src="/project2/${ccPuvo.user_profile }">
                                                     </div>
                                                     <div>
                                                         <div class="comment_text_box_top">
                                                             <div class="comment_id">
                                                                 <span>
-                                                                    아이디
+                                                                    ${ccPuvo.user_id }
                                                                 </span>
                                                             </div>
                                                             <div class="comment_time">
-                                                                <span>22시간전</span>
+                                                                <span>${time.calculateTime(cmComment.cmComment_time) }</span>
                                                             </div>
                                                             <div class="comment_modify">
-                                                                <span>(수정됨)</span>
+                                                            <c:choose>
+                                                            	<c:when test="${cmComment.cmComment_modify != 0 }">
+                                                                	<span>(수정됨)</span>
+                                                               	</c:when>
+                                                            </c:choose>
                                                             </div>
                                                         </div>
                                                         <div class="comment_text">
-                                                            <span>
-                                                                댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
-                                                                댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글
+                                                            <div class="board_content_text cct">
+                                                                <span>
+                                                                	${cmComment.cmComment_content }
+                                                                </span>
+                                                            </div>
+                                                            <span class="show_more_box">
+                                                                <span>... </span>
+                                                                <span class="show_more_btn">더보기</span>
                                                             </span>
                                                         </div>
                                                         <div class="comment_text_box_bottom">
                                                             <div>
                                                                 <span>
-                                                                    좋아요 1개
+                                                                    좋아요 ${cmComment.cmComment_like }개
                                                                 </span>
                                                             </div>
                                                             <!-- <div id="comment_comment">
@@ -339,19 +391,19 @@
                                                         </div>
                                                     </div>
                                                 </li>
+                                                </c:forEach>
                                             </ul>
+                                        </c:forEach>
                                         </li>
                                     </ul>
                                 </div>
-                                <div id="board_time">
-                                    <span>
-                                        몇시간전
-                                    </span>
-                                </div>
-                                <div id="board_comment_box">
-                                    <input id="board_comment" type="text">
-                                    <input id="comment_btn" type="submit" value="게시">
-                                </div>
+                                <form method="post" action="/project2/pacebook/bcomment">
+                                    <div id="board_comment_box">
+                                    	<input id="hidden_board_comment" type="hidden" name="no" value="${board.board_no }">
+                                        <input id="board_comment" type="text" name="content">
+                                        <input id="comment_btn" type="submit" value="게시">
+                                    </div>
+                                </form>
                             </div>
                         </li>
                     </c:forEach>

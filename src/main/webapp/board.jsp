@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pacebook</title>
-    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="/project2/css/board.css">
 </head>
 <body>
     <div id="top">
-        <div id="logo">PACEBOOK</div>
+        <a href='/project2/pacebook/main' class='a'><span id="logo">PACEBOOK</span></a>
         <div id="top_right">
             <button id="back_btn" class="top_btn">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
                 </svg>
-                <span class="btn_text">뒤로가기</span>
+                <a href='/project2/pacebook/main' class='a'><span class='btn_text'>뒤로가기</span></a>
             </button>
             <button id="file_upload_btn" class="top_btn">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
@@ -48,7 +48,7 @@
                     </div>
                     <div id="profile_middle">
                         <div id="follow">
-                            <span>follow</span>
+                            <span>팔로워</span>
                         </div>
                         <div id="follow_count">
                             <span>5</span>
@@ -56,7 +56,7 @@
                     </div>
                     <div id="profile_bottom">
                         <div id="following">
-                            <span>following</span>
+                            <span>팔로우</span>
                         </div>
                         <div id="following_count">
                             <span>5</span>
@@ -65,7 +65,7 @@
                 </div>
                 <div id="friend_box">
                     <div id="friend_box_top">
-                        <span>친구 목록</span>
+                        <span>팔로우 목록</span>
                     </div>
                     <ul id="friend_list">
                         <li id="friend">
@@ -91,13 +91,12 @@
                             </svg>
                         </div> -->
                         <li>
-                            <img class="image" src="image/20230213_101810.png">
+                            <img class="image" src="">
                         </li>
                     </ul>
                 </div>
                 <div id="content_box">
-                    <textarea id="board_content" placeholder="내용을 입력해 주세요">
-                    </textarea>
+                    <textarea id="board_content" placeholder="내용을 입력해 주세요"></textarea>
                 </div>
             </div>
         </div>
