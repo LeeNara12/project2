@@ -188,7 +188,16 @@ window.onload = function () {
         })
     })
 
+    let bfb = document.querySelectorAll("#board_follow");
 
+    bfb.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            let userNo = btn.getAttribute("data-un");
+            let xhr = new XMLHttpRequest();
+            xhr.open("get", "/project2/pacebook/follow?no="+userNo);
+            xhr.send();
+        })
+    })
     // let commentBtns = document.querySelectorAll("#comment_btn");
 
     // commentBtns.forEach((btn) => {
