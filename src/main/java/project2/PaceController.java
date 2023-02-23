@@ -161,27 +161,21 @@ public class PaceController extends HttpServlet {
 			service.delBoard(board_no);
 			nextPage = "main.jsp";
 			
-		} else if(action.equals("/comment")) {//댓글 게시 버튼++++++++++
-			
-			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
+		}  else if(action.equals("/bcomment")) {//댓글 달기
+	         int board_no = Integer.parseInt(request.getParameter("no"));
+	         String comment_content = request.getParameter("content");
+	         HttpSession se = request.getSession();
+	         int user_no = (int)se.getAttribute("user_no");
+	         service.createComment(user_no, board_no, comment_content);
+	         nextPage = "main";
+	      } else if(action.equals("/ccomment")) {// 답글 달기
+	         HttpSession se = request.getSession();
+	         int user_no = (int)se.getAttribute("user_no");
+	         String content = request.getParameter("content");
+	         int comment_no = Integer.parseInt(request.getParameter("no"));
+	         service.createCmComment(user_no, comment_no, content);
+	         nextPage = "main";
 
-			int board_no = Integer.parseInt(request.getParameter("board_no"));
-			String comment = request.getParameter("comment_content");
-			PaceCommentVO pcvo = new PaceCommentVO();
-			pcvo.setComment_content(comment);
-			service.createComment(user_no, board_no, pcvo);
-			nextPage = "/main.jsp";
-
-			service.createComment(user_no, board_no, comment_content);
-			nextPage = "main";
-		} else if(action.equals("/ccomment")) {// 답글 달기
-			HttpSession se = request.getSession();
-			int user_no = (int)se.getAttribute("user_no");
-			String content = request.getParameter("content");
-			int comment_no = Integer.parseInt(request.getParameter("no"));
-			service.createCmComment(user_no, comment_no, content);
-			nextPage = "main";
 
 		} else if(action.equals("/del_comment")) {//댓글 삭제 버튼++++++++++
 			
