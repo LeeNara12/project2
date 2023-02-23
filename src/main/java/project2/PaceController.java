@@ -165,12 +165,24 @@ public class PaceController extends HttpServlet {
 			
 			HttpSession se = request.getSession();
 			int user_no = (int)se.getAttribute("user_no");
+<<<<<<< HEAD
 			int board_no = Integer.parseInt(request.getParameter("board_no"));
 			String comment = request.getParameter("comment_content");
 			PaceCommentVO pcvo = new PaceCommentVO();
 			pcvo.setComment_content(comment);
 			service.createComment(user_no, board_no, pcvo);
 			nextPage = "/main.jsp";
+=======
+			service.createComment(user_no, board_no, comment_content);
+			nextPage = "main";
+		} else if(action.equals("/ccomment")) {// 답글 달기
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("user_no");
+			String content = request.getParameter("content");
+			int comment_no = Integer.parseInt(request.getParameter("no"));
+			service.createCmComment(user_no, comment_no, content);
+			nextPage = "main";
+>>>>>>> e57d1f3ed50b2d6f8994a76e586e0a0ce5218f8a
 		} else if(action.equals("/del_comment")) {//댓글 삭제 버튼++++++++++
 			
 			int comment_no = Integer.parseInt(request.getParameter("comment_no"));
