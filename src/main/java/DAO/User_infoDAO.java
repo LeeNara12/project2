@@ -85,9 +85,9 @@ public class User_infoDAO {
 				result= false;
 			}else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?,?,0,0)";
+						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,'image/silde5.jpg',?,?,0,0)";
 				/*(1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL, 7. USER_PHONE, 
-				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER)*/
+				 * 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER 11.)*/
 				
 				
 				pstmt=con.prepareStatement(query2);
