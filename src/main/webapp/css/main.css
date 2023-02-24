@@ -285,8 +285,17 @@ body{
     overflow: hidden;
     max-width: 300px;
 }
-#board_menu{
+#board_follow{
     margin-right: 20px;
+    padding: 10px;
+    color: white;
+    background-color: rgb(141, 141, 194);
+    box-shadow: 0px 1px 10px 1px rgb(141, 141, 194);
+    border-radius: 5px;
+}
+#board_follow:hover{
+    background-color: rgb(108, 108, 153);
+    box-shadow: none;
 }
 #board_image{
     height: 400px;
@@ -743,6 +752,7 @@ p{
 }
 button{
     outline: none;
+    border: 0;
     padding:0;
 }
 input[type="checkbox"]{
