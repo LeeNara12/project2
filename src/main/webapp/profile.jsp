@@ -38,7 +38,7 @@
 				<input id="search_text" type="text">
 			</div>
 			<div id="top_profile">
-				<img class="profile" src="/project2/${vo.user_profile }">
+				<img class="profile" src="/project2/${vo1.user_profile }">
 			</div>
 		</div>
 	</div>
@@ -54,7 +54,7 @@
 				<div id="followme">
 					<a href="#" class="follow">게시물 ${boardList.size() }</a> <a href="#"
 						class="follow">팔로우 ${followList.size()}</a> <a href="#"
-						class="follow">팔로워 ${followList.size()}</a>
+						class="follow">팔로워 ${follower_list.size()}</a>
 				</div>
 
 			</div>
@@ -139,13 +139,13 @@
 						</div>
 						<div id="image_box">
 							<div>
-							<c:forEach var="board" items="${boardList }">
 								<div class="contact_section">
+								<c:forEach var="board" items="${boardList }">
 									<a href="naver"><img
 										style="width: 300px; height: 300px; border-radius: 30px;"
 										src="/project2/${board.board_url }" alt=""></a>
-								</div>
 								</c:forEach>
+								</div>
 							</div>
 						</div>
 					</form>

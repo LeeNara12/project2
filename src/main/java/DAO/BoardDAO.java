@@ -158,6 +158,42 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	
+	public List<PaceBoardVO> myBoard(int user_no) {//게시물 가져오는 메소드
+		List<PaceBoardVO> list = new ArrayList<PaceBoardVO>();
+		try {
+			con = dataFactory.getConnection();
+			
+			String query1 = " select * from board"
+					+ " where user_no=?"
+					+ " order by board_time desc";
+			
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				PaceBoardVO pbvo = new PaceBoardVO();
+				pbvo.setBoard_no(rs.getInt("board_no"));
+				pbvo.setBoard_time(rs.getDate("board_time"));
+				pbvo.setBoard_modify(rs.getInt("board_modify"));
+				pbvo.setBoard_modify_time(rs.getDate("board_modify_time"));
+				pbvo.setBoard_content(rs.getString("board_content"));
+				pbvo.setUser_no(rs.getInt("user_no"));
+				pbvo.setBoard_like(rs.getInt("board_like"));
+				pbvo.setBoard_url(rs.getString("board_url"));
+				
+				list.add(pbvo);
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 
 }
