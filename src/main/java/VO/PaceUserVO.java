@@ -94,5 +94,9 @@ public class PaceUserVO {//회원정보
 		// TODO Auto-generated method stub
 		
 	}
+	public void setBoard_content(String board_content) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

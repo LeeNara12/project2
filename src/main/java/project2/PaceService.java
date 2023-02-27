@@ -65,7 +65,7 @@ public class PaceService {
 	public Map  a () {
 		 List<PaceUserVO> pu; 
 		PaceDAO PaceDAO = new PaceDAO();
-		Map map= PaceDAO.rnum();
+		Map map= PaceDAO.runm();
 		System.out.println("service출력");
 		
 		return map;

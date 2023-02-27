@@ -100,9 +100,9 @@ public class User_infoDAO {
 				pstmt.setString(3, vo.getUser_name());
 				pstmt.setString(4, vo.getUser_email());
 				pstmt.setString(5, vo.getUser_phone());
-				pstmt.setString(6, vo.getUser_profile());
-				pstmt.setString(7, vo.getUser_birth());
-				pstmt.setString(8, vo.getUser_gender());
+//				pstmt.setString(6, vo.getUser_profile());
+				pstmt.setString(6, vo.getUser_birth());
+				pstmt.setString(7, vo.getUser_gender());
 				
 				
 				pstmt.executeUpdate();

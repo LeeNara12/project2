@@ -410,7 +410,7 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public Map count() {
+	public Map runm() {
 		System.out.println("count실행됨");
 		List<PaceUserVO> uv = new ArrayList();
 		int [] ka = new int[2]; // 배열의 길이 선언
@@ -434,37 +434,47 @@ public class PaceDAO {
 //			System.out.println(ka);
 //		}
 		
-		do { // 실행문 
-			ka[1] =(int) (Math.random()*rnum);
-		}while(ka[1] == ka[0]);  // 조건문 
-		
-		System.out.println(ka[0]);
-		System.out.println(ka[1]);
+//		do { // 실행문 
+//			ka[1] =(int) (Math.random()*rnum);
+//			ka[0] =(int) (Math.random()*rnum);
+//		}while(ka[1] == ka[0]);  // 조건문 
+//		
+//		System.out.println(ka[0]);
+//		System.out.println(ka[1]);
+		Random ra = new Random();
+		Map map =ra.map(rnum);
 		
 		String squ = "SELECT * FROM"
 								+"(SELECT  user_no, rownum AS rnum  FROM user_info) tmp"
 								+"WHERE rnum = ? OR rnum = ?";
 		pstmt = con.prepareStatement(squ);
-		pstmt.setInt(1, ka[0]);
-		pstmt.setInt(2, ka[1]);
+		pstmt.setInt(1,(int)map.get("a"));
+		pstmt.setInt(2,(int)map.get("b"));
+		System.out.println(map);
 //		pstmt.setInt(1, 1);
 //		pstmt.setInt(2, 3);
 		rs =  pstmt.executeQuery(); 
 //		rs.next();
 		while(rs.next()) {
 			int user_no = rs.getInt("user_no");
+				System.out.println("user_no : " + user_no);
+				
 			String user_profile = rs.getString("user_profile");
-			System.out.println("user_profile :" +user_profile);
+				System.out.println("user_profile :" +user_profile);
+				
+			String board_content = rs.getString("board_content");
+				System.out.println("board_content : " + board_content);
+				
 			PaceUserVO vo = new PaceUserVO();
 			vo.setUser_no(user_no);
 			vo.setUser_profile(user_profile);
+			vo.setBoard_content(board_content);
 			uv.add(vo); //리스트에 있는 메소드  // 기능 : 넣는다 
 //			PaceUserVO 객체 만들고 그 객체에 아이디, 프로필 일단 넣어서 넘기고
 //			그 유저넘버로 board테이블에서 그 유저의 board_no들 가지고 와야해요
 //			User_infoDAO ba= new User_infoDAO();
 //			ba.setUser_id(rs.getString("user_id"));
 //			System.out.println(ba);
-			System.out.println(user_no);
 		}
 		
 	} catch (SQLException e) {
@@ -478,10 +488,7 @@ public class PaceDAO {
 	
 	}
 
-	public Map rnum() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 
