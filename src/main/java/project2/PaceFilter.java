@@ -89,7 +89,7 @@ public class PaceFilter extends HttpFilter implements Filter {
 						
 					} else {
 						System.out.println(1234);
-						chain.doFilter(request, response);
+//						chain.doFilter(request, response);
 						((HttpServletResponse)response).sendRedirect("/project2/login.jsp");
 					}
 					
