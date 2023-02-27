@@ -305,8 +305,9 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 			List<PaceUserVO> followList = service.getFollowList(user_no);
 			request.setAttribute("followList", followList);
-			List<PaceUserVO> FollowList = service.getFollower_list(user_no);
-			request.setAttribute("FollowList", Follower_list);
+			List<PaceUserVO> followerList = service.getFollowerList(user_no);
+			request.setAttribute("followerList", followerList);
+			service.follow(user_no);
 			int user_no1 = (int)se.getAttribute("user_no");
 			PaceUserVO vo1 = service.getUserInfo(user_no1);
 			se.setAttribute("vo1", vo1);

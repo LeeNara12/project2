@@ -64,8 +64,8 @@ public class PaceService {
 	public List<PaceUserVO> getFollowList(int user_no){
 		return user_infoDAO.getFollowList(user_no);
 	}
-	public List<PaceUserVO> getFollower_list(int user_no){
-		return user_infoDAO.getFollower_list(user_no);
+	public List<PaceUserVO> getFollowerList(int user_no){
+		return user_infoDAO.getFollowerList(user_no);
 	}
 	
 	public Map  a () {
