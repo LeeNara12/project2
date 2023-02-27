@@ -69,21 +69,14 @@ public class PaceService {
 		return user_infoDAO.getFollowerList(user_no);
 	}
 	
-<<<<<<< HEAD
-	public Map<String,List<PaceBoardVO>>  a () {
-		PaceDAO PaceDAO = new PaceDAO();
-		Map<String,List<PaceBoardVO>> pu = PaceDAO.rnum(); 
-=======
 	public List<PaceUserVO>  a () {
 		PaceDAO PaceDAO = new PaceDAO();
 		List<PaceUserVO> pu = PaceDAO.rnum(); 
->>>>>>> ad8582ed3f53f1aec59a448cbce927c1348f3d4d
 //		Map map= PaceDAO.runm();
 		System.out.println("service출력");
-		
 		return pu;
-		
 	}
+	
 	public List<PaceBoardVO> getBoard2(int user_no){
 		PaceDAO paceDAO = new PaceDAO();
 		return  paceDAO.getBoard2(user_no);

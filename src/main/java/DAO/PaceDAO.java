@@ -407,9 +407,6 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public Map<String,List<PaceBoardVO>> rnum() {
-		System.out.println("count실행됨");
-		Map<String,List<PaceBoardVO>> uv = new HashMap();
 	public List<PaceUserVO> rnum() {
 		System.out.println("count실행됨");
 		List<PaceUserVO> list = new ArrayList<PaceUserVO>();
@@ -490,12 +487,8 @@ public class PaceDAO {
 					pbvoList.add(null);
 				}
 			}
-<<<<<<< HEAD
-			uv.put("list",list); //리스트에 있는 메소드  // 기능 : 넣는다 
-=======
 		} catch (SQLException e) {
 			e.printStackTrace();
->>>>>>> ad8582ed3f53f1aec59a448cbce927c1348f3d4d
 		}
 		return pbvoList;
 	}

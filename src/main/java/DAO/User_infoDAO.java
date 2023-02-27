@@ -488,7 +488,7 @@ public class User_infoDAO {
 					+ "		WHERE user_no = ?\r\n"
 					+ "		)\r\n"
 					+ ")\r\n"
-					+ "WHERE rownum BETWEEN (?-1)*10 AND ?*10";
+					+ "WHERE rownum BETWEEN (?-1)*20 AND ?*20";
 			pstmt = con.prepareStatement(query1);
 			pstmt.setInt(1, user_no);
 			pstmt.setInt(2, user_no);

@@ -331,20 +331,20 @@ window.onload = function () {
     function nfulScroll(){
         let flHeight = friendList.clientHeight;
         let scrollPosition = friendList.scrollTop;
-        if(flHeight-screenHeight <= scrollPosition && !oneTime && friendCount%10 == 0){
+        if(flHeight-100 <= scrollPosition && !oneTime && friendCount%20 == 0){
             oneTime = true;
             madefriend();
         }
     }
     function madefriend(){
         let xhr = new XMLHttpRequest();
-        pagenum = Math.ceil(friendCount/10)+1;
+        pagenum = Math.ceil(friendCount/20)+1;
         nextURL = "/project2/pacebook/notfollow?pagenum="+pagenum;
         xhr.onreadystatechange = function(){
             if(xhr.readyState == xhr.DONE){
                 if(xhr.status === 200 || xhr.status === 201){
                     let data = xhr.response;
-                    let addList = data.querySelectorAll("#board");
+                    let addList = data.querySelectorAll("#friend");
                     for(let i=0; i<addList.length; i++){
                         friendList.appendChild(addList[i]);
                     }

@@ -56,13 +56,9 @@
                         <div class="contact_section">
                             <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                 alt=""> -->
-<<<<<<< HEAD
-                            <img src="/project2/${pl[0].get(0).board_url }"
-=======
                             <c:choose>
                             <c:when test="${empty pbvoList1.get(0).getBoard_url() }">
                             <img src="/project2/image/logo.png"
->>>>>>> ad8582ed3f53f1aec59a448cbce927c1348f3d4d
                                 alt="">
                             </c:when>
                             <c:otherwise>
