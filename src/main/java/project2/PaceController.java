@@ -307,13 +307,19 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("followList", followList);
 			List<PaceUserVO> followerList = service.getFollowerList(user_no);
 			request.setAttribute("followerList", followerList);
-			service.follow(user_no);
 			int user_no1 = (int)se.getAttribute("user_no");
 			PaceUserVO vo1 = service.getUserInfo(user_no1);
 			se.setAttribute("vo1", vo1);
 			nextPage = "/profile.jsp";
 			
-		} else if(action.equals("/main")) {
+		} else if(action.equals("/profilefollow")){
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("user_no");
+			int buser_no = Integer.parseInt(request.getParameter("user_no"));
+			service.follow(user_no,buser_no);
+			nextPage = "profile";
+			
+		}else if(action.equals("/main")) {
 			HttpSession se = request.getSession();
 			int user_no = (int)se.getAttribute("user_no");	
 			PaceUserVO puvo = service.getUserInfo(user_no);

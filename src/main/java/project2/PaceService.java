@@ -103,6 +103,7 @@ public class PaceService {
 		user_infoDAO.follow(user_no, buser_no);
 	}
 	
+	
 	public boolean isFollow(int user_no, int buser_no) {
 		return user_infoDAO.isFollow(user_no, buser_no);
 	}

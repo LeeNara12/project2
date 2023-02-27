@@ -52,10 +52,19 @@
 					<span>${vo.user_id }</span>
 				</div>
 				<div id="followme">
-					<a href="#" class="follow">팔로잉</a> <a href="#" class="follow">게시물
-						${boardList.size() }</a> <a href="#" class="follow">팔로우
-						${followList.size()}</a> <a href="#" class="follow">팔로워
-						${followerList.size()}</a>
+					<a href="/project2/pacebook/profilefollow?user_no=${vo1.user_no }" class="follow">
+					<%PaceService service = new PaceService();  %>
+					<c:set var="service" value="<%= service %>"/> 
+						<c:if test = "${service.isFollow(vo.user_no,vo1.user_no)==true }">
+						팔로우됨
+						</c:if>
+						<c:if test = "${service.isFollow(vo.user_no,vo1.user_no)==false }">
+						팔로잉
+						</c:if>
+					</a>
+					<a href="#" class="follow">게시물${boardList.size() }</a>
+					<a href="#" class="follow">팔로우${followList.size()}</a> 
+					<a href="#" class="follow">팔로워${followerList.size()}</a>
 				</div>
 
 			</div>
