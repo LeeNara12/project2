@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +28,7 @@
     </script>
     
 
-    <head>
+    </html>
 
     <body>
     <form name = "login">
@@ -42,25 +42,40 @@
                         <p style="font-size: 27px;"><b>사진과 동영상을 보고 싶은 사람을 팔로우 해보세요</b></p>
                     </div>
                 </div>
-
                 <div class="bottom">
                     <div class="other_user">
                         <div class="user_section">
                             <div class="bname">
-                                <p><b>${pl.get(0).user_id}</b></p>
+                                <p><b>${puvoList.get(0).getUser_id()}</b></p>
                             </div>
                             <div class="src">
-                              <img src="/project2/${pl.get(0).user_profile }"
+                              <img src="/project2/${puvoList.get(0).getUser_profile() }"
                                 alt="">
                             </div>
                         </div>
                         <div class="contact_section">
                             <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                 alt=""> -->
-                            <img src="/project2/${pl.get(0).get(0).board_url }"
+                            <c:choose>
+                            <c:when test="${empty pbvoList1.get(0).getBoard_url() }">
+                            <img src="/project2/image/logo.png"
                                 alt="">
-                            <img src="/project2/${pl.get(0).get(1).board_url }"
+                            </c:when>
+                            <c:otherwise>
+                            <img src="/project2/${pbvoList1.get(0).getBoard_url()}"
                                 alt="">
+                            </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                            <c:when test="${empty pbvoList1.get(1).getBoard_url() }">
+                            <img src="/project2/image/logo.png"
+                                alt="">
+                            </c:when>
+                            <c:otherwise>
+                            <img src="/project2/${pbvoList1.get(1).getBoard_url() }"
+                                alt="">
+                            </c:otherwise>
+                            </c:choose>
                         </div>
                         <div class="bottom_section">
                             <a href="#" class="follow">팔로우</a>
@@ -71,21 +86,37 @@
                         <div class="other_user">
                             <div class="user_section">
                                 <div class="bname1">
-                                    <p><b>${pl.get(1).user_id}</b></p>
+                                    <p><b>${puvoList.get(1).getUser_id()}</b></p>
                                 </div>
                                 <div class="src1">
 <!--                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yWNG_boOH4cgRzFeABhwl5JCQ3qdre4AcA&usqp=CAU" -->
 <!--                                         alt=""> -->
-										<img src="/project2/${pl.get(1).user_profile }">
+										<img src="/project2/${puvoList.get(1).getUser_profile() }">
                                 </div>
                             </div>
                             <div class="contact_section">
                                 <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                     alt=""> -->
-                                <img src=" /project2/${pl.get(1).get(0).board_url }"
-                                    alt="">
-                               <img src=" /project2/${pl.get(1).get(0).board_url }"
-                                    alt="">
+                                    <c:choose>
+                            <c:when test="${empty pbvoList2.get(0).getBoard_url() }">
+                            <img src="/project2/image/logo.png"
+                                alt="">
+                            </c:when>
+                            <c:otherwise>
+                            <img src="/project2/${pbvoList2.get(0).getBoard_url()}"
+                                alt="">
+                            </c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                            <c:when test="${empty pbvoList2.get(1).getBoard_url() }">
+                            <img src="/project2/image/logo.png"
+                                alt="">
+                            </c:when>
+                            <c:otherwise>
+                            <img src="/project2/${pbvoList2.get(1).getBoard_url() }"
+                                alt="">
+                            </c:otherwise>
+                            </c:choose>
                             </div>
                             <div class="bottom_section">
                                 <a href="#" class="follow">팔로우</a>
@@ -99,6 +130,4 @@
                     </footer>
                 </div>
             </form>
-</head>
-
 </body>

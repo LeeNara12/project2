@@ -43,14 +43,19 @@ public class PaceController extends HttpServlet {
 		}else if( action.equals("/join_success")){
 			System.out.println("abc들어옴");
 //			service.a();
-			Map<PaceUserVO,List<PaceBoardVO>> pl = service.a();
-			request.setAttribute("pl",pl); // jsp에서 사용할 페이스유저 리스트 
+			List<PaceUserVO> puvoList = service.a();
+			request.setAttribute("puvoList", puvoList);
+			List<PaceBoardVO> pbvoList1 = service.getBoard2(puvoList.get(0).getUser_no());
+			request.setAttribute("pbvoList1", pbvoList1);
+			List<PaceBoardVO> pbvoList2 = service.getBoard2(puvoList.get(1).getUser_no());
+			request.setAttribute("pbvoList2", pbvoList2);
 			
 //			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
 //			pp.forward(request, response);
 //			request.setAttribute("abc", 123);
 //			request.setAttribute("ka", map.get("ka")); // map
 //			request.setAttribute("uv", map.get("uv"));
+			
 			nextPage = "/join_success.jsp";
 //			PaceDAO da = new PaceDAO();
 //			da.count();

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -408,9 +407,9 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public Map<PaceUserVO,List<PaceBoardVO>> rnum() {
+	public List<PaceUserVO> rnum() {
 		System.out.println("count실행됨");
-		Map<PaceUserVO,List<PaceBoardVO>> uv = new HashMap();
+		List<PaceUserVO> list = new ArrayList<PaceUserVO>();
 		int [] ka = new int[2]; // 배열의 길이 선언
 		
 	try {
@@ -425,52 +424,42 @@ public class PaceDAO {
 		rs.next();
 		int rnum = rs.getInt("rnum");
 		ka[0] =(int) (Math.random()*rnum);
-	
-		
-//		if(ka[1] == ka[0] ) {
-//			ka[1] =(int) (Math.random()*count);
-//		}else {
-//			System.out.println(ka);
-//		}
-		
-//		do { // 실행문 
-//			ka[1] =(int) (Math.random()*rnum);
-//			ka[0] =(int) (Math.random()*rnum);
-//		}while(ka[1] == ka[0]);  // 조건문 
-//		
-//		System.out.println(ka[0]);
-//		System.out.println(ka[1]);
 		Random ra = new Random();
 		Map map =ra.map(rnum);
 		
 		String squ = "SELECT * FROM"
-								+ " (SELECT  user_no, rownum AS rnum,user_profile  FROM user_info) tmp"
+								+ " (SELECT  user_no, rownum AS rnum,user_profile,user_id  FROM user_info) tmp"
 								+ " WHERE rnum = ? OR rnum = ?";
 		pstmt = con.prepareStatement(squ);
 		pstmt.setInt(1,(int)map.get("a"));
 		pstmt.setInt(2,(int)map.get("b"));
-		System.out.println(map);
-//		pstmt.setInt(1, 1);
-//		pstmt.setInt(2, 3);
 		ResultSet rss  =  pstmt.executeQuery(); 
 		
-//		rs.next();
 		while(rss.next()) {
-
 			PaceUserVO vo = new PaceUserVO();
+			
 			int user_no = rss.getInt("user_no");
+			String user_profile = rss.getString("user_profile");
+			String user_id = rss.getString("user_id");
 			
 			vo.setUser_no(user_no);
-			
-			String user_profile = rss.getString("user_profile");
-			System.out.println("user_profile :" +user_profile);
 			vo.setUser_profile(user_profile);
-			List list = new ArrayList();
-
-			System.out.println("user_no : " + user_no);
+			vo.setUser_id(user_id);
 			
-			
-			String ss = "SELECT * from(\r\n"
+			list.add(vo);
+		}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<PaceBoardVO> getBoard2(int user_no){
+		List<PaceBoardVO> pbvoList = new ArrayList<PaceBoardVO>();
+		try {
+			con = dataFactory.getConnection();
+			String query = "SELECT * from(\r\n"
 			         + "SELECT \r\n"
 			         + "   rownum AS rnum,\r\n"
 			         + "   user_no,\r\n"
@@ -485,43 +474,24 @@ public class PaceDAO {
 			         + "WHERE user_no = ?\r\n"
 			         + ")\r\n"
 			         + "WHERE rnum < 3";
-			pstmt = con.prepareStatement(ss);
-			pstmt.setInt(1,user_no);
-			ResultSet rsss = pstmt.executeQuery();
-			
-			while (rsss.next()) {
-				
-					// 리턴 값을 바꾸기 
-				String board_url = rsss.getString("board_url");
-					System.out.println("board_url : " + board_url);
-					
-				PaceBoardVO oo = new PaceBoardVO(); 
-				oo.setBoard_url(board_url);
-				list.add(oo);
-	//			PaceUserVO 객체 만들고 그 객체에 아이디, 프로필 일단 넣어서 넘기고
-	//			그 유저넘버로 board테이블에서 그 유저의 board_no들 가지고 와야해요
-	//			User_infoDAO ba= new User_infoDAO();
-	//			ba.setUser_id(rs.getString("user_id"));
-	//			System.out.println(ba);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, user_no);
+			ResultSet rs = pstmt.executeQuery();
+			for(int i=0; i<2; i++) {
+				if(rs.next()) {
+					String board_url = rs.getString("board_url");
+					PaceBoardVO pbvo = new PaceBoardVO();
+					pbvo.setBoard_url(board_url);
+					pbvoList.add(pbvo);
+				} else {
+					pbvoList.add(null);
+				}
 			}
-			uv.put(vo,list); //리스트에 있는 메소드  // 기능 : 넣는다 
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
+		return pbvoList;
 	}
-//	Map map = new HashMap();
-//	map.put("ka", ka);
-//	map.put("uv", uv);
-	return uv;
-	
-	
-	}
-
-	
-
-
-
 }
 
  
