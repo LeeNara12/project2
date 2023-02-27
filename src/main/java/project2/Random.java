@@ -15,8 +15,8 @@ public Map map(int c) {
 		int b = 0;
 		
 		do { // 실행문 
-		 a =(int) (Math.random()*c);
-		 b = (int)(Math.random()*c);
+		 a =(int) (Math.random()*c)+1;
+		 b = (int)(Math.random()*c)+1;
 		}while(a == b);  // 조건문 
 		
 
