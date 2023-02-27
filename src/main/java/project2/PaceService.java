@@ -57,9 +57,15 @@ public class PaceService {
 	public List<PaceBoardVO> getBoard(int pageNum){
 		return boardDAO.getBoard(pageNum);
 	}
+	public List<PaceBoardVO> myBoard(int user_no){
+		return boardDAO.myBoard(user_no);
+	}
 	
 	public List<PaceUserVO> getFollowList(int user_no){
 		return user_infoDAO.getFollowList(user_no);
+	}
+	public List<PaceUserVO> getFollowerList(int user_no){
+		return user_infoDAO.getFollowerList(user_no);
 	}
 	
 	public Map<String,List<PaceBoardVO>>  a () {
@@ -96,6 +102,7 @@ public class PaceService {
 	public void follow(int user_no, int buser_no) {
 		user_infoDAO.follow(user_no, buser_no);
 	}
+	
 	
 	public boolean isFollow(int user_no, int buser_no) {
 		return user_infoDAO.isFollow(user_no, buser_no);

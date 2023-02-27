@@ -38,7 +38,7 @@
 				<input id="search_text" type="text">
 			</div>
 			<div id="top_profile">
-				<img class="profile" src="/project2/${vo.user_profile }">
+				<img class="profile" src="/project2/${vo1.user_profile }">
 			</div>
 		</div>
 	</div>
@@ -51,12 +51,27 @@
 				<div id="show_id">
 					<span>${vo.user_id }</span>
 				</div>
-				<div id="followme">
-					<a href="#" class="follow">게시물 ${boardList.size() }</a> <a href="#"
-						class="follow">팔로우 ${followList.size()}</a> <a href="#"
-						class="follow">팔로워 ${followList.size()}</a>
+				<div id="followbox">
+					<div id="followme">
+						<c:if test="${vo1.user_no != vo.user_no }">
+							<a
+								href="/project2/pacebook/profilefollow?user_no=${vo1.user_no }"
+								class="follow"> <%
+ PaceService service = new PaceService();
+ %>
+								<c:set var="service" value="<%=service%>" /> <c:if
+									test="${service.isFollow(vo.user_no,vo1.user_no)==true }">
+						팔로우됨
+						</c:if> <c:if test="${service.isFollow(vo.user_no,vo1.user_no)==false }">
+						팔로잉
+						</c:if>
+							</a>
+						</c:if>
+						<a href="#" class="follow">게시물${boardList.size() }</a> <a href="#"
+							class="follow">팔로우${followList.size()}</a> <a href="#"
+							class="follow">팔로워${followerList.size()}</a>
+					</div>
 				</div>
-
 			</div>
 			<div id="side_tool">
 				<ul>
@@ -139,13 +154,13 @@
 						</div>
 						<div id="image_box">
 							<div>
-							<c:forEach var="board" items="${boardList }">
 								<div class="contact_section">
-									<a href="naver"><img
-										style="width: 300px; height: 300px; border-radius: 30px;"
-										src="/project2/${board.board_url }" alt=""></a>
+									<c:forEach var="board" items="${boardList }">
+										<a href="naver"><img
+											style="width: 300px; height: 300px; border-radius: 30px;"
+											src="/project2/${board.board_url }" alt=""></a>
+									</c:forEach>
 								</div>
-								</c:forEach>
 							</div>
 						</div>
 					</form>
