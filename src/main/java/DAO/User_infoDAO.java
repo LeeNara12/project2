@@ -334,6 +334,7 @@ public class User_infoDAO {
 				ResultSet rs1 = pstmt.executeQuery();
 				rs1.next();
 				puvo.setUser_no(rs1.getInt("user_no"));
+				puvo.setUser_id(rs1.getString("user_id"));
 				puvo.setUser_name(rs1.getString("user_name"));
 				puvo.setUser_birth(rs1.getString("user_birth"));
 				puvo.setUser_gender(rs1.getString("user_gender"));
@@ -394,6 +395,132 @@ public class User_infoDAO {
 			e.printStackTrace();
 		}
 		return puvoList;
+	}
+	
+	public void follow(int user_no, int buser_no) {
+		try {
+			con = dataFactory.getConnection();
+			String query1 = " select * from follow_list"
+					+ " where user_no = ? and follow_u_no = ?";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, buser_no);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 팔로우가 되어있으면 => 취소
+				String query2 = " delete from follow_list"
+						+ " where user_no = ? and follow_u_no = ?";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setInt(1, user_no);
+				pstmt.setInt(2, buser_no);
+				
+				pstmt.executeUpdate();
+				
+			} else { // 팔로우가 안되어 있으면 => 팔로우
+				String query3 = " insert into follow_list"
+						+ " values(?, ?)";
+				pstmt = con.prepareStatement(query3);
+				pstmt.setInt(1, user_no);
+				pstmt.setInt(2, buser_no);
+				
+				pstmt.executeUpdate();
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public boolean isFollow(int user_no, int buser_no) {
+		boolean result = false;
+		try {
+			con = dataFactory.getConnection();
+			String query1 = " select * from follow_list"
+					+ " where user_no = ? and follow_u_no = ?";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, buser_no);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) { // 팔로우가 되어있으면 => true
+				result = true;
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public List<PaceUserVO> notFollowUsers(int user_no, int pageNum) {
+		List<PaceUserVO> nfuList = new ArrayList<PaceUserVO>();
+		try {
+			con = dataFactory.getConnection();
+			String query1 = " SELECT \r\n"
+					+ "	*\r\n"
+					+ "FROM(\r\n"
+					+ "	SELECT \r\n"
+					+ "		rownum,\r\n"
+					+ "		user_no\r\n"
+					+ "	from(\r\n"
+					+ "		SELECT\r\n"
+					+ "			u2.user_no\r\n"
+					+ "		FROM user_info u1 LEFT outer JOIN user_info u2 ON (u1.user_no != u2.user_no)\r\n"
+					+ "		WHERE u1.user_no = ?\r\n"
+					+ "		minus\r\n"
+					+ "		SELECT\r\n"
+					+ "			follow_u_no\r\n"
+					+ "		FROM follow_list\r\n"
+					+ "		WHERE user_no = ?\r\n"
+					+ "		)\r\n"
+					+ ")\r\n"
+					+ "WHERE rownum BETWEEN (?-1)*10 AND ?*10";
+			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, user_no);
+			pstmt.setInt(2, user_no);
+			pstmt.setInt(3, pageNum);
+			pstmt.setInt(4, pageNum);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()) { // 팔로우가 되어있으면 => true
+				PaceUserVO puvo = new PaceUserVO();
+				String query2 = "select * from user_info"
+						+ " where user_no = ?";
+				pstmt = con.prepareStatement(query2);
+				pstmt.setInt(1, rs.getInt("user_no"));
+				ResultSet rs1 = pstmt.executeQuery();
+				rs1.next();
+				puvo.setUser_no(rs1.getInt("user_no"));
+				puvo.setUser_id(rs1.getString("user_id"));
+				puvo.setUser_name(rs1.getString("user_name"));
+				puvo.setUser_birth(rs1.getString("user_birth"));
+				puvo.setUser_gender(rs1.getString("user_gender"));
+				puvo.setUser_phone(rs1.getString("user_phone"));
+				puvo.setUser_profile(rs1.getString("user_profile"));
+				
+				nfuList.add(puvo);
+				rs1.close();
+			}
+			
+			rs.close();
+			pstmt.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nfuList;
 	}
 
 }

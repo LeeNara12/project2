@@ -19,7 +19,7 @@
 
 <body>
     <div id="top">
-        <div id="logo">PACEBOOK</div>
+        <a href="/project2/pacebook/main" id="logo">PACEBOOK</a>
         <div id="top_right">
             <div id="search">
                 <button id="search_btn">
@@ -146,10 +146,10 @@
             <div id="main_top">
                 <ul id="profile_list">
                 	<c:forEach var="followUser" items="${followList }">
-	                    <li>
-	                        <div id="friend_profile_outline1">
+	                    <li id="pl" data-un="${followUser.user_no}">
+	                        <div class="friend_profile_outline1">
 		                    	<a href="/project2/pacebook/profile?user_no=${followUser.user_no }" class="friend_profile_a">
-		                           	<div id="friend_profile_outline2">
+		                           	<div class="friend_profile_outline2">
 		                                <div id="friend_profile" class="profile_div">
 			                            	<img class="profile" src="/project2/${followUser.user_profile }">
 		                     			</div>
@@ -185,9 +185,32 @@
                                     	${boardPuvo.user_id }
                                     </div>
                                 </div>
-                                <button id="board_follow" data-un="${boardPuvo.user_no}">
-                                    <span>팔로우</span>
+                                <button id="board_menu" class="board_btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" fill="currentColor"
+                                        class="bi bi-list" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
                                 </button>
+                                <div id="board_menu_box">
+                                    <div id="board_menu_arrow"></div>
+                                    <c:if test="${sessionScope.user_no != boardPuvo.user_no}">
+                                        <c:set var="service" value="<%= service %>"/>
+                                        <button class="board_menus board_follow_btn" data-un="${boardPuvo.user_no }">
+                                            <c:choose>
+                                                <c:when test="${service.isFollow(sessionScope.user_no, boardPuvo.user_no)}">
+                                                    <span>팔로우 취소</span>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span>팔로우</span>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </button>
+                                    </c:if>
+                                    <button class="board_menus">
+                                        게시글 상세보기
+                                    </button>
+                                </div>
                             </div>
                             <div id="board_image">
                                 <img class="board_image" src="/project2/${board.board_url }">
@@ -406,16 +429,23 @@
                     </ul>
                 </div>
                 <ul id="friend_list">
+                    <c:forEach var="nfuser" items="${nfuList}">
                     <li id="friend">
-                        <div id="right_profile" class="profile_div">
-                            <img class="profile" src="a.jpg">
-                        </div>
-                        <div id="right_name">
-                            <span>이름</span>
-                        </div>
-                        <div id="right_online_mark">
-                        </div>
+                        <a href="/project2/pacebook/profile?user_no=${nfuser.user_no}" class="friend_box">
+                            <div class="friend_profile_outline2">
+                                <div id="right_profile" class="profile_div">
+                                    <img class="profile" src="/project2/${nfuser.user_profile}">
+                                </div>
+                            </div>
+                            <div id="right_name">
+                                <span>${nfuser.user_id}</span>
+                            </div>
+                        </a>
+                        <button class="nful_follow_btn follow_btn" data-un="${nfuser.user_no}">
+                            팔로우
+                        </button>
                     </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>

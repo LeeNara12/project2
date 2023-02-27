@@ -54,8 +54,8 @@ public class PaceService {
 		return boardDAO.search(search_content);
 	}
 	
-	public List<PaceBoardVO> getBoard(){
-		return boardDAO.getBoard();
+	public List<PaceBoardVO> getBoard(int pageNum){
+		return boardDAO.getBoard(pageNum);
 	}
 	public List<PaceBoardVO> myBoard(int user_no){
 		return boardDAO.myBoard(user_no);
@@ -97,6 +97,18 @@ public class PaceService {
 	
 	public void createCmComment(int user_no, int comment_no, String content) {
 		commentDAO.createCmComment(user_no, comment_no, content);
+	}
+	
+	public void follow(int user_no, int buser_no) {
+		user_infoDAO.follow(user_no, buser_no);
+	}
+	
+	public boolean isFollow(int user_no, int buser_no) {
+		return user_infoDAO.isFollow(user_no, buser_no);
+	}
+	
+	public List<PaceUserVO> notFollowUsers(int user_no, int pageNum) {
+		return user_infoDAO.notFollowUsers(user_no, pageNum);
 	}
 	
 }

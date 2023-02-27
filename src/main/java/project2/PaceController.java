@@ -1,6 +1,7 @@
 package project2;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import VO.PaceBoardVO;
-import VO.PaceCommentVO;
 import VO.PaceUserVO;
 
 @WebServlet("/pacebook/*")
@@ -290,7 +290,7 @@ public class PaceController extends HttpServlet {
 			request.setAttribute("boardList", boardList);
 			nextPage = "/main.jsp";
 		} else if(action.equals("/get_board")) {
-			List<PaceBoardVO> boardList = service.getBoard();
+			List<PaceBoardVO> boardList = service.getBoard(1);
 			request.setAttribute("boardList", boardList);
 
 		}else if(action.equals("/profile")) {
@@ -320,12 +320,34 @@ public class PaceController extends HttpServlet {
 			se.setAttribute("puvo", puvo);
 			List<PaceUserVO> followList = service.getFollowList(user_no);
 			request.setAttribute("followList", followList);
-			List<PaceBoardVO> boardList = service.getBoard();
+			List<PaceBoardVO> boardList = service.getBoard(1);
 			request.setAttribute("boardList", boardList);
+			List<PaceUserVO> nfuList = service.notFollowUsers(user_no, 1);
+			request.setAttribute("nfuList", nfuList);
 			nextPage = "/main.jsp";
 			
+		} else if(action.equals("/follow")) {
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("user_no");
+			int buser_no = Integer.parseInt(request.getParameter("user_no"));
+			service.follow(user_no, buser_no);
+			List<PaceUserVO> followList = new ArrayList<PaceUserVO>();
+			followList.add(service.getUserInfo(buser_no));
+			request.setAttribute("followList", followList);
+			nextPage = "/main.jsp";
+		} else if(action.equals("/moreboard")) {
+			int pageNum = Integer.parseInt(request.getParameter("pagenum"));
+			List<PaceBoardVO> boardList = service.getBoard(pageNum);
+			request.setAttribute("boardList", boardList);
+			nextPage = "/main.jsp";
+		} else if(action.equals("/notfollow")) {
+			HttpSession se = request.getSession();
+			int user_no = (int)se.getAttribute("user_no");
+			int pageNum = Integer.parseInt(request.getParameter("pagenum"));
+			List<PaceUserVO> nfuList = service.notFollowUsers(user_no, pageNum);
+			request.setAttribute("nfuList", nfuList);
+			nextPage = "/main.jsp";
 		}
-		
 		
 		
 		///페이지 이동관련
