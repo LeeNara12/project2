@@ -88,15 +88,41 @@ public class BoardDAO {
 		}
 	}
 	
-	public List<PaceBoardVO> getBoard() {//게시물 가져오는 메소드
+	public List<PaceBoardVO> getBoard(int pageNum) {//게시물 가져오는 메소드
 		List<PaceBoardVO> list = new ArrayList<PaceBoardVO>();
 		try {
 			con = dataFactory.getConnection();
 			
-			String query1 = " select * from board"
-					+ " order by board_time desc";
+			String query1 = "SELECT * FROM(\r\n"
+					+ "SELECT\r\n"
+					+ "	rownum AS rn,\r\n"
+					+ "	board_no,\r\n"
+					+ "	board_time,\r\n"
+					+ "	board_modify,\r\n"
+					+ "	board_content,\r\n"
+					+ "	board_url,\r\n"
+					+ "	user_no,\r\n"
+					+ "	board_like,\r\n"
+					+ "	board_modify_time\r\n"
+					+ "from(\r\n"
+					+ "	SELECT \r\n"
+					+ "		board_no,\r\n"
+					+ "		board_time,\r\n"
+					+ "		board_modify,\r\n"
+					+ "		board_content,\r\n"
+					+ "		board_url,\r\n"
+					+ "		user_no,\r\n"
+					+ "		board_like,\r\n"
+					+ "		board_modify_time\r\n"
+					+ "	FROM board\r\n"
+					+ "	ORDER BY board_time desc\r\n"
+					+ "	)\r\n"
+					+ ")\r\n"
+					+ "WHERE rn BETWEEN (?-1)*5+1 AND ?*5";
 			
 			pstmt = con.prepareStatement(query1);
+			pstmt.setInt(1, pageNum);
+			pstmt.setInt(2, pageNum);
 			ResultSet rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
