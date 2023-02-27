@@ -39,15 +39,17 @@ public class PaceController extends HttpServlet {
 		if(action == null || action.equals("") || action.equals("/")) {
 			nextPage = "/main.jsp";
 
-		}else if( action.equals("/join_success.jsp")){
+		}else if( action.equals("/join_success")){
 			System.out.println("abc들어옴");
 //			service.a();
-			Map map  = service.a();
+			Map<PaceUserVO,List<PaceBoardVO>> pl = service.a();
+			request.setAttribute("pl",pl); // jsp에서 사용할 페이스유저 리스트 
+			
 //			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");
 //			pp.forward(request, response);
-			request.setAttribute("abc", 123);
-			request.setAttribute("ka", map.get("ka")); // map
-			request.setAttribute("uv", map.get("uv"));
+//			request.setAttribute("abc", 123);
+//			request.setAttribute("ka", map.get("ka")); // map
+//			request.setAttribute("uv", map.get("uv"));
 			nextPage = "/join_success.jsp";
 //			PaceDAO da = new PaceDAO();
 //			da.count();
@@ -122,7 +124,7 @@ public class PaceController extends HttpServlet {
 			boolean result = service.join(vo); // dao의 join메소드로 vo객체를 넘김
 
 			if (result) {// 회원가입이 성공했을 때
-				nextPage = "/join_success.jsp";
+				nextPage = "join_success";
 			}else {// 회원가입에 실패했을 때
 				request.setAttribute("joinUp", "false");//request에 회원가입에 실패했다는 값을 넣어줌
 				System.out.println("회원가입 실패");

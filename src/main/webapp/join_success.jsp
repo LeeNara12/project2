@@ -47,19 +47,19 @@
                     <div class="other_user">
                         <div class="user_section">
                             <div class="bname">
-                                <p><b>${uv[0].user_id}</b></p>
+                                <p><b>${pl.get(0).user_id}</b></p>
                             </div>
                             <div class="src">
-                              <img src="/project2]${uv[0].user_profile }"
+                              <img src="/project2/${pl.get(0).user_profile }"
                                 alt="">
                             </div>
                         </div>
                         <div class="contact_section">
                             <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                 alt=""> -->
-                            <img src="/project2/${uv[0].board_content }"
+                            <img src="/project2/${pl.get(0).get(0).board_url }"
                                 alt="">
-                            <img src="project2/${uv[0].board_content }"
+                            <img src="/project2/${pl.get(0).get(1).board_url }"
                                 alt="">
                         </div>
                         <div class="bottom_section">
@@ -71,20 +71,20 @@
                         <div class="other_user">
                             <div class="user_section">
                                 <div class="bname1">
-                                    <p><b>${ka[1].user_id}</b></p>
+                                    <p><b>${pl.get(1).user_id}</b></p>
                                 </div>
                                 <div class="src1">
 <!--                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7yWNG_boOH4cgRzFeABhwl5JCQ3qdre4AcA&usqp=CAU" -->
 <!--                                         alt=""> -->
-										<img src="/project2]${uv[1].user_profile }">
+										<img src="/project2/${pl.get(1).user_profile }">
                                 </div>
                             </div>
                             <div class="contact_section">
                                 <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                     alt=""> -->
-                                <img src=" project2/${uv[1].board_content }"
+                                <img src=" /project2/${pl.get(1).get(0).board_url }"
                                     alt="">
-                               <img src=" project2/${uv[1].board_content }"
+                               <img src=" /project2/${pl.get(1).get(0).board_url }"
                                     alt="">
                             </div>
                             <div class="bottom_section">
