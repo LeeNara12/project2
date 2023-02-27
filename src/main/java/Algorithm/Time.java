@@ -1,4 +1,4 @@
-package project2;
+package Algorithm;
 
 import java.sql.Date;
 

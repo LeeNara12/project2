@@ -14,8 +14,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import Algorithm.TemporaryPW;
 import VO.PaceUserVO;
-import project2.TemporaryPW;
 
 public class User_infoDAO {
 
@@ -82,13 +82,7 @@ public class User_infoDAO {
 				result = false;
 			} else {
 				String query2 = "insert into user_info "
-						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,?,?,?,0,0)";
-				/*
-				 * (1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL,
-				 * 7. USER_PHONE, 8. USER_PROFILE, 9. USER_BIRTH, 10. USER_GENDER)
-				 */
-
-				pstmt = con.prepareStatement(query2);
+			
 
 						+ " values ( seq_user.nextval, ? , ?, current_date, ?,?,?,'image/silde5.jpg',?,?,0,0)";
 				/*(1. USER_NO, 2.USER_ID 3. USER_PW, 4. USER_TIME, 5. USER_NAME, 6. USER_EMAIL, 7. USER_PHONE, 
@@ -97,7 +91,7 @@ public class User_infoDAO {
 				
 				pstmt=con.prepareStatement(query2);
 				
->>>>>>> e90af9a637dd3deac39b9d2ddde5ab3987309e08
+
 				// 값을 주는 애들은 jsp
 				// 값을 받아오는 애들
 				pstmt.setString(1, vo.getUser_id());
@@ -106,11 +100,6 @@ public class User_infoDAO {
 				pstmt.setString(3, vo.getUser_name());
 				pstmt.setString(4, vo.getUser_email());
 				pstmt.setString(5, vo.getUser_phone());
-				pstmt.setString(6, vo.getUser_profile());
-				pstmt.setString(7, vo.getUser_birth());
-				pstmt.setString(8, vo.getUser_gender());
-
-//				pstmt.setString(6, vo.getUser_profile());
 				pstmt.setString(6, vo.getUser_birth());
 				pstmt.setString(7, vo.getUser_gender());
 				
