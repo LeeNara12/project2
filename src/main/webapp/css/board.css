@@ -1,13 +1,23 @@
 @charset "UTF-8";
-body{
-    /* margin: 0; */
-}
+
 @font-face {
     font-family: 'RixInooAriDuriR';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2207-01@1.0/RixInooAriDuriR.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
+
+.blackLayer{
+
+    display: none;
+    background-color: black;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  
+}
+
+
 /* 상단 */
 #top{
     background-color: rgb(141, 141, 194);
@@ -47,6 +57,7 @@ body{
     display: flex;
     align-items: center;
     height: 50px;
+    cursor: pointer;
 }
 .top_btn:hover{
     background-color: rgb(108, 108, 153);
@@ -71,6 +82,7 @@ body{
     width: 100%;
     height: 100%;
 }
+
 
 /* 프로필 */
 #profile_box{
@@ -214,7 +226,7 @@ body{
     border-top: 1px  solid rgb(141, 141, 194);
     border-bottom: 1px  solid rgb(141, 141, 194);
     box-sizing: border-box;
-    background-color: black;
+    background-color: white;
     height: 60%;
     overflow: hidden;
     display: flex;
@@ -223,6 +235,60 @@ body{
 }
 #file_none{
     color: white;
+}
+.margin_left1{
+    /* margin-left: -21px; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-size: 24px;
+    color: rgb(141, 141, 194);
+}
+#file_plus{
+    cursor: pointer;
+}
+#file_plus:hover{
+    cursor: pointer;
+    font-size: 27px;
+}
+
+
+
+#left{
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    z-index: 100;
+    font-size: 80px;
+    right: 62%;
+    cursor: pointer;
+}
+
+#left:hover{
+    color: white;
+    position: absolute;
+    z-index: 100;
+    font-size: 80px;
+    right: 62%;
+    cursor: pointer;
+}
+
+
+#right{
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    z-index: 100;
+    font-size: 80px;
+    left: 62%;
+    cursor: pointer;
+}
+
+#right:hover{
+    color: white;
+    position: absolute;
+    z-index: 100;
+    font-size: 80px;
+    left: 62%;
+    cursor: pointer;
 }
 
 /* 중앙 아래쪽 */
@@ -260,13 +326,20 @@ body{
     justify-content: center;
     align-items: center;
 }
+#my_board_list_wrap{
+    background-color: rgb(230, 230, 230);
+    height: 90%;
+}
 #my_board_list{
     border-radius: 0px 0px 5px 5px;
-    height: 90%;
+    /* height: 90%; */
     box-sizing: border-box;
     display: flex;
     background-color: rgb(230, 230, 230);
     overflow-y: scroll;
+    padding-left: 2px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 #my_board{
     box-sizing: border-box;
@@ -276,6 +349,9 @@ body{
     min-height: 117px;
     max-width: 117px;
     max-height: 117px;
+    border: 1px solid red;
+    margin-right: 2px;
+    margin-top: 6px;
 }
 
 
@@ -308,4 +384,23 @@ input{
 }
 ::-webkit-scrollbar{
     display: none;
+}
+
+
+#popup_profile_wrap{
+    width: 50%;
+    height: 700px;
+    /* border: 1px solid red; */
+    position: absolute;
+    bottom: 9%;
+    left: 25%;
+    z-index: 1000;
+    background-color: black;
+    display: none;
+}
+#popup_profile{
+    width:100%;
+    height: 100%;
+    z-index: 1000;
+    object-fit: contain;
 }
