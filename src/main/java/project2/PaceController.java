@@ -42,7 +42,7 @@ public class PaceController extends HttpServlet {
 		}else if( action.equals("/join_success")){
 			System.out.println("abc들어옴");
 //			service.a();
-			Map<PaceUserVO,List<PaceBoardVO>> pl = service.a();
+			Map<String,List<PaceBoardVO>> pl = service.a();
 			request.setAttribute("pl",pl); // jsp에서 사용할 페이스유저 리스트 
 			
 //			RequestDispatcher pp = request.getRequestDispatcher("join_success.jsp");

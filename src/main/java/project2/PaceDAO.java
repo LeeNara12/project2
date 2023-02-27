@@ -407,9 +407,9 @@ public class PaceDAO {
 //	try {
 //		rs = statement.execute(select);
 //	}
-	public Map<PaceUserVO,List<PaceBoardVO>> rnum() {
+	public Map<String,List<PaceBoardVO>> rnum() {
 		System.out.println("count실행됨");
-		Map<PaceUserVO,List<PaceBoardVO>> uv = new HashMap();
+		Map<String,List<PaceBoardVO>> uv = new HashMap();
 		int [] ka = new int[2]; // 배열의 길이 선언
 		
 	try {
@@ -503,7 +503,7 @@ public class PaceDAO {
 	//			ba.setUser_id(rs.getString("user_id"));
 	//			System.out.println(ba);
 			}
-			uv.put(vo,list); //리스트에 있는 메소드  // 기능 : 넣는다 
+			uv.put("list",list); //리스트에 있는 메소드  // 기능 : 넣는다 
 		}
 		
 	} catch (SQLException e) {

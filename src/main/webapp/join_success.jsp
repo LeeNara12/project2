@@ -57,7 +57,7 @@
                         <div class="contact_section">
                             <!-- <img src="https://i.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                                 alt=""> -->
-                            <img src="/project2/${pl.get(0).get(0).board_url }"
+                            <img src="/project2/${pl[0].get(0).board_url }"
                                 alt="">
                             <img src="/project2/${pl.get(0).get(1).board_url }"
                                 alt="">
@@ -88,6 +88,7 @@
                                     alt="">
                             </div>
                             <div class="bottom_section">
+                           	 <h1>${pl.user_id}</h1>
                                 <a href="#" class="follow">팔로우</a>
                             </div>
                         </div>
