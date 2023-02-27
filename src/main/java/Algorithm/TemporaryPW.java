@@ -1,4 +1,4 @@
-package project2;
+package Algorithm;
 
 public class TemporaryPW {//임시비밀번호 알고리즘
 	

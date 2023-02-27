@@ -1,10 +1,11 @@
-package project2;
+package Service;
 
 import java.util.List;
 import java.util.Map;
 
 import DAO.BoardDAO;
 import DAO.CommentDAO;
+import DAO.PaceDAO;
 import DAO.User_infoDAO;
 import VO.PaceBoardVO;
 import VO.PaceCmCommentVO;

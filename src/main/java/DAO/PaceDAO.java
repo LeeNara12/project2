@@ -1,4 +1,4 @@
-package project2;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import Algorithm.Random;
 import VO.PaceBoardVO;
 import VO.PaceCommentVO;
 import VO.PaceUserVO;
